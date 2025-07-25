@@ -322,6 +322,30 @@ namespace HREngine.Bots
             else return CardDB.cardNameCN.未知;
         }
 
+        /// <summary>
+        /// 输入种族英文名,输出Race枚举对象
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public Race raceNameStringToEnum(string s)
+        {
+            CardDB.Race NameEnum;
+            if (Enum.TryParse<Race>(s, false, out NameEnum)) return NameEnum;
+            else return CardDB.Race.BLANK;
+        }
+
+        /// <summary>
+        /// 输入种族英文名,输出SpellSchool枚举对象
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public SpellSchool spellSchoolNameStringToEnum(string s)
+        {
+            CardDB.SpellSchool NameEnum;
+            if (Enum.TryParse<SpellSchool>(s, false, out NameEnum)) return NameEnum;
+            else return CardDB.SpellSchool.PHYSICAL_COMBAT;
+        }
+
 
 
         /// <summary>
@@ -711,39 +735,6 @@ namespace HREngine.Bots
             public cardNameEN nameEN = cardNameEN.unknown;//名称
             public cardNameCN nameCN = cardNameCN.未知;
             public Race race = Race.INVALID;//种族
-             //TODO:种族集合
-            public List<Race> races = new List<Race>();
-            //TODO:种族数
-            public int GetRaceCount()
-            {
-                return this.races.Count;
-            }
-            //TODO:获取种族集合
-            public List<Race> GetRaces()
-            {
-
-                this.races = Enumerable.ToList<Race>(Enumerable.Distinct<Race>(this.races));
-                if (this.races.Count > 1)
-                {
-                    Race[] order = new Race[]
-                    {
-                        Race.UNDEAD,
-                        Race.ELEMENTAL,
-                        Race.MECHANICAL,
-                        Race.DEMON,
-                        Race.MURLOC,
-                        Race.QUILBOAR,
-                        Race.NAGA,
-                        Race.PET,
-                        Race.DRAGON,
-                        Race.DRAENEI,
-                        Race.TOTEM,
-                        Race.PIRATE
-                    };
-                    this.races.Sort((Race r1, Race r2) => Array.IndexOf<Race>(order, r1).CompareTo(Array.IndexOf<Race>(order, r2)));
-                }
-                return this.races;
-            }
             public int rarity = 0;//稀有度
             public int cost = 0;//费用
             public int Class = 0;//职业
@@ -837,6 +828,51 @@ namespace HREngine.Bots
             public bool Quickdraw = false;//快枪
             public bool Excavate = false;//发掘
             public bool Elusive = false;//扰魔
+            public bool StarshipPiece = false;  // 星舰组件
+            public bool Starship = false;   // 星舰
+            public bool Zerg = false;   // 异虫
+
+            public bool Terran = false; // 人族
+
+            public bool Protoss = false;    // 星灵
+            public int costBlood = 0;   // 鲜血符文
+            public int costFrost = 0;    // 冰霜符文
+            public int costUnholy = 0; // 邪恶符文
+
+
+            public List<Race> races = new List<Race>(); //TODO:种族集合
+
+            //TODO:种族数
+            public int GetRaceCount()
+            {
+                return this.races.Count;
+            }
+            //TODO:获取种族集合
+            public List<Race> GetRaces()
+            {
+
+                this.races = Enumerable.ToList<Race>(Enumerable.Distinct<Race>(this.races));
+                if (this.races.Count > 1)
+                {
+                    Race[] order = new Race[]
+                    {
+                        Race.UNDEAD,
+                        Race.ELEMENTAL,
+                        Race.MECHANICAL,
+                        Race.DEMON,
+                        Race.MURLOC,
+                        Race.QUILBOAR,
+                        Race.NAGA,
+                        Race.PET,
+                        Race.DRAGON,
+                        Race.DRAENEI,
+                        Race.TOTEM,
+                        Race.PIRATE
+                    };
+                    this.races.Sort((Race r1, Race r2) => Array.IndexOf<Race>(order, r1).CompareTo(Array.IndexOf<Race>(order, r2)));
+                }
+                return this.races;
+            }
 
             public string textCN = "";
             public int count = 1;
@@ -2746,6 +2782,46 @@ namespace HREngine.Bots
                         case "1211":
                             {
                                 card.Elusive = true;//扰魔
+                            }
+                            break;
+                        case "2196":
+                            {
+                                card.costBlood = int.Parse(tag.GetAttribute("value")); // 鲜血符文
+                            }
+                            break;
+                        case "2197":
+                            {
+                                card.costFrost = int.Parse(tag.GetAttribute("value")); // 冰霜符文
+                            }
+                            break;
+                        case "2198":
+                            {
+                                card.costUnholy = int.Parse(tag.GetAttribute("value")); // 邪恶符文
+                            }
+                            break;
+                        case "3555":
+                            {
+                                card.StarshipPiece = true; // 星舰组件
+                            }
+                            break;
+                        case "3568":
+                            {
+                                card.Starship = true; // 星舰
+                            }
+                            break;
+                        case "3457":
+                            {
+                                card.Zerg = true; // 异虫
+                            }
+                            break;
+                        case "3458":
+                            {
+                                card.Terran = true; // 人族
+                            }
+                            break;
+                        case "3469":
+                            {
+                                card.Protoss = true; // 星灵
                             }
                             break;
                         //TODO:双种族代码

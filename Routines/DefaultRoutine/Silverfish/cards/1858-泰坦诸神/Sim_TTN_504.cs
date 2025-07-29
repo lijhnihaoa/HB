@@ -11,7 +11,19 @@ namespace HREngine.Bots
 	//<b>奥秘：</b>当一个友方随从受到攻击时，使其获得+3/+3。
 	class Sim_TTN_504 : SimTemplate
 	{
-		
+        public override void onSecretPlay(Playfield p, bool ownplay, Minion attacker, Minion target, out int number)
+        {
+            number = 0;
+            if (ownplay)
+            {
+				p.minionGetBuffed(target, 3, 3);
+            }
+            else
+            {
+				p.minionGetBuffed(target, 3, 3);
+
+            }
+        }
 		
 	}
 }

@@ -43,33 +43,126 @@ namespace HREngine.Bots
         /// </summary>
         public enum cardtrigers
         {
-            newtriger,///新触发
-            getBattlecryEffect,//战吼效果
-            onAHeroGotHealedTrigger,//一个英雄受到伤害触发
+            /// <summary>
+            /// 新触发
+            /// </summary>
+            newtriger,
+            /// <summary>
+            /// 战吼效果
+            /// </summary>
+            getBattlecryEffect,
+            /// <summary>
+            /// 一个英雄受到伤害触发
+            /// </summary>
+            onAHeroGotHealedTrigger,
+            /// <summary>
+            /// 随从受到伤害触发
+            /// </summary>
             onAMinionGotHealedTrigger,//随从受到伤害触发
-            onAuraEnds,//光环消失
-            onAuraStarts,//光环开始
-            onCardIsGoingToBePlayed,//卡片即将使用
-            onCardPlay,//卡片使用
-            onCardWasPlayed,//卡片使用后
-            onDeathrattle,//亡语
-            onEnrageStart,//激怒开始
-            onEnrageStop,//激怒结束
-            onMinionDiedTrigger,//随从死亡触发
-            onMinionGotDmgTrigger,//随从受到伤害触发
-            onMinionIsSummoned,//随从被召唤
-            onMinionWasSummoned,//随从召唤过
-            onSecretPlay,//奥秘使用
-            onTurnEndsTrigger,//回合结束触发
-            onTurnStartTrigger,//回合开始触发
-            triggerInspire,//触发激发
-            chaosha,//超杀
-            Strike,//撞击
-            xiaomie,//消灭
-            onTurnStart,//回合开始
-            onTurnEnd, //回合结束
-            useLocation, //使用地标
-            useTitanAbility, //使用泰坦技能
+            /// <summary>
+            /// 光环消失
+            /// </summary>
+            onAuraEnds,
+            /// <summary>
+            ///  光环开始
+            /// </summary>
+            onAuraStarts,
+            /// <summary>
+            /// 卡片即将使用
+            /// </summary>
+            onCardIsGoingToBePlayed,
+            /// <summary>
+            /// 卡片使用
+            /// </summary>
+            onCardPlay,
+            /// <summary>
+            /// 卡片使用后
+            /// </summary>
+            onCardWasPlayed,
+            /// <summary>
+            /// 亡语
+            /// </summary>
+            onDeathrattle,
+            /// <summary>
+            /// 激怒开始
+            /// </summary>
+            onEnrageStart,
+            /// <summary>
+            /// 激怒结束
+            /// </summary>
+            onEnrageStop,
+            /// <summary>
+            /// 随从死亡触发
+            /// </summary>
+            onMinionDiedTrigger,
+            /// <summary>
+            /// 随从受到伤害触发
+            /// </summary>
+            onMinionGotDmgTrigger,
+            /// <summary>
+            /// 随从被召唤
+            /// </summary>
+            onMinionIsSummoned,
+            /// <summary>
+            /// 随从召唤过
+            /// </summary>
+            onMinionWasSummoned,
+            /// <summary>
+            /// 奥秘使用
+            /// </summary>
+            onSecretPlay,
+            /// <summary>
+            /// 回合结束触发
+            /// </summary>
+            onTurnEndsTrigger,
+            /// <summary>
+            /// 回合开始触发
+            /// </summary>
+            onTurnStartTrigger,
+            /// <summary>
+            /// 触发激发
+            /// </summary>
+            triggerInspire,
+            /// <summary>
+            /// 超杀
+            /// </summary>
+            OnOverkill,
+            /// <summary>
+            /// 荣耀击杀
+            /// </summary>
+            OnHonorableKill,
+            /// <summary>
+            /// 消灭
+            /// </summary>
+            xiaomie,
+            /// <summary>
+            /// 回合开始
+            /// </summary>
+            onTurnStart,
+            /// <summary>
+            /// 回合结束
+            /// </summary>
+            onTurnEnd,
+            /// <summary>
+            /// 使用地标
+            /// </summary>
+            useLocation,
+            /// <summary>
+            /// 使用泰坦技能
+            /// </summary>
+            useTitanAbility,
+            /// <summary>
+            /// 当本随从攻击时
+            /// </summary>
+            onMinionAttack,
+            /// <summary>
+            /// 当本随从攻击后
+            /// </summary>
+            afterMinionAttack,
+            /// <summary>
+            /// 当随从牌打出后
+            /// </summary>
+            onCardIsAfterToBePlayed,
         }
 
         /// <summary>
@@ -196,10 +289,6 @@ namespace HREngine.Bots
             /// <value> 食人魔 </value>
             /// </summary>
             OGRE = 19,
-            /// <summary>
-            /// <value> 野兽 </value>
-            /// </summary>
-            BEAST = 20,
             /// <summary>
             /// <value> 野兽 </value>
             /// </summary>
@@ -724,6 +813,9 @@ namespace HREngine.Bots
             REQ_FORGE,
             REQ_TARGET_MAX_COST,
             REQ_HAS_PLAYED_SPELL_THIS_GAME,
+            /// <summary>
+            /// 目标不能是泰坦
+            /// </summary>
             REQ_TARGET_IS_NON_TITAN = 141,
             REQ_BACON_DUO_PASSABLE,
             REQ_TARGET_EXACT_ATTACK,
@@ -747,7 +839,6 @@ namespace HREngine.Bots
             public bool Silence = false;//沉默
             public bool choice = false;//抉择
             public bool windfury = false;//风怒
-            public bool megaWindfury = false;//超级风怒
             public bool poisonous = false;//剧毒
             public bool lifesteal = false;//吸血
             public int dormant = 0;//休眠 0表示非休眠生物或者已醒，还有多少回合醒来
@@ -761,7 +852,7 @@ namespace HREngine.Bots
             public bool Elite = false;//精华??
             public bool Combo = false;//连击
             public int overload = 0;//超载
-            public bool immuneWhileAttacking = false;//攻击时免疫 蜡烛弓?
+            public bool immuneWhileAttacking = false;//攻击时免疫
             public bool untouchable = false;//不可被攻击
             public bool Stealth = false;//潜行
             public bool Freeze = false;//冰冻
@@ -830,13 +921,12 @@ namespace HREngine.Bots
             public bool Quickdraw = false;//快枪
             public bool Excavate = false;//发掘
             public bool Elusive = false;//扰魔
-
             public bool Echo = false; // 回响
             public bool nonKeywordEcho = false; // 非关键词回响，设计师左右脑互搏的结果。就是个在本回合可以重复使用
             public bool Twinspell = false; // 双生法术
+            public bool Temporary = false; // 临时
             public int armor = 0;
             public cardIDEnum heroPower = cardIDEnum.None;
-            public bool Temporary = false; // 临时
             public int Objective = 0; // 光环 如救生光环
             public int ObjectiveAura = 0; // 会影响场面的光环 如征战平原
             public int Sigil = 0; // 咒符
@@ -1268,8 +1358,10 @@ namespace HREngine.Bots
                             // 不满足使用条件（或者是融合怪）
                             if (m.handcard.card.race != (Race)this.needRaceForPlaying && m.handcard.card.race != Race.ALL) m.extraParam = true;
                         }
-                        targetOwnHero = (p.ownHeroName == HeroEnum.lordjaraxxus && (TAG_RACE)this.needRaceForPlaying == TAG_RACE.DEMON);
-                        targetEnemyHero = (p.enemyHeroName == HeroEnum.lordjaraxxus && (TAG_RACE)this.needRaceForPlaying == TAG_RACE.DEMON);
+                        // targetOwnHero = (p.ownHeroName == HeroEnum.lordjaraxxus && (TAG_RACE)this.needRaceForPlaying == TAG_RACE.DEMON);
+                        // targetEnemyHero = (p.enemyHeroName == HeroEnum.lordjaraxxus && (TAG_RACE)this.needRaceForPlaying == TAG_RACE.DEMON);
+                        targetOwnHero = false;
+                        targetEnemyHero = false;
                     }
                     if (REQ_HERO_TARGET)
                     {
@@ -1406,7 +1498,8 @@ namespace HREngine.Bots
                         {
                             foreach (Minion m in targets)
                             {
-                                if (m.cantBeTargetedBySpellsOrHeroPowers && (this.type == cardtype.HEROPWR || this.type == cardtype.SPELL))
+                                // if (m.cantBeTargetedBySpellsOrHeroPowers && (this.type == cardtype.HEROPWR || this.type == cardtype.SPELL))
+                                if (m.Elusive && (this.type == cardtype.HEROPWR || this.type == cardtype.SPELL))
                                 {
                                     m.extraParam = true;
                                     if (m.stealth && !m.own) m.extraParam = true;
@@ -1444,7 +1537,7 @@ namespace HREngine.Bots
                                 if (targetOwnHero && own) retval.Add(p.ownHero);
                                 foreach (Minion m in targets)
                                 {
-                                    if (m.extraParam != true && !m.cantBeTargetedBySpellsOrHeroPowers)
+                                    if (m.extraParam != true && !m.Elusive)
                                     {
                                         if (m.own)
                                         {
@@ -1463,12 +1556,13 @@ namespace HREngine.Bots
                                         foreach (Minion m in targets)
                                         {
                                             m.extraParam = false;
-                                            if (m.cantBeTargetedBySpellsOrHeroPowers) continue;
+                                            if (m.Elusive) continue;
                                             if (m.own) retval.Add(m);
                                             else if (m.taunt) retval.Add(m);
                                         }
                                         break;
-                                    case cardNameEN.hex: goto case cardNameEN.polymorph;//妖术
+                                    // case cardNameEN.hex: goto case cardNameEN.polymorph;//妖术
+                                    case cardNameEN.hex://妖术
                                     case cardNameEN.polymorph://变形术
                                         foreach (Minion m in targets)
                                         {
@@ -1525,6 +1619,28 @@ namespace HREngine.Bots
                         m.extraParam = false;
                     }
                 }
+                //非地标目标指向，移除地标
+                if (!targetOnlyLocation)
+                {
+                    retval.RemoveAll(minion => minion != null &&
+                          minion.handcard != null &&
+                          minion.handcard.card != null &&
+                          minion.handcard.card.type == CardDB.cardtype.LOCATION);
+
+                }
+
+                //如果是法术，移除扰魔、地标
+                if (this.type == CardDB.cardtype.SPELL)
+                {
+                    retval.RemoveAll(minion => minion != null &&
+                          minion.handcard != null &&
+                          minion.handcard.card != null &&
+                          minion.handcard.card.Elusive);
+                    retval.RemoveAll(minion => minion != null &&
+                          minion.handcard != null &&
+                          minion.handcard.card != null &&
+                          minion.handcard.card.type == CardDB.cardtype.LOCATION);
+                }
 
                 if (retval.Count == 0 && (!wereTargets || REQ_TARGET_IF_AVAILABLE)) retval.Add(null);
 
@@ -1545,7 +1661,7 @@ namespace HREngine.Bots
                 var abType = 0; //0 none, 1 damage, 2 heal, 3 buff
                 switch (abName)
                 {
-                    case cardNameEN.heal: goto case cardNameEN.lesserheal;
+                    case cardNameEN.heal:
                     case cardNameEN.lesserheal:
                         if (p.anzOwnAuchenaiSoulpriest > 0 || p.embracetheshadow > 0) abType = 1;
                         else abType = 2;
@@ -1632,7 +1748,7 @@ namespace HREngine.Bots
             public List<Minion> getTargetsForLocation(Playfield p, bool isLethalCheck, bool own)
             {
                 List<Minion> retval = new List<Minion>();
-                if (this.sim_card.GetPlayReqs().Length == 0) { retval.Add(null); return retval; }
+                if (this.sim_card.GetUseAbilityReqs().Length == 0) { retval.Add(null); return retval; }
 
                 List<Minion> targets = new List<Minion>();
                 bool targetAll = false;
@@ -1645,6 +1761,7 @@ namespace HREngine.Bots
                 bool wereTargets = false;
                 bool REQ_DAMAGED_TARGET = false;
                 bool REQ_TARGET_WITH_DEATHRATTLE = false;
+                bool REQ_TARGET_WITH_RACE = false;
 
                 foreach (PlayReq pr in this.sim_card.GetUseAbilityReqs())
                 {
@@ -1673,8 +1790,15 @@ namespace HREngine.Bots
                             targetOnlyMinion = true;
                             extraParam = true;
                             continue;
+                        case ErrorType2.REQ_TARGET_WITH_RACE:
+                            REQ_TARGET_WITH_RACE = true;
+                            targetOnlyMinion = true;
+                            extraParam = true;
+                            continue;
                     }
                 }
+
+                foreach (var pr in this.sim_card.GetUseAbilityReqs()) pr.UpdateCardAttr(this);
 
                 if (targetAll)
                 {
@@ -1734,6 +1858,17 @@ namespace HREngine.Bots
                         targetOwnHero = false;
                         targetEnemyHero = false;
                     }
+                    if (REQ_TARGET_WITH_RACE)
+                    {
+                        foreach (Minion m in targets)
+                        {
+                            // 不满足使用条件（或者是融合怪）
+                            if (m.handcard.card.race != (Race)this.needRaceForPlaying && m.handcard.card.race != Race.ALL) m.extraParam = true;
+                        }
+                        targetOwnHero = false;
+                        targetEnemyHero = false;
+
+                    }
                 }
 
                 if (targetEnemyHero && own && p.enemyHero.stealth) targetEnemyHero = false;
@@ -1771,6 +1906,17 @@ namespace HREngine.Bots
                         m.extraParam = false;
                     }
                 }
+                //移除不可接触的随从
+                retval.RemoveAll(minion => minion != null &&
+                                                        minion.handcard != null &&
+                                                        minion.handcard.card != null &&
+                                                        minion.handcard.card.untouchable);
+                //移除地标
+                retval.RemoveAll(minion => minion != null &&
+                                                        minion.handcard != null &&
+                                                        minion.handcard.card != null &&
+                                                        minion.handcard.card.type == CardDB.cardtype.LOCATION);
+
 
                 // 如果没有找到合适的目标且没有特定目标要求，则返回null
                 if (retval.Count == 0 && !wereTargets)
@@ -1984,6 +2130,10 @@ namespace HREngine.Bots
                             offset += p.ownSpelsCostMore - p.ownSpelsCostMoreAtStart;
                         }
 
+                        if (p.anzOwnPopGarThePutrid > 0)
+                        {
+                            offset -= p.anzOwnPopGarThePutrid * 2;
+                        }
 
                         if (p.playedPreparation)
                         {
@@ -2111,7 +2261,7 @@ namespace HREngine.Bots
                     case CardDB.cardNameEN.goldshiregnoll: //闪金镇豺狼人
                     case CardDB.cardNameEN.tableflip: //掀桌子
                     case CardDB.cardNameEN.livinghorizon: //活体天光
-                        retval = retval + offset - p.owncards.Count + p.ownCardsCountStarted;
+                        retval = retval + offset - (p.owncards.Count - 1) + p.ownCardsCountStarted;
                         break;
                     case CardDB.cardNameEN.clockworkgiant: //发条巨人
                         retval = retval + offset - p.enemyAnzCards + p.enemyCardsCountStarted;
@@ -2158,7 +2308,7 @@ namespace HREngine.Bots
                                     MinionsCount++;
                             }
 
-                            retval = retval + offset - MinionsCount;
+                            retval = retval + offset - MinionsCount + p.ownMinionStartCount + p.enemyMinionStartCount;
                         }
                         // retval = retval + offset - p.ownMinions.Count - p.enemyMinions.Count + p.ownMobsCountStarted + p.enemyMobsCountStarted;
                         break;
@@ -2178,7 +2328,7 @@ namespace HREngine.Bots
                                 if (m.handcard.card.type == cardtype.MOB && m.wounded)
                                     woundedMinionsCount++;
                             }
-                            retval = retval + offset - woundedMinionsCount;
+                            retval = retval + offset - woundedMinionsCount + p.ownMinionStartCount + p.enemyMinionStartCount;
                         }
                         break;
                     case CardDB.cardNameEN.demonbolt: //恶魔之箭
@@ -2193,7 +2343,7 @@ namespace HREngine.Bots
                                         ownMinionsCount++;
                                 }
                             }
-                            retval = retval + offset - ownMinionsCount;
+                            retval = retval + offset - ownMinionsCount + p.ownMinionStartCount;
                         }
                         break;
                     case CardDB.cardNameEN.rabblebouncer: //场馆保镖
@@ -2210,7 +2360,7 @@ namespace HREngine.Bots
                                         enemyMinionsCount++;
                                 }
                             }
-                            retval = retval + offset - enemyMinionsCount;
+                            retval = retval + offset - enemyMinionsCount + p.enemyMinionStartCount;
                         }
                         break;
                     case CardDB.cardNameEN.secondratebruiser: //二流打手
@@ -2240,6 +2390,28 @@ namespace HREngine.Bots
                             retval = retval + offset - costBonusMurloc + p.anzOwnMurlocStarted;
                         }
                         break;
+                    case CardDB.cardNameEN.solarflare: //阳炎耀斑
+                        {
+                            int costBonusElemental = 0;
+                            foreach (Minion m in p.ownMinions)
+                            {
+                                if (m.untouchable || m.dormant > 0) continue;
+                                if (m.handcard.card.race == Race.ELEMENTAL || m.handcard.card.race == Race.ALL) costBonusElemental++;
+                            }
+                            retval = retval + offset - costBonusElemental + p.anzOwnElementStarted;
+                        }
+                        break;
+                    case CardDB.cardNameEN.captainslog: //舰长日志
+                        {
+                            int costBonusDraenei = 0;
+                            foreach (Minion m in p.ownMinions)
+                            {
+                                if (m.untouchable || m.dormant > 0) continue;
+                                if (m.handcard.card.race == Race.DRAENEI || m.handcard.card.race == Race.ALL) costBonusDraenei++;
+                            }
+                            retval = retval + offset - costBonusDraenei + p.anzOwnDraeneiStarted;
+                        }
+                        break;
                     case CardDB.cardNameEN.aeroponics: //空气栽培
                         {
                             int costBonusTreant = 0;
@@ -2252,29 +2424,7 @@ namespace HREngine.Bots
                                         costBonusTreant++;
                                 }
                             }
-                            retval = retval + offset - costBonusTreant;
-                        }
-                        break;
-                    case CardDB.cardNameEN.solarflare: //阳炎耀斑
-                        {
-                            int costBonusElemental = 0;
-                            foreach (Minion m in p.ownMinions)
-                            {
-                                if (m.untouchable || m.dormant > 0) continue;
-                                if (m.handcard.card.race == Race.ELEMENTAL || m.handcard.card.race == Race.ALL) costBonusElemental++;
-                            }
-                            retval = retval + offset - costBonusElemental + p.anzOwnMurlocStarted;
-                        }
-                        break;
-                    case CardDB.cardNameEN.captainslog: //舰长日志
-                        {
-                            int costBonusDraenei = 0;
-                            foreach (Minion m in p.ownMinions)
-                            {
-                                if (m.untouchable || m.dormant > 0) continue;
-                                if (m.handcard.card.race == Race.DRAENEI || m.handcard.card.race == Race.ALL) costBonusDraenei++;
-                            }
-                            retval = retval + offset - costBonusDraenei + p.anzOwnMurlocStarted;
+                            retval = retval + offset - costBonusTreant + p.anzOwnTreantStarted;
                         }
                         break;
                     case CardDB.cardNameEN.fleshgiant: // 血肉巨人
@@ -2729,16 +2879,6 @@ namespace HREngine.Bots
                                 card.windfury = true;
                             }
                             break;
-                        case "1207":
-                            {
-                                if ("ReferencedTag".Equals(tag.Name))
-                                {
-                                    // if (cardId == "WW_382" || cardId == "GVG_111t")
-                                    if (!"DAL_742".Equals(cardId))
-                                        card.megaWindfury = true;
-                                }
-                            }
-                            break;
                         case "217":
                             {
                                 card.deathrattle = true;
@@ -3013,7 +3153,6 @@ namespace HREngine.Bots
                                 card.immuneWhileAttacking = true; // 攻击时免疫
                             }
                             break;
-
                         case "380":
                             {
                                 card.heroPower = cardIdstringToEnum(tag.GetAttribute("cardID")); // 英雄牌技能
@@ -3148,7 +3287,7 @@ namespace HREngine.Bots
                             break;
                         case "2542":
                             {
-                                card.races.Add(Race.BEAST); // 添加第二种族野兽
+                                card.races.Add(Race.PET); // 添加第二种族野兽
                             }
                             break;
                         case "2543":

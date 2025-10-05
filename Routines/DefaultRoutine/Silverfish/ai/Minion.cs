@@ -8,25 +8,6 @@ namespace HREngine.Bots
 
     public class Minion
     {
-        private bool _honorableKill = false;
-        /// <summary>
-        /// 荣耀击杀
-        /// </summary>
-        public bool HonorableKill
-        {
-            get { return _honorableKill; }
-            set { _honorableKill = value; }
-        }
-        //超杀
-        private bool _overkill = false;
-        /// <summary>
-        /// 超杀
-        /// </summary>
-        public bool Overkill
-        {
-            get { return _overkill; }
-            set { _overkill = value; }
-        }
         //dont silence----------------------------
         public int anzGotDmg = 0;//受到伤害次数
         public int GotDmgValue = 0;//受到伤害总和
@@ -36,7 +17,6 @@ namespace HREngine.Bots
         public bool isHero = false;//是否为英雄
         public bool own; //是否为己方
         public int pID = 0; //PID
-
         public CardDB.cardNameEN name = CardDB.cardNameEN.unknown;//随从名称
         public CardDB.cardNameCN nameCN = CardDB.cardNameCN.未知;//随从中文名称
         public TAG_CLASS cardClass = TAG_CLASS.INVALID;//随从类别
@@ -46,33 +26,34 @@ namespace HREngine.Bots
         public int entitiyID = -1;//实例ID
         //public int id = -1;//delete this
         public int zonepos = 0;//随从放置位置
-        public CardDB.Card deathrattle2;//亡语2号，比如其他随从的亡语技能转移
-
         public bool playedThisTurn = false;//在这回合使用
         public bool playedPrevTurn = false;//在上回合使用
         public int numAttacksThisTurn = 0;//这回合攻击了几次
+        public int canAttcksNums = 1;//可攻击的次数
         public bool immuneWhileAttacking = false;//攻击时免疫
-
-        public bool allreadyAttacked = false;//已经攻击过
+        public bool allreadyAttacked = false;//已经被攻击过
+        public bool cantAttackHeroes = false;//无法攻击英雄
+        public bool cantAttack = false;//无法攻击
+        public CardDB.Card deathrattle2;//亡语2号，比如其他随从的亡语技能转移
 
         //暗影狂乱，直到回合结束，获得一个攻击力小于或等于3的敌方随从的控制权
-        public bool shadowmadnessed = false;//´can be silenced :D
+        public bool shadowmadnessed = false;//暗影狂乱
         //我方回合开始被消灭
-        public bool destroyOnOwnTurnStart = false; // depends on own!
+        public bool destroyOnOwnTurnStart = false; // 在己方回合开始时摧毁
         //敌方回合开始被消灭
-        public bool destroyOnEnemyTurnStart = false; // depends on own!
+        public bool destroyOnEnemyTurnStart = false; // 在敌方回合开始时摧毁
         //我方回合结束被消灭
-        public bool destroyOnOwnTurnEnd = false; // depends on own!
+        public bool destroyOnOwnTurnEnd = false; // 在己方回合结束时摧毁
         //敌方回合结束被消灭
-        public bool destroyOnEnemyTurnEnd = false; // depends on own!
+        public bool destroyOnEnemyTurnEnd = false; // 在敌方回合结束时摧毁
         //回合开始时变更所有权，如暗影狂乱结束后的归还
-        public bool changeOwnerOnTurnStart = false;
+        public bool changeOwnerOnTurnStart = false; //己方回合开始时更改所有者
 
         public bool conceal = false;//隐藏（直到你的下个回合，使所有友方随从获得潜行）
         public int ancestralspirit = 0; //先祖之魂，使一个随从获得“亡语：再次召唤该随从。
         public int desperatestand = 0;//殊死一搏，使一个随从获得“亡语：回到战场，并具有1点生命值。”
         public int souloftheforest = 0;//丛林之魂，使你的所有随从获得“亡语：召唤一个2/2的树人”。
-        public int stegodon = 0;//剑龙
+        public int stegodon = 0;//剑龙骑术
         public int livingspores = 0;//活性孢子 亡语：召唤两个1/1的植物。
         public int explorershat = 0;//探险帽 使一个随从获得 + 1/+1，亡语：将一个探险帽置入你的手牌。
         public int libramofwisdom = 0;//智慧圣契
@@ -85,14 +66,10 @@ namespace HREngine.Bots
         public int ownPowerWordGlory = 0;//我方真言术：耀
         public int enemyPowerWordGlory = 0;//敌方真言术：耀
         public int spellpower = 0;//法术强度
-
         public bool cantBeTargetedBySpellsOrHeroPowers = false;//无法成为法术或英雄技能的目标
-        public bool cantAttackHeroes = false;//无法攻击英雄
-        public bool cantAttack = false;//无法攻击
-
         public int Hp = 0;//当前血量
         public int maxHp = 0;//最大血量
-        public int armor = 0;//护甲值（英雄
+        public int armor = 0;//护甲值（英雄）
 
         public int Angr = 0;//攻击力
         public int AdjacentAngr = 0;//相邻buff攻击力加成
@@ -102,45 +79,75 @@ namespace HREngine.Bots
         public bool Ready = false;//攻击准备就绪
 
         public bool taunt = false;//嘲讽
-        public bool wounded = false;//hp red?//受伤
-
+        public bool wounded = false;//受伤
         public bool divineshild = false;//圣盾
         public bool windfury = false; //风怒
         public bool frozen = false;//冻结
         public bool stealth = false;//潜行
         public bool immune = false;//免疫
-        public bool untouchable = false;//无法被攻击
+        public bool untouchable = false;//不可触碰
         public bool exhausted = false;//用尽的   法力值?
         public bool lifesteal = false;//吸血
         public int dormant = 0;//休眠
         public bool outcast = false;//流放
         public bool reborn = false;//复生
+        public bool poisonous = false;//剧毒
 
+        //public bool modular = false; //磁力
+        public int charge = 0;//冲锋
+        public int rush = 0;//突袭
+        private bool _elusive = false; //扰魔
+        private bool _overkill = false;//超杀
+        private bool _enraged = false;//激怒
+        private bool _spellburst = false;//法术迸发
+        private bool _frenzy = false;//暴怒
+        private bool _honorableKill = false;// 荣耀击杀
+
+
+        //激怒
+        public bool Enraged
+        {
+            get { return _enraged; }
+            set { _enraged = value; }
+        }
         //法术迸发
         public bool Spellburst
         {
             get { return _spellburst; }
             set { _spellburst = value; }
         }
-        private bool _spellburst = false;
-
         //暴怒
         public bool Frenzy
         {
             get { return _frenzy; }
             set { _frenzy = value; }
         }
-        private bool _frenzy = false;
-
-        //public bool modular = false; //磁力
-        public int charge = 0;//冲锋
-        public int rush = 0;//突袭
+        /// <summary>
+        /// 荣耀击杀
+        /// </summary>
+        public bool HonorableKill
+        {
+            get { return _honorableKill; }
+            set { _honorableKill = value; }
+        }
+        /// <summary>
+        /// 超杀
+        /// </summary>
+        public bool Overkill
+        {
+            get { return _overkill; }
+            set { _overkill = value; }
+        }
+        //扰魔
+        public bool Elusive
+        {
+            get { return _elusive; }
+            set { _elusive = value; }
+        }
         public int hChoice = 0;
-        public bool poisonous = false;//剧毒
         public bool cantLowerHPbelowONE = false;//血量无法低于1
 
-        // 附魔效果
-        public string enchs = "";
+        public string enchs = "";// 附魔效果
 
         public bool silenced = false;//沉默
         public bool playedFromHand = false;//从手牌中打出
@@ -153,8 +160,9 @@ namespace HREngine.Bots
             {
                 return "{" + zonepos.ToString() + "} " + " (" + Angr + "/" + Hp + ") " + handcard.card.nameCN + "\n " +
                     (frozen ? "[冻结]" : "") + (!Ready || cantAttack ? "[无法攻击]" : "[可攻击]") + (windfury ? "[风怒]" : "") + (taunt ? "[嘲讽]" : "")
-                    + (divineshild ? "[圣盾]" : "") + (stealth ? "[隐身]" : "") + (immune ? "[免疫]" : "") + (untouchable ? "[无法被攻击]" : "") + (lifesteal ? "[吸血]" : "")
-                     + (dormant != 0 ? "[休眠(" + dormant.ToString() + ")]" : "") + (reborn ? "[复生]" : "") + (handcard.card.Elusive ? "[扰魔]" : "") + (poisonous ? "[剧毒]" : "");
+                    + (divineshild ? "[圣盾]" : "") + (stealth ? "[隐身]" : "") + (immune ? "[免疫]" : "") + (untouchable ? "[不可触碰]" : "") + (lifesteal ? "[吸血]" : "")
+                     + (dormant != 0 ? "[休眠(" + dormant.ToString() + ")]" : "") + (reborn ? "[复生]" : "") + (poisonous ? "[剧毒]" : "")
+                      + (Spellburst ? "[法术迸发]" : "") + (HonorableKill ? "[荣耀击杀]" : "") + (Overkill ? "[超杀]" : "") + (Elusive ? "[扰魔]" : "");
             }
         }
 
@@ -171,10 +179,8 @@ namespace HREngine.Bots
             //this.anzGotDmg = m.anzGotDmg;
             //this.GotDmgValue = m.GotDmgValue;
             //this.anzGotHealed = m.anzGotHealed;
-            //超杀
-            this.Overkill = m.Overkill;
-            //荣耀击杀
-            this.HonorableKill = m.HonorableKill;
+
+
             this.gotInspire = m.gotInspire;
             this.isHero = m.isHero;
             this.own = m.own;
@@ -189,14 +195,14 @@ namespace HREngine.Bots
             this.zonepos = m.zonepos;
 
             this.allreadyAttacked = m.allreadyAttacked;
-            //this.Frenzy = m.Frenzy;
-
 
             this.playedThisTurn = m.playedThisTurn;
             this.playedPrevTurn = m.playedPrevTurn;
             this.numAttacksThisTurn = m.numAttacksThisTurn;
-            this.immuneWhileAttacking = m.immuneWhileAttacking;
 
+            this.immuneWhileAttacking = m.immuneWhileAttacking;
+            this.cantAttackHeroes = m.cantAttackHeroes;
+            this.cantAttack = m.cantAttack;
 
             this.shadowmadnessed = m.shadowmadnessed;
 
@@ -245,11 +251,11 @@ namespace HREngine.Bots
             this.immune = m.immune;
             this.untouchable = m.untouchable;
             this.exhausted = m.exhausted;
-
+            this.Elusive = m.Elusive;//扰魔
             this.Spellburst = m.Spellburst;//法术迸发
-
+            this.Overkill = m.Overkill;//超杀
             this.Frenzy = m.Frenzy;//暴怒
-
+            this.HonorableKill = m.HonorableKill;//荣耀击杀
             this.charge = m.charge;
             this.rush = m.rush;
             this.hChoice = m.hChoice;
@@ -263,19 +269,15 @@ namespace HREngine.Bots
             this.cantLowerHPbelowONE = m.cantLowerHPbelowONE;
 
             this.silenced = m.silenced;
-            this.cantBeTargetedBySpellsOrHeroPowers = m.cantBeTargetedBySpellsOrHeroPowers;
-            this.cantAttackHeroes = m.cantAttackHeroes;
-            this.cantAttack = m.cantAttack;
+            // this.cantBeTargetedBySpellsOrHeroPowers = m.cantBeTargetedBySpellsOrHeroPowers;
+
 
             this.CooldownTurn = m.CooldownTurn;
         }
 
         public void setMinionToMinion(Minion m)
         {
-            //超杀
-            this.Overkill = m.Overkill;
-            //荣耀击杀
-            this.HonorableKill = m.HonorableKill;
+
             //dont silence----------------------------
             this.anzGotDmg = m.anzGotDmg;
             this.GotDmgValue = m.GotDmgValue;
@@ -295,12 +297,10 @@ namespace HREngine.Bots
 
 
             this.allreadyAttacked = m.allreadyAttacked;
-            //this.Frenzy = m.Frenzy;
-
-
             this.numAttacksThisTurn = m.numAttacksThisTurn;
             this.immuneWhileAttacking = m.immuneWhileAttacking;
-
+            this.cantAttackHeroes = m.cantAttackHeroes;
+            this.cantAttack = m.cantAttack;
 
             this.shadowmadnessed = m.shadowmadnessed;
 
@@ -348,9 +348,11 @@ namespace HREngine.Bots
             this.untouchable = m.untouchable;
             this.exhausted = m.exhausted;
 
+            this.Elusive = m.Elusive;//扰魔
             this.Spellburst = m.Spellburst;//法术迸发
-
+            this.Overkill = m.Overkill; //超杀
             this.Frenzy = m.Frenzy;//暴怒
+            this.HonorableKill = m.HonorableKill;//荣耀击杀
             this.charge = m.charge;
             this.rush = m.rush;
             this.hChoice = m.hChoice;
@@ -367,9 +369,8 @@ namespace HREngine.Bots
 
             this.silenced = m.silenced;
 
-            this.cantBeTargetedBySpellsOrHeroPowers = m.cantBeTargetedBySpellsOrHeroPowers;
-            this.cantAttackHeroes = m.cantAttackHeroes;
-            this.cantAttack = m.cantAttack;
+            // this.cantBeTargetedBySpellsOrHeroPowers = m.cantBeTargetedBySpellsOrHeroPowers;
+
 
             this.CooldownTurn = m.CooldownTurn;
         }
@@ -414,11 +415,11 @@ namespace HREngine.Bots
                     if (p.ownHero.armor < dmg || dmg < 0)
                     {
                         p.healOrDamageTimes++;
-                        foreach (Handmanager.Handcard hc in p.owncards)
-                        {
-                            if (hc.card.nameCN == CardDB.cardNameCN.血肉巨人 && hc.getManaCost(p) <= 3 && hc.getManaCost(p) > 0) p.evaluatePenality -= 10;
-                        }
-                        p.evaluatePenality -= 3;
+                        // foreach (Handmanager.Handcard hc in p.owncards)
+                        // {
+                        //     if (hc.card.nameCN == CardDB.cardNameCN.血肉巨人 && hc.getManaCost(p) <= 3 && hc.getManaCost(p) > 0) p.evaluatePenality -= 10;
+                        // }
+                        // p.evaluatePenality -= 3;
                         if (dmg < 0)
                         {
                             p.healTimes++;
@@ -452,7 +453,8 @@ namespace HREngine.Bots
                         }
                         return;
                     }
-                    // 黑眼
+                    /*
+                    黑眼
                     if (p.anzDark > 0 && dmg > 0 && !p.anzTamsin)
                     {
                         p.mana += p.anzDark;
@@ -460,22 +462,22 @@ namespace HREngine.Bots
                         {
                             p.mana = p.ownMaxMana;
                         }
-                        else if (p.ownQuest.maxProgress != 1000)
+                        else if(p.ownQuest.maxProgress != 1000)
                         {
                             p.evaluatePenality -= 10;
                             if (p.owncarddraw > 0) p.evaluatePenality -= 15;
                         }
                     }
-                    // 任务进度
-                    if (p.ownQuest != null && p.ownQuest.maxProgress != 1000 && dmg > 0)
+                    任务进度
+                    if (p.ownQuest != null  && p.ownQuest.maxProgress != 1000 && dmg > 0)
                     {
                         int spellDmg = p.getSpellDamageDamage(3);
                         // 是无证造成的伤害
-                        if (dmg == 5 && (p.ownHero.Hp < 16 && p.enemyMinions.Count > 3))
+                        if(dmg == 5 && (p.ownHero.Hp < 16 && p.enemyMinions.Count > 3 ) )
                         {
-                            foreach (Minion m in p.ownMinions)
+                            foreach(Minion m in p.ownMinions)
                             {
-                                if (m.handcard.card.nameCN == CardDB.cardNameCN.无证药剂师)
+                                if(m.handcard.card.nameCN == CardDB.cardNameCN.无证药剂师)
                                 {
                                     p.evaluatePenality += 70;
                                 }
@@ -529,8 +531,7 @@ namespace HREngine.Bots
                                 }
                                 break;
                         }
-                    }
-                    else if (dmg > 0)
+                    }else if(dmg > 0)
                     {
                         // 任务完成
                         if (Probabilitymaker.Instance.ownGraveyard.ContainsKey(CardDB.cardIDEnum.SW_091))
@@ -538,6 +539,7 @@ namespace HREngine.Bots
                             p.evaluatePenality += dmg * 8;
                         }
                     }
+                    */
 
 
 
@@ -613,15 +615,29 @@ namespace HREngine.Bots
             //its a Minion--------------------------------------------------------------
 
             // AmitusThePeacekeeper效果：限制随从每次受到的伤害不超过2点
-            if (damage > 0) // 只对伤害进行处理
+            if (p.ownAmitusThePeacekeeper && this.own)// 己方随从
             {
-                if (this.own && p.ownAmitusThePeacekeeper) // 己方随从
-                {
+                if (damage > 2) // 只对伤害进行处理
                     damage = Math.Min(damage, 2);
-                }
-                else if (!this.own && p.enemyAmitusThePeacekeeper) // 敌方随从
-                {
+            }
+            else if (!this.own && p.enemyAmitusThePeacekeeper) // 敌方随从
+            {
+                if (damage > 2) // 只对伤害进行处理
                     damage = Math.Min(damage, 2);
+            }
+
+            if (damage >= 1)
+            {
+                switch (this.handcard.card.cardIDenum)
+                {
+                    case CardDB.cardIDEnum.YOP_035:// 月牙
+                    case CardDB.cardIDEnum.VAC_527://龙族美餐
+                        if (!this.silenced)
+                            this.Hp -= 1;
+                        break;
+                    default:
+                        this.Hp -= damage;
+                        break;
                 }
             }
 
@@ -661,18 +677,7 @@ namespace HREngine.Bots
 
             int hpcopy = this.Hp;
 
-            if (damage >= 1)
-            {
-                // 月牙
-                if (this.handcard.card.cardIDenum == CardDB.cardIDEnum.YOP_035 && !this.silenced)
-                {
-                    this.Hp = this.Hp - 1;
-                }
-                else
-                {
-                    this.Hp = this.Hp - damage;
-                }
-            }
+
 
             if (heal >= 1)
             {
@@ -696,14 +701,14 @@ namespace HREngine.Bots
                 if (this.own) p.tempTrigger.ownMinionsGotDmg++;
                 else p.tempTrigger.enemyMinionsGotDmg++;
 
-                if (p.anzAcidmaw > 0)
-                {
-                    if (p.anzAcidmaw == 1)
-                    {
-                        if (this.name != CardDB.cardNameEN.acidmaw) this.Hp = 0;
-                    }
-                    else this.Hp = 0;
-                }
+                // if (p.anzAcidmaw > 0)
+                // {
+                //     if (p.anzAcidmaw == 1)
+                //     {
+                //         if (this.name != CardDB.cardNameEN.acidmaw) this.Hp = 0;
+                //     }
+                //     else this.Hp = 0;
+                // }
 
                 this.anzGotDmg++;
                 this.GotDmgValue += dmg;
@@ -720,10 +725,10 @@ namespace HREngine.Bots
 
 
 
-            if (this.name == CardDB.cardNameEN.lightspawn && !this.silenced)
-            {
-                this.Angr = this.Hp;
-            }
+            // if (this.name == CardDB.cardNameEN.lightspawn && !this.silenced)
+            // {
+            //     this.Angr = this.Hp;
+            // }
 
             if (woundedbefore && !this.wounded)
             {
@@ -772,76 +777,80 @@ namespace HREngine.Bots
                 if (tmp[pos].Hp < tmp[pos].maxHp) tmp[pos].wounded = true;
                 tmp[pos].reborn = false;
             }
-            if (this.name == CardDB.cardNameEN.stalagg)
-            {
-                p.stalaggDead = true;
-            }
-            else
-            {
-                if (this.name == CardDB.cardNameEN.feugen) p.feugenDead = true;
-            }
+            // if (this.name == CardDB.cardNameEN.stalagg)
+            // {
+            //     p.stalaggDead = true;
+            // }
+            // else
+            // {
+            //     if (this.name == CardDB.cardNameEN.feugen) p.feugenDead = true;
+            // }
 
 
 
             if (own)
             {
-                //我方随从死亡扳机
                 p.tempTrigger.ownMinionsDied++;
-                //我随从死亡数增加
                 p.ownMinionsDied++;
-                //如果随从有嘲讽,则减少我方嘲讽随从数
                 if (this.taunt) p.anzOwnTaunt--;
-                //我方野兽死亡扳机
-                if (this.handcard.card.race == CardDB.Race.PET)
+                foreach (CardDB.Race race in this.handcard.card.GetRaces())
                 {
-                    p.tempTrigger.ownBeastDied++;
+                    switch (race)
+                    {
+                        case CardDB.Race.ALL:
+                            p.tempTrigger.ownBeastDied++;
+                            p.tempTrigger.ownMechanicDied++;
+                            p.tempTrigger.ownMurlocDied++;
+                            continue;
+                        case CardDB.Race.PET: p.tempTrigger.ownBeastDied++; continue;
+                        case CardDB.Race.MECHANICAL: p.tempTrigger.ownMechanicDied++; continue;
+                        case CardDB.Race.MURLOC: p.tempTrigger.ownMurlocDied++; continue;
+                    }
                 }
-                //我方机械死亡扳机
-                else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
-                {
-                    p.tempTrigger.ownMechanicDied++;
-                }
-                //我方鱼人死亡扳机
-                else if (this.handcard.card.race == CardDB.Race.MURLOC)
-                {
-                    p.tempTrigger.ownMurlocDied++;
-                }
-                //我方亡灵死亡扳机
-                else if (this.handcard.card.race == CardDB.Race.UNDEAD)
-                {
-                    p.tempTrigger.ownUndeadDied++;
-                }
+                // if (this.handcard.card.race == CardDB.Race.PET)
+                // {
+                //     p.tempTrigger.ownBeastDied++;
+                // }
+                // else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
+                // {
+                //     p.tempTrigger.ownMechanicDied++;
+                // }
+                // else if (this.handcard.card.race == CardDB.Race.MURLOC)
+                // {
+                //     p.tempTrigger.ownMurlocDied++;
+                // }
             }
             else
             {
-                //敌方随从死亡扳机
                 p.tempTrigger.enemyMinionsDied++;
-                //如果随从有嘲讽,则减少敌方嘲讽随从数
                 if (this.taunt) p.anzEnemyTaunt--;
-                //敌方野兽死亡扳机
-                if (this.handcard.card.race == CardDB.Race.PET)
+                foreach (CardDB.Race race in this.handcard.card.GetRaces())
                 {
-                    p.tempTrigger.enemyBeastDied++;
+                    switch (race)
+                    {
+                        case CardDB.Race.ALL:
+                            p.tempTrigger.enemyBeastDied++;
+                            p.tempTrigger.enemyMechanicDied++;
+                            p.tempTrigger.enemyMurlocDied++;
+                            continue;
+                        case CardDB.Race.PET: p.tempTrigger.ownBeastDied++; continue;
+                        case CardDB.Race.MECHANICAL: p.tempTrigger.enemyMechanicDied++; continue;
+                        case CardDB.Race.MURLOC: p.tempTrigger.enemyMurlocDied++; continue;
+                    }
                 }
-                //敌方机械死亡扳机
-                else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
-                {
-                    p.tempTrigger.enemyMechanicDied++;
-                }
-                //敌方鱼人死亡扳机
-                else if (this.handcard.card.race == CardDB.Race.MURLOC)
-                {
-                    p.tempTrigger.enemyMurlocDied++;
-                }
-                //敌方亡灵死亡扳机
-                else if (this.handcard.card.race == CardDB.Race.UNDEAD)
-                {
-                    p.tempTrigger.enemyUndeadDied++;
-                }
-                if (this.handcard.card.Treant)
-                {
-                    p.tempTrigger.ownTreantDied++;
-                }
+
+                // if (this.handcard.card.race == CardDB.Race.PET)
+                // {
+                //     p.tempTrigger.enemyBeastDied++;
+                // }
+                // else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
+                // {
+                //     p.tempTrigger.enemyMechanicDied++;
+                // }
+                // else if (this.handcard.card.race == CardDB.Race.MURLOC)
+                // {
+                //     p.tempTrigger.enemyMurlocDied++;
+                // }
             }
 
             if (p.diedMinions != null)
@@ -852,7 +861,7 @@ namespace HREngine.Bots
         }
 
         /// <summary>
-        /// 更新状态
+        /// 更新就绪状态
         /// </summary>
         public void updateReadyness()
         {
@@ -862,30 +871,57 @@ namespace HREngine.Bots
 
             if (isHero)
             {
-                if (!frozen && Angr != 0 && ((charge >= 1 && playedThisTurn) || !playedThisTurn) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury))) Ready = true;
+                //旧
+                // if (!frozen && Angr != 0 && ((charge >= 1 && playedThisTurn) || !playedThisTurn) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury))) Ready = true;
+                //新
+                if (!frozen && Angr != 0 && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury))) Ready = true;
                 return;
+                // if (!frozen)
+                // {
+                //     if (Angr > 0)
+                //     {
+                //         if (canAttcksNums > numAttacksThisTurn)
+                //         {
+                //             Ready = true;
+                //         }
+                //     }
+                // }
             }
 
-            if (!frozen && (((charge >= 1 && playedThisTurn)) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || (!silenced && this.name == CardDB.cardNameEN.v07tr0n && numAttacksThisTurn <= 3))) Ready = true;
-            if (!frozen && (((charge == 0 && rush >= 1 && playedThisTurn)) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || (!silenced && this.name == CardDB.cardNameEN.v07tr0n && numAttacksThisTurn <= 3)))
-            {
-                Ready = true;
-                cantAttackHeroes = true;
 
-            }
-            if (!frozen && (((charge > 0 && rush >= 1 && playedThisTurn)) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || (!silenced && this.name == CardDB.cardNameEN.v07tr0n && numAttacksThisTurn <= 3)))
+            if (!frozen)
             {
-                Ready = true;
-                cantAttackHeroes = false;
+                if ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed)
+                {
+                    if (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury))
+                    {
+                        Ready = true;
+                    }
+                }
+                else
+                {
+                    if (charge == 0 && rush > 0 && playedThisTurn)
+                    {
+                        if ((numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury)))
+                        {
+                            cantAttackHeroes = true;
+                            Ready = true;
+                        }
+                    }
+                }
             }
-            if (this.handcard.card.type == CardDB.cardtype.LOCATION && this.CooldownTurn == 0)
+
+
+            // if (!frozen && (((charge >= 1 && playedThisTurn)) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || (!silenced && this.name == CardDB.cardNameEN.v07tr0n && numAttacksThisTurn <= 3))) Ready = true;
+            // if (!frozen && (((charge == 0 && rush >= 1 && playedThisTurn)) || !playedThisTurn || shadowmadnessed) && (numAttacksThisTurn == 0 || (numAttacksThisTurn == 1 && windfury) || (!silenced && this.name == CardDB.cardNameEN.v07tr0n && numAttacksThisTurn <= 3))) { Ready = true; cantAttackHeroes = true; }
+            if (this.handcard.card.type == CardDB.cardtype.LOCATION)
             {
-                Ready = true;
+                if (this.CooldownTurn == 0)
+                    Ready = true;
+                else if (this.CooldownTurn > 0)
+                    Ready = false;
             }
-            if (this.handcard.card.type == CardDB.cardtype.LOCATION && this.CooldownTurn > 0)
-            {
-                Ready = false;
-            }
+
         }
         //被沉默
         public void becomeSilence(Playfield p)
@@ -940,7 +976,7 @@ namespace HREngine.Bots
             ownPowerWordGlory = 0;
             enemyPowerWordGlory = 0;
 
-            cantBeTargetedBySpellsOrHeroPowers = false;
+            // cantBeTargetedBySpellsOrHeroPowers = false;
             cantAttackHeroes = false;
             cantAttack = false;
 
@@ -1160,6 +1196,7 @@ namespace HREngine.Bots
                     case CardDB.cardIDEnum.CS2_083e: this.tempAttack += 1; continue;
                     case CardDB.cardIDEnum.EX1_549o: this.tempAttack += 2; this.immuneWhileAttacking = true; continue;
                     case CardDB.cardIDEnum.AT_057o: this.immuneWhileAttacking = true; continue;
+                    case CardDB.cardIDEnum.WORK_017e: this.immune = true; continue;
                     case CardDB.cardIDEnum.AT_039e: this.tempAttack += 2; continue;
                     case CardDB.cardIDEnum.AT_132_DRUIDe: this.tempAttack += 2; continue;
                     case CardDB.cardIDEnum.CS2_005o: this.tempAttack += 2; continue;

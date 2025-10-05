@@ -670,14 +670,6 @@ namespace HREngine.Bots
             this.OwnLastDiedMinion = cid;
         }
 
-        // public void updateplayedLastTurn(int anzOwnElemTT, int anzOwnElemLT, int ownElementalsHaveLS)
-        // {
-        //     //元素
-        //     anzOwnElementalsThisTurn = anzOwnElemTT;
-        //     anzOwnElementalsLastTurn = anzOwnElemLT;
-        //     ownElementalsHaveLifesteal = ownElementalsHaveLS;
-        // }
-
         private Minion createNewMinion(Handmanager.Handcard hc, int id)
         {
             Minion m = new Minion
@@ -777,8 +769,8 @@ namespace HREngine.Bots
                 if (m.destroyOnEnemyTurnEnd) mini += " dstrEnmTrnnd";
                 if (m.shadowmadnessed) mini += " shdwmdnssd";
                 if (m.cantLowerHPbelowONE) mini += " cantLowerHpBelowOne";
-                if (m.cantBeTargetedBySpellsOrHeroPowers) mini += " cbtBySpells";
-
+                // if (m.cantBeTargetedBySpellsOrHeroPowers) mini += " cbtBySpells";
+                if (m.Elusive) mini += "elus";
                 if (m.charge >= 1) mini += " chrg(" + m.charge + ")";
                 if (m.hChoice >= 1) mini += " hChoice(" + m.hChoice + ")";
                 if (m.AdjacentAngr >= 1) mini += " adjaattk(" + m.AdjacentAngr + ")";
@@ -837,7 +829,8 @@ namespace HREngine.Bots
                 if (m.destroyOnEnemyTurnEnd) mini += " dstrEnmTrnnd";
                 if (m.shadowmadnessed) mini += " shdwmdnssd";
                 if (m.cantLowerHPbelowONE) mini += " cantLowerHpBelowOne";
-                if (m.cantBeTargetedBySpellsOrHeroPowers) mini += " cbtBySpells";
+                // if (m.cantBeTargetedBySpellsOrHeroPowers) mini += " cbtBySpells";
+                if (m.Elusive) mini += "elus";
 
                 if (m.charge >= 1) mini += " chrg(" + m.charge + ")";
                 if (m.hChoice >= 1) mini += " hChoice(" + m.hChoice + ")";

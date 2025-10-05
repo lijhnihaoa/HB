@@ -3,14 +3,16 @@
 开发配置教程
 
 Routines/DefaultRoutine/Silverfish/Test/Data/对局记录
-Routines/DefaultRoutine/Silverfish/UltimateLogs
-Routines/DefaultRoutine/Silverfish/Test/Data
+Routines/DefaultRoutine/Silverfish/UltimateLogs/
+Routines/DefaultRoutine/Silverfish/Test/Data/
 Logs/
 obj/
+Settings/
+
 .vscode/
 Hearthbuddy_SimTemplate/
 Hearthbuddy_backed.csproj
-.gitignore
+
 Hearthbuddy_backed.sln
 CompiledAssemblies/AutoStop.dll
 CompiledAssemblies/DefaultBot.dll
@@ -19,8 +21,17 @@ CompiledAssemblies/Monitor.dll
 CompiledAssemblies/Quest.dll
 CompiledAssemblies/Stats.dll
 
-Settings/
-Settings/Default
-Settings/Default/CustomDecks
 
 Hearthbuddy_backed.csproj.user
+myLog.txt
+Settings/Default/CustomDecks/8912427472.json
+Settings/Default/CustomDecks/8951491327.json
+Settings/Default/CustomDecks/8973092920.json
+Settings/Default/CustomDecks/8980146684.json
+Settings/Default/CustomDecks/8984341972.json
+Settings/Default/CustomDecks/8993263768.json
+Settings/Default/CustomDecks/8994626363.json
+Settings/Default/CustomDecks/9037667406.json
+Settings/Default/CustomDecks/9041131742.json
+Settings/Default/CustomDecks/9049736005.json
+Settings/Default/CustomDecks/9061933690.json

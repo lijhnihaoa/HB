@@ -1,6 +1,6 @@
 {
-  "Wins": 4208,
-  "Losses": 1409,
+  "Wins": 4209,
+  "Losses": 1410,
   "Concedes": 3687,
   "Level": 400,
   "Xp": 0,
@@ -14,10 +14,10 @@
   "PerHourXpStr": "496/小时",
   "FullXpNeeded": 0,
   "FullTimeNeeded": "恭喜满级",
-  "Collection": "金币(12290) 粉尘(25077) 门票(4)",
-  "PassportEnd": "3.26-7.26 已过205天12小时14分 还剩-83天",
+  "Collection": "金币(9540) 粉尘(23382) 门票(21)",
+  "PassportEnd": "3.26-7.26 已过218天23小时24分 还剩-96天",
   "ClassicInfo": "青铜10 0星 0/0(胜0.00%)",
-  "StandardInfo": "钻石3 2星 45/78(胜57.69%)",
-  "WildInfo": "传说70827名 454/874(胜51.95%)",
+  "StandardInfo": "传说54095名 75/131(胜57.25%)",
+  "WildInfo": "传说113398名 456/886(胜51.47%)",
   "TwistInfo": "青铜10 0星 0/0(胜0.00%)"
 }

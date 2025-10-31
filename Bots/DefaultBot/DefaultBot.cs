@@ -1366,7 +1366,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
 					await GameplaySceneMainAction(pegasusScene_0);
 					break;
 				case TAG_STEP.MAIN_COMBAT:
-				case TAG_STEP.MAIN_START_TRIGGERS:
+				case TAG_STEP.MAIN_START_TRIGGERS://回合开始时发现
 					await GameplaySceneMainCombat(pegasusScene_0);
 					break;
 				case TAG_STEP.FINAL_WRAPUP:

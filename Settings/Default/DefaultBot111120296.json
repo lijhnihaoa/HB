@@ -1,11 +1,11 @@
 {
   "ConstructedGameRule": 1,
-  "ConstructedCustomDeck": "骑",
+  "ConstructedCustomDeck": "zhan",
   "LastDeckId": 0,
   "AutoGreet": false,
   "ReleaseLimitW": 192,
   "ReleaseLimitH": 108,
-  "ReleaseLimit": true,
+  "ReleaseLimit": false,
   "AutoConcedeAfterConstructedWin": false,
   "NormalConcede": false,
   "ForceConcedeAtMulligan": false,

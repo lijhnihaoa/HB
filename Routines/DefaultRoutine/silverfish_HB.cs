@@ -793,7 +793,7 @@ namespace HREngine.Bots
 
                 m.taunt = (card.GetTag(GAME_TAG.TAUNT) == 0) ? false : true;//嘲讽
 
-                m.numAttacksThisTurn = card.GetTag(GAME_TAG.NUM_ATTACKS_THIS_TURN);//数字攻击当回合
+                m.numAttacksThisTurn = card.GetTag(GAME_TAG.NUM_ATTACKS_THIS_TURN);//本回合攻击次数
 
                 int temp = card.GetTag(GAME_TAG.NUM_TURNS_IN_PLAY);
                 m.playedThisTurn = (temp == 0) ? true : false;

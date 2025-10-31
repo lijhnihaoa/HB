@@ -456,11 +456,24 @@ namespace HREngine.Bots
         /// <param name="attacker">进行攻击的随从。</param>
         /// <param name="defender">攻击目标随从。</param>
         /// <param name="dontcount">是否不计入攻击次数，默认值为 false。</param>
-        public virtual void afterMinionAttack(Playfield p, Minion attacker, Minion defender, bool dontcount)
+        public virtual void afterMinionAttack(Playfield p, Minion attacker, Minion defender, bool dontcount = false)
         {
             // 默认实现为空。子类可以根据需求重写此方法。
             return;
         }
+
+        // /// <summary>
+        // /// 当有友方随从攻击后,本牌触发此效果(重载)
+        // /// </summary>
+        // /// <param name="p">游戏场地对象，包含游戏状态信息。</param>
+        // /// <param name="triggerEffectMinion">触发此效果的随从。</param>
+        // /// <param name="attacker">进行攻击的随从。</param>
+        // /// <param name="defender">攻击目标随从。</param>
+        // public virtual void afterMinionAttack(Playfield p, Minion triggerEffectMinion, Minion attacker, Minion defender)
+        // {
+        //     // 默认实现为空。子类可以根据需求重写此方法。
+        //     return;
+        // }
 
 
         /// <summary>
@@ -517,6 +530,17 @@ namespace HREngine.Bots
         {
             // 默认实现为空。子类可以根据需求重写此方法。
             return;
+        }
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="p">游戏场地对象，包含游戏状态信息。</param>
+        /// <param name="triggerEffectMinion"></param>
+        /// <param name="summonedMinion"></param>
+        //
+        public virtual void afetrMinionSummoned(Playfield p, Minion triggerEffectMinion, Minion summonedMinion)
+        {
+            
         }
 
         /// <summary>

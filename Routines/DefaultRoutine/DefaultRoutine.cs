@@ -847,7 +847,7 @@ def Execute():
             await Coroutine.Sleep(555 + makeChoice());
             ChooseOneClick(dirtychoice);
             dirtychoice = -1;
-            await Coroutine.Sleep(555);
+            // await Coroutine.Sleep(555);
             Silverfish.Instance.lastpf = null;
             return;
         }
@@ -957,7 +957,7 @@ def Execute():
             // 如果在目标或选择模式，等待
             if (this.learnmode && (TritonHs.IsInTargetMode() || TritonHs.IsInChoiceMode()))
             {
-                await Coroutine.Sleep(50);
+                // await Coroutine.Sleep(50);
                 return;
             }
 
@@ -985,7 +985,7 @@ def Execute():
                     else
                         await source.DoTarget(target);
 
-                    await Coroutine.Sleep(555);
+                    // await Coroutine.Sleep(555);
                     return;
                 }
 
@@ -1012,7 +1012,7 @@ def Execute():
                 }
 
                 dirtychoice = -1;
-                await Coroutine.Sleep(555);
+                // await Coroutine.Sleep(555);
                 // 指向泰坦技能的使用目标
                 await TitanAbilityUseOnTagets();
                 return;
@@ -1272,9 +1272,9 @@ def Execute():
                 {
                     playEmote(EmoteType.OOPS);
                     Helpfunctions.Instance.ErrorLog("[AI] 目标丢失，再试一次...");
-                    await Coroutine.Sleep(3000);
+                    // await Coroutine.Sleep(3000);
                 }
-                await Coroutine.Sleep(500);
+                // await Coroutine.Sleep(500);
             }
             else
             {
@@ -1289,7 +1289,7 @@ def Execute():
                 await cardtoplay.Pickup();
                 await cardtoplay.UseAt(moveTodo.place);
             }
-            await Coroutine.Sleep(500);
+            // await Coroutine.Sleep(500);
         }
 
         /// <summary>
@@ -1301,7 +1301,7 @@ def Execute():
             HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
             if (attacker != null && target != null)
             {
-                Helpfunctions.Instance.ErrorLog("随从攻击: " + attacker.Name + " 目标为: " + target.Name);
+                Helpfunctions.Instance.ErrorLog("随从攻击: " + attacker.Name + " 目标为: " + target.Name + "    惩罚值：" + moveTodo.penalty);
                 await attacker.DoAttack(target);
             }
             else
@@ -1310,7 +1310,7 @@ def Execute():
                 Helpfunctions.Instance.ErrorLog("[AI] 随从攻击失败，再次重试...");
                 await Coroutine.Sleep(2000);
             }
-            await Coroutine.Sleep(250);
+            // await Coroutine.Sleep(250);
         }
 
         /// <summary>
@@ -1323,7 +1323,7 @@ def Execute():
             if (attacker != null && target != null)
             {
                 dirtytarget = moveTodo.target.entitiyID;
-                Helpfunctions.Instance.ErrorLog("英雄攻击: " + attacker.Name + " 目标为: " + target.Name);
+                Helpfunctions.Instance.ErrorLog("英雄攻击: " + attacker.Name + " 目标为: " + target.Name + "    惩罚值：" + moveTodo.penalty);
                 dirtyTargetSource = moveTodo.own.entitiyID;
                 dirtytarget = moveTodo.target.entitiyID;
                 await attacker.DoAttack(target);
@@ -1334,7 +1334,7 @@ def Execute():
                 Helpfunctions.Instance.ErrorLog("[AI] 英雄攻击目标丢失，再次重试...");
                 await Coroutine.Sleep(2000);
             }
-            await Coroutine.Sleep(250);
+            // await Coroutine.Sleep(250);
         }
 
         /// <summary>
@@ -1349,7 +1349,7 @@ def Execute():
                 HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
                 if (target != null)
                 {
-                    Helpfunctions.Instance.ErrorLog("使用英雄技能: " + cardtoplay.Name + " 目标为 " + target.Name);
+                    Helpfunctions.Instance.ErrorLog("使用英雄技能: " + cardtoplay.Name + " 目标为 " + target.Name + "    惩罚值：" + moveTodo.penalty);
                     if (moveTodo.druidchoice > 0)
                     {
                         dirtytarget = moveTodo.target.entitiyID;
@@ -1368,11 +1368,11 @@ def Execute():
                     Helpfunctions.Instance.ErrorLog("[AI] 目标丢失，再次重试...");
                     await Coroutine.Sleep(3000);
                 }
-                await Coroutine.Sleep(500);
+                // await Coroutine.Sleep(500);
             }
             else
             {
-                Helpfunctions.Instance.ErrorLog("使用英雄技能: " + cardtoplay.Name + " 暂时没有目标");
+                Helpfunctions.Instance.ErrorLog("使用英雄技能: " + cardtoplay.Name + " 暂时没有目标" + "    惩罚值：" + moveTodo.penalty);
                 if (moveTodo.druidchoice >= 1)
                 {
                     dirtychoice = moveTodo.druidchoice;
@@ -1390,10 +1390,10 @@ def Execute():
         private async Task HandleTrade(Action moveTodo)
         {
             var cardtoTrade = getCardWithNumber(moveTodo.card.entity);
-            Helpfunctions.Instance.ErrorLog("交易: " + cardtoTrade.Name);
+            Helpfunctions.Instance.ErrorLog("交易: " + cardtoTrade.Name + "    惩罚值：" + moveTodo.penalty);
             Helpfunctions.Instance.logg("交易: " + cardtoTrade.Name);
             await cardtoTrade.DeckAction();
-            await Coroutine.Sleep(300);
+            // await Coroutine.Sleep(300);
         }
 
         /// <summary>
@@ -1402,10 +1402,10 @@ def Execute():
         private async Task HandleForge(Action moveTodo)
         {
             var cardtoTrade = getCardWithNumber(moveTodo.card.entity);
-            Helpfunctions.Instance.ErrorLog("锻造: " + cardtoTrade.Name);
+            Helpfunctions.Instance.ErrorLog("锻造: " + cardtoTrade.Name + "    惩罚值：" + moveTodo.penalty);
             Helpfunctions.Instance.logg("锻造: " + cardtoTrade.Name);
             await cardtoTrade.DeckAction();
-            await Coroutine.Sleep(300);
+            // await Coroutine.Sleep(300);
         }
 
         /// <summary>
@@ -1423,7 +1423,7 @@ def Execute():
                     HSCard target = getEntityWithNumber(moveTodo.target.entitiyID);
                     if (target != null)
                     {
-                        Helpfunctions.Instance.logg("使用地标 " + location.Name + " 目标为 " + target.Name);
+                        Helpfunctions.Instance.logg("使用地标 " + location.Name + " 目标为 " + target.Name + "    惩罚值：" + moveTodo.penalty);
                         await location.LeftClickCard();
                         await location.UseOn(target.Card);
                         // 更新使用次数及地标是否准备好
@@ -1442,7 +1442,7 @@ def Execute():
                 }
                 else
                 {
-                    Helpfunctions.Instance.ErrorLog("使用地标: " + location.Name + " 暂时没有目标");
+                    Helpfunctions.Instance.ErrorLog("使用地标: " + location.Name + " 暂时没有目标"  + "    惩罚值：" + moveTodo.penalty);
                     await location.LeftClickCard();
                     // 更新使用次数及地标是否准备好
                     moveTodo.own.handcard.card.Health--;
@@ -1455,7 +1455,7 @@ def Execute():
             else
             {
                 Helpfunctions.Instance.ErrorLog("[AI] 地标丢失，再次重试...");
-                await Coroutine.Sleep(3000);
+                // await Coroutine.Sleep(3000);
             }
         }
 
@@ -1472,11 +1472,11 @@ def Execute():
             {
                 CardDB.Card card = moveTodo.own.handcard.card;
                 StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.Append("使用泰坦 " + titan.Name + " 技能 " + moveTodo.titanAbilityNO + " 目标为 ");
+                stringBuilder.Append("使用泰坦 " + titan.Name + " 技能 " + moveTodo.titanAbilityNO + " 目标为 " + "    惩罚值：" + moveTodo.penalty);
                 stringBuilder.Append(moveTodo.target != null && moveTodo.target.handcard != null ? moveTodo.target.handcard.card.nameCN.ToString() : "空");
                 Helpfunctions.Instance.logg(stringBuilder.ToString());
                 await titan.LeftClickCard();
-                await Coroutine.Sleep(500);
+                // await Coroutine.Sleep(500);
                 // 更新技能是否已使用，泰坦可攻击
                 switch (moveTodo.titanAbilityNO)
                 {
@@ -1686,7 +1686,7 @@ def Execute():
                                         // 技能已经在生成动作的时候，就已经选择好了
                                         if (i == titanAction.titanAbilityNO - 1)
                                         {
-                                            bestval = 100;
+                                            bestval -= 100;
                                         }
                                     }
                                     break;

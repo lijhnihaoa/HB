@@ -1,14 +1,9 @@
 <XmlConfig>
   <BattleNetPath>C:\Users\xiaohei\software\Battle.net\Battle.net Launcher.exe</BattleNetPath>
   <HearthstonePath>D:\Hearthstone</HearthstonePath>
-<<<<<<< HEAD
   <HearthbuddyPath>C:\Users\xiaohei\Desktop\Hearthbuddy_backed\Hearthbuddy.exe</HearthbuddyPath>
   <PushPlusToken>
   </PushPlusToken>
-=======
-  <HearthbuddyPath>D:\Hearthbuddy_backed\opcpitmhbx.exe</HearthbuddyPath>
-  <PushPlusToken></PushPlusToken>
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
   <BNHSInterval>10</BNHSInterval>
   <HSHBInterval>20</HSHBInterval>
   <CheckInterval>5</CheckInterval>

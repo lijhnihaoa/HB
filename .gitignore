@@ -13,7 +13,6 @@ Routines/DefaultRoutine/Silverfish/Test/Data/
 Logs/
 # Hearthbuddy_backed.csproj
 # Hearthbuddy_backed.sln
-<<<<<<< HEAD
 
 
 #  编译后dll
@@ -34,29 +33,6 @@ Settings/
 Settings/Global/
 Settings/Default/
 Settings/Default/DefaultCustomDecks/
-=======
-
-
-#  编译后dll
-/CompiledAssemblies/*
-# CompiledAssemblies/
-
-# CompiledAssemblies/AutoStop.dll
-# CompiledAssemblies/DefaultBot.dll
-# CompiledAssemblies/DefaultRoutine.dll
-# CompiledAssemblies/Monitor.dll
-# CompiledAssemblies/Quest.dll
-# CompiledAssemblies/Stats.dll
-# Hearthbuddy_backed.csproj.user
-myLog.txt
-
-
-/Settings/*
-# /Settings/Global/
-# /Settings/Default/
-# /Settings/Default/*.*
-# /Settings/Default/DefaultCustomDecks/
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
 
 # 教程文件夹
 dll/

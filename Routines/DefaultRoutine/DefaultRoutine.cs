@@ -986,10 +986,7 @@ def Execute():
                         await source.DoTarget(target);
 
                     // await Coroutine.Sleep(555);
-<<<<<<< HEAD
                      await Coroutine.Sleep(20);
-=======
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
                     return;
                 }
 
@@ -1016,11 +1013,7 @@ def Execute():
                 }
 
                 dirtychoice = -1;
-<<<<<<< HEAD
                 await Coroutine.Sleep(20);
-=======
-                // await Coroutine.Sleep(555);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
                 // 指向泰坦技能的使用目标
                 await TitanAbilityUseOnTagets();
                 return;
@@ -1297,11 +1290,7 @@ def Execute():
                 await cardtoplay.Pickup();
                 await cardtoplay.UseAt(moveTodo.place);
             }
-<<<<<<< HEAD
             await Coroutine.Sleep(20);
-=======
-            // await Coroutine.Sleep(500);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
         }
 
         /// <summary>
@@ -1322,11 +1311,7 @@ def Execute():
                 Helpfunctions.Instance.ErrorLog("[AI] 随从攻击失败，再次重试...");
                 await Coroutine.Sleep(20);
             }
-<<<<<<< HEAD
             await Coroutine.Sleep(20);
-=======
-            // await Coroutine.Sleep(250);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
         }
 
         /// <summary>
@@ -1350,11 +1335,7 @@ def Execute():
                 Helpfunctions.Instance.ErrorLog("[AI] 英雄攻击目标丢失，再次重试...");
                 await Coroutine.Sleep(20);
             }
-<<<<<<< HEAD
             await Coroutine.Sleep(20);
-=======
-            // await Coroutine.Sleep(250);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
         }
 
         /// <summary>
@@ -1388,11 +1369,7 @@ def Execute():
                     Helpfunctions.Instance.ErrorLog("[AI] 目标丢失，再次重试...");
                     await Coroutine.Sleep(20);
                 }
-<<<<<<< HEAD
                 await Coroutine.Sleep(20);
-=======
-                // await Coroutine.Sleep(500);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
             }
             else
             {
@@ -1417,11 +1394,7 @@ def Execute():
             Helpfunctions.Instance.ErrorLog("交易: " + cardtoTrade.Name + "    惩罚值：" + moveTodo.penalty);
             Helpfunctions.Instance.logg("交易: " + cardtoTrade.Name);
             await cardtoTrade.DeckAction();
-<<<<<<< HEAD
             await Coroutine.Sleep(20);
-=======
-            // await Coroutine.Sleep(300);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
         }
 
         /// <summary>
@@ -1433,11 +1406,7 @@ def Execute():
             Helpfunctions.Instance.ErrorLog("锻造: " + cardtoTrade.Name + "    惩罚值：" + moveTodo.penalty);
             Helpfunctions.Instance.logg("锻造: " + cardtoTrade.Name);
             await cardtoTrade.DeckAction();
-<<<<<<< HEAD
             await Coroutine.Sleep(20);
-=======
-            // await Coroutine.Sleep(300);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
         }
 
         /// <summary>
@@ -1487,11 +1456,7 @@ def Execute():
             else
             {
                 Helpfunctions.Instance.ErrorLog("[AI] 地标丢失，再次重试...");
-<<<<<<< HEAD
                 await Coroutine.Sleep(20);
-=======
-                // await Coroutine.Sleep(3000);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
             }
         }
 
@@ -1512,11 +1477,7 @@ def Execute():
                 stringBuilder.Append(moveTodo.target != null && moveTodo.target.handcard != null ? moveTodo.target.handcard.card.nameCN.ToString() : "空");
                 Helpfunctions.Instance.logg(stringBuilder.ToString());
                 await titan.LeftClickCard();
-<<<<<<< HEAD
                 await Coroutine.Sleep(20);
-=======
-                // await Coroutine.Sleep(500);
->>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
                 // 更新技能是否已使用，泰坦可攻击
                 switch (moveTodo.titanAbilityNO)
                 {

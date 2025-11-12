@@ -69,12 +69,20 @@ public class RuntimeCode
         {
             Entity entity = GameState.Get().GetFriendlySidePlayer().GetHero();
             var creator = entity.GetTag(GAME_TAG.CREATOR);
+<<<<<<< HEAD
             // var cpyDeath = entity.GetTag(GAME_TAG.COPY_DEATHRATTLE);
+=======
+            var cpyDeath = entity.GetTag(GAME_TAG.COPY_DEATHRATTLE);
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
             var ctrlId = entity.GetTag(GAME_TAG.CONTROLLER);
 
             Log.DebugFormat(entity.ToString());
             Log.DebugFormat(creator.ToString());
+<<<<<<< HEAD
             // Log.DebugFormat(cpyDeath.ToString());
+=======
+            Log.DebugFormat(cpyDeath.ToString());
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
             Log.DebugFormat(ctrlId.ToString());
 
         }
@@ -90,6 +98,7 @@ public class RuntimeCode
                 // Log.DebugFormat(Board.Get().FindCollider("ShowingStarshipUI").ToString());
                 // Collider collider = Board.Get().FindCollider("ShowingStarshipUI");
                 GameState gameState = GameState.Get();
+<<<<<<< HEAD
                 var FriendlySidePlayer = gameState.GetFriendlySidePlayer().GetBattlefieldZone();
                 for (int i = 0; i < 150; i++)
                 {
@@ -114,10 +123,54 @@ public class RuntimeCode
                             }
                         } */
                         // Log.WarnFormat("{0} (ID:{1})  实体id {2} ERROR_TYPE {3}", nameCN, cardId, entitiyID, gameState.GetErrorType(entity));
+=======
+                for (int i = 0; i < 150; i++)
+                {
+                    if (gameState.GetEntity(i) != null)
+                    {
+                        Entity entity = GameState.Get().GetEntity(i);
+                        Log.DebugFormat(entity.ToString());
+
+                        // if (entity.GetName() == "玛润")
+                        // {
+                        // Log.DebugFormat(entity.GetTag(GAME_TAG.TARGETING_ARROW_TYPE).ToString());
+                        // TritonHs.CancelTargetingMode();
+
+                        // TagMap tagMap = entity.GetTags();
+                        // tagMap.GetMap
+                        // Log.DebugFormat(tagMap.ToString());
+                        // Log.DebugFormat(tagMap.GetTag(986).ToString());
+                        // Log.DebugFormat(entity.GetTag(GAME_TAG.CARD_TARGET).ToString());
+                        // }
+
+                        // if (entity.GetName() == "血蓟幻术师")
+                        // {
+
+                        //     TagMap tagMap = entity.GetTags();
+                        //     Log.DebugFormat(tagMap.ToString());
+                        //     Log.DebugFormat(tagMap.GetTag(GAME_TAG.DARK_GIFT).ToString());
+
+
+                        // }
+
+                        // Log.DebugFormat(entity.ToString());
+                        // if (entity.GetZone() == TAG_ZONE.SECRET)
+                        // {
+                        //     Log.DebugFormat(entity.ToString());
+
+                        //     Log.DebugFormat((entity.GetZone() == TAG_ZONE.SECRET).ToString());
+                        // }
+
+                        // Log.DebugFormat(entity.GetCardTextInHand());
+                        // Log.DebugFormat(entity.GetEntityId().ToString());
+
+
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
                     }
 
                 }
             }
+<<<<<<< HEAD
 
 
 
@@ -128,6 +181,8 @@ public class RuntimeCode
 
 
 
+=======
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
             // Log.DebugFormat(GameState.Get().GetMaxSecretZoneSizePerPlayer().ToString());
             // Log.DebugFormat(GameState.Get().GetMaxSecretsPerPlayer().ToString());
 
@@ -161,6 +216,7 @@ public class RuntimeCode
         {
             using (TritonHs.AcquireFrame())
             {
+<<<<<<< HEAD
                 GameState gameState = GameState.Get();
 
                 for (int i = 0; i < 150; i++)
@@ -184,6 +240,30 @@ public class RuntimeCode
                                 if (tagValue != 0)
                                     Log.WarnFormat("{0} (ID:{1}) 标签 {2} = {3} 实体id {4}", nameCN, cardId, tag.ToString(), tagValue, entitiyID);
                             }
+=======
+                for (int i = 0; i < 300; i++)
+                {
+                    if (GameState.Get().GetEntity(i) != null)
+                    {
+                        Entity entity = GameState.Get().GetEntity(i);
+
+                        // Log.DebugFormat(GameState.Get().GetEntity(i).ToString());
+                        if (entity.GetName() == "奇利亚斯豪华版3000型")
+                        {
+                            Log.DebugFormat(GameState.Get().GetEntity(i).ToString());
+                            Log.DebugFormat(entity.GetATK().ToString());
+                            Log.DebugFormat(entity.GetHealth().ToString());
+                            Log.DebugFormat(entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_1).ToString());
+                            Log.DebugFormat(entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_2).ToString());
+
+                            // Log.DebugFormat(entity.GetTag(GAME_TAG.ZILLIAX_CUSTOMIZABLE_FUNCTIONALMODULE).ToString());
+                            Log.DebugFormat("ZILLIAX_CUSTOMIZABLE_COSMETICMODULE：" + entity.GetTag(GAME_TAG.ZILLIAX_CUSTOMIZABLE_COSMETICMODULE).ToString());
+                            Log.DebugFormat("ZILLIAX_CUSTOMIZABLE_FUNCTIONALMODULE：" + entity.GetTag(GAME_TAG.ZILLIAX_CUSTOMIZABLE_FUNCTIONALMODULE).ToString());
+                            Log.DebugFormat("ZILLIAX_CUSTOMIZABLE_LINKED_COSMETICMOUDLE：" + entity.GetTag(GAME_TAG.ZILLIAX_CUSTOMIZABLE_LINKED_COSMETICMOUDLE).ToString());
+                            Log.DebugFormat("ZILLIAX_CUSTOMIZABLE_LINKED_FUNCTIONALMOUDLE：" + entity.GetTag(GAME_TAG.ZILLIAX_CUSTOMIZABLE_LINKED_FUNCTIONALMOUDLE).ToString());
+                            Log.DebugFormat("ZILLIAX_CUSTOMIZABLE_SAVED_VERSION：" + entity.GetTag(GAME_TAG.ZILLIAX_CUSTOMIZABLE_SAVED_VERSION).ToString());
+
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
 
                         }
 

@@ -11,6 +11,7 @@ namespace HREngine.Bots
 	//对一个敌人造成$3点伤害，并随机对两个其他敌人造成$2点伤害。
 	class Sim_TIME_855 : SimTemplate
 	{
+<<<<<<< HEAD
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
 			if (target != null)
@@ -41,5 +42,9 @@ namespace HREngine.Bots
 				new PlayReq(CardDB.ErrorType2.REQ_ENEMY_TARGET),
 			};
 		}
+=======
+		
+		
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
 	}
 }

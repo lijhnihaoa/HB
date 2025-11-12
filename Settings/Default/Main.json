@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "LastDeckCachePid": 11108,
+=======
+  "LastDeckCachePid": 24004,
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
   "AllowExternalAccess": true,
   "ShowGlobalTab": false,
   "ShowConfigurationTab": false,
@@ -8,8 +12,13 @@
   "TopRowDefinitionHeight": "*",
   "BottomRowDefinitionHeight": "*",
   "SplitterRowDefinitionHeight": "Auto",
+<<<<<<< HEAD
   "MsBetweenTicks": 10,
   "InputEventMsDelay": 10,
+=======
+  "MsBetweenTicks": 1,
+  "InputEventMsDelay": 1,
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
   "MsBetweenGuiTicks": 1000,
   "WindowX": 1099,
   "WindowY": 207,

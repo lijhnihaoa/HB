@@ -11,7 +11,6 @@ namespace HREngine.Bots
 	//用随机的<b>临时</b>法术牌填满你的手牌。
 	class Sim_TIME_211t1 : SimTemplate
 	{
-
 		
 	}
 }

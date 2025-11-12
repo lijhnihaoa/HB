@@ -2,9 +2,15 @@
 
   <PropertyGroup>
 
+<<<<<<< HEAD
     <OutputType>Exe</OutputType>
 	  <!-- <TargetFramework>net472</TargetFramework> -->
 	  <TargetFramework>net472-windows</TargetFramework>
+=======
+    <OutputType>Library</OutputType>
+	  <!-- <TargetFramework>net472</TargetFramework> -->
+	  <TargetFramework>net8.0</TargetFramework>
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
 	  <!-- <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion> -->
 
     <ImplicitUsings>enable</ImplicitUsings>
@@ -55,9 +61,12 @@
     <Reference Include="Udis86Net">
       <HintPath>Udis86Net.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
     <Reference Include="XamlAnimatedGif">
       <HintPath>lib\XamlAnimatedGif.dll</HintPath>
     </Reference>
+=======
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
   </ItemGroup>
 
 </Project>

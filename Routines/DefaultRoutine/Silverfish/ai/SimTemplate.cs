@@ -475,6 +475,19 @@ namespace HREngine.Bots
             return;
         }
 
+        // /// <summary>
+        // /// 当有友方随从攻击后,本牌触发此效果(重载)
+        // /// </summary>
+        // /// <param name="p">游戏场地对象，包含游戏状态信息。</param>
+        // /// <param name="triggerEffectMinion">触发此效果的随从。</param>
+        // /// <param name="attacker">进行攻击的随从。</param>
+        // /// <param name="defender">攻击目标随从。</param>
+        // public virtual void afterMinionAttack(Playfield p, Minion triggerEffectMinion, Minion attacker, Minion defender)
+        // {
+        //     // 默认实现为空。子类可以根据需求重写此方法。
+        //     return;
+        // }
+
 
         /// <summary>
         /// 当随从造成伤害时触发的处理方法。

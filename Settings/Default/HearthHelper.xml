@@ -1,9 +1,14 @@
 <XmlConfig>
   <BattleNetPath>C:\Users\xiaohei\software\Battle.net\Battle.net Launcher.exe</BattleNetPath>
   <HearthstonePath>D:\Hearthstone</HearthstonePath>
+<<<<<<< HEAD
   <HearthbuddyPath>C:\Users\xiaohei\Desktop\Hearthbuddy_backed\Hearthbuddy.exe</HearthbuddyPath>
   <PushPlusToken>
   </PushPlusToken>
+=======
+  <HearthbuddyPath>D:\Hearthbuddy_backed\opcpitmhbx.exe</HearthbuddyPath>
+  <PushPlusToken></PushPlusToken>
+>>>>>>> 930ffa3ba97d5285c35986ef9fb2c7c90b1061d2
   <BNHSInterval>10</BNHSInterval>
   <HSHBInterval>20</HSHBInterval>
   <CheckInterval>5</CheckInterval>
@@ -16,16 +21,16 @@
   <NeedMultStone>False</NeedMultStone>
   <NeedPushMessage>False</NeedPushMessage>
   <NeedPushNormal>True</NeedPushNormal>
-  <EnableHsMod>False</EnableHsMod>
   <HsModPort>58744</HsModPort>
-  <EnableTimeGear>False</EnableTimeGear>
-  <NoFightTime>2</NoFightTime>
-  <PveFightTime>4</PveFightTime>
-  <PvpFightTime>1</PvpFightTime>
-  <AutoPatch>True</AutoPatch>
+  <EnableGMMessageShow>False</EnableGMMessageShow>
+  <EnableEnemyEmote>False</EnableEnemyEmote>
+  <EnableQuickMode>False</EnableQuickMode>
+  <EnableRankInGameShow>False</EnableRankInGameShow>
+  <EnableCardState>False</EnableCardState>
   <BattleNetAccount>
     <HASH-1082354204>
       <Selected>True</Selected>
+      <Token>CN-8ec92c95e9b23dc75fa64284f59d4372-584798643</Token>
       <AccountItem0>
         <Mode>0</Mode>
         <Enable>False</Enable>

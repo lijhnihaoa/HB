@@ -4131,6 +4131,8 @@ namespace HREngine.Bots
                     HandleForge(a); // 处理锻造操作
                     break;
             }
+            // UpdateHash((int)aa.actionType, o.entitiyID, 12, aa.penalty, evaluatePenality);
+
 
 
             // 更新当前回合的操作计数

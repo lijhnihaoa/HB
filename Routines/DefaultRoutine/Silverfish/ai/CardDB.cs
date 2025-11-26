@@ -1000,6 +1000,7 @@ namespace HREngine.Bots
                     {
                         //cost = part1.cost + part2.cost;
                         cost = 0;
+                        HideCost = false;
                         Attack = part1.Attack + part2.Attack;
                         Health = part1.Health + part2.Health;
                         textCN = part1.textCN + part2.textCN;
@@ -1013,6 +1014,16 @@ namespace HREngine.Bots
                         poisonous = (part1.poisonous || part2.poisonous);                     //剧毒
                         lifesteal = (part1.lifesteal || part2.lifesteal);                     //吸血
                         reborn = (part1.reborn || part2.reborn);                              //复生
+                        //foreach (var fun in part1.sim_card.)
+                        //{
+                        //    if(fun!=null)
+                        //    {
+                        //    }
+                        //}
+                        //    foreach (var fun in part2.sim_card)
+                        //{
+                            
+                        //}
                     }
                 }
             }

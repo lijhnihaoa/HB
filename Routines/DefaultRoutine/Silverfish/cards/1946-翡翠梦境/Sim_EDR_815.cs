@@ -11,7 +11,25 @@ namespace HREngine.Bots
 	//在你的对手召唤一个随从后，消耗2份<b>残骸</b>以对其造成3点伤害。
 	class Sim_EDR_815 : SimTemplate
 	{
-		
-		
+		public override void onMinionWasSummoned(Playfield p, Minion triggerEffectMinion, Minion summonedMinion)
+		{
+			if (triggerEffectMinion.own != summonedMinion.own)
+			{
+				if (triggerEffectMinion.own)
+				{
+					if (p.getCorpseCount() >= 2)
+					{
+						p.corpseConsumption(2);
+						p.minionGetDamageOrHeal(summonedMinion, 3);
+					}
+				}
+				else
+				{
+					p.minionGetDamageOrHeal(summonedMinion, 3);
+
+				}
+			}
+		}
+
 	}
 }

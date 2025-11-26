@@ -4319,10 +4319,18 @@ namespace HREngine.Bots
             {
                 attacker.numAttacksThisTurn++;
                 attacker.stealth = false;
-                if ((attacker.windfury && attacker.numAttacksThisTurn == 2) || !attacker.windfury)
-                {
-                    attacker.Ready = false;
-                }
+                attacker.updateReadyness();
+                // if ((attacker.windfury && attacker.numAttacksThisTurn == 2) || !attacker.windfury)
+                // {
+                //     attacker.Ready = false;
+                // }
+            }
+            else
+            {
+                attacker.numAttacksThisTurn++;
+                attacker.extraAttacksThisTurn++;
+                attacker.updateReadyness();
+
             }
 
             // 日志记录
@@ -4332,7 +4340,12 @@ namespace HREngine.Bots
             int defAngr = defender.Angr;
 
             // 触发攻击前的事件
-            this.triggerAMinionIsGoingToAttack(attacker, defender);
+            // this.triggerAMinionIsGoingToAttack(attacker, defender);
+            if (triggerAMinionIsGoingToAttack(attacker, defender))
+            {
+                return;
+            }
+
 
             int dmg1 = AdjustDamageForWeapon(attacker, attacker.Angr);
 
@@ -6317,19 +6330,23 @@ namespace HREngine.Bots
             }
         }
 
-
         /// <summary>
         /// 触发随从即将攻击前的效果，根据随从的类型和附加的效果执行相应的逻辑。
         /// </summary>
         /// <param name="attacker">即将攻击的随从。</param>
-        /// <param name="target">攻击的目标。</param>
-        public void triggerAMinionIsGoingToAttack(Minion attacker, Minion target)
+        /// <param name="defender">攻击的目标。</param>
+        /// <returns>返回flag，表示defender是否死亡,返回true时死亡，false存活，默认返回false</returns>
+        public bool triggerAMinionIsGoingToAttack(Minion attacker, Minion defender)
         {
+            bool flag = false;
             if (!attacker.silenced)
-
+            {
                 //调用随从攻击时的sim方法
-                attacker.handcard.card.sim_card.onMinionAttack(this, attacker, target);
-
+                attacker.handcard.card.sim_card.onMinionAttack(this, attacker, defender);
+                //当随从死亡时flag为true,表示随从死亡
+                if (defender.Hp <= 0)
+                    flag = true;
+            }
 
             // 处理随从上附加的智慧祝福效果：每次攻击时抽取一张牌
             if (attacker.ownBlessingOfWisdom >= 1)
@@ -6364,6 +6381,7 @@ namespace HREngine.Bots
                     this.minionGetDamageOrHeal(this.enemyHero, -heal);
                 }
             }
+            return flag;
         }
 
         /// <summary>

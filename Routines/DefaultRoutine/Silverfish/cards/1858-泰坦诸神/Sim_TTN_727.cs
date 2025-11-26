@@ -11,7 +11,20 @@ namespace HREngine.Bots
 	//<b>突袭</b>。每当本随从攻击时，召唤两条3/1的雏龙，并使其率先攻击目标。
 	class Sim_TTN_727 : SimTemplate
 	{
-		
-		
+		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_727t);
+		public override void onMinionAttack(Playfield p, Minion attacker, Minion target)
+		{
+			Minion whelps1 = p.callKidAndReturn(kid, attacker.zonepos - 1, attacker.own);
+			Minion whelps2 = p.callKidAndReturn(kid, attacker.zonepos, attacker.own);
+			if (whelps1 != null)
+			{
+				p.minionAttacksMinion(whelps1, target);
+			}
+			if (whelps2 != null)
+			{
+				p.minionAttacksMinion(whelps2, target);
+			}
+		}
+
 	}
 }

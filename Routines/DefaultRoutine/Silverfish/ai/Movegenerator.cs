@@ -137,12 +137,12 @@ namespace HREngine.Bots
             List<Minion> attackingMinions = new List<Minion>();
             foreach (Minion m in p.ownMinions)
             {
-                // m.updateReadyness();
-                if (m.numAttacksThisTurn == 1 && !m.frozen && !m.cantAttack)
-                {
-                    m.Ready = m.windfury && !m.silenced ||
-                              p.ownMinions.Exists(prev => prev.handcard.card.nameCN == CardDB.cardNameCN.战场军官 && !prev.silenced);
-                }
+                m.updateReadyness();
+                // if (m.numAttacksThisTurn == 1 && !m.frozen && !m.cantAttack)
+                // {
+                //     m.Ready = m.windfury && !m.silenced ||
+                //               p.ownMinions.Exists(prev => prev.handcard.card.nameCN == CardDB.cardNameCN.战场军官 && !prev.silenced);
+                // }
 
                 if (m.Ready && m.Angr >= 1 && !m.frozen)
                 {

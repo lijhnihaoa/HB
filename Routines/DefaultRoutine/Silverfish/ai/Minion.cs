@@ -896,18 +896,18 @@ namespace HREngine.Bots
 
                     }
                 }
-/*                 if (this.handcard.card.race == CardDB.Race.PET)
-                {
-                    p.tempTrigger.ownBeastDied++;
-                }
-                else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
-                {
-                    p.tempTrigger.ownMechanicDied++;
-                }
-                else if (this.handcard.card.race == CardDB.Race.MURLOC)
-                {
-                    p.tempTrigger.ownMurlocDied++;
-                } */
+                /*                 if (this.handcard.card.race == CardDB.Race.PET)
+                                {
+                                    p.tempTrigger.ownBeastDied++;
+                                }
+                                else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
+                                {
+                                    p.tempTrigger.ownMechanicDied++;
+                                }
+                                else if (this.handcard.card.race == CardDB.Race.MURLOC)
+                                {
+                                    p.tempTrigger.ownMurlocDied++;
+                                } */
             }
             else
             {
@@ -932,18 +932,18 @@ namespace HREngine.Bots
                     }
                 }
 
-/*                 if (this.handcard.card.race == CardDB.Race.PET)
-                {
-                    p.tempTrigger.enemyBeastDied++;
-                }
-                else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
-                {
-                    p.tempTrigger.enemyMechanicDied++;
-                }
-                else if (this.handcard.card.race == CardDB.Race.MURLOC)
-                {
-                    p.tempTrigger.enemyMurlocDied++;
-                } */
+                /*                 if (this.handcard.card.race == CardDB.Race.PET)
+                                {
+                                    p.tempTrigger.enemyBeastDied++;
+                                }
+                                else if (this.handcard.card.race == CardDB.Race.MECHANICAL)
+                                {
+                                    p.tempTrigger.enemyMechanicDied++;
+                                }
+                                else if (this.handcard.card.race == CardDB.Race.MURLOC)
+                                {
+                                    p.tempTrigger.enemyMurlocDied++;
+                                } */
             }
 
             if (p.diedMinions != null)
@@ -970,7 +970,7 @@ namespace HREngine.Bots
                 }
                 else
                 {
-                    if (numAttacksThisTurn < 1 + extraAttacksThisTurn + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0))
+                    if (numAttacksThisTurn < 1 + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0) + extraAttacksThisTurn)
                         Ready = true;
                 }
             }
@@ -984,8 +984,7 @@ namespace HREngine.Bots
             {
                 if ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed)
                 {
-
-                    if (numAttacksThisTurn < 1 + extraAttacksThisTurn + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0))
+                    if (numAttacksThisTurn < 1 + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0) + extraAttacksThisTurn)
                     {
                         Ready = true;
                     }
@@ -994,7 +993,7 @@ namespace HREngine.Bots
                 {
                     if (charge == 0 && rush > 0 && playedThisTurn)
                     {
-                        if (numAttacksThisTurn < 1 + extraAttacksThisTurn + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0))
+                        if (numAttacksThisTurn < 1 + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0) + extraAttacksThisTurn)
                         {
                             cantAttackHeroes = true;
                             Ready = true;

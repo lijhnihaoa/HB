@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
 namespace HREngine.Bots
 {
@@ -14,15 +13,12 @@ namespace HREngine.Bots
 	{
 		public override void afterMinionAttack(Playfield p, Minion attacker, Minion defender, bool dontcount)
 		{
-			if (attacker.own)
+			foreach (Minion m in attacker.own ? p.ownMinions : p.enemyMinions)
 			{
-				List<Minion> ownMinions = p.ownMinions.ToList();
-				ownMinions.Remove(attacker);
-				ownMinions.ForEach((m) =>
-				{
-					m.numAttacksThisTurn--;
-					m.updateReadyness();
-				});
+				if (m.handcard.card.cardIDenum == CardDB.cardIDEnum.GDB_235 || m.entitiyID == attacker.entitiyID) continue;
+				m.extraAttacksThisTurn++;
+				m.updateReadyness();
+
 			}
 		}
 

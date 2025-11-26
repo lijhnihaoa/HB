@@ -13,17 +13,19 @@ namespace HREngine.Bots
 	{
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			List<Minion> minions = new List<Minion>();
-			foreach (Minion minion in own.own ? p.ownMinions : p.enemyMinions)
+			foreach (Minion m in own.own ? p.ownMinions.ToArray() : p.enemyMinions.ToArray())
 			{
-				if (minion.wounded && minion.entitiyID != own.entitiyID)
-					minions.Add(minion);
+				if (m.wounded)
+				{
+					Minion summoned = p.callKidAndReturn(m.handcard.card, m.zonepos, own.own);
+					if (summoned != null)
+					{
+						summoned.setMinionToMinion(m);
+						p.minionGetRush(summoned);
+					}
+				}
 			}
-			foreach (Minion minion in minions)
-			{
-				p.callKid(minion.handcard.card, minion.zonepos, own.own);
-				
-			}
+
 
 		}
 

@@ -14,10 +14,10 @@ namespace HREngine.Bots
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			// if (p.prozis.noDuplicates)
-            if (own.handcard.card.heroPower > 0) 
-			{
-				List<Minion> minions = own.own ? p.enemyMinions : p.ownMinions;
+            // if (p.prozis.noDuplicates)
+            if (own.handcard.poweredUp > 0)
+            {
+                List<Minion> minions = own.own ? p.enemyMinions : p.ownMinions;
 				if (own.own)
 				{
 					minions.Add(p.enemyHero);

@@ -13,7 +13,7 @@ namespace HREngine.Bots
         public override void getBattlecryEffect(Playfield p, Minion m, Minion target, int choice)
         {
             // if (m.own && p.prozis.noDuplicates)
-            if (m.handcard.card.heroPower > 0) 
+            if (m.handcard.poweredUp > 0)
             {
                 p.allCharsOfASideGetRandomDamage(!m.own, 10);
             }

@@ -13,7 +13,9 @@ namespace HREngine.Bots
 	{
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			p.ownMaxMana++;
+			if (own.own) p.ownMaxResources = 20;
+			else p.enemyMaxResources = 20;
+            p.
 			p.drawACard(CardDB.cardNameEN.unknown, own.own);
 
 		}

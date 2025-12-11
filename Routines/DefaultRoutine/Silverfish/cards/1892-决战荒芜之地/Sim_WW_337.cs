@@ -15,9 +15,9 @@ namespace HREngine.Bots
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
             // if (m.own && p.prozis.noDuplicates)
-            if (own.handcard.card.heroPower > 0) 
+            if (own.handcard.poweredUp > 0)
             {
-				p.drawACard(CardDB.cardIDEnum.WW_337t, own.own, true);
+                p.drawACard(CardDB.cardIDEnum.WW_337t, own.own, true);
             }
         }
 		

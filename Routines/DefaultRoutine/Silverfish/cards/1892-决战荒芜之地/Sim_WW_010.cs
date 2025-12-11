@@ -14,9 +14,9 @@ namespace HREngine.Bots
 		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WW_010t);
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			// if (p.prozis.noDuplicates)
-			if(own.handcard.card.heroPower > 0)
-			{
+            // if (p.prozis.noDuplicates)
+            if (m.handcard.poweredUp > 0)
+            {
 				p.equipWeapon(weapon, own.own);
 			}
 		}

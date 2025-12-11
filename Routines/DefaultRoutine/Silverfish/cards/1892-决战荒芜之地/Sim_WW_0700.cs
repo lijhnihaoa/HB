@@ -13,12 +13,13 @@ namespace HREngine.Bots
 	{
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-			// if (own.own && p.prozis.noDuplicates)
-			if (own.handcard.card.heroPower > 0)
-			{
-				foreach (Minion m in own.own ? p.ownMinions :p.enemyMinions)
+            // if (own.own && p.prozis.noDuplicates)
+            if (own.handcard.poweredUp > 0)
+            {
+				List<Minion> minions = new List<Minion>(own.own ? p.ownMinions : p.enemyMinions);
+				foreach (Minion m in minions)
 				{
-					if (m.untouchable) continue;
+					if (m.untouchable || m.handcard.card.type == CardDB.cardtype.LOCATION) continue;
 					p.RemoveMinionWithoutDeathrattle(m);
 				}
 				// p.enemyMinions.ForEach(p.RemoveMinionWithoutDeathrattle);

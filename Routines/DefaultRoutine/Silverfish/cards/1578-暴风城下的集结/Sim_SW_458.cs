@@ -14,7 +14,7 @@ namespace HREngine.Bots
             {
                 p.minionGetBuffed(target, 2, 2);
                 target.immuneWhileAttacking = true;
-                target.enchs += " SW_458e";
+                target.enchs.Add(CardDB.cardIDEnum.SW_458e);
             }
 		}	
 

@@ -265,12 +265,20 @@ namespace HREngine.Bots
         public int ueberladung = 0;
         public int lockedMana = 0;
         public int enemyOptionsDoneThisTurn = 0;
-        /// <summary>法力水晶上限</summary>
 
-        private int maxResources = 10;
-        /// <summary>手牌上限</summary>
-        private int maxHandSize = 10;
-        /// <summary>我方最大随机</summary>
+        /// <summary>我方法力水晶上限</summary>
+        public int ownMaxResources = 10;
+
+        /// <summary>我方手牌上限</summary>
+        public int ownMaxHandSize = 10;
+
+        /// <summary>敌方法力水晶上限</summary>
+        public int enemyMaxResources = 10;
+
+        /// <summary>敌方手牌上限</summary>
+        public int enemyMaxHandSize = 10;
+
+        /// <summary>我方最大水晶</summary>
         public int ownMaxMana = 0;
         public int enemyMaxMana = 0;
         public int lostDamage = 0;
@@ -1282,7 +1290,7 @@ namespace HREngine.Bots
                 this.ownHeroStartClass = prozis.enemyHeroStartClass;
                 this.enemyHeroStartClass = prozis.ownHeroStartClass;
 
-                this.anzTamsin = this.ownHero.enchs.IndexOf("SW_091t5") > 0;
+                this.anzTamsin = this.ownHero.enchs.Contains(CardDB.cardIDEnum.SW_091t5);
 
                 this.enemyAnzCards = Handmanager.Instance.anzcards;
                 this.owncarddraw = p.enemycarddraw;
@@ -1305,7 +1313,7 @@ namespace HREngine.Bots
                 this.spellpower = p.enemyspellpower;
                 this.spellpowerStarted = p.enemyspellpowerStarted;
 
-                if (this.ownHero.enchs.IndexOf("SW_450t4e") > 0)
+                if (this.ownHero.enchs.Contains(CardDB.cardIDEnum.SW_450t4e))
                 {
                     this.spellpower += 3;
                 }
@@ -1655,7 +1663,7 @@ namespace HREngine.Bots
                 return false;
             }
 
-            if (this.ownHeroAblility.card.nameEN != p.ownHeroAblility.card.nameEN)
+            if (this.ownHeroAblility.card.cardIDenum != p.ownHeroAblility.card.cardIDenum)
             {
                 if (logg) Helpfunctions.Instance.logg("hero ability changed ");
                 return false;
@@ -1676,9 +1684,14 @@ namespace HREngine.Bots
             bool minionbool = true;
             for (int i = 0; i < this.ownMinions.Count; i++)
             {
-                Minion dis = this.ownMinions[i]; Minion pis = p.ownMinions[i];
-
-                if (dis.name != pis.name) minionbool = false;
+                Minion dis = this.ownMinions[i];
+                Minion pis = p.ownMinions[i];
+                if (dis != pis)
+                {
+                    minionbool = false;
+                    break;
+                }
+                /*if (dis.name != pis.name) minionbool = false;
                 if (dis.Angr != pis.Angr || dis.Hp != pis.Hp || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
@@ -1696,7 +1709,7 @@ namespace HREngine.Bots
                     {
                         minionbool = false;
                     }
-                }
+                }*/
             }
             if (minionbool == false)
             {
@@ -1706,9 +1719,14 @@ namespace HREngine.Bots
 
             for (int i = 0; i < this.enemyMinions.Count; i++)
             {
-                Minion dis = this.enemyMinions[i]; Minion pis = p.enemyMinions[i];
-
-                if (dis.name != pis.name) minionbool = false;
+                Minion dis = this.enemyMinions[i];
+                Minion pis = p.enemyMinions[i];
+                if (dis != pis)
+                {
+                    minionbool = false;
+                    break;
+                }
+                /*if (dis.name != pis.name) minionbool = false;
                 if (dis.Angr != pis.Angr || dis.Hp != pis.Hp || dis.maxHp != pis.maxHp || dis.numAttacksThisTurn != pis.numAttacksThisTurn) minionbool = false;
                 if (dis.Ready != pis.Ready) minionbool = false; // includes frozen, exhaunted
                 if (dis.playedThisTurn != pis.playedThisTurn) minionbool = false;
@@ -1720,6 +1738,7 @@ namespace HREngine.Bots
                 if (dis.ancestralspirit != pis.ancestralspirit || dis.desperatestand != pis.desperatestand || dis.souloftheforest != pis.souloftheforest || dis.stegodon != pis.stegodon || dis.livingspores != pis.livingspores) minionbool = false;
                 if (dis.explorershat != pis.explorershat || dis.returnToHand != pis.returnToHand || dis.infest != pis.infest || dis.deathrattle2 != pis.deathrattle2) minionbool = false;
                 if (dis.hChoice != pis.hChoice || dis.Elusive != pis.Elusive || dis.poisonous != pis.poisonous || dis.lifesteal != pis.lifesteal) minionbool = false;
+*/
             }
             if (minionbool == false)
             {
@@ -4296,8 +4315,8 @@ namespace HREngine.Bots
         private void HandleForge(Action a)
         {
             this.mana -= a.card.card.ForgeCost;
-            a.card.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(a.card.card.cardIDenum + "t"));
-            a.card.card.Forged = true;
+            a.card.card = CardDB.Instance.getCardDataFromDbfID(a.card.card.CollectionRelatedCardDataBaseId.ToString());
+            // a.card.card.Forged = true;
         }
 
         /// <summary>
@@ -5037,10 +5056,151 @@ namespace HREngine.Bots
                 RemoveOtherDiscoveredCards(hc);
             }
 
+
             if (hc != null)
             {
-                removeCard(hc); // 从手牌中移除该牌
+                //处理微缩和扩大牌
+                if (hc.card.Miniaturize == 1 && hc.card.Gigantity == 1)
+                {
+
+                }
+                //微缩
+                else if (hc.card.Miniaturize == 1)
+                {
+                    Handmanager.Handcard miniCard = new Handmanager.Handcard()
+                    {
+                        card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString()), // 微型版
+                        position = hc.position,
+                        manacost = 1,
+                        entity = this.getNextEntity()
+                    };
+
+                    this.owncards[hc.position - 1] = miniCard;
+                    renumHandCards(owncards);
+                }
+                //扩大
+                else if (hc.card.Gigantity == 1)
+                {
+                    Handmanager.Handcard gigaCard = new Handmanager.Handcard()
+                    {
+                        card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString()), // 微型版
+                        position = hc.position,
+                        manacost = 8,
+                        entity = this.getNextEntity()
+                    };
+                    this.owncards[hc.position - 1] = gigaCard;
+                    renumHandCards(owncards);
+                }
+                //回响
+                else if (hc.card.Echo || hc.card.nonKeywordEcho)
+                {
+                    Handmanager.Handcard eachCard = new Handmanager.Handcard()
+                    {
+                        card = hc.card,
+                        position = hc.position,
+                        manacost = hc.card.cost,
+                        entity = this.getNextEntity()
+                    };
+                    this.owncards[hc.position - 1] = eachCard;
+                }
+                else
+                {
+                    switch (hc.card.cardIDenum)
+                    {
+                        case CardDB.cardIDEnum.RLK_816t3:
+                        case CardDB.cardIDEnum.TIME_042t:
+                        case CardDB.cardIDEnum.TLC_241t:
+                            {
+                                hc = new Handmanager.Handcard() { card = hc.card, position = hc.position, manacost = hc.card.cost };
+                            }
+                            break;
+                            /*case CardDB.cardIDEnum.TLC_241t:
+                                {
+                                    bool flag = false;
+                                    foreach (Minion m in ownMinions)
+                                    {
+                                        if(m.handcard.card.cardIDenum == CardDB.cardIDEnum.TLC_241)
+                                        {
+                                            flag = true;
+                                            break;
+                                        }
+                                    }
+                                    if (flag)
+                                    {
+                                        hc = new Handmanager.Handcard() { card = hc.card, position = hc.position, manacost = hc.card.cost };
+                                    }
+                                }*/
+
+                            break;
+                        default:
+
+                            if (hc.enchs.Contains(CardDB.cardIDEnum.WW_337e))
+                            {
+                                hc = new Handmanager.Handcard(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WW_337e));
+                            }
+                            else
+                            {
+                                removeCard(hc);
+                            }
+                            break;
+                    }
+
+                }
+                /*switch (true)
+                {
+                    case (hc.card.Miniaturize == 1 && hc.card.Gigantity == 1):
+                        {
+                            break;
+                        }
+                    case (hc.card.Miniaturize == 1):
+                        {
+                            Handmanager.Handcard miniCard = new Handmanager.Handcard()
+                            {
+                                card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString()), // 微型版
+                                position = hc.position,
+                                manacost = 1,
+                                entity = this.getNextEntity()
+                            };
+
+                            this.owncards[hc.position - 1] = miniCard;
+                            renumHandCards(owncards);
+                            break;
+                        }
+                    case (hc.card.Gigantity == 1):
+                        {
+                            Handmanager.Handcard gigaCard = new Handmanager.Handcard()
+                            {
+                                card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString()), // 微型版
+                                position = hc.position,
+                                manacost = 8,
+                                entity = this.getNextEntity()
+                            };
+                            this.owncards[hc.position - 1] = gigaCard;
+                            renumHandCards(owncards);
+                            break;
+                        }
+                    case (hc.card.Echo || hc.card.nonKeywordEcho):
+                        {
+                            Handmanager.Handcard Echo = new Handmanager.Handcard()
+                            {
+                                card = hc.card,
+                                position = hc.position,
+                                manacost = hc.getManaCost(this),
+                                entity = this.getNextEntity()
+                            };
+                            this.owncards[hc.position - 1] = Echo;
+                            break;
+                        }
+                    default:
+                        {
+                            removeCard(hc); // 从手牌中移除该牌
+                        }
+                        break;*/
+
+
+
             }
+
 
             this.triggerCardsChanged(true); // 触发手牌变化的相关事件
 
@@ -5398,7 +5558,7 @@ namespace HREngine.Bots
             }
         }
         /// <summary>
-        ///  处理武器卡牌的效果。
+        ///  处理武器牌的效果。
         /// </summary>
         /// <param name="hc"></param>
         /// <param name="target"></param>
@@ -5418,7 +5578,7 @@ namespace HREngine.Bots
 
         }
         /// <summary>
-        /// 处理英雄卡牌的效果。
+        /// 处理英雄牌的效果。
         /// </summary>
         /// <param name="hc"></param>
         /// <param name="choice"></param>
@@ -5434,7 +5594,7 @@ namespace HREngine.Bots
                 }
             }
             hc.card.sim_card.onCardPlay(this, this.ownHero, hc.target, choice);
-            this.setNewHeroPower(hc.card.heroPower, true);
+            this.setNewHeroPower(CardDB.Instance.getCardDataFromDbfID(hc.card.heroPower.ToString()).cardIDenum, true);
             this.minionGetArmor(this.ownHero, hc.card.armor);
             Minion hero = new Minion
             {
@@ -5484,7 +5644,7 @@ namespace HREngine.Bots
             // 处理流放效果
             // HandleOutcastEffect(hc, hc.card.Outcast);
         }
-        
+
         /// <summary>
         /// 处理法术卡牌的效果。
         /// </summary>
@@ -6267,6 +6427,7 @@ namespace HREngine.Bots
         {
             foreach (Handmanager.Handcard hc in this.owncards)
             {
+                // if (hc.card.Infuse && !hc.card.Infused)
                 if (hc.card.Infuse && !hc.card.Infused)
                 {
                     InfuseCard(hc); // 对卡牌进行注能处理
@@ -6287,18 +6448,36 @@ namespace HREngine.Bots
             {
                 // 重置注能值
                 hc.SCRIPT_DATA_NUM_1 = 0;
-
-                // 特殊处理德纳修斯大帝和猎手阿尔迪莫
+                if (hc.card.Infuse)
+                {
+                    switch (hc.card.cardIDenum)
+                    {
+                        case CardDB.cardIDEnum.REV_906t:
+                            {
+                                hc.card.TAG_SCRIPT_DATA_NUM_2++; // 无限注能，伤害增加1点
+                            }
+                            break;
+                        default:
+                            {
+                                // 升级卡牌并标记为已注能
+                                hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
+                                hc.card.Infused = true;
+                            }
+                            break;
+                    }
+                }
+/*                 // 特殊处理德纳修斯大帝和猎手阿尔迪莫
                 if (hc.card.cardIDenum != CardDB.cardIDEnum.REV_906 && hc.card.cardIDenum != CardDB.cardIDEnum.REV_906t &&
                     hc.card.cardIDenum != CardDB.cardIDEnum.REV_353 && hc.card.cardIDenum != CardDB.cardIDEnum.REV_353t && hc.card.cardIDenum != CardDB.cardIDEnum.REV_353t2)
                 {
                     // 升级卡牌并标记为已注能
-                    hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t"));
+                    hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
                     hc.card.Infused = true;
                 }
                 else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_906)
                 {
-                    hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t"));
+                    hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
+
                 }
                 else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_906t)
                 {
@@ -6312,7 +6491,7 @@ namespace HREngine.Bots
                 {
                     hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t2"));
                     hc.card.Infused = true; // 标记为已注能
-                }
+                } */
             }
         }
 
@@ -6494,7 +6673,8 @@ namespace HREngine.Bots
                     if (ohc.card.Corrupt && hc.manacost > ohc.manacost)
                     {
                         // 腐蚀卡的处理
-                        ohc.card = ohc.card.CollectionRelatedCardDataBase;
+                        ohc.card = CardDB.Instance.getCardDataFromDbfID(ohc.card.CollectionRelatedCardDataBaseId.ToString());
+                        ohc.manacost = ohc.getManaCost(this);
                         // if (ohc.card.nameCN == CardDB.cardNameCN.大力士)
                         // {
                         //     ohc.manacost = 0;
@@ -6756,21 +6936,50 @@ namespace HREngine.Bots
                 }
             }
         }
-
+        /// <summary>
+        /// 处理手牌回合结束效果
+        /// </summary>
+        /// <param name="owncards">手牌集合</param>
+        /// <param name="ownturn">是否为我方回合结束</param>
+        /// <param name="v"></param>
         private void HandleEndTurnForHandcard(List<Handmanager.Handcard> owncards, bool ownturn, bool v)
         {
             foreach (Handmanager.Handcard hc in owncards.ToArray())
             {
-                hc.card.sim_card.onTurnEndsTrigger(this, hc, ownturn);
+                hc.card.sim_card.onTurnStartTrigger(this, hc, ownturn);
             }
+
+            foreach (Handmanager.Handcard hc in owncards.ToArray())
+            {
+                if (hc.enchs.Count > 1)
+                {
+
+                    if (hc.enchs.Contains(CardDB.cardIDEnum.GIL_000))
+                    {
+                        removeCard(hc);
+                    }
+                    if (hc.enchs.Contains(CardDB.cardIDEnum.GBL_999e))
+                    {
+                        //这里定义回合结束弃牌
+                    }
+                }
+            }
+
         }
 
+        /// <summary>
+        /// 处理手牌回合开始效果
+        /// </summary>
+        /// <param name="owncards">手牌集合</param>
+        /// <param name="ownturn">是否为我方回合开始</param>
+        /// <param name="v"></param>
         private void HandleStartTurnForHandcard(List<Handmanager.Handcard> owncards, bool ownturn, bool v)
         {
             foreach (Handmanager.Handcard hc in owncards.ToArray())
             {
                 hc.card.sim_card.onTurnStartTrigger(this, hc, ownturn);
             }
+
         }
 
         /// <summary>
@@ -9417,7 +9626,7 @@ namespace HREngine.Bots
                 if (m.own) this.anzOwnTaunt--;
                 else this.anzEnemyTaunt--;
             }
-            Minion summoned =  createNewMinion(hc, m.zonepos, m.own);
+            Minion summoned = createNewMinion(hc, m.zonepos, m.own);
             // 将当前随从变形为新随从
             m.setMinionToMinion(summoned);
 
@@ -9753,7 +9962,7 @@ namespace HREngine.Bots
         /// <param name="hpbuff">增加的生命值。</param>
         public void minionGetBuffed(Minion m, int attackbuff, int hpbuff)
         {
-            if (m.untouchable) return;
+            if (m.untouchable || m.handcard.card.type == CardDB.cardtype.LOCATION) return;
 
             // 处理攻击力buff
             if (attackbuff != 0)
@@ -10481,10 +10690,10 @@ namespace HREngine.Bots
                         break;
                 }
                 // 走A模式
-                // if (this.ownHero.enchs.IndexOf("CFM_020e") > 0)
-                // {
-                //     dmg[cnt] += 2;
-                // }
+                if (this.ownHero.enchs.Contains(CardDB.cardIDEnum.CFM_020e))
+                {
+                    dmg[cnt] += 2;
+                }
                 int ReadyCount = 0, murlocCount = 0;
                 bool foundWind = false;
                 foreach (Minion m in this.ownMinions)

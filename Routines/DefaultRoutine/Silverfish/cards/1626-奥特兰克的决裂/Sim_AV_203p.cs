@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//<b>英雄技能</b> 在本回合中，你使用的下一张牌法力值消耗减少（2）点。
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
-            (ownplay ? p.ownHero : p.enemyHero).enchs += CardDB.cardIDEnum.AV_203pe;
+            (ownplay ? p.ownHero : p.enemyHero).enchs.Add(CardDB.cardIDEnum.AV_203pe);
         }
 		
 	}

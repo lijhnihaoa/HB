@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
             foreach (Minion m in temp)
             {
-                m.enchs += " SW_437e";
+                m.enchs.Add(CardDB.cardIDEnum.SW_437e);
             }
         }
     }

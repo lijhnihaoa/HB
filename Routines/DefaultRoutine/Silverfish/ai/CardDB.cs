@@ -440,6 +440,8 @@ namespace HREngine.Bots
         /// </summary>
         public enum Specialtags
         {
+            /// <summary>具有种族类型</summary>
+            CardRace = 200,
             /// <summary>跟班</summary>
             markOfEvil = 994,
             /// <summary>树人</summary>
@@ -452,6 +454,9 @@ namespace HREngine.Bots
             StarshipPiece = 3631,
             /// <summary>星舰</summary>
             Starship = 3555,
+            /// <summary>星灵</summary>
+            Protoss = 3469,
+
         };
 
         /// <summary>
@@ -688,7 +693,7 @@ namespace HREngine.Bots
             /// </summary>
             REQ_ENEMY_WEAPON_EQUIPPED = 55,
             /// <summary>
-            /// <value> 我方随从最少要X个可以使用 </value>
+            /// <value> 我方随从最少要X个可以使用，有param</value>
             /// </summary>
             REQ_TARGET_IF_AVAILABLE_AND_MINIMUM_FRIENDLY_MINIONS = 56,
             /// <summary>
@@ -983,10 +988,13 @@ namespace HREngine.Bots
             public bool Twinspell = false; // 双生法术
             public bool Temporary = false; // 临时
             public int armor = 0; //英雄牌的护甲值
-            public cardIDEnum heroPower = cardIDEnum.None; //英雄牌的技能id
+            public int heroPower = 0; //英雄牌的技能dbfid
             public int KeepHeroClass = 0;//打出英雄保持原职业
+            public int Miniaturize = 0;
+            public int Gigantity = 0;
             public int CollectionRelatedCardDataBaseId = 0;
-            public CardDB.Card CollectionRelatedCardDataBase;
+
+            //public CardDB.Card CollectionRelatedCardDataBase;
             public int Objective = 0; // 光环 如救生光环
             public int ObjectiveAura = 0; // 会影响场面的光环 如征战平原
             public int Sigil = 0; // 咒符
@@ -994,7 +1002,6 @@ namespace HREngine.Bots
             /// <summary>跟班</summary>
             public bool markOfEvil = false;
             /// <summary>树人</summary>
-
             public bool Treant = false;
             /// <summary>小鬼</summary>
             public bool IMP = false;
@@ -1024,6 +1031,14 @@ namespace HREngine.Bots
             public int TriggerVisual = 0;//有触发效果
             public int MODULAR_ENTITY_PART_1 = 0;//自定义模块1
             public int MODULAR_ENTITY_PART_2 = 0;//自定义模块2
+            /// <summary>磁力允许的其他随从类型</summary>
+            public int magneticToRace = 0;
+            public void getModularCard(out CardDB.Card part1, out CardDB.Card part2)
+            {
+
+                part1 = CardDB.Instance.getCardDataFromDbfID(MODULAR_ENTITY_PART_1.ToString());
+                part2 = CardDB.Instance.getCardDataFromDbfID(MODULAR_ENTITY_PART_2.ToString());
+            }
             public void updateDIYCard()
             {
                 if (MODULAR_ENTITY_PART_1 != 0 && MODULAR_ENTITY_PART_2 != 0)
@@ -1071,35 +1086,43 @@ namespace HREngine.Bots
             //TODO:种族数
             public int GetRaceCount()
             {
-                return this.races.Count;
+                return this.GetRaces().Count;
             }
             /// <summary>
             /// 获取种族集合
             /// </summary>
             /// <returns>种族集合</returns>
-            public List<CardDB.Race> GetRaces()
+            public List<Race> GetRaces()
             {
-
-                this.races = Enumerable.ToList<CardDB.Race>(Enumerable.Distinct<Race>(this.races));
+                if (this.races != null)
+                {
+                    return this.races;
+                }
+                if (this.races.Contains(Race.ALL))
+                {
+                    return this.races;
+                }
+                this.races = Enumerable.ToList<Race>(Enumerable.Distinct<Race>(this.races));
                 if (this.races.Count > 1)
                 {
-                    CardDB.Race[] order = new Race[]
+                    Race[] order = new Race[]
                     {
-                        CardDB.Race.UNDEAD,
-                        CardDB.Race.ELEMENTAL,
-                        CardDB.Race.MECHANICAL,
-                        CardDB.Race.DEMON,
-                        CardDB.Race.MURLOC,
-                        CardDB.Race.QUILBOAR,
-                        CardDB.Race.NAGA,
-                        CardDB.Race.PET,
-                        CardDB.Race.DRAGON,
-                        CardDB.Race.DRAENEI,
-                        CardDB.Race.TOTEM,
-                        CardDB.Race.PIRATE
+                        Race.UNDEAD,
+                        Race.ELEMENTAL,
+                        Race.MECHANICAL,
+                        Race.DEMON,
+                        Race.MURLOC,
+                        Race.QUILBOAR,
+                        Race.NAGA,
+                        Race.PET,
+                        Race.DRAGON,
+                        Race.DRAENEI,
+                        Race.TOTEM,
+                        Race.PIRATE
                     };
-                    this.races.Sort((CardDB.Race r1, CardDB.Race r2) => Array.IndexOf<CardDB.Race>(order, r1).CompareTo(Array.IndexOf<CardDB.Race>(order, r2)));
+                    this.races.Sort((Race r1, Race r2) => Array.IndexOf<Race>(order, r1).CompareTo(Array.IndexOf<Race>(order, r2)));
                 }
+
                 return this.races;
             }
 
@@ -1471,6 +1494,9 @@ namespace HREngine.Bots
                         {
                             switch (this.needTagForPlaying)
                             {
+                                case Specialtags.CardRace:
+                                    m.extraParam = !(m.handcard.card.GetRaceCount() > 0);
+                                    break;
                                 case Specialtags.IMP:
                                     m.extraParam = !m.handcard.card.IMP;
                                     break;
@@ -1487,6 +1513,11 @@ namespace HREngine.Bots
                                 case Specialtags.Starship:
                                     m.extraParam = !m.handcard.card.Starship && !m.handcard.card.StarshipPiece;
                                     break;
+                                case Specialtags.Protoss:
+                                    m.extraParam = !m.handcard.card.Protoss;
+                                    break;
+
+
                             }
                         }
 
@@ -1495,14 +1526,14 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (!m.handcard.card.Titan) m.extraParam = true;
+                            m.extraParam = !m.handcard.card.Titan;
                         }
                     }
                     if (REQ_TARGET_SILVER_HAND_RECRUIT)
                     {
                         foreach (Minion m in targets)
                         {
-                            if (!m.handcard.card.SilverHandRecruit) m.extraParam = true;
+                            m.extraParam = !m.handcard.card.SilverHandRecruit;
                         }
                     }
 
@@ -1513,7 +1544,7 @@ namespace HREngine.Bots
                             // 不满足使用条件（或者是融合怪）
                             // if (m.handcard.card.race != (Race)this.needRaceForPlaying && m.handcard.card.race != Race.ALL) m.extraParam = true;
                             // if (m.handcard.card.race != (Race)this.needRaceForPlaying && m.handcard.card.race != Race.ALL) m.extraParam = true;
-                            if (!RaceUtils.MinionBelongsToRace(m.handcard.card.GetRaces(), (CardDB.Race)this.needRaceForPlaying)) m.extraParam = true;
+                            m.extraParam = !RaceUtils.MinionBelongsToRace(m.handcard.card.GetRaces(), (CardDB.Race)this.needRaceForPlaying);
                         }
                         // targetOwnHero = (p.ownHeroName == HeroEnum.lordjaraxxus && (TAG_RACE)this.needRaceForPlaying == TAG_RACE.DEMON);
                         // targetEnemyHero = (p.enemyHeroName == HeroEnum.lordjaraxxus && (TAG_RACE)this.needRaceForPlaying == TAG_RACE.DEMON);
@@ -1536,10 +1567,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (!m.wounded)
-                            {
-                                m.extraParam = true;
-                            }
+                            m.extraParam = !m.wounded;
                         }
                         targetOwnHero = false;
                         targetEnemyHero = false;
@@ -1584,10 +1612,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (!m.taunt)
-                            {
-                                m.extraParam = true;
-                            }
+                            m.extraParam = !m.taunt;
                         }
                         targetOwnHero = false;
                         targetEnemyHero = false;
@@ -1596,10 +1621,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (m.wounded)
-                            {
-                                m.extraParam = true;
-                            }
+                            m.extraParam = m.wounded;
                         }
                         targetOwnHero = false;
                         targetEnemyHero = false;
@@ -1608,10 +1630,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (!m.stealth)
-                            {
-                                m.extraParam = true;
-                            }
+                            m.extraParam = !m.stealth;
                         }
                         targetOwnHero = false;
                         targetEnemyHero = false;
@@ -1645,15 +1664,15 @@ namespace HREngine.Bots
                             targetEnemyHero = false;
                         }
                     }
-                    if (REQ_TARGET_NO_NATURE)
-                    {
-                        if (p.useNature < 1)
-                        {
-                            foreach (Minion m in targets) m.extraParam = true;
-                            targetOwnHero = false;
-                            targetEnemyHero = false;
-                        }
-                    }
+                    /*                     if (REQ_TARGET_NO_NATURE)
+                                        {
+                                            if (p.useNature < 1)
+                                            {
+                                                foreach (Minion m in targets) m.extraParam = true;
+                                                targetOwnHero = false;
+                                                targetEnemyHero = false;
+                                            }
+                                        } */
                     if (REQ_LEGENDARY_TARGET)
                     {
                         wereTargets = false;
@@ -1687,7 +1706,7 @@ namespace HREngine.Bots
 
                         foreach (Minion m in targets)
                         {
-                            if (!m.frozen) m.extraParam = true;
+                            m.extraParam = !m.frozen;
                         }
                     }
                     if (REQ_LOCATION_TARGET)
@@ -1759,7 +1778,7 @@ namespace HREngine.Bots
                         case cardtype.MOB:
                             foreach (Minion m in targets)
                             {
-                                if (m.extraParam != true)
+                                if (!m.extraParam)
                                 {
                                     if (m.stealth && !m.own) continue;
                                     retval.Add(m);
@@ -1772,7 +1791,7 @@ namespace HREngine.Bots
                             {
                                 foreach (Minion m in targets)
                                 {
-                                    if (m.extraParam != true && !m.cantBeTargetedBySpellsOrHeroPowers)
+                                    if (!m.extraParam && !m.cantBeTargetedBySpellsOrHeroPowers)
                                     {
                                         if (m.own)
                                         {
@@ -1793,7 +1812,7 @@ namespace HREngine.Bots
 
                     foreach (Minion m in targets)
                     {
-                        if (m.extraParam != true)
+                        if (!m.extraParam)
                         {
                             if (m.stealth && !m.own) continue;
                             if (m.Elusive && (this.type == cardtype.SPELL || this.type == cardtype.HEROPWR)) continue;
@@ -2038,10 +2057,7 @@ namespace HREngine.Bots
                     {
                         foreach (Minion m in targets)
                         {
-                            if (!m.wounded)
-                            {
-                                m.extraParam = true;
-                            }
+                            m.extraParam = !m.wounded;
                         }
                         targetOwnHero = false;
                         targetEnemyHero = false;
@@ -2062,7 +2078,7 @@ namespace HREngine.Bots
                         {
                             // 不满足使用条件（或者是融合怪）
                             // if (m.handcard.card.race != (Race)this.needRaceForPlaying && m.handcard.card.race != Race.ALL) m.extraParam = true;
-                            if (!RaceUtils.MinionBelongsToRace(m.handcard.card.GetRaces(), (CardDB.Race)this.needRaceForPlaying)) m.extraParam = true;
+                            m.extraParam = !RaceUtils.MinionBelongsToRace(m.handcard.card.GetRaces(), (CardDB.Race)this.needRaceForPlaying);
 
                         }
                         targetOwnHero = false;
@@ -3370,7 +3386,7 @@ namespace HREngine.Bots
                             break;
                         case "380":
                             {
-                                card.heroPower = cardIdstringToEnum(tag.GetAttribute("cardID")); // 英雄牌技能
+                                card.heroPower = int.Parse(tag.GetAttribute("value")); // 英雄牌技能
                             }
                             break;
                         case "292":
@@ -3386,10 +3402,18 @@ namespace HREngine.Bots
                         case "1452":
                             {
                                 card.CollectionRelatedCardDataBaseId = int.Parse(tag.GetAttribute("value"));//收藏中关联的卡牌
-                                card.CollectionRelatedCardDataBase = getCardDataFromDbfID(tag.GetAttribute("value"));
                             }
                             break;
-                            
+                        case "3318":
+                            {
+                                card.Miniaturize = int.Parse(tag.GetAttribute("value"));//微缩
+                            }
+                            break;
+                        case "3399":
+                            {
+                                card.Gigantity = int.Parse(tag.GetAttribute("value"));//扩大
+                            }
+                            break;
                         case "1077":
                             {
                                 card.CastsWhenDrawn = int.Parse(tag.GetAttribute("value")); // 抽到时触发效果的属性
@@ -3571,6 +3595,11 @@ namespace HREngine.Bots
                         case "4257":
                             {
                                 card.UsesCharges = int.Parse(tag.GetAttribute("value")); ;
+                            }
+                            break;
+                        case "2859":
+                            {
+                                card.magneticToRace = int.Parse(tag.GetAttribute("value")); ;
                             }
                             break;
 

@@ -19,7 +19,7 @@ namespace HREngine.Bots
 				p.minionGetBuffed(target, 3, 3);
 				//TODO:添加回合结束效果还在想
 				// 在cardDfes.xml搜索cardid,可以找到对应的附魔，
-				target.enchs += "VAC_944e";
+				target.enchs.Add(CardDB.cardIDEnum.VAC_944e);
 			}
 		}
 

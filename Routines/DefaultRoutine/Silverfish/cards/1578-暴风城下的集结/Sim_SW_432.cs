@@ -15,7 +15,7 @@ namespace HREngine.Bots
             {
 				p.minionGetBuffed(target, 4, 2);
 				p.minionGetRush(target);
-                target.enchs += " SW_432e";
+                target.enchs.Add(CardDB.cardIDEnum.SW_432e);
             }
 		}	
 

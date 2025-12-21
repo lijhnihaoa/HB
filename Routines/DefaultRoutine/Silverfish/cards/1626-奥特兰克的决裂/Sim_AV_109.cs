@@ -16,7 +16,7 @@ namespace HREngine.Bots
 			Minion hero = ownplay ? p.ownHero : p.enemyHero;
 			p.minionGetArmor(hero, 10);
 			//给英雄添加附魔,下回合开始时会减少5点护甲
-			hero.enchs += "AV_109e";
+			hero.enchs.Add(CardDB.cardIDEnum.AV_109e);
 		}
 
 	}

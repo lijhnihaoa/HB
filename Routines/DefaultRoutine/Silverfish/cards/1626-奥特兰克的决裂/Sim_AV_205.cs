@@ -15,15 +15,9 @@ namespace HREngine.Bots
 		{
 			if (own.own) p.ownMaxResources = 20;
 			else p.enemyMaxResources = 20;
-            p.
 			p.drawACard(CardDB.cardNameEN.unknown, own.own);
 
 		}
-
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-        {
-			p.setNewHeroPower(CardDB.cardIDEnum.AV_205p, ownplay);
-        }
 
 	}
 }

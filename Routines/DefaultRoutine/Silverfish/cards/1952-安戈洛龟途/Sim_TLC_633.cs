@@ -25,7 +25,7 @@ namespace HREngine.Bots
 				new PlayReq(CardDB.ErrorType2.REQ_TARGET_TO_PLAY), // 需要一个目标
 				new PlayReq(CardDB.ErrorType2.REQ_ENEMY_TARGET), // 只能是敌方
 				new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET), // 只能是随从
-				new PlayReq(CardDB.ErrorType2.REQ_TARGET_MUST_HAVE_TAG), // 只能是具有随从类型的目标 好像写了也没用
+				new PlayReq(CardDB.ErrorType2.REQ_TARGET_MUST_HAVE_TAG,CardDB.Specialtags.CardRace), // 只能是具有随从类型的目标 好像写了也没用
 				new PlayReq(CardDB.ErrorType2.REQ_TARGET_IF_AVAILABLE), // 无目标时也能用
 			};
 		}

@@ -11,7 +11,10 @@ namespace HREngine.Bots
 	//<b>亡语：</b>将本随从洗入你的牌库。
 	class Sim_TOY_330t92 : SimTemplate
 	{
-		
+        public override void onDeathrattle(Playfield p, Minion m)
+        {
+            p.minionReturnToDeck(m,m.own);
+        }
 		
 	}
 }

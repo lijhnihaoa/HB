@@ -15,7 +15,7 @@ namespace HREngine.Bots
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
             // if (p.prozis.noDuplicates)
-            if (m.handcard.poweredUp > 0)
+            if (own.handcard.poweredUp > 0)
             {
 				p.equipWeapon(weapon, own.own);
 			}

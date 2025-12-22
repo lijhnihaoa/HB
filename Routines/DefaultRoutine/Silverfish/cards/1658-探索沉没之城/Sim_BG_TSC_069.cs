@@ -17,7 +17,7 @@ namespace HREngine.Bots
 				new PlayReq(CardDB.ErrorType2.REQ_TARGET_TO_PLAY), // 需要一个目标
 				new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET), // 只能是随从
 				new PlayReq(CardDB.ErrorType2.REQ_FRIENDLY_TARGET), // 只能是友方
-				new PlayReq(CardDB.ErrorType2.REQ_TARGET_WITH_RACE, 26), // 只能是有种族的目标
+				new PlayReq(CardDB.ErrorType2.REQ_TARGET_MUST_HAVE_TAG,CardDB.Specialtags.CardRace), // 只能是具有随从类型的目标
 			};
         }
 		

@@ -11,7 +11,11 @@ namespace HREngine.Bots
 	//<b>巨型+1</b><b>战吼：</b><b>发现</b>三个海盗来构成奈利的船员团队！
 	class Sim_TSC_660 : SimTemplate
 	{
-		
+		CardDB.Card ColossalDerivative = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_660t);
+		public override void SummonColossal(Playfield p, Minion m)
+		{
+			p.callKid(ColossalDerivative, m.zonepos, m.own);
+		}
 		
 	}
 }

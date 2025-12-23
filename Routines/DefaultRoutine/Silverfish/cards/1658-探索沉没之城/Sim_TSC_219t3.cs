@@ -11,7 +11,14 @@ namespace HREngine.Bots
 	//在你的回合结束时，随机对一个敌人造成@点伤害。
 	class Sim_TSC_219t3 : SimTemplate
 	{
-		
+		public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
+		{
+			if (triggerEffectMinion.own == turnEndOfOwner)
+			{
+				p.DealDamageToRandomCharacter(triggerEffectMinion.own,2 + triggerEffectMinion.TAG_SCRIPT_DATA_NUM_1);
+			}
+
+		}
 		
 	}
 }

@@ -11,7 +11,11 @@ namespace HREngine.Bots
 	//<b>巨型+1</b><b>吸血</b>
 	class Sim_TSC_216 : SimTemplate
 	{
-		
-		
+		CardDB.Card ColossalDerivative = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_216t);
+		public override void SummonColossal(Playfield p, Minion m)
+		{
+			p.callKid(ColossalDerivative, m.zonepos - 1, m.own);
+		}
+
 	}
 }

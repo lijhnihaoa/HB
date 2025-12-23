@@ -11,7 +11,11 @@ namespace HREngine.Bots
 	//<b>巨型+1</b><b>突袭</b>，<b>圣盾</b>。在本随从攻击后，<b>探底</b>。
 	class Sim_TSC_030 : SimTemplate
 	{
-		
+		CardDB.Card ColossalDerivative = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_030t2);
+		public override void SummonColossal(Playfield p, Minion m)
+		{
+			p.callKid(ColossalDerivative, m.zonepos, m.own);
+		}
 		
 	}
 }

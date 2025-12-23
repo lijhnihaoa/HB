@@ -11,7 +11,65 @@ namespace HREngine.Bots
 	//<b>巨型+6</b><b>亡语：</b>每有一条厄祖玛特的触须，随机消灭一个敌方随从。
 	class Sim_TID_711 : SimTemplate
 	{
-		
-		
+		CardDB.Card ColossalDerivative = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_711t);
+		CardDB.Card ColossalDerivative1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_711t2);
+		CardDB.Card ColossalDerivative2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_711t3);
+		CardDB.Card ColossalDerivative3 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_711t4);
+		CardDB.Card ColossalDerivative4 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_711t5);
+		CardDB.Card ColossalDerivative5 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_711t6);
+		public override void SummonColossal(Playfield p, Minion m)
+		{
+			p.callKid(ColossalDerivative, m.zonepos - 1, m.own);
+			p.callKid(ColossalDerivative1, m.zonepos - 1, m.own);
+			p.callKid(ColossalDerivative2, m.zonepos - 1, m.own);
+			p.callKid(ColossalDerivative3, m.zonepos, m.own);
+			p.callKid(ColossalDerivative4, m.zonepos, m.own);
+			p.callKid(ColossalDerivative5, m.zonepos, m.own);
+		}
+
+		public override void onDeathrattle(Playfield p, Minion m)
+		{
+			List<Minion> minions = new List<Minion>(m.own ? p.ownMinions : p.enemyMinions);
+			List<Minion> enemyMinions = new List<Minion>(m.own ? p.enemyMinions : p.ownMinions);
+			int destroyedCount = 0;
+			int i = 0;
+			foreach (Minion minion in minions)
+			{
+				if (minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t2 || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t3 ||
+				minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t4 || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t5 || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t6)
+				{
+					destroyedCount++;
+				}
+			}
+			foreach (Minion minion in enemyMinions)
+			{
+				if (minion.untouchable || minion.handcard.card.type == CardDB.cardtype.LOCATION)
+				{
+					continue;
+				}
+				if (destroyedCount == 0)
+				{
+					break;
+				}
+				p.minionGetDestroyed(minion);
+				destroyedCount--;
+			}
+/* 			while (i < enemyMinions.Count && i < destroyedCount)
+			{
+				if (destroyedCount == 0 || i > enemyMinions.Count - 1)
+				{
+					break;
+				}
+				if (enemyMinions[i].untouchable || enemyMinions[i].handcard.card.type == CardDB.cardtype.LOCATION)
+				{
+					continue;
+				}
+				p.minionGetDestroyed(enemyMinions[i]);
+				destroyedCount--;
+				i++;
+			} */
+
+		}
+
 	}
 }

@@ -11,7 +11,18 @@ namespace HREngine.Bots
 	//<b>巨型+1</b><b>战吼：</b>吞食所有敌方随从。<b>亡语：</b>吐出来。
 	class Sim_TSC_962 : SimTemplate
 	{
-		
-		
+		CardDB.Card ColossalDerivative = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_962t);
+		public override void SummonColossal(Playfield p, Minion m)
+		{
+			p.callKid(ColossalDerivative, m.zonepos, m.own);
+		}
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+			List<Minion> enemyMinions = new List<Minion>(own.own ? p.enemyMinions : p.ownMinions);
+			foreach (Minion m in enemyMinions)
+			{
+				p.minionGetDestroyed(m);
+			}
+		}
 	}
 }

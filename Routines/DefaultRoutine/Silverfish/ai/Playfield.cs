@@ -4219,7 +4219,7 @@ namespace HREngine.Bots
         {
             this.evaluatePenality += a.penalty;
             Minion target = a.target;
-
+            
             int newTarget = this.secretTrigger_CharIsAttacked(a.own, target);
             if (newTarget >= 1)
             {
@@ -5303,26 +5303,50 @@ namespace HREngine.Bots
         /// </summary>
         private void HandleSpecialCardCost(Handmanager.Handcard hc)
         {
-            if (this.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL)
-            {
-                PayHealthForSpell(hc);
-            }
-            else if (this.nextMurlocThisTurnCostHealth && (hc.card.race == CardDB.Race.MURLOC || hc.card.race == CardDB.Race.ALL))
-            {
-                PayHealthForMurloc(hc);
-            }
-            else if (this.nextAnyCardThisTurnCostEnemyHealth)
-            {
-                PayEnemyHealthForAnyCard(hc);
-            }
-            else if (this.ownDemonCostLessOnce > 0 && (hc.card.race == CardDB.Race.DEMON || hc.card.race == CardDB.Race.ALL))
-            {
-                this.ownDemonCostLessOnce = 0; // 恶魔卡牌法力消耗减少
-            }
-            else
-            {
-                this.mana -= hc.getManaCost(this); // 正常减少法力值
-            }
+            // switch (hc.card.CardAlternateCost)
+            // {
+            //     case 1:
+            //         {
+            //             PayHealthForSpell(hc);
+
+            //         }
+            //         break;
+            //     case 2:
+            //         {
+
+            //         }
+            //         break;
+            //     case 3:
+            //         {
+
+            //         }
+            //         break;
+            //     default:
+                    {
+                        if (this.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL)
+                        {
+                            PayHealthForSpell(hc);
+                        }
+                        else if (this.nextMurlocThisTurnCostHealth && (hc.card.race == CardDB.Race.MURLOC || hc.card.race == CardDB.Race.ALL))
+                        {
+                            PayHealthForMurloc(hc);
+                        }
+                        else if (this.nextAnyCardThisTurnCostEnemyHealth)
+                        {
+                            PayEnemyHealthForAnyCard(hc);
+                        }
+                        else if (this.ownDemonCostLessOnce > 0 && (hc.card.race == CardDB.Race.DEMON || hc.card.race == CardDB.Race.ALL))
+                        {
+                            this.ownDemonCostLessOnce = 0; // 恶魔卡牌法力消耗减少
+                        }
+                        else
+                        {
+                            this.mana -= hc.getManaCost(this); // 正常减少法力值
+                        }
+                    }
+            //         break;
+            // }
+
         }
 
         /// <summary>
@@ -6466,32 +6490,32 @@ namespace HREngine.Bots
                             break;
                     }
                 }
-/*                 // 特殊处理德纳修斯大帝和猎手阿尔迪莫
-                if (hc.card.cardIDenum != CardDB.cardIDEnum.REV_906 && hc.card.cardIDenum != CardDB.cardIDEnum.REV_906t &&
-                    hc.card.cardIDenum != CardDB.cardIDEnum.REV_353 && hc.card.cardIDenum != CardDB.cardIDEnum.REV_353t && hc.card.cardIDenum != CardDB.cardIDEnum.REV_353t2)
-                {
-                    // 升级卡牌并标记为已注能
-                    hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
-                    hc.card.Infused = true;
-                }
-                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_906)
-                {
-                    hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
+                /*                 // 特殊处理德纳修斯大帝和猎手阿尔迪莫
+                                if (hc.card.cardIDenum != CardDB.cardIDEnum.REV_906 && hc.card.cardIDenum != CardDB.cardIDEnum.REV_906t &&
+                                    hc.card.cardIDenum != CardDB.cardIDEnum.REV_353 && hc.card.cardIDenum != CardDB.cardIDEnum.REV_353t && hc.card.cardIDenum != CardDB.cardIDEnum.REV_353t2)
+                                {
+                                    // 升级卡牌并标记为已注能
+                                    hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
+                                    hc.card.Infused = true;
+                                }
+                                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_906)
+                                {
+                                    hc.card = CardDB.Instance.getCardDataFromDbfID(hc.card.CollectionRelatedCardDataBaseId.ToString());
 
-                }
-                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_906t)
-                {
-                    hc.card.TAG_SCRIPT_DATA_NUM_2++; // 无限注能，伤害增加1点
-                }
-                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_353)
-                {
-                    hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t"));
-                }
-                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_353t)
-                {
-                    hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t2"));
-                    hc.card.Infused = true; // 标记为已注能
-                } */
+                                }
+                                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_906t)
+                                {
+                                    hc.card.TAG_SCRIPT_DATA_NUM_2++; // 无限注能，伤害增加1点
+                                }
+                                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_353)
+                                {
+                                    hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t"));
+                                }
+                                else if (hc.card.cardIDenum == CardDB.cardIDEnum.REV_353t)
+                                {
+                                    hc.card = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(hc.card.cardIDenum.ToString() + "t2"));
+                                    hc.card.Infused = true; // 标记为已注能
+                                } */
             }
         }
 
@@ -6883,6 +6907,8 @@ namespace HREngine.Bots
                         break;
                 }
             }
+            mnn.handcard.card.sim_card.SummonColossal(this, mnn);
+
         }
 
         /// <summary>
@@ -10949,7 +10975,7 @@ namespace HREngine.Bots
         public void minionGetDamageOrHeal(Minion m, int dmgOrHeal, bool dontDmgLoss = false)
         {
             // 如果随从还活着，则调用随从自身的受伤或治疗方法
-            if (m.Hp > 0)
+            if (m.Hp > 0 && !m.untouchable)
             {
                 m.getDamageOrHeal(dmgOrHeal, this, false, dontDmgLoss);
             }

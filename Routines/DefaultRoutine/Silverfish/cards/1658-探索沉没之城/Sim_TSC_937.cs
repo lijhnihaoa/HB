@@ -11,27 +11,43 @@ namespace HREngine.Bots
 	//<b>巨型+2</b>你的可拉巴托亚的钳子拥有+2攻击力。
 	class Sim_TSC_937 : SimTemplate
 	{
-		CardDB.Card kid1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_937t);
-		CardDB.Card kid2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_937t);
+		CardDB.Card ColossalDerivative = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_937t);
+		CardDB.Card ColossalDerivative1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_937t3);
 		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_937t);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+		public override void SummonColossal(Playfield p, Minion m)
 		{
-			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
-			p.callKid(kid1, pos-1, ownplay);
-			p.callKid(kid2, pos, ownplay);
+			p.callKid(ColossalDerivative, m.zonepos - 1, m.own);
+			p.callKid(ColossalDerivative, m.zonepos, m.own);
 		}
-
 
 		public override void onAuraStarts(Playfield p, Minion m)
 		{
-			List<Minion> minions = m.own ? p.ownMinions : p.enemyMinions;
-			minions.ForEach((m2 => { if (m2.handcard.card == kid1 || m2.handcard.card == kid2 || m2.handcard.card == weapon) p.minionGetTempBuff(m2, 2, 0); }));
+			Weapon ownWeapon = m.own ? p.ownWeapon : p.enemyWeapon;
+			List<Minion> minions = new List<Minion>(m.own ? p.ownMinions : p.enemyMinions);
+			foreach (Minion minion in minions)
+			{
+				if (minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TSC_937t || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TSC_937t3)
+					p.minionGetTempBuff(minion, 2, 0);
+			}
+			if (weapon.Equals(ownWeapon))
+			{
+				ownWeapon.Angr += 2;
+			}
 		}
 		public override void onAuraEnds(Playfield p, Minion m)
 		{
+			Weapon ownWeapon = m.own ? p.ownWeapon : p.enemyWeapon;
 			List<Minion> minions = m.own ? p.ownMinions : p.enemyMinions;
-			minions.ForEach((m2 => { if (m2.handcard.card == kid1 || m2.handcard.card == kid2 || m2.handcard.card == weapon) p.minionGetTempBuff(m2, -2, 0); }));
+			foreach (Minion minion in minions)
+			{
+				if (minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TSC_937t || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TSC_937t3)
+					p.minionGetTempBuff(minion, -2, 0);
+			}
+			if (weapon.Equals(ownWeapon))
+			{
+				ownWeapon.Angr -= 2;
+			}
 		}
 
 	}

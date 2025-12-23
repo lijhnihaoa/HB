@@ -13,9 +13,7 @@ namespace HREngine.Bots
 	{
 		public override void afterMinionAttack(Playfield p, Minion attacker, Minion defender, bool dontcount)
 		{
-
 			p.drawACard(CardDB.cardIDEnum.None, attacker.own);
-
 		}
 
 	}

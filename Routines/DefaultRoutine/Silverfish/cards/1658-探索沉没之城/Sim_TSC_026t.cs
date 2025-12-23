@@ -11,7 +11,10 @@ namespace HREngine.Bots
 	//<b>嘲讽</b>，<b>亡语：</b>获得8点护甲值。
 	class Sim_TSC_026t : SimTemplate
 	{
-		
-		
+		public override void onDeathrattle(Playfield p, Minion m)
+		{
+			p.minionGetArmor(m.own ? p.ownHero : p.enemyHero, 8);
+		}
+
 	}
 }

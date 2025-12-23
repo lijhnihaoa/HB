@@ -11,15 +11,13 @@ namespace HREngine.Bots
 	//<b>可交易</b>使一个随从获得+2/+3。在你<b>交易</b>此牌后，使一个友方随从获得<b>突袭</b>。
 	class Sim_CORE_DED_009 : SimTemplate
 	{
-		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
         {
             if (target != null)
             {
-                p.minionGetBuffed(own, 2, 3);
-                //p.minionGetRush(own);
+                p.minionGetBuffed(target, 2, 3);
             }
         }
-
         public override PlayReq[] GetPlayReqs()
         {
             return new PlayReq[] {

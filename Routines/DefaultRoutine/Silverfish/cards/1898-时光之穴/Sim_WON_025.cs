@@ -16,6 +16,19 @@ namespace HREngine.Bots
 			if (triggerEffectMinion.own == turnEndOfOwner)
 			{
 				p.allCharsOfASideGetDamage(!triggerEffectMinion.own, 1);
+				List<Minion> temp = new List<Minion>(!triggerEffectMinion.own ? p.enemyMinions : p.ownMinions);
+				foreach (Minion m in temp)
+				{
+					if (triggerEffectMinion.poisonous)
+					{
+						if (!m.divineshild)
+						{
+							p.minionGetDestroyed(m);
+						}
+					}
+					p.minionGetDamageOrHeal(m, 1);
+
+				}
 			}
 		}
 

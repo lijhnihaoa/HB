@@ -16,6 +16,7 @@ namespace HREngine.Bots
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 2, 0);
+				target.enchs.Add(CardDB.cardIDEnum.TTN_079e);
 			}
 		}
 		
@@ -24,7 +25,7 @@ namespace HREngine.Bots
 			return new PlayReq[]{
 				new PlayReq(CardDB.ErrorType2.REQ_TARGET_TO_PLAY), // 需要一个目标
 				new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET), // 只能是随从
-				new PlayReq(CardDB.ErrorType2.REQ_FRIENDLY_TARGET), // 只能是友方
+				// new PlayReq(CardDB.ErrorType2.REQ_FRIENDLY_TARGET), // 只能是友方
 			};
 		}
 		

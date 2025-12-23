@@ -14,9 +14,14 @@ namespace HREngine.Bots
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.YOG_506t);
 		public override void onDeathrattle(Playfield p, Minion m)
 		{
-			kid.Attack = m.Angr;
-			kid.Health = m.Angr;
-			p.callKid(kid, m.zonepos - 1, m.own);
+
+			Minion summoned = p.callKidAndReturn(kid, m.zonepos - 1, m.own);
+			if (summoned != null)
+			{
+				summoned.Angr = m.Angr;
+				summoned.Hp = m.Angr;
+				summoned.maxHp = m.Angr;
+			}
 		}
 
 	}

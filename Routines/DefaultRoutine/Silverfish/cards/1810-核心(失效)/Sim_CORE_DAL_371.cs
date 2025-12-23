@@ -11,7 +11,24 @@ namespace HREngine.Bots
 	//对一个随从造成$4点伤害。<b>发现</b>一张法术牌。
 	class Sim_CORE_DAL_371 : SimTemplate
 	{
-		
-		
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		{
+			if (target != null)
+			{
+				int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
+				p.minionGetDamageOrHeal(target, dmg);
+				p.drawACard(CardDB.cardNameEN.unknown, ownplay, true);
+			}
+
+		}
+
+		public override PlayReq[] GetPlayReqs()
+		{
+			return new PlayReq[] {
+				new PlayReq(CardDB.ErrorType2.REQ_TARGET_TO_PLAY),
+				new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET),
+			};
+		}
+
 	}
 }

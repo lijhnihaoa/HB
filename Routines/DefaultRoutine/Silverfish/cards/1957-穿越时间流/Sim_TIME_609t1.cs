@@ -11,7 +11,10 @@ namespace HREngine.Bots
 	//<b>战吼：</b><b>发现</b>一张法术牌。如果你使用过希尔瓦娜斯或温蕾萨，每使用过一位，重复一次。
 	class Sim_TIME_609t1 : SimTemplate
 	{
-		
-		
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+			p.drawACard(CardDB.cardIDEnum.None, own.own, true);
+		}
+
 	}
 }

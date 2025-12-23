@@ -11,7 +11,21 @@ namespace HREngine.Bots
 	//使一个随从获得+2/+2和“<b>亡语：</b>使一个友方随从获得+2/+2以及此<b>亡语</b>。”
 	class Sim_EDR_261 : SimTemplate
 	{
-		
-		
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		{
+			if (target != null)
+			{
+				p.minionGetBuffed(target, 2, 2);
+			}
+		}
+
+		public override PlayReq[] GetPlayReqs()
+		{
+			return new PlayReq[] {
+				new PlayReq(CardDB.ErrorType2.REQ_TARGET_TO_PLAY),
+				new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET),
+			};
+		}
+
 	}
 }

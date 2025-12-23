@@ -10,9 +10,14 @@ namespace HREngine.Bots
 		//造成$3点伤害。你的下一个英雄技能会额外造成2点伤害。
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
 		{
-			int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
-			p.ownHeroPowerExtraDamage += 2;
-			p.minionGetDamageOrHeal(target, dmg);
+			if (target != null)
+			{
+
+				int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
+				p.ownHeroPowerExtraDamage += 2;
+				p.minionGetDamageOrHeal(target, dmg);
+				p.ownHero.enchs.Add(CardDB.cardIDEnum.SW_321e);
+			}
 		}
 
 		public override PlayReq[] GetPlayReqs()

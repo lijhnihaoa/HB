@@ -17,8 +17,8 @@ namespace HREngine.Bots
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
-				p.minionGetDamageOrHeal(target, dmg);
 				int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
+				p.minionGetDamageOrHeal(target, dmg);
 				p.callKid(kid, pos, ownplay);
 			}
 

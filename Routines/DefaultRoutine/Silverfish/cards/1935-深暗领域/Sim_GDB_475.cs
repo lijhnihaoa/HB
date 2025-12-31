@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得<b>嘲讽</b>和<b>吸血</b>。如果你在本回合中使用过相邻的牌，还会使其获得<b>复生</b>。
 	class Sim_GDB_475 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				target.taunt = true;

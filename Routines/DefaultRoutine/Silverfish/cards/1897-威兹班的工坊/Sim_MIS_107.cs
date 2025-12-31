@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_MIS_107 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 造成3点伤害，随机分配到所有敌方随从身上
             int baseDamage = 3;

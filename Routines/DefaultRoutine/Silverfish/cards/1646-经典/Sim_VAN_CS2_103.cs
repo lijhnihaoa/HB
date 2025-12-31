@@ -6,7 +6,7 @@ namespace HREngine.Bots
 {
 	class Sim_VAN_CS2_103 : SimTemplate //* 冲锋 Charge
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 2, 0);            
             p.minionGetCharge(target);

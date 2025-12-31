@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Give a minion +8/+8. It_can't attack heroes this turn.
 		//使一个随从获得+8/+8，在本回合中无法攻击英雄。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)//卡牌使用
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)//卡牌使用
         {
 			if(target!=null)
 		    {

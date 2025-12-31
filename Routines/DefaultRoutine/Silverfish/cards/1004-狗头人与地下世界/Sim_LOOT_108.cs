@@ -12,8 +12,8 @@ namespace HREngine.Bots
 
     
 
-    public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-    {
+    public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
       p.equipWeapon(weapon,ownplay);
       int cardDemands = Math.Max(0, 4 - p.owncards.Count);
       if (ownplay) p.evaluatePenality -= cardDemands * 20;

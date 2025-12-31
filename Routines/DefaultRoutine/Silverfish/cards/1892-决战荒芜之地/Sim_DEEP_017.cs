@@ -12,7 +12,7 @@ namespace HREngine.Bots
     class Sim_DEEP_017 : SimTemplate
     {
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
             // 召唤1/1的白银之手新兵

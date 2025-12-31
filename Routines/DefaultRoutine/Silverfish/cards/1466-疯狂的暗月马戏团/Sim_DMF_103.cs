@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $10 damage randomly split among all enemies.
         //造成$10点伤害，随机分配到所有敌人身上。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if(p.enemyMinions.Count == 0)
             {

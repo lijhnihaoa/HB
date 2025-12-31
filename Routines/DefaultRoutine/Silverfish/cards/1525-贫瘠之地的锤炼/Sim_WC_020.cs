@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $3 damage to a random enemy minion. If it dies, recast this. <b>Overload:</b> (1)
         //随机对一个敌方随从造成$3点伤害。如果该随从死亡，则再次施放此法术。<b>过载：</b>（1）
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(3);
             foreach(Minion m in p.enemyMinions)

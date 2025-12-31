@@ -11,8 +11,8 @@ namespace HREngine.Bots
         // Cold Blood: Give a minion +2 Attack. <b>Combo:</b> +4 Attack instead.
 
         // 当卡牌被使用时，执行此方法
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             // 判断本回合我方是否已经使用过其他卡牌
             int ag = (ownplay && p.cardsPlayedThisTurn >= 1) ? 4 : 2; // 如果本回合已经使用过其他卡牌，则增加4点攻击力，否则增加2点攻击力。
             

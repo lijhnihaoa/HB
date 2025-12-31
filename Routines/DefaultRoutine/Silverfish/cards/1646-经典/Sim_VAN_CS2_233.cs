@@ -6,7 +6,7 @@ namespace HREngine.Bots
 {
 	class Sim_VAN_CS2_233 : SimTemplate //* 剑刃乱舞 Blade Flurry
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = (ownplay) ? p.getSpellDamageDamage(p.ownWeapon.Angr) : p.getEnemySpellDamageDamage(p.enemyWeapon.Angr);
 

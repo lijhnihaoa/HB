@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $3 damage to a minion and a random adjacent one. <i>(Upgrades when you have 10 Mana.)</i>
         //对一个随从和随机一个相邻随从造成$3点伤害。<i>（当你有10点法力值时升级。）</i>
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target == null) return;
             int dmg = p.getSpellDamageDamage(3);

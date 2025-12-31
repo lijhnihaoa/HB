@@ -10,7 +10,7 @@ namespace HREngine.Bots
 	{
 		
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			p.allMinionOfASideGetBuffed(ownplay, 0, 2);
 		}

@@ -13,8 +13,8 @@ namespace HREngine.Bots
 			List<Minion> temp = own ? p.ownMinions : p.enemyMinions;
 			foreach (Minion m in temp) p.minionGetBuffed(m, 1, 1);
 		}
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.DRG_008, questProgress = 0, maxProgress = 5 };
 		}
 	}

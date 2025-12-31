@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_202p : SimTemplate //* 巨力猛击 grandslam
 	{
         //<b>英雄技能</b> 造成$2点伤害。<b>荣誉消灭：</b>获得4点护甲值。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

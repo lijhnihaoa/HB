@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//<b>Discover</b> a spell. Restore Health to your hero equal to its Cost.
 		//<b>发现</b>一张法术牌。为你的英雄恢复等同于其法力值消耗的生命值。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardNameEN.thecoin, ownplay, true);
 			int heal = (ownplay) ? p.getMinionHeal(3) : p.getEnemyMinionHeal(3);
 			p.minionGetDamageOrHeal(ownplay ? p.ownHero : p.enemyHero, -heal);

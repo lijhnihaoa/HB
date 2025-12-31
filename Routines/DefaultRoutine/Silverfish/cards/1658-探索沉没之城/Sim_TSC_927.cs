@@ -12,16 +12,16 @@ namespace HREngine.Bots
 	class Sim_TSC_927 : SimTemplate
 	{
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TSC_927t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
-				foreach (Handmanager.Handcard hc in p.owncards)
+				foreach (Handmanager.Handcard handcard in p.owncards)
 				{
-					if (hc.card.type == CardDB.cardtype.MOB)
+					if (handcard.card.type == CardDB.cardtype.MOB)
 					{
-						hc.addattack++;
-						hc.addHp++;
+						handcard.addattack++;
+						handcard.addHp++;
 						p.anzOwnExtraAngrHp += 2;
 					}
 				}

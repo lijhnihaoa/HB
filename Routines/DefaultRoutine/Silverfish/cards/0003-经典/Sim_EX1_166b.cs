@@ -4,15 +4,16 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_166b : SimTemplate //* 禁魔 Dispel
-	{
-		//<b>Silence</b> a minion.
-		//<b>沉默</b>一个随从。
+    class Sim_EX1_166b : SimTemplate //* 禁魔 Dispel
+    {
+        //<b>Silence</b> a minion.
+        //<b>沉默</b>一个随从。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
+            if (target != null)
                 p.minionGetSilenced(target);
-		}
+        }
 
 
         public override PlayReq[] GetPlayReqs()
@@ -22,5 +23,5 @@ namespace HREngine.Bots
                 new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET),
             };
         }
-	}
+    }
 }

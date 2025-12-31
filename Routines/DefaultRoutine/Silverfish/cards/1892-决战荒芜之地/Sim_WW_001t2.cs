@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//恢复#3点生命值。抽一张牌。
 	class Sim_WW_001t2 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int heal = ownplay ? p.getSpellHeal(-3) : p.getEnemySpellHeal(-3);

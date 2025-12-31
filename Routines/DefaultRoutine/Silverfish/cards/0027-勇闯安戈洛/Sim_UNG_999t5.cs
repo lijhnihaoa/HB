@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //无法成为法术或英雄技能的目标。 
     class Sim_UNG_999t5 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             target.Elusive = true;
         }

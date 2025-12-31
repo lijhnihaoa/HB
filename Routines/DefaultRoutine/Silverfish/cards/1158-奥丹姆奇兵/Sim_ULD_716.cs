@@ -12,8 +12,8 @@ namespace HREngine.Bots
 
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_507);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
 			int num = 7 - temp.Count;
 			

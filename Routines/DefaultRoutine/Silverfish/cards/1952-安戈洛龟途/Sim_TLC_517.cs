@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$@点伤害<i>（你每将卡牌洗入牌库一次都会提升）</i>。
 	class Sim_TLC_517 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				//TODO:兄弟playfiled还没记录洗入次数的属性,就先这样写了

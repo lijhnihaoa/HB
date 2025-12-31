@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//在本回合中，使你的英雄获得+2攻击力。对一个随从造成等同于你的英雄攻击力的伤害。
 	class Sim_NX2_012 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			Minion hero = ownplay ? p.ownHero : p.enemyHero;
 			p.minionGetTempBuff(hero, 2, 0);
             hero.updateReadyness();

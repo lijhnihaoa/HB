@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使一个随从获得+2/+6。
     class Sim_OG_094 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

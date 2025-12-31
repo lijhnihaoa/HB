@@ -14,8 +14,8 @@ namespace HREngine.Bots
 		// 默认召唤大表哥
 		// 正常写的话要写字典
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAN_NEW1_030);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
 			p.callKid(kid, pos, ownplay);
 		}

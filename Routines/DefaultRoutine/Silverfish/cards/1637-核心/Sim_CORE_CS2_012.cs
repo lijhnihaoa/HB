@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个敌人造成$4点伤害，并对所有其他敌人造成$1点伤害。
 	class Sim_CORE_CS2_012 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);

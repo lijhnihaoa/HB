@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //对一个随从和你的英雄各造成$4点伤害。
     class Sim_BOT_222 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

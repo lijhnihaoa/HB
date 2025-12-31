@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Deal $3 damage to a_character and <b>Freeze</b> it.
 		//对一个角色造成$3点伤害，并使其<b>冻结</b>。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             p.minionGetFrozen(target);

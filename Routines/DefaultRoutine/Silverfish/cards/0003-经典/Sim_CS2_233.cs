@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Destroy your weapon and deal its damage to all enemy minions.
 		//摧毁你的武器，对所有敌方随从造成等同于其攻击力的伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = (ownplay) ? p.getSpellDamageDamage(p.ownWeapon.Angr) : p.getEnemySpellDamageDamage(p.enemyWeapon.Angr);
 

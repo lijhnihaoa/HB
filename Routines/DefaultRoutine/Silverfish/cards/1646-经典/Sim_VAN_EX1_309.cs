@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Destroy a minion. Restore #3 Health to_your hero.
 		//消灭一个随从，为你的英雄恢复#3点生命值。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetDestroyed(target);
             int heal = (ownplay) ? p.getSpellHeal(3) : p.getEnemySpellHeal(3);

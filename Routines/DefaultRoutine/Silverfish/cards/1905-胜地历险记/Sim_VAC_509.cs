@@ -16,8 +16,8 @@ namespace HREngine.Bots
         private static Random rng = new Random(); // 创建一个静态的随机数生成器
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAC_509t);//水元素
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 
             p.callKid(kid, pos, ownplay, false);

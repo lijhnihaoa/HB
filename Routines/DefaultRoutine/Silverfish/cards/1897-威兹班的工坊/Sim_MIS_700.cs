@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//<b>发现</b>一张来自过去的圣骑士武器牌，使其获得+1/+1。
 	class Sim_MIS_700 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 假设 `Hrtprozis.Instance.enchs` 中已经存储了玩家通过发现选择的卡牌 ID
             if (Hrtprozis.Instance.enchs.Count > 0)

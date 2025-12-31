@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give your minions +1/+1.<b>Overload:</b> (1)
 		//使你的随从获得+1/+1。<b>过载：</b>（1）
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.allMinionOfASideGetBuffed(ownplay, 1, 1);
 			if (ownplay) p.ueberladung++;
 		}

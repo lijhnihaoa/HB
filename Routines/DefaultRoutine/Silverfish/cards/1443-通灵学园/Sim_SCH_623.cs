@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//[x]Draw 2 cards. Costs (1) less per Attack of your weapon.
 		//抽两张牌。你的武器每有1点攻击力，该牌的法力值消耗便减少（1）点。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardNameEN.unknown, ownplay);
             p.drawACard(CardDB.cardNameEN.unknown, ownplay);

@@ -12,7 +12,7 @@ namespace HREngine.Bots
     class Sim_DEEP_010 : SimTemplate
     {
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 对所有随从造成1点伤害，重复三次
             for (int i = 0; i < 3; i++)

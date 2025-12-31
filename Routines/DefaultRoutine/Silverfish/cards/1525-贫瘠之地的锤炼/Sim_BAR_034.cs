@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Summon a 2/2 Beast with <b>Rush</b>. <i>(Upgrades when youhave 5 Mana.)</i>
 		//召唤一只2/2并具有<b>突袭</b>的野兽。<i>（当你有5点法力值时升级。）</i>
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BAR_034t3);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = p.ownMinions.Count;
 			p.callKid(kid, pos + 1, ownplay);
 		}		

@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Deal $1 damage to a minion. Draw a card.
 		//对一个随从造成$1点伤害，抽一张牌。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             //this.owncarddraw++;

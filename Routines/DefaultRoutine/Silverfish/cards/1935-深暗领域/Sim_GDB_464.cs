@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//将每个随从的攻击力和生命值变为两者中的低值。
 	class Sim_GDB_464 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             foreach (Minion m in p.ownMinions)//判断我方场面
             {

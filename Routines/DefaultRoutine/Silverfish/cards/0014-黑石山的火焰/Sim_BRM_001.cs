@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		// Draw 2 cards. Costs (1) less for each minion that died this turn.
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}

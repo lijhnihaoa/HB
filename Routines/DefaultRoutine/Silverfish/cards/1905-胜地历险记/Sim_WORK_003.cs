@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_WORK_003 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int heal = ownplay ? p.getSpellHeal(-4) : p.getEnemySpellHeal(-4);

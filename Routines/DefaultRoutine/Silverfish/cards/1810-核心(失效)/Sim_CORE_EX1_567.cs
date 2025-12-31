@@ -10,8 +10,8 @@ namespace HREngine.Bots
 //    windzorn/, Ã¼berladung:/ (2)
         // CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_567);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             // p.equipWeapon(card, ownplay);
             if (ownplay) p.ueberladung += 2;
 		}

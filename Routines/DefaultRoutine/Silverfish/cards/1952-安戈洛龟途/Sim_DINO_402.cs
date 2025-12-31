@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个友方随从的属性值变为1/1。用它的复制填满你的面板。
 	class Sim_DINO_402 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionSetAngrToX(target, 1);

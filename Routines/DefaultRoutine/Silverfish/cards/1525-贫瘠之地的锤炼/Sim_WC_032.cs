@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]<b>Deathrattle:</b> Give your_minions <b>Divine Shield</b>.
         //<b>亡语：</b>使你的所有随从获得<b>圣盾</b>。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WC_032), true);
         }

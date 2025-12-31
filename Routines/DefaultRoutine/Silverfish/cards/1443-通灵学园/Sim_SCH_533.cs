@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Summon a minion from your deck. Give it <b>Taunt</b> and <b>Divine Shield</b>.
         //从你的牌库中召唤一个随从。使其获得<b>嘲讽</b>和<b>圣盾</b>。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // TODO 读取牌库随机召唤一个随从
             p.evaluatePenality -= 30;

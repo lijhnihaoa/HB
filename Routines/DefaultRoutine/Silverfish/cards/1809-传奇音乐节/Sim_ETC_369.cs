@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//恢复#8点生命值。<b>压轴：</b>召唤一个3/3并具有<b>嘲讽</b>的元素。
 	class Sim_ETC_369 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int heal = ownplay ? p.getSpellHeal(-8) : p.getEnemySpellHeal(-8);

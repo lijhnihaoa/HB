@@ -7,7 +7,7 @@ namespace HREngine.Bots
     class Sim_AV_292 : SimTemplate //* 野性之心 heartofthewild
     {
         //使一个随从获得+2/+2，然后使你的野兽获得+1/+1。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

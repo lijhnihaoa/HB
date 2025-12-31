@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//<b>发现</b>一个法力值消耗大于或等于（5）点的<b>亡语</b>随从，召唤该随从并触发其<b>亡语</b>。
 	class Sim_DINO_415 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			CardDB.Card selectedCard = CardDB.Instance.getCardDataFromID(Hrtprozis.Instance.enchs.LastOrDefault());
 			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
 			if (pos < 7)

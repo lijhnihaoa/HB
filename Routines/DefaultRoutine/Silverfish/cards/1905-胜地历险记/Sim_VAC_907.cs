@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //<b>选择三次：</b>抽两张牌；获得5点护甲值；或者复原三个法力水晶。
     class Sim_VAC_907 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             for (int i = 0; i < 3; i++)
             {

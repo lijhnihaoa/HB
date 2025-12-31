@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//受到疲劳伤害。对所有敌人造成等量的伤害。@受到{0}点疲劳伤害。对所有敌人造成等量的伤害。
 	class Sim_ETC_069 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (ownplay)
 			{

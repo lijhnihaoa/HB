@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //Deal $2 damage to a minion. If it’s a friendly Demon, give it +2/+2 instead.
         //对一个随从造成$2点伤害，如果该随从是友方恶魔，则改为使其获得+2/+2。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

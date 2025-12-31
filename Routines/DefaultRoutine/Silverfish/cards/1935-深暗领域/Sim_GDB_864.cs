@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	{
 		
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count; // 随机召唤位置
             p.callKid(p.getRandomCardForManaMinion(1), pos, ownplay); // 随机召唤1费随从

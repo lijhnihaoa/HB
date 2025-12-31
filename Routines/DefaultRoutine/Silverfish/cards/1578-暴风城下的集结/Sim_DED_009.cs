@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //可交易使一个随从获得+2/+3。在你交易此牌后，使一个友方随从获得突袭
         //Tradeable Give a minion +2/+3. After you Trade this, give a friendly minion Rush
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Draw 3 cards.At the end of your turn, discard them.
 		//抽三张牌。在你的回合结束时，弃掉它们。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, true);
 			p.drawACard(CardDB.cardIDEnum.None, true);
 			p.drawACard(CardDB.cardIDEnum.None, true);

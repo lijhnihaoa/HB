@@ -4,20 +4,23 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_354 : SimTemplate //* 圣疗术 Lay on Hands
-	{
-		//Restore #8 Health. Draw_3 cards.
-		//恢复#8点生命值，抽三张牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+    class Sim_EX1_354 : SimTemplate //* 圣疗术 Lay on Hands
+    {
+        //Restore #8 Health. Draw_3 cards.
+        //恢复#8点生命值，抽三张牌。
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            int heal = (ownplay) ? p.getSpellHeal(8) : p.getEnemySpellHeal(8);
-            p.minionGetDamageOrHeal(target, -heal);
-            for (int i = 0; i < 3; i++)
+            if (target != null)
             {
-                //this.owncarddraw++;
-                p.drawACard(CardDB.cardIDEnum.None, ownplay);
+                int heal = (ownplay) ? p.getSpellHeal(8) : p.getEnemySpellHeal(8);
+                p.minionGetDamageOrHeal(target, -heal);
+                for (int i = 0; i < 3; i++)
+                {
+                    //this.owncarddraw++;
+                    p.drawACard(CardDB.cardIDEnum.None, ownplay);
+                }
             }
-            
+
         }
 
 

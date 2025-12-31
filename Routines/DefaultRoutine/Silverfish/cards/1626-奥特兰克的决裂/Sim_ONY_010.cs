@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_ONY_010 : SimTemplate
 	{
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ONY_010);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

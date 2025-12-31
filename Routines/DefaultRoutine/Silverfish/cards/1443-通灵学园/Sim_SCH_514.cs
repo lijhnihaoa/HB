@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //对你的英雄造成$3点伤害。将两个在本局对战中死亡的友方随从移回你的手牌。
     class Sim_SCH_514 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 对己方英雄造成3点伤害
             p.minionGetDamageOrHeal(ownplay ? p.ownHero : p.enemyHero, 3);

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个攻击力小于或等于3的随从。
 	class Sim_EDR_463a : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
 			if (target != null)
 			{

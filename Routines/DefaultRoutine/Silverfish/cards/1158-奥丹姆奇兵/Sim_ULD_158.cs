@@ -10,7 +10,7 @@ namespace HREngine.Bots
     class Sim_ULD_158 : SimTemplate
     {
 
-        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
+        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (own.own) p.ueberladung++;
         }

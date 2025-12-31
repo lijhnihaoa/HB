@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //对一个随从造成$4点伤害。如果该随从死亡，你的下一个<b>亡语</b>随从的法力值消耗减少（3）点。
     class Sim_VAC_952 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

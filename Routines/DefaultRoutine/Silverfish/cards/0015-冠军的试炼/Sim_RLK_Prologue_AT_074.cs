@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个随从获得+3攻击力和<b>圣盾</b>。
 	class Sim_RLK_Prologue_AT_074 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从和敌方英雄造成$3点伤害。
 	class Sim_WON_306 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				Minion hero = ownplay ? p.enemyHero : p.ownHero;

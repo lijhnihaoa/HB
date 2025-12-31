@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Set the Attack of all enemy minions to 1 until your next turn.
 		//直到你的下个回合，将所有敌方随从的攻击力变为1点。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 foreach (Minion m in p.enemyMinions)

@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//All minions lose <b>Stealth</b>. Destroy all enemy <b>Secrets</b>. Draw a card.
 		//所有随从失去<b>潜行</b>，摧毁所有敌方<b>奥秘</b>，抽一张牌。
 		
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             foreach (Minion m in p.ownMinions)
             {

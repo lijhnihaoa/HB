@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$3点伤害。<b>连击：</b>获取一张1/1的混乱触须。
 	class Sim_YOG_526 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

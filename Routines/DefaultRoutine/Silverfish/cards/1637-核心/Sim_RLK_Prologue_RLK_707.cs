@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使你的所有随从获得+1攻击力。消耗5份<b>残骸</b>，改为获得+3攻击力。
 	class Sim_RLK_Prologue_RLK_707 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int addattack = 1;
             if (p.getCorpseCount() >= 5)

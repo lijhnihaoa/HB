@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>亡语：</b>在回合结束时，召唤塔姆辛的恐惧战马。
 	class Sim_SW_087t : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 1, 1);

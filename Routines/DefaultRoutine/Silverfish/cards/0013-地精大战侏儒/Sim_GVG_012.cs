@@ -13,7 +13,7 @@ namespace HREngine.Bots
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_001);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int heal = (ownplay) ? p.getSpellHeal(3) : p.getEnemySpellHeal(3);
             p.minionGetDamageOrHeal(target, -heal);

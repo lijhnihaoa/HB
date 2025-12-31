@@ -11,18 +11,18 @@ namespace HREngine.Bots
 	//从你的手牌中召唤法力值消耗最高的随从，然后对其造成$5点伤害。
 	class Sim_TOY_602 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 找到手牌中法力值消耗最高的随从
             Handmanager.Handcard highestCostMinion = null;
             int highestCost = -1;
 
-            foreach (Handmanager.Handcard hc in p.owncards)
+            foreach (Handmanager.Handcard handcard in p.owncards)
             {
-                if (hc.card.type == CardDB.cardtype.MOB && hc.manacost > highestCost)
+                if (handcard.card.type == CardDB.cardtype.MOB && handcard.manacost > highestCost)
                 {
-                    highestCost = hc.manacost;
-                    highestCostMinion = hc;
+                    highestCost = handcard.manacost;
+                    highestCostMinion = handcard;
                 }
             }
 

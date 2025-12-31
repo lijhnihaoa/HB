@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个友方随从以获得8点护甲值。
 	class Sim_EDR_531 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetDestroyed(target);

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从及所有相同类型的其他随从造成$3点伤害。
 	class Sim_TLC_901 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

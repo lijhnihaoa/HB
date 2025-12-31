@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $1 damage to a minion and give it +2_Attack.
 		//对一个随从造成$1点伤害，该随从获得+2攻击力。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             p.minionGetDamageOrHeal(target, dmg);
             p.minionGetTempBuff(target, 2,0);

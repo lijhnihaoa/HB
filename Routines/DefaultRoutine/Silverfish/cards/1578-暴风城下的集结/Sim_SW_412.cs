@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//<b>Tradeable</b>Deal $3 damage to an undamaged character.
 		//<b>可交易</b>对一个未受伤的角色造成$3点伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
 			p.minionGetDamageOrHeal(target, dmg);
 		}

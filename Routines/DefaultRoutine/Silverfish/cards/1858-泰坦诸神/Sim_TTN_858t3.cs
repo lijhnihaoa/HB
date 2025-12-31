@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//将所有敌方随从的攻击力和生命值变为2。
 	class Sim_TTN_858t3 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.enemyMinions.ForEach(m =>
             {

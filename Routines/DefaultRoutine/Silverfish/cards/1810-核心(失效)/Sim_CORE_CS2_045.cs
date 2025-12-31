@@ -9,8 +9,8 @@ namespace HREngine.Bots
 
 //    verleiht einem befreundeten charakter +3 angriff in diesem zug.
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetTempBuff(target, 3,0);
 		}
 

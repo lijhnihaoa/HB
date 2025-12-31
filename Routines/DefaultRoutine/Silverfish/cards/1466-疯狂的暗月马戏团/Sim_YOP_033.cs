@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Draw 3 cards. Deal $3 damage to your hero.
 		//抽三张牌。对你的英雄造成$3点伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);

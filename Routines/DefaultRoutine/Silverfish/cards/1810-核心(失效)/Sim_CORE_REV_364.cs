@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_CORE_REV_364 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.REV_360t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
@@ -21,8 +21,6 @@ namespace HREngine.Bots
 				p.minionGetDamageOrHeal(target, dmg);
 				p.callKid(kid, pos, ownplay);
 			}
-
-			//TODO：随即召唤灵种
 		}
 
 

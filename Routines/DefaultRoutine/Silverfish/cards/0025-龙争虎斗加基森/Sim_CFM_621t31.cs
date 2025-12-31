@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	{
 		
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 		    p.drawACard(CardDB.cardNameEN.malchezaarsimp, ownplay, true);
 		    p.drawACard(CardDB.cardIDEnum.CFM_621_m2, ownplay, true);
 		    p.drawACard(CardDB.cardIDEnum.CFM_621_m4, ownplay, true);

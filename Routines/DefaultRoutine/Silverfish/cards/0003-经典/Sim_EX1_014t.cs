@@ -4,15 +4,18 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_014t : SimTemplate //* 香蕉 Bananas
-	{
-		//Give a minion +1/+1.
-		//使一个随从获得+1/+1。
+    class Sim_EX1_014t : SimTemplate //* 香蕉 Bananas
+    {
+        //Give a minion +1/+1.
+        //使一个随从获得+1/+1。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-            p.minionGetBuffed(target, 1, 1);
-		}
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
+            if (target != null)
+            {
+                p.minionGetBuffed(target, 1, 1);
+            }
+        }
 
 
         public override PlayReq[] GetPlayReqs()
@@ -22,5 +25,5 @@ namespace HREngine.Bots
                 new PlayReq(CardDB.ErrorType2.REQ_MINION_TARGET),
             };
         }
-	}
+    }
 }

@@ -13,8 +13,8 @@ namespace HREngine.Bots
 	class Sim_YOG_505 : SimTemplate
 	{
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			List<Minion> Minions = ownplay ? p.ownMinions : p.enemyMinions;
 			if (Minions.Count > 0)
 			{
@@ -27,22 +27,22 @@ namespace HREngine.Bots
 			if (ownplay)
 			{
 				// 增强手牌中的所有随从
-				foreach (Handmanager.Handcard hc in p.owncards)
+				foreach (Handmanager.Handcard handcard in p.owncards)
 				{
-					if (hc.card.type == CardDB.cardtype.MOB)
+					if (handcard.card.type == CardDB.cardtype.MOB)
 					{
-						hc.addattack += 1;
+						handcard.addattack += 1;
 					}
 				}
 
 				// 增强牌库中的所有随从
-				foreach (CardDB.Card card in p.ownDeck)
+/* 				foreach (CardDB.Card card in p.ownDeck)
 				{
 					if (card.type == CardDB.cardtype.MOB)
 					{
 						card.Attack += 1; // 增加攻击力
 					}
-				}
+				} */
 			}
 
 		}

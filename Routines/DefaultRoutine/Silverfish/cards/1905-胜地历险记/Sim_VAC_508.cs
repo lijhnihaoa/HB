@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//仅在下回合，获得两个法力水晶。
 	class Sim_VAC_508 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				p.mana+=2;

@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //<b>Sidequest:</b> Attack twice with your hero. <b>Reward:</b> Add 3 'Claw' spells to your hand.
         //<b>支线任务：</b>用你的英雄攻击两次。<b>奖励：</b>将三张“爪击”法术牌置入你的手牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.sideQuest.Id == CardDB.cardIDEnum.DRG_317)
             {

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give your hero +2_Attack this turn. Gain 2 Armor.
 		//使你的英雄获得2点护甲值，并在本回合中获得+2攻击力。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 2);

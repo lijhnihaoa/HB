@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>发现</b>一张<b>临时</b>的真言术：盾，暗言术：痛或精神控制。
 	class Sim_GIFT_12 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 根据玩家的选择决定要添加的临时卡牌
             CardDB.cardIDEnum selectedCardID = CardDB.cardIDEnum.None;

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//<b>Hero Power</b>Gain 2 Armor.
 		//<b>英雄技能</b>获得2点护甲值。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 2);

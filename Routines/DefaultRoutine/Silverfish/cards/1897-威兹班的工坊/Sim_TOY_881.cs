@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_881 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 检查目标随从是否具有圣盾
             if (target != null && target.divineshild)

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
         //Deal 2 damage to all enemy minions and Freeze them.
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             p.allMinionOfASideGetDamage(!ownplay, dmg);
 			List<Minion> temp = (ownplay) ? p.enemyMinions : p.ownMinions;

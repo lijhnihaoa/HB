@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//<b>Discover</b> a <b>Lackey</b>, Mech, or Dragon.
 		//<b>发现</b>一张<b>跟班</b>牌，机械牌或龙牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardNameEN.unknown, ownplay, true);
         }

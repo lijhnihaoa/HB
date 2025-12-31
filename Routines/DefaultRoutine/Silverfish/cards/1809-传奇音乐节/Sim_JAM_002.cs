@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//随机对一个敌方随从造成$5点伤害。重复此效果，每次伤害减少1点。
 	class Sim_JAM_002 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
 

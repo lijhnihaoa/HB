@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//选择一个随从。如果是敌方随从，将其<b>冻结</b>；如果是友方随从，使其获得<b>法术伤害+1</b>。
 	class Sim_VAC_428 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

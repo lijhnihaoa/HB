@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
         CardDB.Card entree = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAC_533t); // 假设主菜的卡牌ID为 VAC_533t
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = ownplay ? p.enemyMinions.Count : p.ownMinions.Count;
             p.callKid(entree, pos, !ownplay); // 为对手召唤一份0/6的主菜

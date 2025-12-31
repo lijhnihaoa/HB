@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Draw 2 Demonsfrom your deck.
 		//从你的牌库中抽两张恶魔牌。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}

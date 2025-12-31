@@ -10,7 +10,7 @@ namespace HREngine.Bots
 	{
 		
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			target.lifesteal = true;
 			p.drawACard(CardDB.cardIDEnum.DAL_568ts, ownplay, true);

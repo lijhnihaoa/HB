@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//消灭所有攻击力小于或等于3的随从。<b>注能（@）：</b>改为小于或等于6。
 	class Sim_REV_252 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			foreach (Minion m in p.ownMinions.ToArray())
             {

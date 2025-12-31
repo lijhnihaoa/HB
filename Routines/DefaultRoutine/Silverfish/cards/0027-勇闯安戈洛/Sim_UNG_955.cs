@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	{
 		
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmgMain = (ownplay) ? p.getSpellDamageDamage(15) : p.getEnemySpellDamageDamage(15);
             int dmgAdj = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             List<Minion> temp = (target.own) ? p.ownMinions : p.enemyMinions;

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//从扭曲虚空中召唤两个6/6的地狱火。
 	class Sim_TTN_960t3 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             for (int i = 0; i < 2; i++)
             {

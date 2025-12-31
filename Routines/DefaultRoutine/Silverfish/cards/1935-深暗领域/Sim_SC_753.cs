@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$3点伤害。如果本牌消灭了一个随从，则在本局对战中，你的星灵随从牌的法力值消耗减少（1）点。
 	class Sim_SC_753 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

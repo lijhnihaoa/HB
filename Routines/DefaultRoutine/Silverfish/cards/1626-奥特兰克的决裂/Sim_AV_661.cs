@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_661 : SimTemplate //* 征战平原 fieldofstrife
 	{
 		//你的随从获得+1攻击力。持续3回合。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

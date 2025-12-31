@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //消灭一个随从。随机将一张随从牌置入对手的手牌。 
     class Sim_AT_044 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetDestroyed(target);
             p.drawACard(CardDB.cardIDEnum.None, !ownplay, true);

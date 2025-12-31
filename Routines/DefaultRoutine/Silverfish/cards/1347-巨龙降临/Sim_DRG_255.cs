@@ -16,8 +16,8 @@ namespace HREngine.Bots
 			p.callKid(kid, pos, own);
 			p.callKid(kid, pos, own);
 		}
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.DRG_255, questProgress = 0, maxProgress = 3 };
 		}
 	}

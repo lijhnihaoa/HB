@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//在本回合中，使你的英雄获得+2攻击力。抽一张牌。
 	class Sim_Prologue_ChaosStrike : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			var hero = ownplay ? p.ownHero : p.enemyHero;
 			p.minionGetTempBuff(hero, 2, 0);
 			hero.updateReadyness();

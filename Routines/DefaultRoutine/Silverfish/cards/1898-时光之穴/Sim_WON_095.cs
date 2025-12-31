@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//对一个角色造成$3点伤害。如果该角色死亡，抽一张暗影法术牌。
 	class Sim_WON_095 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

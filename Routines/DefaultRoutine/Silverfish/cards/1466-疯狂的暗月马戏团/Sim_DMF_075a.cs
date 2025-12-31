@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Guess that the next card costs more.
 		//猜测下一张牌法力值消耗较大。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.ueberladung += 2;
 		}
 	}

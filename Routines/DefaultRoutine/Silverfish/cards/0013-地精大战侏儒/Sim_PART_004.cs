@@ -4,18 +4,23 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_PART_004 : SimTemplate //* 隐秘力场 Finicky Cloakfield
-//Give a friendly minion <b>Stealth</b> until your next turn.
-//直到你的下个回合，使一个友方随从获得<b>潜行</b>。 
+    //* 隐秘力场 Finicky Cloakfield
+    //Give a friendly minion <b>Stealth</b> until your next turn.
+    //直到你的下个回合，使一个友方随从获得<b>潜行</b>。 
+    class Sim_PART_004 : SimTemplate
     {
 
-        
 
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            target.stealth = true;
-            target.conceal = true;
+            if (target != null)
+            {
+
+                target.stealth = true;
+                target.conceal = true;
+            }
         }
 
 

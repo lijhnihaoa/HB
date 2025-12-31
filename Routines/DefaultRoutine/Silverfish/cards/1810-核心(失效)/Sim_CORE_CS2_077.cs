@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 
 //    zieht 4 karten.
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
             p.drawACard(CardDB.cardIDEnum.None, ownplay);

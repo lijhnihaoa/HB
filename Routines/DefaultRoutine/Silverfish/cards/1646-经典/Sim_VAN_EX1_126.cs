@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Force an enemy minion to deal its damage to the minions next to it.
 		//使一个敌方随从对其相邻的随从造成等同于其攻击力的伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             //attack right neightbor
             if (target.Angr>0)
             {

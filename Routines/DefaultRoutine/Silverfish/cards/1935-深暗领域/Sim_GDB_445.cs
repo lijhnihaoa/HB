@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_GDB_445 : SimTemplate
 	{
 		CardDB.Card eruptionCard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GDB_430); // 爆发卡的ID
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             p.allMinionsGetDamage(dmg);
 

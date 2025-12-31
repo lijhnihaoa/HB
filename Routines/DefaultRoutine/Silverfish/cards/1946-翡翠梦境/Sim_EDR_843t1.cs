@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//抽一张法术牌和一张随从牌。
 	class Sim_EDR_843t1 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			// 抽法术
 			List<CardDB.cardIDEnum> spell = p.CheckTurnDeckForType(CardDB.cardtype.SPELL, 1);
 			CardDB.cardIDEnum spellcard = spell.Count == 1 ? spell[0] : CardDB.cardIDEnum.None;

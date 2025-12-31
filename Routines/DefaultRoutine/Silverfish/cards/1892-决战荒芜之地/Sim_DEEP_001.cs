@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//<b>发现</b>一张野兽牌和一张亡灵牌，交换其属性值。
 	class Sim_DEEP_001 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			CardDB.Card card1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.None);
 			CardDB.Card card2 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.None);
 			if (Hrtprozis.Instance.enchs.Count > 0)

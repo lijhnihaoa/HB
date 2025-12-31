@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Draw a card. That card costs (3) less.
 		//抽一张牌，该牌的法力值消耗减少（3）点。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
         }

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//在本回合中，使你的英雄获得+1攻击力。
 	class Sim_TOY_400t3t : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.minionGetTempBuff(ownplay ? p.ownHero : p.enemyHero, 1, 0);
         }
 		

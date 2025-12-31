@@ -15,8 +15,8 @@ namespace HREngine.Bots
 	{
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TLC_829t);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				// p.minionGetBuffed(target, card.TAG_SCRIPT_DATA_NUM_1, card.TAG_SCRIPT_DATA_NUM_2);

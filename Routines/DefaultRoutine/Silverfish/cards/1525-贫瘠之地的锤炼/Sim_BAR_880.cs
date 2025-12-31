@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//[x]Give a random friendlyminion +3 Attack.<i>(Upgrades when youhave 5 Mana.)</i>
 		//随机使一个友方随从获得+3攻击力。<i>（当你有5点法力值时升级。）</i>
 		// 优先加给不会攻击的
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.evaluatePenality += 16;
 			int cnt = 1, count = 1;
 			if (p.ownMaxMana >= 10)

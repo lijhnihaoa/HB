@@ -13,8 +13,8 @@ namespace HREngine.Bots
 
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DAL_571);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.equipWeapon(weapon, ownplay);
 
             if (target != null)  p.ownWeapon.Angr += 1;

@@ -10,7 +10,7 @@ namespace HREngine.Bots
     {
         
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = 0;
             if (target.own == ownplay) dmg = -1 * ((ownplay) ? p.getSpellHeal(5) : p.getEnemySpellHeal(5));

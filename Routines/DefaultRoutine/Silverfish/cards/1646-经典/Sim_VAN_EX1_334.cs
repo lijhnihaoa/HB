@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Gain control of an enemy minion with 3 or less Attack until end of turn.
 		//直到回合结束，获得一个攻击力小于或等于3的敌方随从的控制权。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             target.shadowmadnessed = true;
             p.shadowmadnessed++;
             p.minionGetControlled(target, ownplay, true);

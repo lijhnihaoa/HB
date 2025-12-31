@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对生命值最低的敌人造成$2点伤害，触发三次。<b>过载：</b>（1）。
 	class Sim_TLC_227 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			for (int i = 0; i < 3; i++)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

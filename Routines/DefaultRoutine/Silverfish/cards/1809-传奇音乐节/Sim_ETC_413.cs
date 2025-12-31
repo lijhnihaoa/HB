@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//在本回合中，使你的英雄获得+2攻击力和<b>免疫</b>，然后攻击每个敌方随从。
 	class Sim_ETC_413 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			Minion hero = ownplay ? p.ownHero : p.enemyHero;
 			List<Minion> minions = ownplay ? p.enemyMinions : p.ownMinions;
 			p.minionGetTempBuff(hero, 2, 0);

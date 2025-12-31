@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SCH_600t3);
 		//Summon a random Demon Companion.
 		//随机召唤一个恶魔伙伴。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.callKid(kid, p.ownMinions.Count, ownplay);
 		}
 

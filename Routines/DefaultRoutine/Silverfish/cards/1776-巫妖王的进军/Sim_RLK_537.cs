@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个随从，随机使你手牌中的一张亡灵牌获得其属性值。
 	class Sim_RLK_537 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetDestroyed(target);

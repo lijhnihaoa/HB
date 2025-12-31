@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]Deal $4 damage toa minion. Any excessdamages both neighbors.
         //对一个随从造成$4点伤害，相邻的随从均会受到超过其生命值的伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(4);
             p.minionGetDamageOrHeal(target, dmg);

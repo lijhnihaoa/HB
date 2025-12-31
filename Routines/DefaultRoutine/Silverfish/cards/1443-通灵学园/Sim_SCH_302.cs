@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give a minion <b>Divine Shield</b>, then summon a_1/1 copy of it.
 		//使一个随从获得<b>圣盾</b>，并召唤一个1/1的复制。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			target.divineshild = true;
 			List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
 			int pos = temp.Count;

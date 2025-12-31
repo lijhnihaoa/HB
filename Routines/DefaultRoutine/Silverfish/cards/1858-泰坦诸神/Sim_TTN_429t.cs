@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//选择一个非<b>泰坦</b>随从，召唤一个具有+2/+2的复制。
 	class Sim_TTN_429t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (target != null)
             {
                 target.Angr += 2;

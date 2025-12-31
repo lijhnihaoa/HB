@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Give your Totems +2_Health.
 		//使你的图腾获得+2生命值。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
             foreach (Minion t in temp)

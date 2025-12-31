@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
         // Destroy a random enemy minion.
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             Minion m = p.searchRandomMinion(ownplay ? p.enemyMinions : p.ownMinions, searchmode.searchLowestHP);
             if (m != null) p.minionGetDestroyed(m);
 		}

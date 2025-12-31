@@ -13,7 +13,7 @@ namespace HREngine.Bots
 
         CardDB.Card waepon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_834w);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(waepon, ownplay);
         }

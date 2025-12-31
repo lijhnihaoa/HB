@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个随从的属性值变为8/8。使其获得<b>冲锋</b>。
 	class Sim_DINO_403 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionSetAngrToX(target, 8);

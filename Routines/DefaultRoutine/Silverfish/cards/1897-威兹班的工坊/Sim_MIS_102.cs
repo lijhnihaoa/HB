@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_MIS_102 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 获取玩家本局对战中使用过的友方亡语牌列表
             List<CardDB.cardIDEnum> playedDeathrattleCards = ownplay ? p.ownPlayedDeathrattleCards : p.enemyPlayedDeathrattleCards;

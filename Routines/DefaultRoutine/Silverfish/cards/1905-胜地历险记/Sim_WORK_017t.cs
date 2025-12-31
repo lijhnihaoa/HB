@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>沉默</b>一个随从并使其获得-2/-2。<i>（每回合翻面。）</i>
 	class Sim_WORK_017t : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetSilenced(target);

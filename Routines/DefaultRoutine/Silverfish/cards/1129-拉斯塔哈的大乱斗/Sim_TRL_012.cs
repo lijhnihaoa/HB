@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_050);//Searing Totem
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             p.minionGetDamageOrHeal(target, dmg);
 			if (!target.isHero && dmg > target.Hp )//超杀

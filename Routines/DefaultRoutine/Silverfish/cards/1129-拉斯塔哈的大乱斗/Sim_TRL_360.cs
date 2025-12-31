@@ -10,7 +10,7 @@ namespace HREngine.Bots
     class Sim_TRL_360 : SimTemplate
     {
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TRL_360);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(weapon, ownplay);
         }

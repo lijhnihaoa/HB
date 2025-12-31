@@ -2,7 +2,7 @@ namespace HREngine.Bots
 {
 	class Sim_HERO_06bp2 : SimTemplate //* 恐怖变形 Dire Shapeshift
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

@@ -13,7 +13,7 @@ namespace HREngine.Bots
     {
         private static Random rng = new Random(); // 创建一个静态的随机数生成器
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 确保目标是一个友方机械随从
             if (target != null && target.own == ownplay && (TAG_RACE)target.handcard.card.race == TAG_RACE.MECHANICAL)

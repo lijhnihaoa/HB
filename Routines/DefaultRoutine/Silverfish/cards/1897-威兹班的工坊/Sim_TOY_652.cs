@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_TOY_652 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 处理微缩效果，假设微缩效果是抽一张衍生物卡牌
             p.drawACard(CardDB.cardIDEnum.TOY_652t, ownplay, true); // 替换为实际的衍生物卡牌 ID

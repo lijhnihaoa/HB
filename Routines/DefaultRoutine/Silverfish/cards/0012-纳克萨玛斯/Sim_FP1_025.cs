@@ -11,8 +11,8 @@ namespace HREngine.Bots
 
 
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             bool own = target.own;
             int place = target.zonepos;
             CardDB.Card d = target.handcard.card;

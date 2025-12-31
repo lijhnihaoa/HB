@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$2点伤害。随机召唤一个法力值消耗为（3）的随从。每回合切换。
 	class Sim_WW_0700p6 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getHeroPowerDamage(2) : p.getEnemyHeroPowerDamage(2);

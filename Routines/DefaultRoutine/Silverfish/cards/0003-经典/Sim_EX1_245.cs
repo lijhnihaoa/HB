@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//<b>Silence</b> a minion, then deal $1 damage to it.
 		//<b>沉默</b>一个随从，然后对其造成$1点伤害。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetSilenced(target);
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             p.minionGetDamageOrHeal(target, dmg);

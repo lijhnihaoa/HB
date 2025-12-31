@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//随机使你手牌中的2张随从牌获得+4/+4。<i>（每回合切换。）</i>
 	class Sim_ETC_427t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (ownplay) {
 				int i = 0;

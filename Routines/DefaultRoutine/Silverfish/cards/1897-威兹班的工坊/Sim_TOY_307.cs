@@ -21,7 +21,7 @@ namespace HREngine.Bots
             }
         }
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 处理微缩效果：抽一张衍生物牌
             CardDB.Card miniaturizedCard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TOY_307t); // 假设衍生物牌ID为 TOY_307t

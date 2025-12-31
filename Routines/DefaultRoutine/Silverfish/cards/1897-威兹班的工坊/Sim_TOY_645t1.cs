@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//抽三张牌。
 	class Sim_TOY_645t1 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 抽三张牌
             for (int i = 0; i < 3; i++)

@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $4 damage. If you have 12 or less Health, deal $6 instead.
 		//造成$4点伤害；如果你的生命值小于或等于12点，则改为造成$6点伤害。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = 0;
 
             if (ownplay)

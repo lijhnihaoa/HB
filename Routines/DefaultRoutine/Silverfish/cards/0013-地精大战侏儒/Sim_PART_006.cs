@@ -4,15 +4,17 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_PART_006 : SimTemplate //* 形体改造仪 Reversing Switch
-//Swap a minion's Attack and Health.
-//使一个随从的攻击力和生命值互换。 
+    //* 形体改造仪 Reversing Switch
+    //Swap a minion's Attack and Health.
+    //使一个随从的攻击力和生命值互换。 
+    class Sim_PART_006 : SimTemplate
     {
-        
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            p.minionSwapAngrAndHP(target);
+            if (target != null)
+                p.minionSwapAngrAndHP(target);
         }
 
         public override PlayReq[] GetPlayReqs()

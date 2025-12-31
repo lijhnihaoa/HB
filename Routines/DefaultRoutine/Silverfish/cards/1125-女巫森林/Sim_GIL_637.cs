@@ -11,8 +11,8 @@ namespace HREngine.Bots
 
 
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 5);

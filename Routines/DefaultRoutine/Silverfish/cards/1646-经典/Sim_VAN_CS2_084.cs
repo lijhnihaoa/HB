@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Change a minion's Health to 1.
 		//使一个随从的生命值变为1。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionSetLifetoX(target, 1);
 		}
 

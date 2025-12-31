@@ -13,7 +13,7 @@ namespace HREngine.Bots
         CardDB.Card Turtle = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DED_001b);
         CardDB.Card SharkTurtle = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DED_001c);
 
-        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
+        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.ownFandralStaghelm > 0)
             {

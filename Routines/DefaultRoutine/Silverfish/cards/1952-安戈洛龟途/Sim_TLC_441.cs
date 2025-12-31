@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个友方随从和具有相同类型的其他友方随从获得+1/+2。
 	class Sim_TLC_441 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				List<CardDB.Race> races = target.handcard.card.GetRaces();

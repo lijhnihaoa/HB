@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>抉择：</b>抽两张牌；或者恢复#5点生命值。
     class Sim_NEW1_008 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
+        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
             {

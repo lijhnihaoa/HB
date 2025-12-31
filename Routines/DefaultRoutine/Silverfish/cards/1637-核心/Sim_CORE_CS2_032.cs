@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 
 //    fÃ¼gt allen feindlichen dienern $4 schaden zu.
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             p.allMinionOfASideGetDamage(!ownplay, dmg);
 		}

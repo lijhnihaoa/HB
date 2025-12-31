@@ -9,7 +9,7 @@ namespace HREngine.Bots
 
     class Sim_CORE_CS2_074 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//<b>发现</b>一张<b>亡语</b>随从牌，其法力值消耗减少（3）点。
 	class Sim_TTN_862t1 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, true); // 发现一张亡语随从牌
             p.owncards.Skip(Math.Max(0, p.owncards.Count - 1)).ToList().ForEach(handCard =>
             {

@@ -8,17 +8,17 @@ namespace HREngine.Bots
     {
         //Deal $3 damage.Give a random Beast in_your hand +3/+3.
         //造成$3点伤害。随机使你手牌中的一张野兽牌获得+3/+3。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {
                 int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
                 p.minionGetDamageOrHeal(target, dmg);
-                Handmanager.Handcard hc = p.searchRandomMinionInHand(p.owncards, searchmode.searchLowestCost, GAME_TAGs.CARDRACE, TAG_RACE.PET);
-                if (hc != null)
+                Handmanager.Handcard handcard = p.searchRandomMinionInHand(p.owncards, searchmode.searchLowestCost, GAME_TAGs.CARDRACE, TAG_RACE.PET);
+                if (handcard != null)
                 {
-                    hc.addattack += 2;
-                    hc.addHp += 2;
+                    handcard.addattack += 2;
+                    handcard.addHp += 2;
                     p.anzOwnExtraAngrHp += 4;
                 }
             }

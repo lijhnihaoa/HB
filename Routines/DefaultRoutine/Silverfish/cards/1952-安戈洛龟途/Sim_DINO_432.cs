@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个随从的属性值变为5/4并使其获得<b>潜行</b>。抽两张牌。
 	class Sim_DINO_432 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionSetAngrToX(target, 5);

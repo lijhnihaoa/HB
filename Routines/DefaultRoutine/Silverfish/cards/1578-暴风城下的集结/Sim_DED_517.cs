@@ -10,7 +10,7 @@ namespace HREngine.Bots
         //Deal 8 damage to an enemy minion. Summon a Remnant with stats equal to the excess damage.
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DED_517t);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(8) : p.getEnemySpellDamageDamage(8);
             p.minionGetDamageOrHeal(target, dmg);

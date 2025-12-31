@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>抉择：</b>对所有随从造成$1点伤害；或者使一个受伤的随从获得+2/+2。
 	class Sim_EDR_570 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);

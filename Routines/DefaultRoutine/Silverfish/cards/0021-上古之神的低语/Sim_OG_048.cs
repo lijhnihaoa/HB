@@ -10,7 +10,7 @@ namespace HREngine.Bots
 	{
 		
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 2, 2);
 			if ((TAG_RACE)target.handcard.card.race == TAG_RACE.PET) p.drawACard(CardDB.cardIDEnum.None, ownplay);

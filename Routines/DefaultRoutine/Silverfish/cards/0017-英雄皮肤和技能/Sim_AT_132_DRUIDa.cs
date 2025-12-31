@@ -8,7 +8,7 @@ namespace HREngine.Bots
 //<b>Hero Power</b>+2 Attack this turn.+2 Armor.
 //<b>英雄技能</b>本回合+2攻击力。+2护甲值。 
 	{
-			public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+			public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

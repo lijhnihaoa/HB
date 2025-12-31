@@ -9,7 +9,7 @@ namespace HREngine.Bots
                                     //造成1点伤害。使你的武器获得+3攻击力。&lt;i&gt;（每回合切换。）&lt;/i&gt;
                                     //Deal 1 damage. Give your weapon +3 Attack.&lt;i&gt;(Swaps each turn.)&lt;/i&gt;
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 如果目标存在
             if (target != null)

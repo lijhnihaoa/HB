@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//将所有其他随从送入扭曲虚空。
 	class Sim_TTN_960t2 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.ownMinions.Where(m => m.handcard.card.cardIDenum != CardDB.cardIDEnum.TTN_960).ToList().ForEach(m =>
             {
                 p.RemoveMinionWithoutDeathrattle(m); // 送入扭曲虚空

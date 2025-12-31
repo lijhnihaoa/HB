@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //[x]After a friendly minion loses<b>Divine Shield</b>, give minionsin your hand  +1/+1.Lose 1 Durability.
         //在一个友方随从失去<b>圣盾</b>后，使你手牌中的随从牌获得+1/+1。失去1点耐久度。
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SW_048);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(weapon, ownplay);
         }

@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//在本回合中，获得一个法力水晶。
 	class Sim_LOE_COIN : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 本回合增加一个临时的法力水晶
             if (ownplay)

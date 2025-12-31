@@ -10,7 +10,7 @@ namespace HREngine.Bots
         //<b>嘲讽</b>
         CardDB.Card Turtle = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DED_001bt);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

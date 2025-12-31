@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $1 damage. Summon a 1/1 Hyena with <b>Rush</b>.
 		//造成$1点伤害。召唤一只1/1并具有<b>突袭</b>的土狼。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BAR_035t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = ownplay ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);

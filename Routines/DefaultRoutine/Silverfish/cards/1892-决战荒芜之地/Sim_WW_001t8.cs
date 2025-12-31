@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从及其相邻随从获得+1/+2。
 	class Sim_WW_001t8 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 1, 2);

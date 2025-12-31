@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	//造成@点伤害。
 	class Sim_TTN_075t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetDamageOrHeal(target, 5);
         }

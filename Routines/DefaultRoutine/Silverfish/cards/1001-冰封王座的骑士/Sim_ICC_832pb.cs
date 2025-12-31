@@ -10,7 +10,7 @@ namespace HREngine.Bots
     {
         
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay) p.minionGetTempBuff(p.ownHero, 3, 0);
             else p.minionGetTempBuff(p.enemyHero, 3, 0);

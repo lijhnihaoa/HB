@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>发现</b>两张来自过去的奥术法术牌，其法力值消耗减少（2）点。
 	class Sim_TIME_857 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
 			p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
 

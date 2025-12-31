@@ -15,7 +15,7 @@ namespace HREngine.Bots
         CardDB.Card kid3 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_829t4); 
         CardDB.Card kid4 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_829t5); 
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             p.callKid(kid1, pos, ownplay, false);

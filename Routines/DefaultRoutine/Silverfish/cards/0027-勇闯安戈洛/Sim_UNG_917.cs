@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //你的英雄技能变成“使一个野兽获得+3/+3”。 
     class Sim_UNG_917 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.setNewHeroPower(CardDB.cardIDEnum.UNG_917t1, ownplay);
         }

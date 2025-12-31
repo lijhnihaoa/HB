@@ -10,16 +10,16 @@ namespace HREngine.Bots
 	{
 		
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {
-                foreach (Handmanager.Handcard hc in p.owncards)
+                foreach (Handmanager.Handcard handcard in p.owncards)
                 {
-					if (hc.card.type == CardDB.cardtype.MOB)
+					if (handcard.card.type == CardDB.cardtype.MOB)
 					{
-                        hc.addattack += 2;;
-                        hc.addHp += 2;
+                        handcard.addattack += 2;;
+                        handcard.addHp += 2;
                         p.anzOwnExtraAngrHp += 4;
 					}   
                 }                

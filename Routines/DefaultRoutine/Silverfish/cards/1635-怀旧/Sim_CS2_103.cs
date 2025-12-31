@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Give a friendly minion +2 Attack and <b>Charge</b>.
         //使一个友方随从获得+2攻击力和<b>冲锋</b>。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 2, 0);
             p.minionGetCharge(target);

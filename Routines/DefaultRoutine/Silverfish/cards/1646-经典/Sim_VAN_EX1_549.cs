@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give a friendly Beast +2 Attack and <b>Immune</b> this turn.
 		//在本回合中，使一个友方野兽获得+2攻击力和<b>免疫</b>。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetTempBuff(target, 2, 0);
             target.immune = true;
 		}

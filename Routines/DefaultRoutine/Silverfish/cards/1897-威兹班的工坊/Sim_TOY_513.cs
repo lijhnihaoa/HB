@@ -26,7 +26,7 @@ namespace HREngine.Bots
             }
         }
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 实现微缩效果：抽取一张衍生物卡牌
             p.drawACard(CardDB.cardIDEnum.TOY_513t, ownplay, true);

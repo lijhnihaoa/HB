@@ -10,7 +10,7 @@ namespace HREngine.Bots
     class Sim_REV_307 : SimTemplate
     {
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.REV_336t2);//Treant
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

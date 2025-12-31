@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Destroy a minion with 5_or more Attack.
 		//消灭一个攻击力大于或等于5的随从。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetDestroyed(target);
 		}
 

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//在本回合中，使一个随从获得<b>免疫</b>。
 	class Sim_MAW_025b : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 					target.immune = true;

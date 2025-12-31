@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//随机召唤一个法力值消耗为（1）的随从并使其获得<b>嘲讽</b>。<b>灌注</b>你的英雄技能。
 	class Sim_EDR_264 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			CardDB.Card kid = p.getRandomCardForManaMinion(1);
 			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
 			

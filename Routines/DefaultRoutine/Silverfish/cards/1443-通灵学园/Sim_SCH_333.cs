@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //<b>Discover</b> a spell. Your next one costs (1) less.
         //<b>发现</b>一张法术牌。你的下一张法术牌法力值消耗减少（1）点。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.None, true, true);
             p.ownHero.enchs.Add(CardDB.cardIDEnum.SCH_333e);

@@ -4,16 +4,18 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_DREAM_04 : SimTemplate //* 梦境 Dream
+    //* 梦境 Dream
+    //Return an enemy minion to your opponent's hand.
+    //将一个随从移回其拥有者的手牌。
+    class Sim_DREAM_04 : SimTemplate
     {
-        //Return an enemy minion to your opponent's hand.
-        //将一个敌方随从移回你对手的手牌。
 
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-            p.minionReturnToHand(target, target.own, 0);
-		}
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
+            if (target != null)
+                p.minionReturnToHand(target, target.own, 0);
+        }
 
 
 
@@ -25,5 +27,5 @@ namespace HREngine.Bots
                 new PlayReq(CardDB.ErrorType2.REQ_ENEMY_TARGET),
             };
         }
-	}
+    }
 }

@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //造成$3点伤害。消耗3具<b>尸体</b>，在你的回合结束时将本牌移回你的手牌。
     class Sim_VAC_427 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
 

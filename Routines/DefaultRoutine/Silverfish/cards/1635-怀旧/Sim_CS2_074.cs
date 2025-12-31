@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使你的武器获得+2攻击力。
     class Sim_CS2_074 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

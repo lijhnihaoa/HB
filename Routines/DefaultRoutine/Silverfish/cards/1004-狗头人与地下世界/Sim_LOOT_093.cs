@@ -6,8 +6,8 @@ namespace HREngine.Bots
 {
     class Sim_LOOT_093 : SimTemplate //* Argent Watchman
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int cnt = 3;
 			//string str = "我寻思出战斗号角应该能出: ";
 			// 遍历卡组

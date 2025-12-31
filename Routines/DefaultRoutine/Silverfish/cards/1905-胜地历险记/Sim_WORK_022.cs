@@ -11,10 +11,11 @@ namespace HREngine.Bots
 	//在本回合中，使你的英雄获得+3攻击力和“同时对相邻随从造成伤害”。
 	class Sim_WORK_022 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
 		{
-			p.minionGetTempBuff(ownplay ? p.ownHero : p.enemyHero, 3, 0);
-			//TODO：还没想好怎么写狂战斧效果
+			Minion hero = ownplay ? p.ownHero : p.enemyHero;
+			p.minionGetTempBuff(hero, 3, 0);
+			hero.enchs.Add(CardDB.cardIDEnum.WORK_022e);
 		}
 
 	}

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个未受伤的角色造成$5点伤害。如果你正在构筑<b>星舰</b>，则法力值消耗为（1）点。
 	class Sim_GDB_465 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$2点伤害。如果你在此牌在你手中时使用过纳迦牌，则法力值消耗为（0）点。
 	class Sim_TSC_058 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

@@ -9,8 +9,8 @@ namespace HREngine.Bots
 //<b>英雄技能</b>获得4点护甲值。 
 	{
 		
-				public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+				public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 4);

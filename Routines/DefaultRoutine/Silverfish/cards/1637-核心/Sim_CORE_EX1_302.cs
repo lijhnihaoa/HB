@@ -9,8 +9,8 @@ namespace HREngine.Bots
 
 //    fÃ¼gt einem diener $1 schaden zu. zieht eine karte, wenn er dadurch vernichtet wird.
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             if (dmg >= target.Hp && !target.divineshild && !target.immune)
             {

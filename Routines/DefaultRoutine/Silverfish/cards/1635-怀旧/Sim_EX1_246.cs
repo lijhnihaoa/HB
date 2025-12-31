@@ -11,8 +11,8 @@ namespace HREngine.Bots
         CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.hexfrog);
 //    verwandelt einen diener in einen frosch (0/1) mit spott/.
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionTransform(target, card);
 		}
 

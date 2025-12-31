@@ -9,8 +9,8 @@ namespace HREngine.Bots
 	//抽一张牌。 
 	class Sim_AV_205pb : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardNameEN.unknown, ownplay);
 		}
 

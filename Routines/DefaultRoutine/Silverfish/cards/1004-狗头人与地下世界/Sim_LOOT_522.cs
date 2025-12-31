@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	{
 
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			List<Minion> minions = ownplay ? p.enemyMinions : p.ownMinions;
 			int nums = minions.Count;
 			switch (nums)

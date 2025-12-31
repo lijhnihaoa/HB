@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//获得+1/+2。抽一张牌。
 	class Sim_TTN_721t1 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             foreach (Minion m in p.ownMinions)
             {

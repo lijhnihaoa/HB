@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Destroy a friendly minion and deal its Attack damage to all enemy minions.
 		//消灭一个友方随从，对所有敌方随从造成等同于其攻击力的伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int damage1 = (ownplay) ? p.getSpellDamageDamage(target.Angr) : p.getEnemySpellDamageDamage(target.Angr);
 
             p.minionGetDestroyed(target);

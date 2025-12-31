@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Double a minion's Attack.
 		//使一个随从的攻击力翻倍。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetBuffed(target, target.Angr, 0);
 		}
 

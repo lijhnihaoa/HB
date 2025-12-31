@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>可交易</b>使一个随从获得+1/+1。每有一个敌方随从，重复一次。
 	class Sim_ONY_027 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)// && !target.immune)
             {
 				p.minionGetBuffed(target, 1, 1);

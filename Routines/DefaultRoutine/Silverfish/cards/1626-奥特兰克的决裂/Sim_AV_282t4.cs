@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//召唤一个9/9的可以<b>冻结</b>攻击目标的冰雪巨怪。
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AV_282t5);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.callKid(kid, target.zonepos, true);
         }

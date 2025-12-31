@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Deal $3 damage to all enemy minions.
 		//对所有敌方随从造成$3点伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             p.allMinionOfASideGetDamage(!ownplay, dmg);

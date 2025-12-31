@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//[x]<b>Hero Power</b>Deal $4 damage.<i>(Two uses left!)</i>
 		//<b>英雄技能</b>造成$4点伤害。<i>（还可使用两次！）</i>
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getHeroPowerDamage(4) : p.getEnemyHeroPowerDamage(4);
 			p.minionGetDamageOrHeal(target, dmg);
 			p.setNewHeroPower(CardDB.cardIDEnum.BT_429p2, ownplay);

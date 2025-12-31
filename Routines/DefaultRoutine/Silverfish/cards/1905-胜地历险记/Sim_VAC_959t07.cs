@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//造成$6点伤害。<i>（仅可对随从！）</i>
 	class Sim_VAC_959t07 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = ownplay ? p.getSpellDamageDamage(6) : p.getEnemySpellDamageDamage(6);
 

@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//<b>Choose One -</b>Deal $5 damage to a minion; or $2 damage to all enemy minions.
 		//<b>抉择：</b>对一个随从造成$5点伤害；或者对所有敌方随从造成$2点伤害。
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (choice == 1 || (target != null && p.ownFandralStaghelm > 0 && ownplay))
             {
                 int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);

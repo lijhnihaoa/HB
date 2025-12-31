@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //<b>Hero Power</b>Equip a 1/2 Dagger.
         //<b>英雄技能</b>装备一把1/2的匕首。
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_082);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(weapon, ownplay);
         }

@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //Give your weapon +2_Attack.
         //使你的武器获得+2攻击力。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_MIS_705 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 简化后的逻辑：直接抽取5张带有嘲讽效果的临时卡牌
             for (int i = 0; i < 5; i++)

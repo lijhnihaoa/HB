@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Add a random spell to your hand.
 		//随机将一张法术牌置入你的手牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardNameEN.frostbolt, ownplay, true);
 		}
 	}

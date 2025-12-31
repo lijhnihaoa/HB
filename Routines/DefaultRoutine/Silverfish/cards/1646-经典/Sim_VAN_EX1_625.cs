@@ -10,7 +10,7 @@ namespace HREngine.Bots
     {
         
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             CardDB.cardIDEnum newHeroPower = CardDB.cardIDEnum.EX1_625t; 
             if ((ownplay ? p.ownHeroAblility.card.cardIDenum : p.enemyHeroAblility.card.cardIDenum) == CardDB.cardIDEnum.EX1_625t) newHeroPower = CardDB.cardIDEnum.EX1_625t2; 

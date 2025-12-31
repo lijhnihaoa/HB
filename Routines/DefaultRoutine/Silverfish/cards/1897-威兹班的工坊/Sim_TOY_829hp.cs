@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$3点伤害，威力<i>无穷！</i><b>发现</b>一张亡灵牌，充当<i>仆从！</i>
 	class Sim_TOY_829hp : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getHeroPowerDamage(3) : p.getEnemyHeroPowerDamage(3);

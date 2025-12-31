@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 
 //    der nÃ¤chste zauber, den ihr in diesem zug wirkt, kostet (3) weniger.
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.playedPreparation = true;

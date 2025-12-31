@@ -7,7 +7,7 @@ namespace HREngine.Bots
     class Sim_AV_266 : SimTemplate //* 冷风 windchill
     {
         //<b>冻结</b>一个随从。抽一张牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

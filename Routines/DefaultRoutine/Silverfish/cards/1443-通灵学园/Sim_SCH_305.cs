@@ -12,7 +12,7 @@ namespace HREngine.Bots
         private List<Handmanager.Handcard> originalHand = new List<Handmanager.Handcard>();
         private List<Handmanager.Handcard> newHand = new List<Handmanager.Handcard>();
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 保存当前手牌
             originalHand = new List<Handmanager.Handcard>(p.owncards);

@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //<b>Discover</b> a spell from your deck.
         //从你的牌库中<b>发现</b>一张法术牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int cnt = 3;
             foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in p.prozis.turnDeck)

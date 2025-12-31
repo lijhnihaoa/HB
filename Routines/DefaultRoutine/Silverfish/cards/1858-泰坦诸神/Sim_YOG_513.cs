@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个友方亡灵获得+2/+2。消耗5份<b>残骸</b>，召唤一个它的复制。
 	class Sim_YOG_513 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			// 如果目标是友方亡灵
 			if (target != null && target.own &&  (CardDB.Race)target.handcard.card.race == CardDB.Race.UNDEAD)
 			{

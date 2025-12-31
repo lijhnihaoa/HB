@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个随从获得+1/+2和<b>法术伤害+1</b>。当该随从死亡时，召唤一只灵魂迅猛龙。
 	class Sim_ONY_012 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (target != null)
 			{

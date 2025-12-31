@@ -11,18 +11,18 @@ namespace HREngine.Bots
 
         
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             Handmanager.Handcard c = null;
             int sum = 10000;
-            foreach (Handmanager.Handcard hc in p.owncards)
+            foreach (Handmanager.Handcard handcard in p.owncards)
             {
-                if (hc.card.type == CardDB.cardtype.MOB)
+                if (handcard.card.type == CardDB.cardtype.MOB)
                 {
-                    int s = hc.card.Health + hc.card.Attack + ((hc.card.tank) ? 1 : 0) + ((hc.card.Shield) ? 1 : 0);
+                    int s = handcard.card.Health + handcard.card.Attack + ((handcard.card.tank) ? 1 : 0) + ((handcard.card.Shield) ? 1 : 0);
                     if (s < sum)
                     {
-                        c = hc;
+                        c = handcard;
                         sum = s;
                     }
                 }

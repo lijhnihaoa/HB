@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_ETC_373 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ETC_373t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
 			{
 				int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;

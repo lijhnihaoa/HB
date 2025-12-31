@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Summon two Beasts that cost (5) or less from your deck. Give_them <b>Rush</b>.
 		//从你的牌库中召唤两只法力值消耗小于或等于（5）点的野兽，并使其获得<b>突袭</b>。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int cnt = 2;
 			// 遍历卡组
 			foreach(KeyValuePair<CardDB.cardIDEnum, int>kvp in p.prozis.turnDeck )

@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_833t);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetTempBuff(ownplay ? p.ownHero : p.enemyHero, 3, 0);
 

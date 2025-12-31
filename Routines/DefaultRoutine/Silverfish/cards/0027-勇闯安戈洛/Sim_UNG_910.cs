@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //对一个随从造成$2点伤害，并对其相邻的随从造成$1点伤害。 
     class Sim_UNG_910 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

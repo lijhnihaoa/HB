@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		// Hero Power: Put a random spell from your opponent's class into your hand.
 		
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             TAG_CLASS opponentHeroClass = ownplay ? p.enemyHeroStartClass : p.ownHeroStartClass;
 
             switch (opponentHeroClass)

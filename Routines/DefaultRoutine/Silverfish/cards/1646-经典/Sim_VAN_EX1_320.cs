@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $2 damage to_a character. If that kills it, summon a random Demon.
 		//对一个角色造成$2点伤害。如果“末日灾祸”消灭该角色，随机召唤一个恶魔。        
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAN_CS2_059);//bloodimp
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

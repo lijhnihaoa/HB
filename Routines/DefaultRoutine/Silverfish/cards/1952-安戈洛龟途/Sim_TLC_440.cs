@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$4点伤害并抽一张牌。<b>延系：</b>再抽一张。
 	class Sim_TLC_440 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);

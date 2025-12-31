@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个敌人造成$2点伤害。如果你在此牌在你手中时使用过纳迦牌，则再选择一个目标。
 	class Sim_TSC_023 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

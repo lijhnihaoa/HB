@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个敌方随从。<b>延系：</b>对所有随从造成$2点伤害。
 	class Sim_TLC_447 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetDestroyed(target);

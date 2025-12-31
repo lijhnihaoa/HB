@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Destroy a damaged enemy minion.
 		//消灭一个受伤的敌方随从。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetDestroyed(target);
 		}
 

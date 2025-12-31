@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个随从获得+3/+5。你手牌中每有一张法术牌，本牌的法力值消耗便减少（1）点。
 	class Sim_BAR_308 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

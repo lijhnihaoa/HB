@@ -10,7 +10,7 @@ namespace HREngine.Bots
         //召唤两只1/2并具有<b>嘲讽</b>的龟。
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BAR_533t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 

@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个随从获得<b>突袭</b>，<b>风怒</b>，<b>圣盾</b>，<b>吸血</b>，<b>剧毒</b>，<b>嘲讽</b>以及<b>潜行</b>。
 	class Sim_VAC_464t15 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$2点伤害并获得2点护甲值。你的下一次<b>星舰</b>发射的法力值消耗减少（2）点。
 	class Sim_SC_411 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

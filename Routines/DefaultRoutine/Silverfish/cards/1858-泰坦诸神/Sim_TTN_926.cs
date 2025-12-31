@@ -13,8 +13,8 @@ namespace HREngine.Bots
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_950t2);
 		CardDB.Card kid1 = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_903t4);
-		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
 			{
 				p.callKid(kid, own.zonepos, own.own);

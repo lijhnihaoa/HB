@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_213 : SimTemplate //* 活力涌现 vitalitysurge
 	{
 		//抽一张随从牌。为你的英雄恢复等同于其法力值消耗的生命值。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 遍历卡组
             foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in p.prozis.turnDeck)

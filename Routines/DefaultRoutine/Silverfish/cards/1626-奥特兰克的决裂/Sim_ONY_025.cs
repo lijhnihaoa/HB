@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>可交易</b>使一个随从获得+2/+1和<b>突袭</b>。
 	class Sim_ONY_025 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 2, 1);

@@ -11,7 +11,7 @@ namespace HREngine.Bots
     {
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_538t); //hound
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             int anz = (ownplay) ? p.enemyMinions.Count : p.ownMinions.Count;

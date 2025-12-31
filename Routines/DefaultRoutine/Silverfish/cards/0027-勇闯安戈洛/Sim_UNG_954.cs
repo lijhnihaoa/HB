@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>任务：</b>对你的随从施放5个法术。<b>奖励：</b>嘉沃顿。
     class Sim_UNG_954 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.UNG_954, questProgress = 0, maxProgress = 5 };

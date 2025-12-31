@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_GDB_113 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GDB_113t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			Minion hero = ownplay ? p.ownHero : p.enemyHero;
 			int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 

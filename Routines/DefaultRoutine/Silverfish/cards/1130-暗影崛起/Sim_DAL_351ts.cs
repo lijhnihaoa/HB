@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使你的所有随从获得+1/+1。 
     class Sim_DAL_351ts : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.ownMinions.Count > 4) p.evaluatePenality -= 20;
             p.allMinionOfASideGetBuffed(ownplay, 1, 1);

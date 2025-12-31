@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //After your Hero attacks a minion, your minions attack it too.
         //在你的英雄攻击一个随从后，你的所有随从也会攻击该随从。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SCH_279), true);
         }

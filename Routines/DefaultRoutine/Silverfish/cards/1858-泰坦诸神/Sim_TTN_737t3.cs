@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//你施放的下一个法术法力值消耗减少（3）点且拥有<b>法术伤害+3</b>。
 	class Sim_TTN_737t3 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.None, true, true);
         }

@@ -153,10 +153,24 @@ namespace HREngine.Bots
         /// 打出卡牌时的效果
         /// </summary>
         /// <param name="p">场面</param>
-        /// <param name="ownplay">是否自己打出</param>
-        /// <param name="target">选定目标</param>
-        /// <param name="choice">选项（抉择、发现等）</param>
-        public virtual void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        /// <param name="ownplay">指示卡牌是否由己方打出。true 表示己方打出，false 表示对方打出。</param>
+        /// <param name="target">选定的目标随从。如果卡牌不需要目标，则此值可能为 null。</param>
+        /// <param name="choice">在有多个选择的情况下使用，例如抉择或发现。表示玩家的选择。</</param>
+        /// <param name="hc">表示打出的具体手牌信息，可以包含法力值、卡牌类型等信息。</param>
+        public virtual void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
+            return;
+        }
+
+        /// <summary>
+        /// 打出卡牌时的效果（随从牌）
+        /// </summary>
+        /// <param name="p">场面，包含当前游戏状态的信息。</param>
+        /// <param name="own">打出的随从</param>
+        /// <param name="target">选定的目标随从。如果卡牌不需要目标，则此值可能为 null。</param>
+        /// <param name="choice">在有多个选择的情况下使用，例如抉择或发现。表示玩家的选择。</param>
+        /// <param name="hc">表示打出的具体手牌信息，可以包含法力值、卡牌类型等信息。</param>
+        public virtual void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
             return;
         }
@@ -172,10 +186,10 @@ namespace HREngine.Bots
         /// <param name="choice">在有多个选择的情况下使用，例如抉择或发现。表示玩家的选择。</param>
         /// <param name="hc">表示打出的具体手牌信息，可以包含法力值、卡牌类型等信息。</param>
 
-        public virtual void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
-        {
-            return;
-        }
+        //public virtual void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        //{
+        //    return;
+        //}
 
         /// <summary>
         /// 流放效果（法术牌）
@@ -196,17 +210,6 @@ namespace HREngine.Bots
             return;
         }
 
-        /// <summary>
-        /// 打出卡牌时的效果（随从牌）
-        /// </summary>
-        /// <param name="p">场面</param>
-        /// <param name="own">打出的随从</param>
-        /// <param name="target">选定目标</param>
-        /// <param name="choice">选项（抉择、发现等）</param>
-        public virtual void onCardPlay(Playfield p, Minion own, Minion target, int choice)
-        {
-            return;
-        }
 
         /// <summary>
         /// 弃牌时触发
@@ -446,7 +449,7 @@ namespace HREngine.Bots
         /// <param name="defender"></param>
         public virtual void AfterAttacked(Playfield p, Minion defender, Minion attacker)
         {
-            return; 
+            return;
         }
         /// <summary>
         /// 当本随从攻击时触发此方法。
@@ -455,6 +458,7 @@ namespace HREngine.Bots
         /// <param name="p">游戏场地对象，包含游戏状态信息。</param>
         /// <param name="attacker">进行攻击的随从。</param>
         /// <param name="target">攻击目标随从。</param>
+        /// <param name="terminatedAttack">是否会停止攻击</param>
         public virtual void onMinionAttack(Playfield p, Minion attacker, Minion target, ref bool terminatedAttack)
         {
             // 默认实现为空。子类可以根据需求重写此方法。
@@ -875,5 +879,42 @@ namespace HREngine.Bots
         {
             return;
         }
+        /// <summary>
+        /// 召唤巨型随从
+        /// </summary>
+        /// <param name="p">游戏场地对象，包含当前游戏状态的信息。</param>
+        /// <param name="m">巨型随从。</param>
+        public virtual void SummonColossal(Playfield p, Minion m)
+        {
+            return;
+        }
+        /// <summary>
+        /// 获取随从
+        /// </summary>
+        /// <param name="p">游戏场地对象，包含当前游戏状态的信息。</param>
+        /// <param name="m">受到伤害的随从</param>
+        /// <param name="damage">伤害值</param>
+        /// <returns></returns>
+        public virtual int ReturnMinionReceiveDamage(Playfield p, Minion m, int damage)
+        {
+            return damage;
+        }
+
+        public virtual int CalculateManaCost(Playfield p, Handmanager.Handcard hc, int OriginalManaCost)
+        {
+            return OriginalManaCost;
+        }
+        /* public class Enchantment
+        {
+            public virtual void EnchantmentOnMinionAttack(Playfield p, Minion attacker, Minion target, ref bool terminatedAttack)
+            {
+                return;
+            }
+            public virtual void EnchantmentAfterMinionAttack(Playfield p, Minion attacker, Minion defender, bool dontcount = false)
+            {
+                // 默认实现为空。子类可以根据需求重写此方法。
+                return;
+            }
+        } */
     }
 }

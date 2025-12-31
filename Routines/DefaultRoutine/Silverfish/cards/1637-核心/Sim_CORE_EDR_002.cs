@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个友方亡灵获得<b>剧毒</b>。
 	class Sim_CORE_EDR_002 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

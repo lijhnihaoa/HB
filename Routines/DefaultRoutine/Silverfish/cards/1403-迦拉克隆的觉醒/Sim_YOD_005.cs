@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>双生法术</b>使一个野兽获得+2/+2。
     class Sim_YOD_005 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

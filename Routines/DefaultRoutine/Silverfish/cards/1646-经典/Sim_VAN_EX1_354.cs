@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Restore #8 Health. Draw_3 cards.
 		//恢复#8点生命值，抽三张牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int heal = (ownplay) ? p.getSpellHeal(8) : p.getEnemySpellHeal(8);
             p.minionGetDamageOrHeal(target, -heal);

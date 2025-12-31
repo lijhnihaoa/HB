@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//使你的所有其他随从获得+2/+2。
 	class Sim_TTN_858t2 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.ownMinions.ForEach(m =>
             {

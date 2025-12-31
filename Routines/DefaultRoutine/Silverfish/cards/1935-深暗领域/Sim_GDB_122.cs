@@ -11,13 +11,14 @@ namespace HREngine.Bots
 	//使一个随从获得+3/+3。如果该随从是恶魔，你的下一张恶魔牌法力值消耗减少（2）点。
 	class Sim_GDB_122 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 3, 3);
 				if (RaceUtils.MinionBelongsToRace(target.handcard.card.races, CardDB.Race.DEMON))
 				{
+					
 					//TODO:恶魔减费以后再说
 					// if (target.handcard.card.race == CardDB.Race.DEMON)
 					// p.demon

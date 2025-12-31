@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	{
         CardDB.Card snake = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ULDA_008t); // 预设的1/1蛇卡牌ID
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             for (int i = 0; i < 3; i++)
             {

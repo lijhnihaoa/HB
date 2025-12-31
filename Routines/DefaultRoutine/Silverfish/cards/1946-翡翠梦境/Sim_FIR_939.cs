@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//造成$2点伤害。<b>发现</b>一张具有<b>黑暗之赐</b>的战士随从牌。
 	class Sim_FIR_939 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (target != null)
 			{

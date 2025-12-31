@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//选择两个敌方随从，将其移出对战。
 	class Sim_TTN_429t2 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.RemoveMinionWithoutDeathrattle(target); // 移出战场 待完善
             p.drawACard(CardDB.cardIDEnum.None, true);

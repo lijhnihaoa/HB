@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//<b>冻结</b>任何受到该随从伤害的角色。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null) p.minionGetFrozen(target);
         }

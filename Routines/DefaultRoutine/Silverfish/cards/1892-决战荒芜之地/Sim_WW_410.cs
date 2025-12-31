@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$7点伤害。抽7张牌。
 	class Sim_WW_410 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(7) : p.getEnemySpellDamageDamage(7);

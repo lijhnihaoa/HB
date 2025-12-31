@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//对所有随从造成$2点伤害。如果没有随从死亡，再造成$2点。
 	class Sim_VAC_953 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             bool minionDied = false;

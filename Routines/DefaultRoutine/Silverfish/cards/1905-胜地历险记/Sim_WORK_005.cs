@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使你的武器获得+2/+2。
 	class Sim_WORK_005 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				if (p.ownWeapon.Durability >= 1)

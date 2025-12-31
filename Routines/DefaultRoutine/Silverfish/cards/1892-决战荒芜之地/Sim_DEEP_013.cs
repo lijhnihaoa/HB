@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_DEEP_013 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 立即对所有随从造成2点伤害
             foreach (Minion m in p.ownMinions)

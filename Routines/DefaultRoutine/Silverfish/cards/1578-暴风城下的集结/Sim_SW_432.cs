@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give a minion +4/+2 and <b>Rush</b>. When it dies, summon a Kodo.
 		//使一个随从获得+4/+2和<b>突袭</b>。当该随从死亡时，召唤一只科多兽。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             
 			if (target != null)// && !target.immune)
             {

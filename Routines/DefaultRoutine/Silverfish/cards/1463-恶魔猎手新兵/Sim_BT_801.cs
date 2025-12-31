@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //<b>Lifesteal</b>. Deal $3 damage to a minion.<b>Outcast:</b> This costs (1).
         //<b>吸血</b>。对一个随从造成$3点伤害。<b>流放：</b>法力值消耗为（1）点。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(3);
             p.minionGetDamageOrHeal(target, dmg);

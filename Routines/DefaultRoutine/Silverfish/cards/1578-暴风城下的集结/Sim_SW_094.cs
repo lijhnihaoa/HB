@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//<b>Tradeable</b>Gain 8 Armor.
 		//<b>可交易</b>获得8点护甲值。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				p.minionGetArmor(p.ownHero, 8);

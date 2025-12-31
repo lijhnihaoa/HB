@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	class Sim_GIL_654 : SimTemplate //战路
 	{
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
 			p.allMinionsGetDamage(dmg);
 

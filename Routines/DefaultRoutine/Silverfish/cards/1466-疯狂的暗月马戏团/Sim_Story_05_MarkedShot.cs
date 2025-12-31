@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $4 damage to_a_minion. <b>Discover</b>_a_spell.
 		//对一个随从造成$4点伤害。<b>发现</b>一张法术牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = p.getSpellDamageDamage(3);
 			p.minionGetDamageOrHeal(target, dmg);
 			p.ownHero.Angr += 3;

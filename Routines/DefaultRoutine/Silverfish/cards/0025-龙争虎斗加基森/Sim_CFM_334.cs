@@ -10,15 +10,15 @@ namespace HREngine.Bots
 	{
 		
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {
-                Handmanager.Handcard hc = p.searchRandomMinionInHand(p.owncards, searchmode.searchLowestCost, GAME_TAGs.CARDRACE, TAG_RACE.PET);
-                if (hc != null)
+                Handmanager.Handcard handcard = p.searchRandomMinionInHand(p.owncards, searchmode.searchLowestCost, GAME_TAGs.CARDRACE, TAG_RACE.PET);
+                if (handcard != null)
                 {
-                    hc.addattack += 2;
-                    hc.addHp += 2;
+                    handcard.addattack += 2;
+                    handcard.addHp += 2;
                     p.anzOwnExtraAngrHp += 4;
                 }
             }

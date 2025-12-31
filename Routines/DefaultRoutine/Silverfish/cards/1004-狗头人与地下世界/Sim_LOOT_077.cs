@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Deal $3 damage to a minion. Summon a 3/3 Wolf.
         //对一个随从造成$3点伤害。召唤一只3/3的狼。
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOOT_077t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

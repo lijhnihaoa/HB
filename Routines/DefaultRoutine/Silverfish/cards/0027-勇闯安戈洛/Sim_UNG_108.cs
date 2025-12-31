@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使一个友方随从获得+1/+1，然后获得等同于其攻击力的护甲值。 
     class Sim_UNG_108 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

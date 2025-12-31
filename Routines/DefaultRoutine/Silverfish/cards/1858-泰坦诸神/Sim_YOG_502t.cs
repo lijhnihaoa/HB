@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>已锻造</b>获得4点护甲值，然后对所有随从造成等同于你的护甲值的伤害。
 	class Sim_YOG_502t : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice) 
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(p.ownHero.armor) : p.getEnemySpellDamageDamage(p.enemyHero.armor);
             p.allMinionsGetDamage(dmg); 

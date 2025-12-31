@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //<b>突袭</b>。你的随从获得“<b>荣誉消灭：</b>召唤一只2/2 并具有<b>突袭</b>的双足飞龙。”
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AV_293t);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = p.ownMinions.Count;
             foreach (Minion mm in p.enemyMinions)

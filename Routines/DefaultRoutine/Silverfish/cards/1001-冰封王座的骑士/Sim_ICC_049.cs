@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //对一个随从造成$2点伤害，如果它依然存活，则获得<b>剧毒</b>。 
     class Sim_ICC_049 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

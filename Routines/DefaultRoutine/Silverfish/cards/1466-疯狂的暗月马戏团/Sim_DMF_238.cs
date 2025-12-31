@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		//<b>战吼：</b>召唤一个6/6并具有<b>嘲讽</b>的神圣元素。
 		// CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DMF_238);
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DMF_238t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // p.equipWeapon(weapon, ownplay);
 			int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;

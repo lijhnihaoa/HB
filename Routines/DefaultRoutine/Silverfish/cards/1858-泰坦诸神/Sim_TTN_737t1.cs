@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//召唤两个3/3并具有<b>嘲讽</b>和<b>复生</b>的亡灵。
 	class Sim_TTN_737t1 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             for (int i = 0; i < 2; i++)
             {

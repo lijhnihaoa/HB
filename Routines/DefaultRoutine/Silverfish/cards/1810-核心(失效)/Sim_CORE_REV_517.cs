@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//选择一个友方随从。召唤3个它的复制。<b>过载：</b>（2）
 	class Sim_CORE_REV_517 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;

@@ -9,7 +9,7 @@ namespace HREngine.Bots
 
 //对敌方英雄造成6点伤害。 
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getHeroPowerDamage(6) : p.getEnemyHeroPowerDamage(6);
             p.minionGetDamageOrHeal(ownplay ? p.enemyHero : p.ownHero, dmg);

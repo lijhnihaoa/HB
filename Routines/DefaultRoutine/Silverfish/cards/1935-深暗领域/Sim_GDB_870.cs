@@ -15,7 +15,7 @@ namespace HREngine.Bots
 		/// <summary>
         /// 连击效果实现
         /// </summary>
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay && p.cardsPlayedThisTurn > 0)
             {

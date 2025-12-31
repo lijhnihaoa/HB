@@ -2,8 +2,8 @@ namespace HREngine.Bots
 {
 	class Sim_HERO_01bp : SimTemplate //* 全副武装！ Armor Up!
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 2);

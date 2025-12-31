@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $2 damage to a minion. If you control a Pirate, deal $5 instead.
         //对一个随从造成$2点伤害。如果你控制一个海盗，则改为造成$5点伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

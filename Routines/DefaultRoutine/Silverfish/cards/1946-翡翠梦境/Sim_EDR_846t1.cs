@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得+5/+5和在本回合中的<b>免疫</b>。
 	class Sim_EDR_846t1 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 5, 5);

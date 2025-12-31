@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得+2/+1。抽一张牌。
 	class Sim_CORE_BT_292 : SimTemplate
 	{
-       public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+       public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 2, 1);

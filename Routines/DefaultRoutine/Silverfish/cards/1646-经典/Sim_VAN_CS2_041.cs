@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Restore a minionto full Health andgive it <b>Taunt</b>.
 		//为一个随从恢复所有生命值并使其获得<b>嘲讽</b>。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetDamageOrHeal(target, -1000);
             if (!target.taunt)
             {

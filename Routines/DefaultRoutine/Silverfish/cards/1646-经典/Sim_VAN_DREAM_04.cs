@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//将一个随从移回其拥有者的手牌。
 
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionReturnToHand(target, target.own, 0);
 		}
 

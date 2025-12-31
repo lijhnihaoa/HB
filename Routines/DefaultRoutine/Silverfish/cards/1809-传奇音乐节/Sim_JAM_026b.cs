@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//你的下一个英雄技能的法力值消耗为（0）点。
 	class Sim_JAM_026b : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			p.ownHeroPowerCostLessOnce -= p.ownHeroAblility.manacost;
         }

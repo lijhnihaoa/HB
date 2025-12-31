@@ -4,19 +4,17 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_PART_007 : SimTemplate //* 旋风之刃 Whirling Blades
-//Give a minion +1 Attack.
-//使一个随从获得+1攻击力。 
+    //* 旋风之刃 Whirling Blades
+    //Give a minion +1 Attack.
+    //使一个随从获得+1攻击力。 
+    class Sim_PART_007 : SimTemplate
     {
 
-        
-
-
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            p.minionGetBuffed(target, 1, 0);
+            if (target != null)
+                p.minionGetBuffed(target, 1, 0);
         }
-
 
 
         public override PlayReq[] GetPlayReqs()

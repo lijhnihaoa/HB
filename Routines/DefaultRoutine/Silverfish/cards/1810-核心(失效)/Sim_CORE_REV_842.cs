@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个白银之手新兵获得+3/+3和<b>嘲讽</b>。
 	class Sim_CORE_REV_842 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 3, 3);

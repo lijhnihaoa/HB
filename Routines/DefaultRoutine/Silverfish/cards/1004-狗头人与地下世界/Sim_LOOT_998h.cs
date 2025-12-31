@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	{
 		
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardNameEN.unknown, ownplay);
 			if (ownplay) p.owncarddraw += 10 - p.owncards.Count;
 		}

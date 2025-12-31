@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个随从获得+1/+1。<i>（还剩3根香蕉！）</i>
 	class Sim_ETC_201 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (target != null)
 			{

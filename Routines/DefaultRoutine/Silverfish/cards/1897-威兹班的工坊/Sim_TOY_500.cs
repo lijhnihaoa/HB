@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>吸血</b>。造成$10点伤害，随机分配到所有随从身上。<b>过载：</b>（1）
 	class Sim_TOY_500 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             
             if (ownplay)

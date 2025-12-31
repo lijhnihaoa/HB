@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个随从的属性值变为1/1并使其获得“<b>亡语：</b>对所有随从造成2点伤害。”
 	class Sim_DINO_429 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionSetAngrToX(target, 1);

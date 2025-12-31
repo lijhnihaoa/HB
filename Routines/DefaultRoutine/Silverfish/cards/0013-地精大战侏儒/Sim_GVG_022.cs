@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使你的武器获得+3攻击力。<b>连击：</b>随机使一个友方随从获得+3攻击力。 
     class Sim_GVG_022 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//选择一个敌方随从，使你的所有随从攻击该随从。再次召唤死亡的友方随从。
 	class Sim_RLK_056 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				if (target != null)

@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Deal $3 damage to an enemy minion and a random friendly one.
         //对一个敌方随从和一个随机友方随从造成$3点伤害。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

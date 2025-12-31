@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Give a minion <b>Taunt</b> and +2/+2.<i>(+2 Attack/+2 Health)</i>
 		//使一个随从获得<b>嘲讽</b>和+2/+2。<i>（+2攻击力/+2生命值）</i>
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 2, 2);
             if (!target.taunt)

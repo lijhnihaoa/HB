@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //+4 Health and <b>Taunt</b>.
         //+4生命值并具有<b>嘲讽</b>。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

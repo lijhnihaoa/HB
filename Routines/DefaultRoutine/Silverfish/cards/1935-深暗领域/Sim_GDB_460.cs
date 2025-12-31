@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$3点伤害。随机使你手牌中的一张随从牌获得+3生命值。
 	class Sim_GDB_460 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

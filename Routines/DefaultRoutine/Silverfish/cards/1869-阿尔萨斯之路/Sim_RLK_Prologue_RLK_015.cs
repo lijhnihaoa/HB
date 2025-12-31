@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个敌人造成$3点伤害并将其<b>冻结</b>。对所有其他敌人造成$1点伤害。
 	class Sim_RLK_Prologue_RLK_015 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

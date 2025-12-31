@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_107 : SimTemplate //* 冰川急冻 glaciate
 	{
         //<b>发现</b>一张法力值消耗为（8）的随从牌。召唤并<b>冻结</b>该随从。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             if (p.ownHeroHasDirectLethal())

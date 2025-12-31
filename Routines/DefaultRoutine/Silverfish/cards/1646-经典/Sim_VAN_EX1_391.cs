@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $2 damage to a minion. If it survives, draw a card.
 		//对一个随从造成$2点伤害，如果它依然存活，则抽一张牌。s
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             if (target.Hp > dmg || target.immune || target.divineshild)

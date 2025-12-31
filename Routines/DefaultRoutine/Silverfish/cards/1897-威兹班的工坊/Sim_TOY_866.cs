@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
         private int deathCount = 0; // 用于跟踪死亡随从的计数
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TOY_866), p.ownMinions.Count, ownplay);
         }

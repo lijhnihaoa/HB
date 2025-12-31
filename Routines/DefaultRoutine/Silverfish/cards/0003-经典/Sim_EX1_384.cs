@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Deal $8 damage randomly split among all enemies.
 		//造成$8点伤害，随机分配到所有敌人身上。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int times = (ownplay) ? p.getSpellDamageDamage(8) : p.getEnemySpellDamageDamage(8);
             p.allCharsOfASideGetRandomDamage(!ownplay, times);

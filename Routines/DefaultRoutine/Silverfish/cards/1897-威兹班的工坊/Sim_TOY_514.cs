@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//<b>发现</b>一张另一职业的法术牌，并获取一张它的复制。
 	class Sim_TOY_514 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 假设在玩家选择卡牌后，它会被添加到 Hrtprozis.Instance.enchs 列表中
             if (Hrtprozis.Instance.enchs.Count > 0)

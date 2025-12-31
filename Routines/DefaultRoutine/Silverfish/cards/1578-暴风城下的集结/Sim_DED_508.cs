@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //从你的牌库中召唤两个随从，并使其互相攻击！
         //Summon two minions from your deck. They fight!
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int cnt = 2;
             // 遍历卡组

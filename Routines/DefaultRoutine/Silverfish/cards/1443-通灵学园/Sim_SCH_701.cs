@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]Deal $3 damage to aminion. Shuffle 2 SoulFragments into your deck.
         //对一个随从造成$3点伤害。将两张灵魂残片洗入你的牌库。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
                 if (ownplay)

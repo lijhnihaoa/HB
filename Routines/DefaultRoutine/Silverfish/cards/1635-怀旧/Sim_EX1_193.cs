@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//<b>Battlecry:</b> Copy a card in your opponent’s deck and add it to your hand.
 		//<b>战吼：</b>复制你对手的牌库中的一张牌，并将其置入你的手牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 
                 p.drawACard(CardDB.cardIDEnum.None, ownplay,true);

@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//消灭一个敌方随从。本随从和你的英雄获得其生命值。
 	class Sim_TTN_737t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (target != null)
             {
                 p.minionGetDestroyed(target);

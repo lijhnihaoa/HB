@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//恢复8点生命值。召唤一个8/8并具有<b>嘲讽</b>和<b>圣盾</b>的守卫。
 
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BT_024t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			//恢复8点生命值
 			int heal = (ownplay) ? p.getSpellHeal(8) : p.getEnemySpellHeal(8);
 			int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;

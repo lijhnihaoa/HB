@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//随机获取两张其他职业的法力值消耗为（1）的法术牌。
 	class Sim_VAC_335 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             for (int i = 0; i < 2; i++)
             {

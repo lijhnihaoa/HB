@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//[x]<b>Tradeable</b>Unlock your <b>Overloaded</b>Mana Crystals to dealthat much damage.
 		//<b>可交易</b>解锁你<b>过载</b>的法力水晶，并造成等量的伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int x = p.ueberladung;
 			int dmg = (ownplay) ? p.getSpellDamageDamage(x) : p.getEnemySpellDamageDamage(x);
 			p.minionGetDamageOrHeal(target, dmg);

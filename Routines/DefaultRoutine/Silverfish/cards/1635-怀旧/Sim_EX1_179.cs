@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Deal $2 damage to a minion. If it's <b>Frozen</b>, draw a card.
         //对一个随从造成$2点伤害。如果它已被<b>冻结</b>，抽一张牌。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

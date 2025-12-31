@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>冻结</b>一个随从及其相邻随从，对你的英雄造成等同于所<b>冻结</b>随从数量的伤害。
 	class Sim_DEEP_032 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int FrozenMinionNums = 0;
 			if (target != null)
 			{

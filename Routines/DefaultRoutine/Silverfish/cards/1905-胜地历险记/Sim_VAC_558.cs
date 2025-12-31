@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
         CardDB.Card pirate = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAC_558t); // 假设5/5海盗的卡牌ID为 VAC_558t
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             for (int i = 0; i < 3; i++)
             {

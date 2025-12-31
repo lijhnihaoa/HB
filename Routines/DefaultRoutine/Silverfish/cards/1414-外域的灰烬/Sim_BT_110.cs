@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //[x]Deal $8 damage to aminion. Costs (3) less ifyou cast a spell last turn.
         //对一个随从造成$8点伤害。如果你在上个回合施放过法术，则法力值消耗减少（3）点。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(8) : p.getEnemySpellDamageDamage(8);
             p.minionGetDamageOrHeal(target, dmg);

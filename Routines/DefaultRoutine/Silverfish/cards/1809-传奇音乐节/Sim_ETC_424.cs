@@ -10,7 +10,7 @@ namespace HREngine.Bots
     //Choose a minion.Spread its &lt;b&gt;Deathrattle&lt;/b&gt;to adjacent minions.
     class Sim_ETC_424 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             
         }

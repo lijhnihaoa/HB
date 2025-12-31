@@ -9,16 +9,18 @@ namespace HREngine.Bots
 		//<b>Choose One -</b>+5 Attack; or +5 Health and <b>Taunt</b>.
 		//<b>抉择：</b>+5攻击力；或者+5生命值并具有<b>嘲讽</b>。
 
-        public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
-            if (p.ownFandralStaghelm > 0 && own.own)
+            if (choice == 1 || p.ownFandralStaghelm > 1)
             {
-                for (int iChoice = 1; iChoice < 3; iChoice++)
-                {
-                    PenalityManager.Instance.getChooseCard(own.handcard.card, choice).sim_card.onCardPlay(p, own.own, own, iChoice);
-                }
+                p.minionGetBuffed(own, 5, 0);
             }
-            else PenalityManager.Instance.getChooseCard(own.handcard.card, choice).sim_card.onCardPlay(p, own.own, own, choice);
+
+            if (choice == 2 || p.ownFandralStaghelm > 1)
+            {
+                p.minionGetBuffed(own, 0, 5);
+                p.minionGetTaunt(own);
+            }
         }
     }
 }

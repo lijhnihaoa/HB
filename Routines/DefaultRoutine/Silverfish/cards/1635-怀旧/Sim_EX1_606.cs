@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Gain 5 Armor.Draw a card.
 		//获得5点护甲值。抽一张牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 5);

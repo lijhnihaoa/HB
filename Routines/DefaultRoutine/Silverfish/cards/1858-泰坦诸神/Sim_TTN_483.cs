@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使所有敌方随从获得-2攻击力。消灭具有0点攻击力的敌方随从。
 	class Sim_TTN_483 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			List<Minion> minions = ownplay ? p.enemyMinions.ToList() : p.ownMinions.ToList();
 			foreach (Minion minion in minions)
 			{

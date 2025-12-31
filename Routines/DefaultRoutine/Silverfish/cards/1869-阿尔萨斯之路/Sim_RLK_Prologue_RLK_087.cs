@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭攻击力最高的敌方随从。
 	class Sim_RLK_Prologue_RLK_087 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
 			Minion minion = p.searchRandomMinion(ownplay ? p.enemyMinions : p.ownMinions, searchmode.searchHighestAttack);
 			if (minion != null)

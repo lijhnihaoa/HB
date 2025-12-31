@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//获取全部3种动物伙伴，其法力值消耗减少（1）点。
 	class Sim_TOY_353 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 动物伙伴的卡牌ID
             CardDB.cardIDEnum huffer = CardDB.cardIDEnum.NEW1_010;  // 霍弗

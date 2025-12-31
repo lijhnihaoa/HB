@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Give your other minions +2/+2.
 		//使你的所有其他随从获得+2/+2。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp)
             {

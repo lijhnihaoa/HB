@@ -12,14 +12,14 @@ namespace HREngine.Bots
 	class Sim_TOY_714 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dragonCount = 0;
 
             // 统计手牌中龙牌的数量
-            foreach (Handmanager.Handcard hc in p.owncards)
+            foreach (Handmanager.Handcard handcard in p.owncards)
             {
-                if ((TAG_RACE)hc.card.race == TAG_RACE.DRAGON)
+                if ((TAG_RACE)handcard.card.race == TAG_RACE.DRAGON)
                 {
                     dragonCount++;
                 }

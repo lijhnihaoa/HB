@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//随机对一个敌方随从造成$4点伤害。如果你的手牌中有法力值消耗大于或等于（8）点的牌，改为造成$8点。
 	class Sim_FIR_923 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			bool eightCostCard = false;
 			int damage;
 

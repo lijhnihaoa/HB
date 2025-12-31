@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]Deal $2 damage to aminion. If it dies, restore4 Health to your hero.
         //对一个随从造成$2点伤害。如果该随从死亡，则为你的英雄恢复4点生命值。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.ownHero.Hp >= 4) p.evaluatePenality += 20;
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

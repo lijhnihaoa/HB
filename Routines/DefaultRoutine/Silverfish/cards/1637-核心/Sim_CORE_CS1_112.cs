@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //todo make it better :D
         //FÃ¼gt allen Feinden $2 Schaden zu. Stellt bei allen befreundeten Charakteren #2 Leben wieder her.
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay)? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             int heal = (ownplay) ? p.getSpellHeal(2) : p.getEnemySpellHeal(2) ;

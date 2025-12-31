@@ -9,8 +9,8 @@ namespace HREngine.Bots
 	//消灭所有攻击力大于或等于5的随从。
 	class Sim_EX1_197 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (Minion m in p.ownMinions.ToArray())
 			{
 				if (m.untouchable) continue;

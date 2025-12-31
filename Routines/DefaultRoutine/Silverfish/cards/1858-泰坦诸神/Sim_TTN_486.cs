@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//直到你的下个回合，使一个友方随从获得+3/+3。
 	class Sim_TTN_486 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				// 增加临时3点攻击力和临时3点生命值

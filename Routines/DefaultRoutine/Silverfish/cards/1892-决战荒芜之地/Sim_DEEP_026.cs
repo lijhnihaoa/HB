@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//从你的牌库中<b>发现</b>一张随从牌，为你的英雄恢复等同于其法力值消耗的生命值。
 	class Sim_DEEP_026 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				CardDB.Card selectedCard = CardDB.Instance.getCardDataFromID(Hrtprozis.Instance.enchs.LastOrDefault());

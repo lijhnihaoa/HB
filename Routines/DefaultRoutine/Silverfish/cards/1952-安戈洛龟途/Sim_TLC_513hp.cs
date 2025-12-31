@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//抽两张你套牌之外的牌。
 	class Sim_TLC_513hp : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_354 : SimTemplate
 	{
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_538t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int houndsToSummon = 6;  // 需要召唤的猎犬数量
             int availableSpace = ownplay ? 7 - p.ownMinions.Count : 7 - p.enemyMinions.Count;  // 检查场上空位

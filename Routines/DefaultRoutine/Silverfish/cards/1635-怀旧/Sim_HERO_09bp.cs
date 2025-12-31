@@ -4,8 +4,8 @@ namespace HREngine.Bots
     {
         //[x]<b>Hero Power</b>Restore #2 Health.
         //<b>英雄技能</b>恢复#2点生命值。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int heal = 2;
             if (ownplay)
             {

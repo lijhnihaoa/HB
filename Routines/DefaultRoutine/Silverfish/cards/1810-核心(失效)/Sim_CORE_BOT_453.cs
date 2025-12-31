@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
         // Deal $1 damage to a minion and $1 damage to adjacent ones.
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             int dmg1 = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             List<Minion> temp = (target.own) ? p.ownMinions : p.enemyMinions;

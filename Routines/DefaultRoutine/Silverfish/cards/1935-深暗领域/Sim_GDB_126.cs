@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭所有非恶魔随从。
 	class Sim_GDB_126 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (Minion minion in p.ownMinions.ToArray())
 			{
 				if (minion.untouchable || RaceUtils.MinionBelongsToRace(minion.handcard.card.GetRaces(), CardDB.Race.DEMON)) continue;

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_508 : SimTemplate
 	{
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.hexfrog);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 对目标造成2点伤害
             p.minionGetDamageOrHeal(target, 2);

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//触发一个友方随从的<b>亡语</b>，然后将其消灭。
 	class Sim_RLK_536 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.doDeathrattles(new List<Minion> { target });

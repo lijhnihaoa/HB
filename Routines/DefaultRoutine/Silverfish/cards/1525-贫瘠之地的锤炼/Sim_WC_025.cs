@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //After your hero attacks, give a minion in your hand +1 Attack.
         //在你的英雄攻击后，使你手牌中的一张随从牌获得+1攻击力。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WC_025), true);
         }

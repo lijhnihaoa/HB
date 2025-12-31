@@ -10,7 +10,7 @@ namespace HREngine.Bots
 	{
 		
         
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             p.callKid(p.getNextJadeGolem(ownplay), place, ownplay, false);

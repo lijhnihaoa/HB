@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $3 damage.Draw a card.
 		//造成$3点伤害。抽一张牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             p.minionGetDamageOrHeal(target, dmg);
             p.drawACard(CardDB.cardIDEnum.None, ownplay);

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $3 damage to a minion. Your next spell this turn costs (2) less.
 		//对一个随从造成$3点伤害。在本回合中，你施放的下一个法术的法力值消耗减少（2）点。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
 			p.minionGetFrozen(target);
 			p.minionGetDamageOrHeal(target, dmg);

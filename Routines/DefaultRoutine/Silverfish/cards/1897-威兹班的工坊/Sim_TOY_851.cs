@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_TOY_851 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 发现的卡牌存储在 Hrtprozis.Instance.enchs 中
             if (Hrtprozis.Instance.enchs.Count > 0)

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个友方随从和你的英雄获得<b>圣盾</b>以及本回合中的+$a1攻击力。
 	class Sim_SC_754p : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			Minion hero = ownplay ? p.ownHero : p.enemyHero;
 			if (target != null)
 			{

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得+4/+4和<b>圣盾</b>。在本局对战中，你每消耗1点法力值用于神圣法术牌上，本牌的法力值消耗便减少（1）点。
 	class Sim_TSC_061 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 4, 4);

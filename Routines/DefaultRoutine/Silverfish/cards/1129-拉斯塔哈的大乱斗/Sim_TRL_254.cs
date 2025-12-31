@@ -12,8 +12,8 @@ namespace HREngine.Bots
 		
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_160t);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {
                 p.minionGetBuffed(target, 2, 4);

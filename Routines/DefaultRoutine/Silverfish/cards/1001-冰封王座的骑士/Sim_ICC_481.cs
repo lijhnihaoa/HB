@@ -10,7 +10,7 @@ namespace HREngine.Bots
     {
         
         
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.setNewHeroPower(CardDB.cardIDEnum.ICC_481p, ownplay); 
             if (ownplay) p.ownHero.armor += 5;

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Draw a card and deal_damage equal to_its Cost.
 		//抽一张牌，并造成等同于其法力值消耗的伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

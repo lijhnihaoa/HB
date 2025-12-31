@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_DEEP_002 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 定义可能召唤的元素伙伴（衍生物）的ID
             List<CardDB.cardIDEnum> elementalIds = new List<CardDB.cardIDEnum>

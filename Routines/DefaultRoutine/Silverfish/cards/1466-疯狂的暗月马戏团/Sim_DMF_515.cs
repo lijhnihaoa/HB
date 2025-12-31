@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Draw a spell.<b>Combo:</b> And a minion.
         //抽一张法术牌。<b>连击：</b>并抽一张随从牌。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
             if (p.cardsPlayedThisTurn > 0)

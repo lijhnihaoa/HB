@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//使你的武器获得“在你的英雄攻击后，抽一张牌。”
 	class Sim_TTN_092t1 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.ownWeapon.Durability > 0)
             {

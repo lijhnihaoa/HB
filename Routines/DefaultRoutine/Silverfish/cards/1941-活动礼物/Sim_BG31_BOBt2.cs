@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个敌方随从的一张复制置入你的手牌。你的对手获取3张幸运币。
 	class Sim_BG31_BOBt2 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.drawACard(target.handcard.card.cardIDenum, ownplay, true);

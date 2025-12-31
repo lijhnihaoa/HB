@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//恢复#5点生命值。<b>发现</b>一张法术牌。
 	class Sim_WW_080 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int heal = ownplay ? p.getSpellHeal(-5) : p.getEnemySpellHeal(-5);

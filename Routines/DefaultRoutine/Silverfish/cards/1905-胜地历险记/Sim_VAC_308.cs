@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_VAC_308 : SimTemplate
 	{
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.VAC_COIN1, ownplay, true);
             p.drawACard(CardDB.cardIDEnum.VAC_COIN1, ownplay, true);

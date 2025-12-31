@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>吸血</b>。对一个随从造成$6点伤害。如果你有<b>过载</b>的法力水晶，本牌的法力值消耗减少（3）点。
 	class Sim_ETC_356 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(6) : p.getEnemySpellDamageDamage(6);

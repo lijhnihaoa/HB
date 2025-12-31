@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//获得+2/+1。随机对一个敌人造成4点伤害。
 	class Sim_TTN_721t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             foreach (Minion m in p.ownMinions)
             {
                 if (m.handcard.card.cardIDenum == CardDB.cardIDEnum.TTN_721)

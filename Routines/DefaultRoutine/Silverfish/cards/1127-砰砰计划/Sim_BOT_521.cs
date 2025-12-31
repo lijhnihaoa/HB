@@ -8,8 +8,8 @@ namespace HREngine.Bots
 //Summon copies of all Demons you control.
 //召唤你控制的所有恶魔的复制。 
     {
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
 			List<Minion> CopiesMinion = new List<Minion>();
 			foreach (Minion t in temp)

@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_TID_708 : SimTemplate
 	{
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TID_708t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionTransform(target, card);

@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_WW_090 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WW_090t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos =(ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 			int damage = ownplay ? p.getSpellDamageDamage(6) : p.getEnemySpellDamageDamage(6);
 			p.allMinionsGetDamage(damage);

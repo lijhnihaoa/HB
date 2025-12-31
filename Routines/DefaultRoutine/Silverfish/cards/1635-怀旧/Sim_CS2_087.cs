@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Give a minion +3_Attack.
 		//使一个随从获得+3攻击力。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 3, 0);
         }

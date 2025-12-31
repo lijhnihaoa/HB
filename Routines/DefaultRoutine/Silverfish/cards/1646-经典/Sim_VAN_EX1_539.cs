@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $3 damage. If you control a Beast, deal$5 damage instead.
 		//造成$3点伤害。如果你控制一个野兽，则改为造成$5点伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 bool haspet = false;

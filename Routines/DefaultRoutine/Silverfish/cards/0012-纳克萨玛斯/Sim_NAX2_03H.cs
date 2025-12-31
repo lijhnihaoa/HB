@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
 
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = 1;
 			int cardCount = 0;

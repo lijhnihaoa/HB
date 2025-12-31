@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	class Sim_BT_175t : SimTemplate
 	{
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			var hero = ownplay ? p.ownHero : p.enemyHero;
 			p.minionGetTempBuff(hero, 2, 0);
 			hero.updateReadyness();

@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_TTN_903t3 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_903t4);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.mana = p.ownMaxMana; // 复原法力水晶
 			p.callKid(kid, p.ownMinions.Count, true, false);
 		}

@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
         CardDB.Card boomBot = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GVG_110t);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int availableSlots = ownplay ? (7 - p.ownMinions.Count) : (7 - p.enemyMinions.Count);
 

@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使一个随从获得+1/+1，以及“<b>亡语：</b>将一张‘智慧圣契’法术牌置入你的手牌。”
     class Sim_Story_01_LibramofWisdom : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 1, 1);
             target.libramofwisdom++;

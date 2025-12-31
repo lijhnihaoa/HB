@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Summon five 2/2 Adventurers with random bonus effects.
         //召唤五个2/2并具有随机效果的冒险者。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WC_034t), p.ownMinions.Count, true);
             p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WC_034t2), p.ownMinions.Count, true);

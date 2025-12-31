@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//获得+2/+2。抽一张武器牌。
 	class Sim_TTN_415t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             var targetMinions = p.ownMinions.Where(m => m.handcard.card.cardIDenum == CardDB.cardIDEnum.TTN_415).ToList();
             targetMinions.ForEach(m =>
             {

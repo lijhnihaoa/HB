@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个友方随从。对所有敌方随从造成$2点伤害。
 	class Sim_BAR_910 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

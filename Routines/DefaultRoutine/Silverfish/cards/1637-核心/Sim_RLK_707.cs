@@ -10,7 +10,7 @@ namespace HREngine.Bots
     //Give your minions +1Attack. Spend 5 &lt;b&gt;Corpses&lt;/b&gt;to give them +3 instead.
     class Sim_RLK_707 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int addattack = 1;
             if (p.getCorpseCount() >= 5)

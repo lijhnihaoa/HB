@@ -13,8 +13,8 @@ namespace HREngine.Bots
 	{
 		CardDB.Card TheWellofEternity = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TIME_211t1t);
 		CardDB.Card ZinAzshari = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TIME_211t2t);
-		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			//强化辛艾萨莉
 			if (choice == 1 || p.ownFandralStaghelm >= 1)
 			{

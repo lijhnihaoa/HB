@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_250 : SimTemplate //* 雪球大战 snowballfight
 	{
         //对一个随从造成$1点伤害并使其<b>冻结</b>。如果该随从没有死亡，则对另一个随从重复此效果！
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
 

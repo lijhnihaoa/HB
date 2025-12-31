@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//获得+3生命值和<b>扰魔</b>。
 	class Sim_TTN_721t2 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             foreach (Minion m in p.ownMinions)
             {

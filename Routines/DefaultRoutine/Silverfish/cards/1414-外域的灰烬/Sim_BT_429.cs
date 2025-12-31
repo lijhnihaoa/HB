@@ -8,8 +8,8 @@ namespace HREngine.Bots
 //将你的英雄技能替换为“造成4点伤害。”使用两次后，换回原技能。
 
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.setNewHeroPower(CardDB.cardIDEnum.BT_429p, ownplay);
 		}
 	}

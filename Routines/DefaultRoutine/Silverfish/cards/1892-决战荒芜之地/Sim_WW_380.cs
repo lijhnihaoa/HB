@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个受伤的敌方随从。<b>发掘</b>一个宝藏。
 	class Sim_WW_380 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetDestroyed(target);

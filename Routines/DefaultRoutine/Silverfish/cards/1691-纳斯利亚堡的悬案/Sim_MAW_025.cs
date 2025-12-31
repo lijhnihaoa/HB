@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>抉择：</b><b>沉默</b>一个随从；或者使一个随从在本回合中获得<b>免疫</b>。
 	class Sim_MAW_025 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))

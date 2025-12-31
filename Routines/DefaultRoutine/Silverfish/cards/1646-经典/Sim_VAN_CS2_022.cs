@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
         private CardDB.Card sheep = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAN_CS2_tk1);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionTransform(target, sheep);
         }

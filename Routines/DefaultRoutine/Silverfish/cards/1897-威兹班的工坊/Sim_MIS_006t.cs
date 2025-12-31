@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_MIS_006t : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 触发战吼效果
             if (ownplay)

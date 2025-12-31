@@ -9,7 +9,7 @@ namespace HREngine.Bots
 //对所有敌方随从造成$3点伤害。为你的英雄恢复#3点生命值。
     {
         
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay)? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             int heal = (ownplay) ? p.getSpellHeal(3) : p.getEnemySpellHeal(3) ;

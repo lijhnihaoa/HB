@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $3 damage to a minion. Give your weapon +3 Attack.
         //对一个随从造成$3点伤害。使你的武器获得+3攻击力。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

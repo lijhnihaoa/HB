@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//当本牌被使用，弃掉或摧毁时，抽两张牌。
 	class Sim_WW_441 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}	

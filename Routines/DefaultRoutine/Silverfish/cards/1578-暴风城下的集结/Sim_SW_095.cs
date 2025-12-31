@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//[x]Draw an <b>Overload</b> card.
 		//抽一张<b>过载</b>牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in p.prozis.turnDeck)
             {
                 // ID 转卡

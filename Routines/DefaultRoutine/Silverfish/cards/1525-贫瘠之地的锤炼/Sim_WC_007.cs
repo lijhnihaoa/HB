@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //Give a friendlyBeast <b>Poisonous</b>.
         //使一只友方野兽获得<b>剧毒</b>。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

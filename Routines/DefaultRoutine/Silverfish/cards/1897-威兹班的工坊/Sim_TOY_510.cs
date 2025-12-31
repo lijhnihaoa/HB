@@ -9,7 +9,7 @@ namespace HREngine.Bots
     {
         // 抽一张随从牌。如果是海盗牌，获取一张幸运币
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 抽一张卡牌，获取手牌中最后抽到的卡牌
             p.drawACard(CardDB.cardIDEnum.None, ownplay);

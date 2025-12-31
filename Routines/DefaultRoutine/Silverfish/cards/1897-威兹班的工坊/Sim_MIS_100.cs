@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	class Sim_MIS_100 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 使目标随从获得 -5/-5
             if (target != null)

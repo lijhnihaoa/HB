@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//随机召唤一个法力值消耗为（2）的随从。
 	class Sim_EDR_463b : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
 			CardDB.Card kid = p.getRandomCardForManaMinion(2);
 			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;

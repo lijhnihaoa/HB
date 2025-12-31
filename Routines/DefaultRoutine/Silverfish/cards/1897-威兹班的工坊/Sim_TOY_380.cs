@@ -20,7 +20,7 @@ namespace HREngine.Bots
         }
 
         // 如果微缩效果需要实现，假设微缩是召唤一个衍生物
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 处理微缩效果：假设微缩效果是抽一张衍生物牌
             CardDB.Card miniaturizedCard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TOY_380t); // 假设衍生物牌ID为 TOY_380t

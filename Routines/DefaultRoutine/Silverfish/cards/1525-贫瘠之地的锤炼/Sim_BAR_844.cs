@@ -11,7 +11,7 @@ namespace HREngine.Bots
     {
         CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BAR_844);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(wcard, ownplay);
         }

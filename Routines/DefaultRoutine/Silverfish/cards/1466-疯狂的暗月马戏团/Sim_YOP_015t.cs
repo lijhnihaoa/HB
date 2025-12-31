@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //<b>Corrupted</b>Give a minion and your weapon +2 Attack.
         //<b>已腐蚀</b>使一个随从和你的武器获得+2攻击力。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 
             if (ownplay && target != null)

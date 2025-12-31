@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>抉择：</b>抽一张法术牌；或者抽一张随从牌。<i>（本牌在你手中@回合即可同时拥有两种效果！）</i>
 	class Sim_EDR_843 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
 			{
 				// 抽法术

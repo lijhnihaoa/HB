@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>冻结</b>一个敌人。<b>发掘</b>一个宝藏。
 	class Sim_WW_009 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetFrozen(target);

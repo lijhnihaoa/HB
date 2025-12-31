@@ -10,7 +10,7 @@ namespace HREngine.Bots
         //<b>战吼：</b>将两张灵魂残片洗入你的牌库。
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GIL_672);
         CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SCH_307t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(weapon, ownplay);
         }

@@ -16,8 +16,8 @@ namespace HREngine.Bots
 		CardDB.Card HealingTotem = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.NEW1_009);
 		CardDB.Card StoneclawTotem = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_051);
 		CardDB.Card StrengthTotem = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_058);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;
 			p.callKid(SearingTotem, pos, ownplay);
 			p.callKid(WrathofAirTotem, pos, ownplay);

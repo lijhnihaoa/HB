@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //将一个敌方随从移回<b>你</b>的手牌。
     class Sim_DEEP_021 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null) // 确保目标是敌方随从
             {

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_GIFT_05 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 根据玩家选择的选项（choice）来决定添加哪张卡牌
             CardDB.cardIDEnum selectedCardID = CardDB.cardIDEnum.None;

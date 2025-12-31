@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_MIS_307t1 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 召唤属性值等同于本随从的鱼人宝宝
             CardDB.Card tinyfinCard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.MIS_307t); // 假设鱼人宝宝的卡牌ID是EX1_506a

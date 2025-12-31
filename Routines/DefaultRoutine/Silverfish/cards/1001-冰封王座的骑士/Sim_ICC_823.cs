@@ -10,12 +10,12 @@ namespace HREngine.Bots
     {
         
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {
                 Handmanager.Handcard hcCopy = null;
-                foreach (Handmanager.Handcard hc in p.owncards)
+                foreach (Handmanager.Handcard handcard in p.owncards)
                 {
                     if (hc.card.type == CardDB.cardtype.MOB)
                     {

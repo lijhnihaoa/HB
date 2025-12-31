@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $5 damage.Draw a card.
 		//造成$5点伤害。抽一张牌。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             p.minionGetDamageOrHeal(target, dmg);
             //this.owncarddraw++;

@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//对一个随从造成$3点伤害并对其相邻随从造成$1点。<i>（每回合翻面。）</i>
 	class Sim_WORK_030t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmgMain = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             int dmgAdj = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);

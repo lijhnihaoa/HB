@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Give your characters +2_Attack this turn.
 		//在本回合中，使你的所有角色获得+2攻击力。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
             foreach (Minion t in temp)

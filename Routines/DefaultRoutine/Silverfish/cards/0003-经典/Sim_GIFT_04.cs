@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>发现</b>一张<b>临时</b>的黑暗突变，凛风冲击或灵界打击。
 	class Sim_GIFT_04 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 根据玩家选择的选项（choice）来决定添加哪张卡牌
             CardDB.cardIDEnum selectedCardID = CardDB.cardIDEnum.None;

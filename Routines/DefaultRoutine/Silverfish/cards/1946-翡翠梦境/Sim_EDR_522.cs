@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//你的对手抽两张牌，你获取其复制。
 	class Sim_EDR_522 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardNameEN.unknown, !ownplay, false);
 			p.drawACard(CardDB.cardNameEN.unknown, !ownplay, false);
 			p.drawACard(CardDB.cardNameEN.unknown, ownplay, true);

@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>沉默</b>并消灭所有敌方随从。
     class Sim_PVPDR_SCH_Active07 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 沉默所有敌方随从
             p.allMinionsGetSilenced(!ownplay);

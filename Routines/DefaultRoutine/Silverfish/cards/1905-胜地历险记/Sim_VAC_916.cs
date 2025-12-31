@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个角色获得<b>圣盾</b>。如果其已经拥有圣盾，使其在本回合中获得+1攻击力。<i>（还剩3杯！）</i>
 	class Sim_VAC_916 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

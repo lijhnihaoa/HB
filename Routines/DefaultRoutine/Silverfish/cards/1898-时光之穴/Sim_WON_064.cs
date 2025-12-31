@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>可交易</b>消灭一个攻击力为4的随从。<b>腐蚀：</b>消灭所有攻击力为4的随从。
 	class Sim_WON_064 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetDestroyed(target);

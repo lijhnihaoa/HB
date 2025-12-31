@@ -8,7 +8,7 @@ namespace HREngine.Bots
 //Destroy half of each player's deck.
 //摧毁双方牌库中一半的牌。 
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.ownDeckSize /= 2;
             p.enemyDeckSize /= 2;

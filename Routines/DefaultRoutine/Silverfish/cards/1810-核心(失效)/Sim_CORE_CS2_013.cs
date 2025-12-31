@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//获得一个空的法力水晶。
 		//Gain an empty Mana Crystal.
 		//获得一个空的法力水晶。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 if (p.ownMaxMana < 10)

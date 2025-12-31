@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得+2攻击力和“超过目标生命值的攻击伤害会命中敌方英雄。”
 	class Sim_TTN_079 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 2, 0);

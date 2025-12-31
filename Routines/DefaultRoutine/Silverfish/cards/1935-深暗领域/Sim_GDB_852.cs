@@ -14,7 +14,7 @@ namespace HREngine.Bots
 		/// <summary>
         /// 施放法术时的效果
         /// </summary>
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 抽一张牌
             p.drawACard(CardDB.cardNameEN.unknown, ownplay, true);

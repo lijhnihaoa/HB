@@ -9,8 +9,8 @@ namespace HREngine.Bots
 	//<b>可交易</b><b>沉默</b>所有敌方随从。
 	class Sim_SW_441 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.allMinionsGetSilenced(!ownplay);
 		}
 

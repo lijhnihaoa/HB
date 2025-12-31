@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give a minion <b>Windfury</b>.
 		//使一个随从获得<b>风怒</b>。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetWindfurry(target);
 		}
 

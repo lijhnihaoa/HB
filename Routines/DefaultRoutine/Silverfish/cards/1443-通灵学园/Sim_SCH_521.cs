@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Destroy a damaged minion. <b>Combo:</b> Destroy any minion.
 		//消灭一个受伤的随从。<b>连击：</b>消灭任意随从。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (var m in p.enemyMinions)
 			{
 				if (m.wounded) p.minionGetDestroyed(m);

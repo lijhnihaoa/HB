@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_DEEP_999t1 : SimTemplate
 	{
 		// fixMe 心灵之花无法选中己方目标
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

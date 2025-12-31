@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>吸血</b>。对一个随从造成$3点伤害。<b>流放：</b>法力值消耗为（0）点。
 	class Sim_TOY_400t8 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

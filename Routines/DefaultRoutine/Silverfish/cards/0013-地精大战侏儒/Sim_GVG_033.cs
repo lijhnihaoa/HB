@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
         
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			int heal = 1000;
             foreach (Minion m in p.ownMinions)

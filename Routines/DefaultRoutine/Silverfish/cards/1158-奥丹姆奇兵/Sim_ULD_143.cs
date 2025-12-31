@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give a minion +4/+4, <b>Divine Shield</b>, and <b>Taunt</b>.
 		//使一个随从获得+4/+4，<b>圣盾</b>以及<b>嘲讽</b>。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
 			if (target != null)
 			{

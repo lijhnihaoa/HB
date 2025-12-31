@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		//造成$4点伤害。<i>（当你有10点法力值时升级。）</i>
 		
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
             p.minionGetDamageOrHeal(target, dmg);

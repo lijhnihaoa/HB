@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//将一个随从随机变形成为一个法力值消耗增加（1）点的随从，然后召唤一个它的复制。
 	class Sim_VAC_324 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             //法力值消耗增加（1）点的随从
             CardDB.Card kid = p.getRandomCardForManaMinion(target.handcard.card.cost + 1);

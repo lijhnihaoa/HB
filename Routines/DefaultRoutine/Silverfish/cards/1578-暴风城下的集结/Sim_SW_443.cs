@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give a minion +4/+7 and <b>Taunt</b>. When it dies, summon an Elekk.
 		//使一个随从获得+4/+7和<b>嘲讽</b>。当该随从死亡时，召唤一只雷象。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetBuffed(target, 4, 7);
 		}		
 

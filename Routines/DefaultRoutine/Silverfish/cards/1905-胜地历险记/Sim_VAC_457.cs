@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//每个玩家分别召唤其在本局对战中死亡的法力值消耗最高的随从。
 	class Sim_VAC_457 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 寻找己方墓地中费用最高的随从
             CardDB.Card highestOwnMinion = null;

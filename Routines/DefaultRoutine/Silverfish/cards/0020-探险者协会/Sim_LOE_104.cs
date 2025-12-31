@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //选择一个敌方随从。将该随从洗入你的牌库。 
     class Sim_LOE_104 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionReturnToDeck(target, ownplay);
         }

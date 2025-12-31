@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//[x]Give your minions+1/+1. Give yourMurlocs an extra +1/+1.
 		//使你的所有随从获得+1/+1。使你的鱼人额外获得+1/+1。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			List<Minion> temp = (ownplay)? p.ownMinions : p.enemyMinions;
 			foreach (Minion m in temp)
 			{

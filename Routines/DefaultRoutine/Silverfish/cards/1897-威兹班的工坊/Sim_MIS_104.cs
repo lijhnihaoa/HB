@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_MIS_104 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 随机添加五张野兽牌到手牌中
             for (int i = 0; i < 5; i++)

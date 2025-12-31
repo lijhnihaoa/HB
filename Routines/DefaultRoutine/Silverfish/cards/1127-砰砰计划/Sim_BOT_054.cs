@@ -9,7 +9,7 @@ namespace HREngine.Bots
 //每个玩家获得两个法力水晶。 
     {
 		
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.mana = Math.Min(10, p.mana+2);
             p.ownMaxMana = Math.Min(10, p.ownMaxMana+2);

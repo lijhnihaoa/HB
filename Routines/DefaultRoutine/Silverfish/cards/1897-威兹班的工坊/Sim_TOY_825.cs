@@ -12,20 +12,20 @@ namespace HREngine.Bots
 	class Sim_TOY_825 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 获取当前玩家的手牌列表
             List<Handmanager.Handcard> tempHand = ownplay ? p.owncards : p.enemyHand;
 
             // 遍历手牌中的卡牌
-            foreach (Handmanager.Handcard hc in tempHand)
+            foreach (Handmanager.Handcard handcard in tempHand)
             {
                 // 检查是否为亡灵随从
-                if ((TAG_RACE)hc.card.race == TAG_RACE.UNDEAD)
+                if(RaceUtils.MinionBelongsToRace(handcard.card.GetRaces(),CardDB.Race.UNDEAD))
                 {
                     // 为亡灵随从增加 +1/+1
-                    hc.addattack += 1;
-                    hc.addHp += 1;
+                    handcard.addattack += 1;
+                    handcard.addHp += 1;
                 }
             }
         }

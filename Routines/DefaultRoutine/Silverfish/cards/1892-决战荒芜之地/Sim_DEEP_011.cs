@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //对一个随从造成$2点伤害，如果它依然存活，使你的英雄在本回合中获得+3攻击力。
     class Sim_DEEP_011 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_645t : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 抽二张牌
             for (int i = 0; i < 2; i++)

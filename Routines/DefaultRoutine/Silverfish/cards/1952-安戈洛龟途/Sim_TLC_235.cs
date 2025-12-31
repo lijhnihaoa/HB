@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个随从，随机召唤一个法力值消耗相同的随从来替换它。
 	class Sim_TLC_235 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int cost = target.handcard.card.cost;

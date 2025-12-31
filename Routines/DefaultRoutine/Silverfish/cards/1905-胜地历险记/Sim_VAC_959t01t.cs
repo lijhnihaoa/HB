@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//直到你的回合结束，夺取一个敌方随从的控制权。
 	class Sim_VAC_959t01t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null && !target.own)
             {

@@ -9,7 +9,7 @@ namespace HREngine.Bots
                                     //将三张1/1的食人鱼集群置入你的手牌。
                                     //Add three 1/1 PiranhaSwarmers to your hand.
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // Add three Piranha Swarmer cards to the player's hand
             for (int i = 0; i < 3; i++)

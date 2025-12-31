@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>吸血</b>在你的英雄攻击后，使你手牌中的随从牌获得+1/+1。
 	class Sim_TOY_810 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 处理武器的装备
             p.equipWeapon(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TOY_810), ownplay);

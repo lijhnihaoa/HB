@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//抽一张随从牌。获取2张它的复制。
 	class Sim_BG31_BOBt4 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				foreach (var item in p.prozis.turnDeck)

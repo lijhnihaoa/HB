@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_VAC_932 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAC_932); // 获取武器卡牌数据
             p.equipWeapon(weapon, ownplay); // 装备登山钩爪

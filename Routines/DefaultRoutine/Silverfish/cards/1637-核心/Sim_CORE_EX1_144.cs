@@ -11,8 +11,8 @@ namespace HREngine.Bots
         // Shadowstep: Return a friendly minion to your hand. It costs (2) less.
 
         // 当卡牌被使用时，执行此方法
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             // 将目标随从移回手牌，并使其法力值消耗减少2点
             p.minionReturnToHand(target, ownplay, -2);
 		}

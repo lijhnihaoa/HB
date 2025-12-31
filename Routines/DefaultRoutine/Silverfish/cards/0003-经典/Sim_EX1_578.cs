@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //Deal damage equal to your hero's Attack to a minion.
         //对一个随从造成等同于你的英雄攻击力的伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>可交易</b>造成$0点伤害。<i>好像没什么用……</i>
 	class Sim_WW_331t : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.evaluatePenality += 100;

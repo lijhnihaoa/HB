@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Restore #5 Healthto all characters.Draw 5 cards.
 		//为所有角色恢复#5点生命值。抽五张牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{			
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {			
 			int heal = 5;
 			foreach (Minion m in p.ownMinions)
 			{

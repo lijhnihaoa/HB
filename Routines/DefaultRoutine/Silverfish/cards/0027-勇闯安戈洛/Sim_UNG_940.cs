@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>任务：</b>召唤7个具有<b>亡语</b>的随从。<b>奖励：</b>希望守护者阿玛拉。 
     class Sim_UNG_940 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.UNG_940, questProgress = 0, maxProgress = 7 };

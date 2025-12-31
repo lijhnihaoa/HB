@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//
 		//使一个随从获得+2生命值,抽一张牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetBuffed(target, 0, 2);
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}

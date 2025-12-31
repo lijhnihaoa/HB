@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//<b>Hero Power</b>Deal $1 damage.<b>Combo:</b> $2 instead.
 		//<b>英雄技能</b>造成$1点伤害。<b>连击：</b>改为造成$2点伤害。
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getHeroPowerDamage(1) : p.getEnemyHeroPowerDamage(1);
             p.minionGetDamageOrHeal(target, dmg);

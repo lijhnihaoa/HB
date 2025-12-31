@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//迫使每个敌方随从分别随机攻击一个敌方随从。
 	class Sim_YOG_516t2 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.RandomEnemyMinionsAttackEachOther(); // 让每个敌方随从随机攻击一个敌方随从
         }

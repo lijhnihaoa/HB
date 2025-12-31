@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$3点伤害。随机<b>冻结</b>两个敌方随从。
 	class Sim_TIME_611 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int i = 0;

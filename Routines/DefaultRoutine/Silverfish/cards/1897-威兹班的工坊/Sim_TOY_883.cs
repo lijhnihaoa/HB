@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对所有敌方随从造成$3点伤害。你每有一张其他手牌，本牌的法力值消耗便减少（1）点。
 	class Sim_TOY_883 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (Minion minion in ownplay ? p.enemyMinions : p.ownMinions)
 			{
 				if (minion.untouchable || minion.dormant > 0) continue;

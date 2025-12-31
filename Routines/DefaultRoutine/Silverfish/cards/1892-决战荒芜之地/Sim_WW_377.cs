@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个敌方随从及其相邻随从造成$2点伤害。<b>快枪：</b>改为对所有敌人。
 	class Sim_WW_377 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2); // 如果目标不是自己，则使用伤害
 
 			if (target != null)

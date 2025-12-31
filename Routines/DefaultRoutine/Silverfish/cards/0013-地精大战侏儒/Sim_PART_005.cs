@@ -4,15 +4,17 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-    class Sim_PART_005 : SimTemplate //* 紧急冷冻剂 Emergency Coolant
-//<b>Freeze</b> a minion.
-//<b>冻结</b>一个随从。 
+    //* 紧急冷冻剂 Emergency Coolant
+    //<b>Freeze</b> a minion.
+    //<b>冻结</b>一个随从。 
+    class Sim_PART_005 : SimTemplate
     {
-        
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            p.minionGetFrozen(target);
+            if (target != null)
+                p.minionGetFrozen(target);
         }
 
         public override PlayReq[] GetPlayReqs()

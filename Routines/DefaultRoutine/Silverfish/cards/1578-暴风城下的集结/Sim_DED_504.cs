@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //可交易召唤2个1/1的小鬼。（被交易时会升级，增加2个！）
         //Tradeable Summon 2 1/1 |4(Imp, Imps). (Upgrades by 2 when Traded!)
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.GIL_191t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 

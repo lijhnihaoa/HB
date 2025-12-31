@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个受伤的随从获得+2/+2。
 	class Sim_EDR_570B : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 2, 2);

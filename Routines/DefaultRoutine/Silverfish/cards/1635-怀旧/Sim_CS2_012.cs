@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Deal $4 damage to an enemy and $1 damage to all other enemies.
         //对一个敌人造成$4点伤害，并对所有其他敌人造成$1点伤害。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

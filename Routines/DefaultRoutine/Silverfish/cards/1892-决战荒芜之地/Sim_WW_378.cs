@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$1点伤害。如果该随从死亡，<b>发掘</b>一个宝藏。
 	class Sim_WW_378 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);

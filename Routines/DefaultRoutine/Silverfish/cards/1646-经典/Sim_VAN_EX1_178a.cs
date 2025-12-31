@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //+5 Health and Taunt.
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 0, 5);
             if (!target.taunt)

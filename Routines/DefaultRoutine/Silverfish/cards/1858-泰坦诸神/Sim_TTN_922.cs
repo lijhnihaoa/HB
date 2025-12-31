@@ -9,7 +9,7 @@ namespace HREngine.Bots
         // Shuffle the two left-most cards in your hand into your deck. Draw 3 cards.
         // 将你最左边的两张手牌洗入你的牌库。抽三张牌。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 获取玩家的手牌列表
             List<Handmanager.Handcard> tempHand = ownplay ? p.owncards : p.enemyHand;

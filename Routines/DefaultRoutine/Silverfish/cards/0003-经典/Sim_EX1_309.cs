@@ -4,17 +4,20 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	class Sim_EX1_309 : SimTemplate //* 灵魂虹吸 Siphon Soul
-	{
-		//Destroy a minion. Restore #3 Health to_your hero.
-		//消灭一个随从，为你的英雄恢复#3点生命值。
+    class Sim_EX1_309 : SimTemplate //* 灵魂虹吸 Siphon Soul
+    {
+        //Destroy a minion. Restore #3 Health to_your hero.
+        //消灭一个随从，为你的英雄恢复#3点生命值。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            p.minionGetDestroyed(target);
-            int heal = (ownplay) ? p.getSpellHeal(3) : p.getEnemySpellHeal(3);
+            if (target != null)
+            {
 
-            p.minionGetDamageOrHeal(ownplay ? p.ownHero : p.enemyHero, -heal);
+                p.minionGetDestroyed(target);
+                int heal = (ownplay) ? p.getSpellHeal(3) : p.getEnemySpellHeal(3);
+                p.minionGetDamageOrHeal(ownplay ? p.ownHero : p.enemyHero, -heal);
+            }
         }
 
 

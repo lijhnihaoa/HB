@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Deal $2 damage. Summon that many 1/1 Elementals.
 		//造成$2点伤害，每造成一点伤害，便召唤一个1/1的元素。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
 			p.minionGetDamageOrHeal(target, dmg);
 		}

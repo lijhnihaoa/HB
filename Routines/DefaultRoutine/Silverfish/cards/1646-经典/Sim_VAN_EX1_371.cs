@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Give a minion <b>Divine Shield</b>.
 		//使一个随从获得<b>圣盾</b>。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             target.divineshild = true;
 		}
 

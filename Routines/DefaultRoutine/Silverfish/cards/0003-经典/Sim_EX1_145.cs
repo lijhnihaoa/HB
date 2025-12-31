@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//The next spell you cast this turn costs (2) less.
 		//在本回合中，你所施放的下一个法术的法力值消耗减少（2）点。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.playedPreparation = true;

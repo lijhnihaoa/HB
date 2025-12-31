@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Set a minion's Attack and Health to 1.
 		//将一个随从的攻击力和生命值变为1。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionSetAngrToX(target, 1);

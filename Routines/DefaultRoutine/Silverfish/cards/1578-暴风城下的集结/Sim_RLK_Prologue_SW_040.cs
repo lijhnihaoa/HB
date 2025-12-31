@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//对生命值最低的敌人造成$2点伤害两次。
 	class Sim_RLK_Prologue_SW_040 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			for (int i = 0; i < 2; i++)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

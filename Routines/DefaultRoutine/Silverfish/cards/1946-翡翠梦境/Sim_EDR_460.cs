@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$6点伤害。<i>（施放@个法术以获得<b>吸血</b>。）</i>
 	class Sim_EDR_460 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(6) : p.getEnemySpellDamageDamage(6);

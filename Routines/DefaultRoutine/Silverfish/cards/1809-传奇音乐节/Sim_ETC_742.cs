@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>突袭</b>。<b>战吼：</b>如果你使用的上一张牌法力值消耗为（1）点，便获得+1/+1。
 	class Sim_ETC_742 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 获取上次打出的牌的法力值消耗
             int lastCardCost = p.lastPlayedCardCost;

@@ -29,7 +29,7 @@ namespace HREngine.Bots
         //     }
         // }
 
-        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
+        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
                 p.drawACard(CardDB.cardIDEnum.TOY_801t, own.own, true); // 替换为实际的衍生物卡牌 ID
             if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))

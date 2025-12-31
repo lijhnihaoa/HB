@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//抽两张牌。对你的英雄造成$3点伤害。将两张本牌的复制洗入你的牌库。
 	class Sim_MIS_707 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 抽两张牌
             p.drawACard(CardDB.cardIDEnum.None, ownplay);

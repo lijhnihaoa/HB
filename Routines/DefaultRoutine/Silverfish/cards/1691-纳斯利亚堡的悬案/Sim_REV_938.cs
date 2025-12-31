@@ -11,7 +11,7 @@ namespace HREngine.Bots
     {
         private int minionsDied = 0; // 记录当前已经死亡的随从数量
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 抽一张法术牌
             p.drawACard(CardDB.cardIDEnum.None, ownplay);

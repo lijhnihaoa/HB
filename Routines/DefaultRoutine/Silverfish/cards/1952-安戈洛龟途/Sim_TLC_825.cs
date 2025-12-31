@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>延系：</b>对一个敌方随从造成等同于本随从攻击力的伤害。
 	class Sim_TLC_825 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (own.handcard.poweredUp > 0)
 			{
 				p.minionGetDamageOrHeal(target, own.Angr);

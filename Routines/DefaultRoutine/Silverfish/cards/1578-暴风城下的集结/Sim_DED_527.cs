@@ -10,7 +10,7 @@ namespace HREngine.Bots
         //Tradeable After you Trade this, gain +2 Durability.
         CardDB.Card wcard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DED_527);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(wcard, ownplay);
         }

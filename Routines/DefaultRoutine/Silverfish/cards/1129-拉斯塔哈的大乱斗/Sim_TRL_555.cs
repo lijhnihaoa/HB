@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //消灭一个随从。你每有一个随从，该牌的法力值消耗便减少（1）点。
     class Sim_TRL_555 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

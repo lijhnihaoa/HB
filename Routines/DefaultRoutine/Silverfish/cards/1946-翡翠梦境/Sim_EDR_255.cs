@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	//<b>吸血</b>。对生命值最低的敌人造成$5点伤害，触发两次。
 	class Sim_EDR_255 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int damage = ownplay ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
 			for (int i = 0; i < 2; i++)
 			{

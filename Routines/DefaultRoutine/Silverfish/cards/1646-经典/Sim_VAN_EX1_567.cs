@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//<b>风怒，过载：</b>（2）
         CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_567);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.equipWeapon(card, ownplay);
             if (ownplay) p.ueberladung += 2;
 		}

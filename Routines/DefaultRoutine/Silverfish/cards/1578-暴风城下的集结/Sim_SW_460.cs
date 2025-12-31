@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//选择一个敌方随从，使你的所有随从攻击该随从，并将死亡的友方随从移回你的手牌。
 	class Sim_SW_460 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
             {
 				List<Minion> minions = ownplay ? p.ownMinions : p.enemyMinions;

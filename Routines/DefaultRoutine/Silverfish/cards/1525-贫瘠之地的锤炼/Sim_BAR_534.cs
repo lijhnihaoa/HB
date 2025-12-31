@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Give your minions +1/+3.
         //使你的所有随从获得+1/+3。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.allMinionOfASideGetBuffed(ownplay, 1, 3);
         }

@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //<b>微缩</b>，<b>扩大</b>在你使用一张攻击力与本随从相同的随从牌后，召唤一个它的复制。
     class Sim_MIS_025 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 处理“微缩”效果，抽一张微缩衍生物牌
             CardDB.cardIDEnum miniaturizeCardID = CardDB.cardIDEnum.MIS_025t; // 假设“微缩”衍生物牌的 ID 是 MIS_025t

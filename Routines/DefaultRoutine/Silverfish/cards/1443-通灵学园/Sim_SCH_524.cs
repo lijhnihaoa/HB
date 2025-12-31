@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Give a damaged minion +3 Attack and <b>Divine Shield</b>.
         //使一个受伤的随从获得+3攻击力和<b>圣盾</b>。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             foreach (Minion m in p.ownMinions)
             {

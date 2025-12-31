@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Draw a card for each damaged friendly character.
 		//每有一个受伤的友方角色，便抽一张牌。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             List<Minion> temp = (ownplay)? p.ownMinions : p.enemyMinions;
             foreach (Minion mnn in temp )
             {

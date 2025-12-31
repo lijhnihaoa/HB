@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_329 : SimTemplate //* 祝福 bless
 	{
 		//使一个随从获得+2生命值，然后使其攻击力等同于其生命值。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

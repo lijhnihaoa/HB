@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得+1/+2和<b>突袭</b>。在本回合可以重复使用。
 	class Sim_GDB_457 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target,1,2);

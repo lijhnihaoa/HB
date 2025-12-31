@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Destroy all minions.
 		//消灭所有随从。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.allMinionsGetDestroyed();
 		}
 

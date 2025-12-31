@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//<b>抉择：</b>使你的所有随从获得+1攻击力；或者召唤一个2/2的树人。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SW_422t);//panther
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
 			{
 				p.allMinionOfASideGetBuffed(ownplay, 1, 1);

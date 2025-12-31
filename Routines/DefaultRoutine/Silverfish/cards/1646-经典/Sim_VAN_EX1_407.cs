@@ -8,13 +8,13 @@ namespace HREngine.Bots
 	{
         // Destroy all minions except one. (chosen randomly) 破坏所有怪兽，以期望修正
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int maxVal = 0;
             int objectId = 0;
 
             // 找到最大
-            foreach (Minion m in p.enemyMinions)
+            foreach (Minion m in p.enemyMinions.ToArray())
             {
                 if(m.Angr + m.Hp > maxVal)
                 {
@@ -24,12 +24,12 @@ namespace HREngine.Bots
             }
             
             // 破坏其他怪兽
-            foreach (Minion m in p.enemyMinions)
+            foreach (Minion m in p.enemyMinions.ToArray())
             {
                 p.evaluatePenality += Ai.Instance.botBase.getEnemyMinionValue(m, p) / (p.enemyMinions.Count + p.ownMinions.Count);
                 p.minionGetDestroyed(m);
             }
-            foreach (Minion m in p.ownMinions)
+            foreach (Minion m in p.ownMinions.ToArray())
             {
                 p.minionGetDestroyed(m);
             }

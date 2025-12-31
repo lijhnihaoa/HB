@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个敌方随从的生命值变为1，然后对所有敌人造成$1点伤害。
 	class Sim_TTN_853 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);

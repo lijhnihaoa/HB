@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
         CardDB.cardIDEnum sunscreenCardID = CardDB.cardIDEnum.VAC_917t; // 假设防晒霜的卡牌ID为 VAC_917t
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 在每个回合结束时，获取防晒霜
             if (ownplay)

@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		//召唤三个5/6并具有<b>嘲讽</b>的元素。<b>过载：</b>（3）
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.YOD_041t);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 

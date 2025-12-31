@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>可交易</b><b>沉默</b>所有敌方随从。
 	class Sim_BOM_10_ShardOfTheNaaru_008s : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.allMinionsGetSilenced(!ownplay);
 
 		}

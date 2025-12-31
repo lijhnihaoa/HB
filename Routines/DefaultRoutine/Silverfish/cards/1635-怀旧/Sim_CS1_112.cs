@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Deal $2 damage to all enemy minions. Restore #2 Health to all friendly characters.
 		//对所有敌方随从造成$2点伤害，为所有友方角色恢复#2点生命值。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay)? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             int heal = (ownplay) ? p.getSpellHeal(2) : p.getEnemySpellHeal(2) ;

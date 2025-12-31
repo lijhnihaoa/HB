@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//随机获取纳迦牌和法术牌各一张，其法力值消耗减少（2）点。
 	class Sim_VAC_329 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 随机获取一张纳迦牌
             p.drawACard(CardDB.cardIDEnum.None, ownplay);

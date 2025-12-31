@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//获得10点护甲值。在你的下个回合开始时，失去5点护甲值。
 	class Sim_AV_109 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			Minion hero = ownplay ? p.ownHero : p.enemyHero;
 			p.minionGetArmor(hero, 10);
 			//给英雄添加附魔,下回合开始时会减少5点护甲

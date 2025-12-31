@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //Deal $2 damage to a minion. Deal one more damage for each Beast you control.
         //对一个随从造成$2点伤害。你每控制一只野兽，便多造成一点伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

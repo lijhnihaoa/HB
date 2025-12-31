@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>吸血</b>。对一个随从造成$4点伤害。<b>快枪：</b>法力值消耗为（1）点。
 	class Sim_WW_325 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);

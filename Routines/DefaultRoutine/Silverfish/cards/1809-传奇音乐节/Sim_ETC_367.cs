@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//在本回合中，每当你使用一张随从牌，随机将一张萨满祭司法术牌置入你的手牌。
 	class Sim_ETC_367 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}
 		

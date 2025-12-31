@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //造成$1点伤害，随机召唤一个法力值消耗与伤害量相同的随从。
     class Sim_DEEP_003 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

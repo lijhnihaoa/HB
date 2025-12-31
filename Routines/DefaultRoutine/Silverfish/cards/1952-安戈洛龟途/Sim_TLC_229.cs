@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>任务：</b>使用7个不同类型的随从牌。<b>奖励：</b>阿沙隆。
 	class Sim_TLC_229 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (p.playactions.Count < 3) p.evaluatePenality -= 30;
 			p.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.TLC_229, questProgress = 0, maxProgress = 6 };
 			Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.TLC_229, questProgress = 0, maxProgress = 6 };

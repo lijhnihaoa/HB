@@ -2,8 +2,8 @@ namespace HREngine.Bots
 {
 	class Sim_VAN_HERO_09bp : SimTemplate //* 次级治疗术 Lesser Heal
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int heal = 2;
             if (ownplay)
             {

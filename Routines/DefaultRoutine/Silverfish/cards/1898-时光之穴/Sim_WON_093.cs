@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个恶魔获得+3/+3。
 	class Sim_WON_093 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 3, 3);

@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //<b>Poisonous</b>
         //<b>剧毒</b>
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.WC_037), true);
         }

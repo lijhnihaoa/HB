@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消耗2份<b>残骸</b>，对一个随从造成$4点伤害。
 	class Sim_EDR_813b : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
             p.minionGetDamageOrHeal(target, dmg);
 		}

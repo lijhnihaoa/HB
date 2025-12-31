@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//选择一个友方随从，交给你的对手。
 	class Sim_CORE_ICC_206 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetControlled(target, !ownplay, false, true);

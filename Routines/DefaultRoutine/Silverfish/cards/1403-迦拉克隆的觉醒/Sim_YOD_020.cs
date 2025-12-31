@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Transform a minion into a random one that costs (3) more.
 		//将一个随从随机变形成为一个法力值消耗增加（3）点的随从。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.minionTransform(target, p.getRandomCardForManaMinion(target.handcard.card.cost + 3));
 		}
 

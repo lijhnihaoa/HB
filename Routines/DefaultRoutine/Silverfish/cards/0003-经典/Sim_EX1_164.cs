@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//<b>Choose One -</b> Gain 2_Mana Crystals; or Draw 3 cards.
 		//<b>抉择：</b>获得两个法力水晶；或者抽三张牌。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {

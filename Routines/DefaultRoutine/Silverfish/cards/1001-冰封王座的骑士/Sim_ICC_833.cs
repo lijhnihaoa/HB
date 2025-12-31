@@ -12,7 +12,7 @@ namespace HREngine.Bots
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ICC_833t); 
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.setNewHeroPower(CardDB.cardIDEnum.ICC_833h, ownplay); 
             if (ownplay) p.ownHero.armor += 5;

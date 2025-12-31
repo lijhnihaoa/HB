@@ -9,9 +9,8 @@ namespace HREngine.Bots
 	//使你手牌，牌库以及战场中的所有随从获得+4/+4。
 	class Sim_SCH_609 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
-			p.evaluatePenality -= 5;
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				// 场地
@@ -20,10 +19,10 @@ namespace HREngine.Bots
 					p.minionGetBuffed(m, 4, 4);
 				}
 				// 手牌
-				foreach (Handmanager.Handcard hc in p.owncards)
+				foreach (Handmanager.Handcard handcard in p.owncards)
 				{
-					hc.addattack += 4;
-					hc.addHp += 4;
+					handcard.addattack += 4;
+					handcard.addHp += 4;
 					p.anzOwnExtraAngrHp += 8;
 				}
 				// 卡组

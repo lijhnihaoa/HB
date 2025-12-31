@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>任务：</b>使用七张法力值消耗为（1）的随从牌。<b>奖励：</b>卡纳莎女王。 
     class Sim_UNG_920 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.UNG_920, questProgress = 0, maxProgress = 7 };

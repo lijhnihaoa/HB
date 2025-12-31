@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $2 damage.If you're holding a Dragon, deal $4 damage with <b>Lifesteal</b> instead.
 		//造成$2点伤害。如果你的手牌中有龙牌，则改为造成$4点伤害并具有<b>吸血</b>。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
 			p.minionGetDamageOrHeal(target, dmg);
 		}

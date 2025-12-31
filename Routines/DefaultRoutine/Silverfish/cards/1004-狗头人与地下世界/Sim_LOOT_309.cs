@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Gain 6 Armor.<b>Recruit</b> a minion that costs (4) or less.
         //获得6点护甲值。<b>招募</b>一个法力值消耗小于或等于（4）的随从。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetArmor(p.ownHero, 6);
 			// 遍历卡组

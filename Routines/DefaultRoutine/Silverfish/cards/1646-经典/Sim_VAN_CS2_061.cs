@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Deal $2 damage. Restore #2 Health to your hero.
 		//造成$2点伤害，为你的英雄恢复#2点生命值。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             int heal = (ownplay) ? p.getSpellHeal(2) : p.getEnemySpellHeal(2);

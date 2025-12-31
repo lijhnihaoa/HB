@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         // Lifesteal. Deal 1 damage to all minions.
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

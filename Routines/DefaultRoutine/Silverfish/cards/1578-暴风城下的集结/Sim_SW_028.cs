@@ -10,7 +10,7 @@ namespace HREngine.Bots
 
     class Sim_SW_028 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.SW_028, questProgress = 0, maxProgress = 3 };

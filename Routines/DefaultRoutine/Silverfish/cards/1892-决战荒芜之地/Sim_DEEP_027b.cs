@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//摧毁你的一个法力水晶。
 	class Sim_DEEP_027b : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.ownMaxMana = Math.Max(0, p.ownMaxMana--);
 		}
 

@@ -10,7 +10,7 @@ namespace HREngine.Bots
     class Sim_ETC_075 : SimTemplate
     {
         // 处理使用法术效果的方法
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 记录使用法术前的法力值
             int beforeMana = ownplay ? p.mana : p.enemyMaxMana;

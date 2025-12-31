@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Gain 1 Mana Crystal this turn only.
 		//在本回合中，获得一个法力水晶。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.mana = Math.Min(10, p.mana+1);
 		}
 		

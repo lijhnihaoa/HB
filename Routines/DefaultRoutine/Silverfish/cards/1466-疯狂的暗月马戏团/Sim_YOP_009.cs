@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Resurrect a friendly1-Cost, 2-Cost, and3-Cost minion.
         //复活法力值消耗为（1），（2），（3）的友方随从各一个，        CardDB.Card kid = null;
-        public override void onCardPlay(Playfield p, bool ownplay, Minion m, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion m, int choice, Handmanager.Handcard hc)
         {
             bool cost1 = false;
             bool cost2 = false;

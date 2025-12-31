@@ -13,8 +13,8 @@ namespace HREngine.Bots
 
         CardDB.Card w = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BOT_042t);
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetArmor(p.ownHero, 6);

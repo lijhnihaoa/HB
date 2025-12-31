@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]After you cast a Shadowspell, deal 1 damageto all enemies.Lose 1 Durability.
         //在你施放一个暗影法术后，对所有敌人造成1点伤害。失去1点耐久度。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SW_012), true);
         }

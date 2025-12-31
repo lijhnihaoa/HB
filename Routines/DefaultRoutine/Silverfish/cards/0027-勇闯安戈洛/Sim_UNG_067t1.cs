@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//For the rest of the game, your minions are 5/5.
 		//在本局对战的剩余时间内，你的所有随从变为5/5。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {
@@ -19,10 +19,10 @@ namespace HREngine.Bots
                     p.minionSetLifetoX(m, 4);
                 }
 
-                foreach (Handmanager.Handcard hc in p.owncards)
+                foreach (Handmanager.Handcard handcard in p.owncards)
                 {
-                    hc.addattack += 4 - hc.card.Attack;
-                    hc.addHp += 4 - hc.card.Health;
+                    handcard.addattack += 4 - handcard.card.Attack;
+                    handcard.addHp += 4 - handcard.card.Health;
                 }
             }
         }

@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>发现</b>一张<b>临时</b>的邪能弹幕，混乱打击或混乱新星。
 	class Sim_GIFT_08 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 根据玩家选择的选项（choice）来决定添加哪张卡牌
             CardDB.cardIDEnum selectedCardID = CardDB.cardIDEnum.None;

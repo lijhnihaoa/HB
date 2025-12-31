@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//[x]Give a minion +1 Attack.<b>Invoke</b> Galakrond.
 		//使一个随从获得+1攻击力。<b>祈求</b>迦拉克隆。
 		
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

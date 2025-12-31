@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_TTN_926b : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_903t4);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (Minion minion in p.ownMinions.ToArray())
 			{
 				if (minion.handcard.card.Treant)

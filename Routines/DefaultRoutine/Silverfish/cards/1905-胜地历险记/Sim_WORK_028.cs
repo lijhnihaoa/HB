@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使所有随从获得<b>复生</b>，然后消灭所有随从。
 	class Sim_WORK_028 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (p.ownMinions.Count > 0)
 			{
 				p.ownMinions.ForEach((m) => m.reborn = true);

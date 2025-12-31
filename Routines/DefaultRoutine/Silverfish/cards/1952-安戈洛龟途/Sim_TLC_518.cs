@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_TLC_518 : SimTemplate
 	{
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TLC_513t2);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.AddToDeck(card);
 			p.AddToDeck(card);
 			p.AddToDeck(card);

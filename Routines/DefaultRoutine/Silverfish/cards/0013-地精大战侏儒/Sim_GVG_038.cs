@@ -8,7 +8,7 @@ namespace HREngine.Bots
 //Deal $3-$6 damage. <b>Overload:</b> (1)
 //造成$3到$6点伤害，<b>过载：</b>（1） 
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if(target != null)
             {

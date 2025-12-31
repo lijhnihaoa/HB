@@ -10,7 +10,7 @@ namespace HREngine.Bots
     //Deal 2 damage to a minion. If it dies,deal 3 damage to the enemy hero.
     class Sim_NX2_019 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

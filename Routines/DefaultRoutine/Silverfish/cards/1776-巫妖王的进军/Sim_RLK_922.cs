@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个随从获得+3/+3和<b>圣盾</b>。对你的英雄造成$3点伤害。
 	class Sim_RLK_922 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetBuffed(target, 3, 3);

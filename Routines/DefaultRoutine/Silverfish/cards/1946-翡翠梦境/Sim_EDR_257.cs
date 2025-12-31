@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b><b>嘲讽</b>。</b><b>抉择：</b>获得+3攻击力和<b>圣盾</b>；或者获得+3生命值和<b>吸血</b>。
 	class Sim_EDR_257 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
 			{
 				p.minionGetBuffed(own, 3, 0);

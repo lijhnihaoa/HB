@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//复原三个法力水晶。
 	class Sim_VAC_907t3 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.mana = Math.Min(p.ownMaxMana, p.mana+3); // 复原3个 法力水晶
         }    

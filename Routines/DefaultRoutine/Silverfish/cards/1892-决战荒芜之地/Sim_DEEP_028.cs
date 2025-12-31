@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_DEEP_028 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DEEP_028t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 
 			if (ownplay) p.ownMaxMana = Math.Min(10, p.ownMaxMana + 3);

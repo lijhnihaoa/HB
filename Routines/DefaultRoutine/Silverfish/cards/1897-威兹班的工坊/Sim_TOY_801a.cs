@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//抽一张法术牌。
 	class Sim_TOY_801a : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
 		}
 

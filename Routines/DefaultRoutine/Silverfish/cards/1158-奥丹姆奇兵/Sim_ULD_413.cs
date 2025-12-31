@@ -9,8 +9,8 @@ namespace HREngine.Bots
 //<b>战吼：</b>召唤你的图腾的复制。 
     {
 		CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.ULD_413);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.equipWeapon(weapon, ownplay);
 			List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
 			List<Minion> CopiesMinion = new List<Minion>();

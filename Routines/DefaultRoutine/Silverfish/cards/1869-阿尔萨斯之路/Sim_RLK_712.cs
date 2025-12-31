@@ -11,16 +11,16 @@ namespace HREngine.Bots
 	//使你手牌中的所有随从牌获得+1/+1。消耗2份<b>残骸</b>，再获得+1/+1。
 	class Sim_RLK_712 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
-				foreach (Handmanager.Handcard hc in p.owncards)
+				foreach (Handmanager.Handcard handcard in p.owncards)
 				{
-					if (hc.card.type == CardDB.cardtype.MOB)
+					if (handcard.card.type == CardDB.cardtype.MOB)
 					{
-						hc.addattack++;
-						hc.addHp++;
+						handcard.addattack++;
+						handcard.addHp++;
 						p.anzOwnExtraAngrHp += 2;
 					}
 				}
@@ -28,12 +28,12 @@ namespace HREngine.Bots
 				if (p.getCorpseCount() >= 2)
 				{
 					p.corpseConsumption(2);
-					foreach (Handmanager.Handcard hc in p.owncards)
+					foreach (Handmanager.Handcard handcard in p.owncards)
 					{
-						if (hc.card.type == CardDB.cardtype.MOB)
+						if (handcard.card.type == CardDB.cardtype.MOB)
 						{
-							hc.addattack++;
-							hc.addHp++;
+							handcard.addattack++;
+							handcard.addHp++;
 							p.anzOwnExtraAngrHp += 2;
 						}
 					}

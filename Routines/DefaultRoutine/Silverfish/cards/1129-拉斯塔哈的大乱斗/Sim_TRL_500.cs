@@ -10,7 +10,7 @@ namespace HREngine.Bots
 	{
 		
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay) p.ownMaxMana-=3;
             else p.enemyMaxMana-=3;

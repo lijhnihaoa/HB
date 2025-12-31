@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>突袭</b>。<b>连击：</b>召唤一个本随从的复制。
 	class Sim_TOY_516 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 检查是否触发了连击效果
             if (p.cardsPlayedThisTurn > 0) // 连击：本回合是否已经打出了其他卡牌

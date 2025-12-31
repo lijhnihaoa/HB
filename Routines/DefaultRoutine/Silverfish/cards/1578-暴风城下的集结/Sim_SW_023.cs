@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>可交易</b>选择一个友方随从，使所有敌方随从攻击该随从。
 	class Sim_SW_023 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (target != null)
 			{

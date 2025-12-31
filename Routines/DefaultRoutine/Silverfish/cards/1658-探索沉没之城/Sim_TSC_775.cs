@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>沉默</b>一个随从，并召唤一个它的复制。将一张沉没的祭仪置于你的牌库底。
 	class Sim_TSC_775 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count;

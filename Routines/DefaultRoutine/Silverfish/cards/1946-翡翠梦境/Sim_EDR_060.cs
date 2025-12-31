@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//获得5点护甲值。随机召唤一个法力值消耗为（5）的随从并使其获得<b>嘲讽</b>。
 	class Sim_EDR_060 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 5);
 			int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
 			Minion summonMinion = p.callKidAndReturn(p.getRandomCardForManaMinion(5), pos, ownplay);

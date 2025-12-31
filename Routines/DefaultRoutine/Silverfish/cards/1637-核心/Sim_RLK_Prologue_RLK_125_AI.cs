@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个随从。你的英雄受到等同于该随从生命值的伤害。
 	class Sim_RLK_Prologue_RLK_125_AI : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(target.Hp) : p.getEnemySpellDamageDamage(target.Hp);

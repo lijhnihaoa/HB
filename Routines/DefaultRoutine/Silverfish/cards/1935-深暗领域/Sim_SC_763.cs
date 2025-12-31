@@ -17,7 +17,7 @@ namespace HREngine.Bots
 			{
 				if (p.mana > 4)
 				{
-					p.mana = Math.Max(p.mana -= 4, 0);
+					p.mana -= 4;
 					p.minionGetBuffed(own, own.Angr, own.Hp);
 				}
 			}

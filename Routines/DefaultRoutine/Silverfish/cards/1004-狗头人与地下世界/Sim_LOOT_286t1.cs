@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.LOOT_286t1);
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CS2_101t);        
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 		   p.equipWeapon(weapon, ownplay);
            int pos = (ownplay)? p.ownMinions.Count : p.enemyMinions.Count;

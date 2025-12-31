@@ -18,8 +18,8 @@ namespace HREngine.Bots
 			p.drawACard(CardDB.cardIDEnum.None, own.own);
 		}
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (p.cardsPlayedThisTurn > 0)
 			{
 				int damage = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//夺取一个敌方随从的控制权。
 	class Sim_YOG_516t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (target != null)
             {
                 p.minionGetControlled(target, true, true, true); // 夺取一个敌方随从的控制权

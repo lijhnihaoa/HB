@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_821 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TOY_821), p.ownMinions.Count, ownplay);
         }

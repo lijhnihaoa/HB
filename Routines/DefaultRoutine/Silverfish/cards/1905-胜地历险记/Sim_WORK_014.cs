@@ -13,8 +13,8 @@ namespace HREngine.Bots
 	{
 		//默认添加恐怖末日守卫
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_020);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);

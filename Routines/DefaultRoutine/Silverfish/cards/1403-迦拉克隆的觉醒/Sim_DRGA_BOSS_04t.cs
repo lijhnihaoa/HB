@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Deal $4 damage to a minion. If you're holding a Dragon, return this to your hand.
 		//对一个随从造成$4点伤害。如果你的手牌中有龙牌，则将此法术牌移回你的手牌。
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if(target!=null){
 

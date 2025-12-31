@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>发现</b>一张法力值消耗为（3）的随从牌。复原3个法力水晶。
 	class Sim_BG31_BOBt3 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
 			if (ownplay)
 			{

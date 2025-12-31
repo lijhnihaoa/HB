@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个随从洗入其拥有者的牌库。
 	class Sim_EDR_846t2 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionReturnToDeck(target, target.own);

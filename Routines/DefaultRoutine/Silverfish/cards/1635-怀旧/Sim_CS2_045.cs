@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Give a friendly character +3 Attack this turn.
 		//在本回合中，使一个友方角色获得+3攻击力。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetTempBuff(target, 3,0);
 		}
 

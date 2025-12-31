@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]Destroy all your minions.For each one, destroy arandom enemy minion.
         //消灭你的所有随从。每消灭一个随从，便随机消灭一个敌方随从。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int count = p.ownMinions.Count;
             int countEnemy = p.enemyMinions.Count;

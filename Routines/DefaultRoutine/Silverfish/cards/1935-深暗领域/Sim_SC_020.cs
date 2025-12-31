@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//移除一个友方地标的1点耐久度，为你的英雄恢复#8点生命值。
 	class Sim_SC_020 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int heal = ownplay ? p.getSpellHeal(-8) : p.getEnemySpellHeal(-8);

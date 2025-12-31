@@ -4,7 +4,7 @@ namespace HREngine.Bots
 	{
 		//<b>Hero Power</b>Deal $3 damage.
 		//<b>英雄技能</b>造成$3点伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getHeroPowerDamage(3) : p.getEnemyHeroPowerDamage(3);
             if (target == null) target = ownplay ? p.enemyHero : p.ownHero;

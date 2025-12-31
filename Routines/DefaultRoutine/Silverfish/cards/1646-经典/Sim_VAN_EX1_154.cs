@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//<b>Choose One -</b>Deal $3 damage to a minion; or $1 damageand draw a card.
 		//<b>抉择：</b>对一个随从造成$3点伤害；或者造成$1点伤害并抽一张牌。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int damage = 0;
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {

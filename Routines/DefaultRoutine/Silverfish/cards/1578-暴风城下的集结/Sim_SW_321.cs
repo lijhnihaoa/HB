@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $3 damage. Your next Hero Power deals 2 more damage.
 		//造成$3点伤害。你的下一个英雄技能会额外造成2点伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 

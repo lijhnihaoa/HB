@@ -14,13 +14,13 @@ namespace HREngine.Bots
 	{
 		CardDB.Card card = null;
 		PlayReq[] playReqs = new PlayReq[] { };
-		public override void useLocation(Playfield p, Minion triggerMinion, Minion target)
+	/* 	public override void useLocation(Playfield p, Minion triggerMinion, Minion target)
 		{
 			if (triggerMinion.handcard.enchs.Count > 0)
 			{
-				card.sim_card.onCardPlay(p, triggerMinion.own, target, 1);
+				card.sim_card.onCardPlay(p, triggerMinion.own, target, 1, TODO);
 			}
-		}
+		} */
 
 		public override void OnSpellburst(Playfield p, Minion m, Handmanager.Handcard hc)
 		{

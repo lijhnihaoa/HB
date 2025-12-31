@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_MIS_027 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = 2;
             List<Minion> minions = ownplay ? p.ownMinions : p.enemyMinions;

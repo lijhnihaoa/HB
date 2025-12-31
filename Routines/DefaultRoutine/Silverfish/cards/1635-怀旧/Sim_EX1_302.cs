@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $1 damage to a minion. If that kills it, draw a card.
 		//对一个随从造成$1点伤害。如果“死亡缠绕”消灭该随从，抽一张牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             if (dmg >= target.Hp && !target.divineshild && !target.immune)
             {

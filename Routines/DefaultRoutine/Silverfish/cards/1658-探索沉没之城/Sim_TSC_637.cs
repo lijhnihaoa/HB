@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//造成$2点伤害。<b>探底</b>。
 	class Sim_TSC_637 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);
             p.minionGetDamageOrHeal(target, dmg);

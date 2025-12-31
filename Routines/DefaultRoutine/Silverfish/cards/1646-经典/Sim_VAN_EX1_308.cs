@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//[x]Deal $4 damage.Discard a random card.
 		//造成$4点伤害，随机弃一张牌。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(4) : p.getEnemySpellDamageDamage(4);
             p.minionGetDamageOrHeal(target, dmg);
             p.discardCards(1, ownplay);

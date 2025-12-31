@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //<b>Choose One -</b> Give a minion +4 Attack; or +4 Health and <b>Taunt</b>.
         //<b>抉择：</b>使一个随从获得+4攻击力；或者+4生命值和<b>嘲讽</b>。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

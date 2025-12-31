@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//Summon three 1/1_Illidari with <b>Rush</b>.
 		//召唤三个1/1并具有<b>突袭</b>的伊利达雷。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BT_036t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = p.ownMinions.Count;
 			p.callKid(kid, pos + 1, ownplay);
 			p.callKid(kid, pos + 2, ownplay);

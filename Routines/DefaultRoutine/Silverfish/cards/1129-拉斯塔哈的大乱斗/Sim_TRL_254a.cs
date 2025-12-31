@@ -9,8 +9,8 @@ namespace HREngine.Bots
 //使一个随从获得+2/+4和<b>嘲讽</b>。 
 	{
         
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetBuffed(target, 2, 4);
             if (!target.taunt)
             {

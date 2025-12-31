@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_716 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 召唤一个1/2并具有圣盾和嘲讽的机械
             p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BG_GVG_085), p.ownMinions.Count, ownplay);

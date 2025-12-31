@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $8 damage to a minion. <b><b>Overload</b>:</b> (3)
         //对一个随从造成$8点伤害。<b>过载：</b>（3）
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(8);
             p.minionGetDamageOrHeal(target, dmg);

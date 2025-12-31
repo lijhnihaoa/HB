@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//<b>英雄技能</b> 召唤两个2/3并具有<b>嘲讽</b>的元素。每回合切换。
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AV_258t6);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int count = (ownplay)?p.ownMinions.Count :p.enemyMinions.Count;
             if (count < 6)

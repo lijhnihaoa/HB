@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //[x]Deal $6 damage to aminion. Excess damagehits your hero.
         //对一个随从造成$6点伤害，超过目标生命值的伤害会命中你的英雄。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

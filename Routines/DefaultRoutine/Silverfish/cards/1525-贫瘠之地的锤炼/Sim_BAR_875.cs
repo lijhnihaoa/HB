@@ -40,8 +40,8 @@ namespace HREngine.Bots
 			return;
         }
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.equipWeapon(card, ownplay);
 		}
 	}

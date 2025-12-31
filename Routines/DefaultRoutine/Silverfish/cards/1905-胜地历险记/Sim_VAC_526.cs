@@ -12,7 +12,7 @@ namespace HREngine.Bots
     class Sim_VAC_526 : SimTemplate
     {
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {
@@ -25,11 +25,11 @@ namespace HREngine.Bots
                 // 如果有超量伤害，增加手牌中一张随从的属性值
                 if (excessDamage > 0)
                 {
-                    Handmanager.Handcard hc = p.searchRandomMinionInHand(p.owncards, searchmode.searchLowestCost, GAME_TAGs.None);
-                    if (hc != null)
+                    Handmanager.Handcard handcard = p.searchRandomMinionInHand(p.owncards, searchmode.searchLowestCost, GAME_TAGs.None);
+                    if (handcard != null)
                     {
-                        hc.addattack += excessDamage;
-                        hc.addHp += excessDamage;
+                        handcard.addattack += excessDamage;
+                        handcard.addHp += excessDamage;
                     }
                 }
             }

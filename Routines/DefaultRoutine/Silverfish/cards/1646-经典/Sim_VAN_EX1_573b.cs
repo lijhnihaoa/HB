@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//召唤两个2/2并具有<b>嘲讽</b>的树人。
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.EX1_573t); //special treant
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             p.callKid(kid, pos, ownplay, false);
             p.callKid(kid, pos, ownplay);

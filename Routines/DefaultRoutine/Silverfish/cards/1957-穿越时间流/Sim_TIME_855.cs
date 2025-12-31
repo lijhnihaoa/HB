@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个敌人造成$3点伤害，并随机对两个其他敌人造成$2点伤害。
 	class Sim_TIME_855 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

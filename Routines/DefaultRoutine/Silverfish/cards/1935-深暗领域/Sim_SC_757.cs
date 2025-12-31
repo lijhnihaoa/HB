@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//召唤一个友方星灵随从的一个复制。该复制受到的伤害翻倍。
 	class Sim_SC_757 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (target != null)
 			{

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Draw a weapon.Give it +1 Durability.
 		//抽一张武器牌。使其获得+1耐久度。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			 p.drawACard(CardDB.cardIDEnum.DRG_025, ownplay);
 		}
 		

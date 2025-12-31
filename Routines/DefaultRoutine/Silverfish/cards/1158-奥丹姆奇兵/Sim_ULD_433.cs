@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>任务：</b>施放10个法术。<b>奖励：</b>升格卷轴。
 	class Sim_ULD_433 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.ULD_433, questProgress = 0, maxProgress = 10 };

@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//Give a minion +5/+5. At the start of your next turn, destroy it.
 		//使一个随从获得+5/+5，在你的下个回合开始时，消灭该随从。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.minionGetBuffed(target, 5, 5);
             if (ownplay)

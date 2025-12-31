@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//对一个随从造成$3点伤害。如果你正在构筑<b>星舰</b>，则还会对相邻随从造成伤害。
 	class Sim_GDB_845 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

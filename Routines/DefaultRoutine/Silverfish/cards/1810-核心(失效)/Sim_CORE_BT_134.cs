@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$3点伤害。如果你拥有至少七个法力水晶，则法力值消耗为（0）点。
 	class Sim_CORE_BT_134 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

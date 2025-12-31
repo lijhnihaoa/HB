@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give your hero +4_Attack this turn. Gain 4 Armor.
 		//使你的英雄获得4点护甲值，并在本回合中获得+4攻击力。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             if (ownplay)
             {
                 p.minionGetTempBuff(p.ownHero, 4, 0);

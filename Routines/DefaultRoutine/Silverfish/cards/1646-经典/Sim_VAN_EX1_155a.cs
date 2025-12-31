@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //+4 Attack.
         //+4攻击力。
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

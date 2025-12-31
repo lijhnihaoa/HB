@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//此后从扭曲虚空召唤的恶魔拥有+2生命值和<b>嘲讽</b>。
 	class Sim_TTN_960t4 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay) p.ownLegionInvasion = true;
 			else p.enemyLegionInvasion = true;

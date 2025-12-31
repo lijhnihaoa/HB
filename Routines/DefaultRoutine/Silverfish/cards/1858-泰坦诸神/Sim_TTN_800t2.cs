@@ -9,7 +9,7 @@ namespace HREngine.Bots
     {
         // 在这里可以定义卡牌的属性，如法力值消耗、卡牌类型、效果等等
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

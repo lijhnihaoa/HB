@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		// 在你的英雄攻击后，将一张“炸弹”牌洗入你的对手的牌库。
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DAL_063);
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.equipWeapon(card, ownplay);
 
 		}

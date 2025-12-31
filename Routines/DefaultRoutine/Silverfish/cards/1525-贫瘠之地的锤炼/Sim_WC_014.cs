@@ -9,7 +9,7 @@ namespace HREngine.Bots
         //Destroy ALLodd-Attack minions.
         //消灭所有攻击力为奇数的随从。
         
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 
             

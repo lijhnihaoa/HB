@@ -10,7 +10,7 @@ namespace HREngine.Bots
 	{
 		
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             if (p.ownHeroHasDirectLethal()) p.callKid(CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.AT_125), pos, ownplay, false);

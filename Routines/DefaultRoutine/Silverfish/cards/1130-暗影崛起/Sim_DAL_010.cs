@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
 		//选择一个随从。将它的@张复制洗入你的牌库。（每回合都会升级！）
 		
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

@@ -10,8 +10,8 @@ namespace HREngine.Bots
 	{
 		
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             foreach (Minion m in ownplay ? p.enemyMinions : p.ownMinions)
             {
 				if (m.name == CardDB.cardNameEN.understudy) p.minionGetControlled(m, ownplay, true);

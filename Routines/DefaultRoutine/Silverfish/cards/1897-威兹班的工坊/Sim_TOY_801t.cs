@@ -25,7 +25,7 @@ namespace HREngine.Bots
         //         p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
         //     }
         // }
-        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice)
+        public override void onCardPlay(Playfield p, Minion own, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && own.own))
             {

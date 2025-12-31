@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //[x]Deal $1 damage to aminion. If it dies, summona 2/2 Adventurer with arandom bonus effect.
         //对一个随从造成$1点伤害。如果该随从死亡，召唤一个2/2并具有随机效果的冒险者。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(1);
             p.minionGetDamageOrHeal(target, dmg);

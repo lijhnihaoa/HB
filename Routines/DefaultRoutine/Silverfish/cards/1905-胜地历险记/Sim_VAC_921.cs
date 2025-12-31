@@ -13,7 +13,7 @@ namespace HREngine.Bots
     {
         CardDB.Card weapon = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAC_921); // 假设沙滩排槌的卡牌ID为 VAC_921
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(weapon, ownplay); // 装备沙滩排槌
         }

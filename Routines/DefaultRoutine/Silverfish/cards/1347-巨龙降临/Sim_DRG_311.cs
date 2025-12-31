@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//[x]<b>Choose One -</b> Give aminion +2 Health and<b>Taunt</b>; or Summon a2/2 Treant.
 		//<b>抉择：</b>使一个随从获得+2生命值和<b>嘲讽</b>；或者召唤一个2/2的树人。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DRG_311t); //树人
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
 			{
 				int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;

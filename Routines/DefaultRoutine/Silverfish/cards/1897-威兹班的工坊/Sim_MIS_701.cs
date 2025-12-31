@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将所有随从变形成为来自过去的随机<b>传说</b>随从。
 	class Sim_MIS_701 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{            
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {            
             List<Minion> temp = (ownplay) ? p.ownMinions : p.enemyMinions;
             foreach (Minion m in temp )
             {

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//<b>Choose One -</b> Summon four 2/2 Treant Totems; or <b>Overload:</b> (2) to summon them with <b>Rush</b>.
 		//<b>抉择：</b>召唤四个2/2的树人图腾；或者<b>过载：</b>（2）召唤四个2/2并具有<b>突袭</b>的树人图腾。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SCH_612t);
 			if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
 			{

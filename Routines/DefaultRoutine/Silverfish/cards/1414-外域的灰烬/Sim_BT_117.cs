@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $1 damage to all minions. Repeat until one dies.
         //对所有随从造成$1点伤害。重复此效果，直到某个随从死亡。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             p.allMinionsGetDamage(dmg);

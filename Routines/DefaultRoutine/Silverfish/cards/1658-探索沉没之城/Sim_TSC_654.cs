@@ -9,7 +9,7 @@ namespace HREngine.Bots
 //Dredge.If you have the Mana to play the card this turn, draw it.
 
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardNameEN.activate, ownplay, true);
         }

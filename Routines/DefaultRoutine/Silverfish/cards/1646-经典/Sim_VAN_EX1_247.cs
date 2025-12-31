@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		//<b>过载：</b>（1）
         CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.VAN_EX1_247);
         //
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.equipWeapon(card,ownplay);
             if (ownplay) p.ueberladung ++;

@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //在本回合中，使你的英雄获得+4攻击力。
     class Sim_VAN_CS2_105 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             Minion hero = ownplay ? p.ownHero : p.enemyHero;
             p.minionGetTempBuff(hero, 4, 0);

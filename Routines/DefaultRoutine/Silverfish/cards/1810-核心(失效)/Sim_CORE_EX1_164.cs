@@ -9,7 +9,7 @@ namespace HREngine.Bots
 
         //    Choose One - Gain 2 Mana Crystals or Draw 3 cards.
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {

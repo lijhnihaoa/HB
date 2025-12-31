@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //触发一个友方随从的<b>亡语</b>。
     class Sim_ICC_052 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null && target.own)
             {

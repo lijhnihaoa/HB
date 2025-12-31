@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Take control of an enemy minion.
 		//获得一个敌方随从的控制权。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.minionGetControlled(target, ownplay, false);
 		}
 

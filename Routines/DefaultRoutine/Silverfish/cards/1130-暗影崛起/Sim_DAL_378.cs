@@ -12,7 +12,7 @@ namespace HREngine.Bots
 
         CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.DAL_378t1);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.DAL_378ts, ownplay,true);
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;

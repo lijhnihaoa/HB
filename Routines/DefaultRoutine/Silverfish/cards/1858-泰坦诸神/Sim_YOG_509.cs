@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个友方随从获得+2/+2。对所有其他随从造成等同于其攻击力的伤害。
 	class Sim_YOG_509 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				// 增加2点攻击力和2点生命值

@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //对一个随从造成$8点伤害。<b>发掘</b>一个宝藏。
     class Sim_DEEP_009 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

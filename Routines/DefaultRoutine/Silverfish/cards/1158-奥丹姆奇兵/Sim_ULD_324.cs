@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //消灭一个随从。将三张“游荡小鬼”洗入你的牌库。
     class Sim_ULD_324 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

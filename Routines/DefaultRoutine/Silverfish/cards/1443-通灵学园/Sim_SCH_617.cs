@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//Give a minion +1/+1. Summon a 1/1 Cub. Add a Cub to your hand.
 		//使一个随从获得+1/+1。召唤一个1/1的魔鼠宝宝。将一张魔鼠宝宝置入你的手牌。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SCH_617t);
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)//卡牌使用
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)//卡牌使用
         {
 			if(target!=null)
 		    {

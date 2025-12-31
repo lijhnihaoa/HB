@@ -14,7 +14,7 @@ namespace HREngine.Bots
 
         private bool higherCostCardPlayed = false; // 用于跟踪是否在手牌中时打出了法力值消耗更高的牌
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 处理微缩效果：抽一张衍生物牌
             CardDB.Card miniaturizedCard = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TOY_341t); // 假设衍生物牌ID为 TOY_341t

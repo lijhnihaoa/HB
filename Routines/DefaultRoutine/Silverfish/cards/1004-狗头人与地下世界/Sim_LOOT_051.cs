@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $2 damage to a minion. @<i>(Gain 3 Armor to upgrade.)</i>
         //对一个随从造成$2点伤害。@<i>（获得3点护甲值后升级。）</i>
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(2);
         }

@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //对一个随从造成$4点伤害。<b>发现</b>一张法术牌。 
     class Sim_DAL_371 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target != null)
             {

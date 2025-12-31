@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	//使你手牌中的所有随从牌的法力值消耗减少（2）点。
 	class Sim_TTN_862t2 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.owncards.ForEach(card =>
             {

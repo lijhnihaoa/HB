@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //使你的所有随从获得+2/+2，且“无法成为法术或英雄技能的目标。” 
     class Sim_ICC_314t7 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.allMinionOfASideGetBuffed(ownplay, 2, 2);
 

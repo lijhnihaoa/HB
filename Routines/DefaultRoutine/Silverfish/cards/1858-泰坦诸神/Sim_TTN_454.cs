@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$3点伤害。随机将两张疫病牌洗入你对手的牌库。
 	class Sim_TTN_454 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

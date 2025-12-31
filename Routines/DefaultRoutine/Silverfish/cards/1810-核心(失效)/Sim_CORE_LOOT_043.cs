@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>吸血</b>对一个随从造成$3点伤害。<i>（受到来自你的卡牌的伤害后升级。）</i>
 	class Sim_CORE_LOOT_043 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {

@@ -11,14 +11,14 @@ namespace HREngine.Bots
 	//使你的随从获得+1/+1。随机弃一张自然法术牌以使其再获得+1/+1。
 	class Sim_FIR_906 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.allMinionOfASideGetBuffed(ownplay, 1, 1);
 			if (ownplay)
 			{
-				foreach (Handmanager.Handcard hc in p.owncards.ToArray())
+				foreach (Handmanager.Handcard handcard in p.owncards.ToArray())
 				{
-					if (hc.card.type == CardDB.cardtype.SPELL && hc.card.SpellSchool == CardDB.SpellSchool.NATURE)
+					if (handcard.card.type == CardDB.cardtype.SPELL && handcard.card.SpellSchool == CardDB.SpellSchool.NATURE)
 					{
 						p.discardCards(1, ownplay);
 						p.allMinionOfASideGetBuffed(ownplay, 1, 1);

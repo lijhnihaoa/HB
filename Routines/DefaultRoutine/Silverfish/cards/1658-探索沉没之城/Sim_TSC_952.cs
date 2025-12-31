@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//恢复#2点生命值。在本回合可以重复使用。
 	class Sim_TSC_952 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellHeal(-2) : p.getEnemySpellHeal(-2);

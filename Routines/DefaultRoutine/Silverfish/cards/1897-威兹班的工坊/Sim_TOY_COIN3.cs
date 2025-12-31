@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_TOY_COIN3 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 本回合增加一个临时的法力水晶
             if (ownplay)

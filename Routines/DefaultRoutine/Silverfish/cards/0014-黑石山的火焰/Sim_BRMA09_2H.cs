@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		//<b>英雄技能</b>召唤三条2/2的雏龙。获得另一个英雄技能。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BRMA09_2Ht);
 		
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int place = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             p.callKid(kid, place, ownplay, false);

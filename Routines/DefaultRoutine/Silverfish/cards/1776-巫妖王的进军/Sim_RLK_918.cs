@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使一个友方随从获得+3攻击力。在本回合中，使你的英雄获得+2攻击力。
 	class Sim_RLK_918 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 
 			if (target != null)
 			{

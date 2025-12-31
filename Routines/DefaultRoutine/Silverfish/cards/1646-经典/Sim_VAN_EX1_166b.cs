@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//<b>Silence</b> a minion.
 		//<b>沉默</b>一个随从。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
                 p.minionGetSilenced(target);
 		}

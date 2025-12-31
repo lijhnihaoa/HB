@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_207p : SimTemplate //* 神圣之触 holytouch
 	{
         //<b>英雄技能</b> 恢复#5点生命值。每回合翻转。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int heal = 5;
             if (ownplay)

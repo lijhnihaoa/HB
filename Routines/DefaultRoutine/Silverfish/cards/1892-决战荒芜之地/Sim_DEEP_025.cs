@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //选择一个非<b>泰坦</b>随从，将一个它的复制置入你的牌库和战场。
     class Sim_DEEP_025 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // if (target != null && !target.handcard.card.Titan) // 确保目标存在且不是泰坦
             if (target != null) //已经回调

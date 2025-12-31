@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//使你的随从获得<b>法术伤害+1</b>。
 	class Sim_TSC_923 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				foreach (Minion minion in p.ownMinions)

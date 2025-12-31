@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	//<b>Recruit</b> a minion.
 	//<b>招募</b>一个随从。 
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (KeyValuePair<CardDB.cardIDEnum, int> kvp in p.prozis.turnDeck)
 			{
 					// ID 转卡

@@ -7,7 +7,7 @@ namespace HREngine.Bots
 	class Sim_AV_281 : SimTemplate //* 邪火爆弹 felfireinthehole
 	{
 		//抽一张法术牌，对所有敌人造成$2点伤害。如果抽到的是邪能法术牌，则造成的伤害增加$1点。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             bool foundFEL = false;
             bool foundSpell = false;

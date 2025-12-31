@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_MIS_300 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 扩大效果：抽一张衍生物牌
             CardDB.cardIDEnum gigantifyCardID = CardDB.cardIDEnum.MIS_300t; // 假设衍生物牌的 ID 是 MIS_300t

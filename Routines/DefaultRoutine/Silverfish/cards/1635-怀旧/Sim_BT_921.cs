@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//<b>Lifesteal</b>
 		//<b>吸血</b>
 		CardDB.Card card = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BT_921);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.equipWeapon(card,ownplay);
 		}		
 		

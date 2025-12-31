@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $4 damage to a minion and a random adjacent one.
         //对一个随从和随机一个相邻随从造成$4点伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (target == null) return;
             int dmg = p.getSpellDamageDamage(4);

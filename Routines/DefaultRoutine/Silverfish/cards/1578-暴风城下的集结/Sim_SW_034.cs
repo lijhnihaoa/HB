@@ -10,7 +10,7 @@ namespace HREngine.Bots
 		//随机召唤四个法力值消耗为（5）的随从，使其变为2/2。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_668);//魅影歹徒5/2/2
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int pos = (ownplay) ? p.ownMinions.Count : p.enemyMinions.Count;
             p.callKid(kid, pos, ownplay, false);

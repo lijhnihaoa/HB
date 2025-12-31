@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭一个随从。如果你正在构筑<b>星舰</b>，还会消灭一个随机相邻随从。
 	class Sim_GDB_476 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.minionGetDestroyed(target);
 			//TODO：如果有星舰，消灭两个
 		}

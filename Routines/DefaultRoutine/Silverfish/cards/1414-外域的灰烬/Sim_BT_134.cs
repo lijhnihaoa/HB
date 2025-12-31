@@ -8,7 +8,7 @@ namespace HREngine.Bots
 	{
         //Deal $3 damage to_a minion.Costs (0) if you have at least 7 Mana Crystals.
         //对一个随从造成$3点伤害。如果你拥有至少七个法力水晶，则法力值消耗为（0）点。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = p.getSpellDamageDamage(3);
             p.minionGetDamageOrHeal(target, dmg);

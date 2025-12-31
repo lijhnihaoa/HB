@@ -9,7 +9,7 @@ namespace HREngine.Bots
 		//[x]Summon a Fiendwith stats equal toyour hand size.
 		//召唤一个属性值等同于你的手牌数量的邪魔。
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.SW_085t); 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int place = p.ownMinions.Count;
 			if (place < 7)

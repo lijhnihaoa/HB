@@ -11,14 +11,14 @@ namespace HREngine.Bots
 	//使你手牌中的所有卡牌的法力值消耗减少（1）点。<i>（法术牌除外！）</i>
 	class Sim_VAC_959t10 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 使你手牌中的所有卡牌的法力值消耗减少1点
-            foreach (Handmanager.Handcard hc in p.owncards)
+            foreach (Handmanager.Handcard handcard in p.owncards)
             {
-				if (hc.card.type == CardDB.cardtype.MOB)
+				if (handcard.card.type != CardDB.cardtype.SPELL)
 				{
-					hc.manacost = Math.Max(0, hc.manacost - 1);
+					handcard.manacost = Math.Max(0, handcard.manacost - 1);
 				}            
             }
         }

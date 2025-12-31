@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//消灭所有受伤的随从。
 	class Sim_ULD_707 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			foreach (Minion m in p.ownMinions.ToArray())
 			{
 				if (m.untouchable) continue;

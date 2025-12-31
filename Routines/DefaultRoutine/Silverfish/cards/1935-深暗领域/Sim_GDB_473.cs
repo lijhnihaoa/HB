@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$2点伤害。获取一张4/4并具有一项随机<b>额外效果</b>的乘务员。
 	class Sim_GDB_473 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

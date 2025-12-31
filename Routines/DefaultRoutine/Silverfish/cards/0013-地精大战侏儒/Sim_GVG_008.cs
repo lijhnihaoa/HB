@@ -9,7 +9,7 @@ namespace HREngine.Bots
                                     //对所有随从造成等同于其攻击力的伤害。 
     {
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             foreach (Minion m in p.ownMinions)
             {

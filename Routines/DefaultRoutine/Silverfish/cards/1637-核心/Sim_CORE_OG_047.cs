@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //Choose One - Give your hero +4 attack this turn; or Gain 8 armor.
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (choice == 1 || (p.ownFandralStaghelm > 0 && ownplay))
             {

@@ -12,7 +12,7 @@ namespace HREngine.Bots
 		
 		private CardDB.Card sheep = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.CFM_621_m5);
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			target = (ownplay) ? p.searchRandomMinion(p.enemyMinions, searchmode.searchLowestAttack) : p.searchRandomMinion(p.ownMinions, searchmode.searchLowestAttack);
 			if (target != null) p.minionTransform(target, sheep);

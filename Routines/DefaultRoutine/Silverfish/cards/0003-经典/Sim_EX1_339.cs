@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Copy 2 cards in your opponent's deck and add them to your hand.
 		//复制你对手的牌库中的两张牌，并将其置入你的手牌。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
             p.drawACard(CardDB.cardIDEnum.None, ownplay, true);
 		}

@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>任务：</b>在有未使用的法力水晶的情况下结束4个回合。<b>奖励：</b>奥斯里安之泪。
 	class Sim_ULD_131 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.ULD_131, questProgress = 0, maxProgress = 4 };

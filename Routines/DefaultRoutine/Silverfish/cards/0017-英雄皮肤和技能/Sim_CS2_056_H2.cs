@@ -8,7 +8,7 @@ namespace HREngine.Bots
 //<b>Hero Power</b>Draw a card and take $2_damage.
 //<b>英雄技能</b>抽一张牌并受到$2点伤害。 
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
 

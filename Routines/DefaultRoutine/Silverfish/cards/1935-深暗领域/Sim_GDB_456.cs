@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_GDB_456 : SimTemplate
     {
         //<b>Deal 4 damage to a random enemy. If you played an Elemental last turn, choose the target.</b>
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 
             int dmg = 0;

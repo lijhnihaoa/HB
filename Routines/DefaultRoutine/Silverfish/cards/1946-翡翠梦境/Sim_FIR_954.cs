@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个随从造成$5点伤害，其拥有者抽一张牌。
 	class Sim_FIR_954 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);

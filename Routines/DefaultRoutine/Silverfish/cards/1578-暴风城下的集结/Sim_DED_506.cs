@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //可交易抽三张牌。如果该牌在本回合被抽到，则法力值消耗为（3）点。
         //Tradeable Draw 3 cards. If drawn this turn, this costs (3).
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             //current
             //foreach (Handmanager.Handcard ohc in p.owncards)

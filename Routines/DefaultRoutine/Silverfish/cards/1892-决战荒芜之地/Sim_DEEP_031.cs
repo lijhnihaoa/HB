@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//造成$6点伤害。随机召唤一个法力值消耗为（6）的随从。摧毁你牌库底的6张牌。
 	class Sim_DEEP_031 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				// 计算实际伤害

@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Give three random friendly minions +3_Attack.
 		// 随机我哪会写啊，优先加给不会攻击的吧
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			p.evaluatePenality += 16;
 			int cnt = 3, count = 3;
 			// 优先加给不会攻击的吧

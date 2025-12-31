@@ -11,8 +11,8 @@ namespace HREngine.Bots
 
 
 
-    public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-    {
+    public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
       p.drawACard(CardDB.cardNameEN.unknown, ownplay);
       p.drawACard(CardDB.cardNameEN.unknown, ownplay);
       p.drawACard(CardDB.cardNameEN.unknown, ownplay);
@@ -25,9 +25,9 @@ namespace HREngine.Bots
 
       else
       {
-        foreach (Handmanager.Handcard hc in p.owncards)
+        foreach (Handmanager.Handcard handcard in p.owncards)
         {
-          if (hc.card.nameEN == CardDB.cardNameEN.aluneth)
+          if (handcard.card.nameEN == CardDB.cardNameEN.aluneth)
           {
             alunethInHand = true;
             break;

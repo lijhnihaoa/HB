@@ -12,8 +12,8 @@ namespace HREngine.Bots
 	class Sim_ONY_016t2 : SimTemplate
 	{
 		CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.BT_922t);
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = ownplay ? p.enemyMinions.Count : p.ownMinions.Count;
 			p.callKid(kid, pos, ownplay);
 			p.callKid(kid, pos, ownplay);

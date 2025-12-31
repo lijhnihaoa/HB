@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         // Give a Beast +3/+3. Shuffle 3 copies into your deck with +3/+3.
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			p.minionGetBuffed(target, 3, 3);
 			

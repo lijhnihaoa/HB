@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//获得3点护甲值。对一个敌方随从造成等同于你护甲值的伤害。
 	class Sim_TLC_620 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetArmor(ownplay ? p.ownHero : p.enemyHero, 3);

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//复活你法力值消耗最高的三个不同的<b>嘲讽</b>随从。
 	class Sim_VAC_948 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			int pos = ownplay ? p.ownMinions.Count : p.enemyMinions.Count; // 位置
 			List<CardDB.Card> reborntankCard = new List<CardDB.Card>();
 

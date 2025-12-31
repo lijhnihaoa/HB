@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>任务线：</b>使你的英雄获得4点攻击力。<b>奖励：</b>获得5点护甲值。
     class Sim_SW_428 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.SW_428, questProgress = 0, maxProgress = 4 };

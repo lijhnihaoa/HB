@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //对一个随从造成$3点伤害并<b>冻结</b>其相邻随从。<i>（每回合翻面。）</i>
     class Sim_WORK_030 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 
             int dmg = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

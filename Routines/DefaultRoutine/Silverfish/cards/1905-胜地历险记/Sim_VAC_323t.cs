@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//对所有敌人造成$1点伤害。<i>（还剩2杯！）</i>
 	class Sim_VAC_323t : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getSpellDamageDamage(1) : p.getEnemySpellDamageDamage(1);
             //更新

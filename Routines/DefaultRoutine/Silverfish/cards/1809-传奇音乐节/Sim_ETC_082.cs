@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//对一个角色造成$3点伤害。如果消灭该角色，从你的牌库中召唤一个恶魔。
 	class Sim_ETC_082 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				int damage = ownplay ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);

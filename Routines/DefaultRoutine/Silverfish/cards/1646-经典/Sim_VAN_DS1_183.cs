@@ -8,8 +8,8 @@ namespace HREngine.Bots
 	{
 		//Deal $3 damage to two random enemy minions.
 		//随机对两个敌方随从造成$3点伤害。
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int damage = (ownplay) ? p.getSpellDamageDamage(3) : p.getEnemySpellDamageDamage(3);
             List<Minion> temp2 = (ownplay) ? new List<Minion>(p.enemyMinions) : new List<Minion>(p.ownMinions) ;
             temp2.Sort((a, b) => a.Hp.CompareTo(b.Hp));

@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>可交易</b>，<b>临时</b>消灭一个随从。
 	class Sim_WORK_007 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionGetDestroyed(target);

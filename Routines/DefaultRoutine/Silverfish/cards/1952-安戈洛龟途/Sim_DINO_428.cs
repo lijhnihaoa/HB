@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//将一个随从的属性值变为8/10并使其获得<b>吸血</b>。随机迫使一个敌方随从攻击该随从。
 	class Sim_DINO_428 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (target != null)
 			{
 				p.minionSetAngrToX(target, 8);

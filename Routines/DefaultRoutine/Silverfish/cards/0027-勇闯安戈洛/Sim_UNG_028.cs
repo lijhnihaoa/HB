@@ -9,7 +9,7 @@ namespace HREngine.Bots
     //<b>任务：</b>施放8个你的套牌之外的法术。 <b>奖励：</b>时空扭曲。 
     class Sim_UNG_028 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (p.playactions.Count < 3) p.evaluatePenality -= 30;
             Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.UNG_028, questProgress = 0, maxProgress = 8 };

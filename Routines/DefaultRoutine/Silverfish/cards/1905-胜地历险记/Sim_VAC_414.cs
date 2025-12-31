@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//对所有敌人造成$2点伤害。如果你的英雄在本回合受到过伤害，再造成$1点。
 	class Sim_VAC_414 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 基础伤害为2点
             int dmg = (ownplay) ? p.getSpellDamageDamage(2) : p.getEnemySpellDamageDamage(2);

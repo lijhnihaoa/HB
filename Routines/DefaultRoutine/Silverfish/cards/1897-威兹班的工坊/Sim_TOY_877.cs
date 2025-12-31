@@ -11,7 +11,7 @@ namespace HREngine.Bots
     //使你手牌，牌库和战场上的所有随从获得+2/+3。
     class Sim_TOY_877 : SimTemplate
     {
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             if (ownplay)
             {
@@ -22,25 +22,25 @@ namespace HREngine.Bots
                 }
 
                 // 增强手牌中的所有随从
-                foreach (Handmanager.Handcard hc in p.owncards)
+                foreach (Handmanager.Handcard handcard in p.owncards)
                 {
-                    if (hc.card.type == CardDB.cardtype.MOB) // 检查是否为随从卡牌
+                    if (handcard.card.type == CardDB.cardtype.MOB) // 检查是否为随从卡牌
                     {
-                        hc.addattack += 2;
-                        hc.addHp += 3;
+                        handcard.addattack += 2;
+                        handcard.addHp += 3;
                         p.anzOwnExtraAngrHp += 5;
                     }
                 }
 
                 // 增强牌库中的所有随从
-                foreach (CardDB.Card card in p.ownDeck)
+/*                 foreach (CardDB.Card card in p.ownDeck)
                 {
                     if (card.type == CardDB.cardtype.MOB) // 检查是否为随从卡牌
                     {
                         card.Attack += 2; // 增加攻击力
                         card.Health += 3; // 增加生命值
                     }
-                }
+                } */
             }
         }
 

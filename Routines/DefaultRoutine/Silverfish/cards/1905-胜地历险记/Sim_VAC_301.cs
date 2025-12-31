@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//<b>战吼：</b>随机召唤一个法力值消耗为（5）的随从。在本局对战中你每施放过一个派系的法术，重复一次。@<i>（召唤@个）</i>
 	class Sim_VAC_301 : SimTemplate
 	{
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             // 获取释放的法术派系的数量
             int count = p.CountSpellSchoolsPlayed();

@@ -11,7 +11,7 @@ namespace HREngine.Bots
     class Sim_ICC_830p : SimTemplate
     {
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = (ownplay) ? p.getHeroPowerDamage(2) : p.getEnemyHeroPowerDamage(2);
             p.minionGetDamageOrHeal(target, dmg);

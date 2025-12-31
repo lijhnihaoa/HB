@@ -8,7 +8,7 @@ namespace HREngine.Bots
     {
         //<b>Lifesteal.</b> Deal $7 damage to a minion.
         //<b>吸血</b>对一个随从造成$7点伤害。
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int damage = (ownplay) ? p.getSpellDamageDamage(7) : p.getEnemySpellDamageDamage(7);
             p.minionGetDamageOrHeal(target, damage);

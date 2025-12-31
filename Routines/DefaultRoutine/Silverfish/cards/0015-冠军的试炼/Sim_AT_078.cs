@@ -9,8 +9,8 @@ namespace HREngine.Bots
 	//除了每个玩家攻击力最高的随从之外，消灭所有其他随从。 
 	class Sim_AT_078 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			List<Minion> temp = new List<Minion>(p.enemyMinions);
 			if (temp.Count >= 2)
 			{

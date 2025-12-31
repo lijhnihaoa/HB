@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//随机对一个敌人造成$8点伤害。<i>（还可使用两次！）</i>
 	class Sim_TLC_632t : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (ownplay)
 			{
 				target = p.getEnemyCharTargetForRandomSingleDamage(8);

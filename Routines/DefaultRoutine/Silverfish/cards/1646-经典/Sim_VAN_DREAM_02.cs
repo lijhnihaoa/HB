@@ -10,8 +10,8 @@ namespace HREngine.Bots
 		//对除了伊瑟拉之外的所有角色造成$5点伤害。
 
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             int dmg = (ownplay) ? p.getSpellDamageDamage(5) : p.getEnemySpellDamageDamage(5);
             foreach (Minion m in p.ownMinions)
             {

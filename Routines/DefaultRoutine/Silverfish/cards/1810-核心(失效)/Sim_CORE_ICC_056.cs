@@ -11,7 +11,7 @@ namespace HREngine.Bots
 	//使一个随从获得+3/+3，并使其<b>冻结</b>。
 	class Sim_CORE_ICC_056 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
 			if (target != null)
 			{

@@ -9,8 +9,8 @@ namespace HREngine.Bots
 		//<b>Discover</b> a card from your deck.
 		//从你的牌库中<b>发现</b>一张牌。
 
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
             p.drawACard(CardDB.cardIDEnum.None, ownplay);
 		}
 

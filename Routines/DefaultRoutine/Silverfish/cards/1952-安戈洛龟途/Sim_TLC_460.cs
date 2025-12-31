@@ -11,8 +11,8 @@ namespace HREngine.Bots
 	//<b>任务：</b><b>发现</b>8张牌。<b>奖励：</b>源生之石。
 	class Sim_TLC_460 : SimTemplate
 	{
-		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
-		{
+		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
+        {
 			if (p.playactions.Count < 3) p.evaluatePenality -= 30;
 			p.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.TLC_460, questProgress = 0, maxProgress = 8 };
 			Questmanager.Instance.ownQuest = new Questmanager.QuestItem() { Id = CardDB.cardIDEnum.TLC_460, questProgress = 0, maxProgress = 8 };

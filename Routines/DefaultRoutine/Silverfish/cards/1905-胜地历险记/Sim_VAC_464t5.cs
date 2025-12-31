@@ -12,7 +12,7 @@ namespace HREngine.Bots
 	class Sim_VAC_464t5 : SimTemplate
 	{
 
-        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice)
+        public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
             int dmg = ownplay ? p.getSpellDamageDamage(8) : p.getEnemySpellDamageDamage(8);
             p.minionGetDamageOrHeal(p.enemyHero, dmg); // 对敌方英雄造成8点伤害

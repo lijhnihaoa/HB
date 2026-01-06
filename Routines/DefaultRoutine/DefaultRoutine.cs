@@ -30,16 +30,16 @@ using Triton.Bot.Logic.Bots.DefaultBot;
 using Logger = Triton.Common.LogUtilities.Logger;
 using System.Diagnostics;
 using System.Threading;
+using System.Data.SqlTypes;
 
 namespace HREngine.Bots
 {
     public class DefaultRoutine : IRoutine
     {
+        Random random = new Random();
         private static readonly ILog Log = Logger.GetLoggerInstanceForType();
         private readonly ScriptManager _scriptManager = new ScriptManager();
-
         private readonly List<Tuple<string, string>> _mulliganRules = new List<Tuple<string, string>>();
-
         private int dirtyTargetSource = -1;
         private int stopAfterWins = 30;
         private int concedeLvl = 5; // the rank, till you want to concede
@@ -55,7 +55,7 @@ namespace HREngine.Bots
 
         public bool learnmode = false;
         public bool printlearnmode = true;
-        GameState gameState = Triton.Game.Mapping.GameState.Get();
+        GameState gameState = GameState.Get();
         Silverfish sf = Silverfish.Instance;
         DefaultBotSettings botset
         {
@@ -68,10 +68,11 @@ namespace HREngine.Bots
 
         public DefaultRoutine()
         {
-            _mulliganRules.Add(new Tuple<string, string>("True", "card.Entity.Cost >= 4 and card.Entity.Id != \"GVG_063\""));
+            // _mulliganRules.Add(new Tuple<string, string>("True", "card.Entity.Cost >= 4 and card.Entity.Id != \"GVG_063\""));
             Helpfunctions.Instance.ErrorLog("----------------------------");
             Helpfunctions.Instance.ErrorLog("您正在使用的AI版本为" + Silverfish.Instance.versionnumber);
             Helpfunctions.Instance.ErrorLog("----------------------------");
+            gameState = GameState.Get();
         }
 
         #region Scripting
@@ -812,22 +813,22 @@ def Execute():
         public async Task EmoteLogic(EmoteData data)
         {
             Log.InfoFormat("[表情] 使用表情 [{0}].", data.Emote);
-
+            gameState = GameState.Get();
             if (data.Emote == EmoteType.GREETINGS)
             {
-                Triton.Game.Mapping.GameState.Get().GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.THANKS);
+                gameState.GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.THANKS);
             }
             else if (data.Emote == EmoteType.WELL_PLAYED)
             {
-                Triton.Game.Mapping.GameState.Get().GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.THANKS);
+                gameState.GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.THANKS);
             }
             else if (data.Emote == EmoteType.OOPS)
             {
-                Triton.Game.Mapping.GameState.Get().GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.WELL_PLAYED);
+                gameState.GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.WELL_PLAYED);
             }
             else if (data.Emote == EmoteType.THREATEN)
             {
-                Triton.Game.Mapping.GameState.Get().GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.THANKS);
+                gameState.GetCurrentPlayer().GetHeroCard().PlayEmote(EmoteType.THANKS);
             }
             else if (data.Emote == EmoteType.THANKS)
             {
@@ -844,10 +845,10 @@ def Execute():
         public async Task OurTurnCombatLogic()
         {
             Log.InfoFormat("[我方回合]");
-            await Coroutine.Sleep(555 + makeChoice());
+            // await Coroutine.Sleep(555 + makeChoice());
             ChooseOneClick(dirtychoice);
             dirtychoice = -1;
-            // await Coroutine.Sleep(555);
+            await Coroutine.Sleep(555);
             Silverfish.Instance.lastpf = null;
             return;
         }
@@ -889,7 +890,9 @@ def Execute():
         /// </summary>
         public async Task OurTurnLogic()
         {
-            /* Triton.Game.Mapping.GameState.ResponseMode responseMode = Triton.Game.Mapping.GameState.Get().GetResponseMode();
+            gameState = GameState.Get();
+            GameState.ResponseMode responseMode = gameState.GetResponseMode();
+            /* 
             switch (printUtils.emoteMode)
             {
                 case "嘴臭模式":
@@ -1001,7 +1004,56 @@ def Execute():
                     playEmote(EmoteType.THANKS);
                 }
             } */
+            if (RewindUIManager.IsShowingRewindUI)
+            {
+                // ResetBatchExecution(); // 重置批量执行
+                // await HandleRewindChoice();
+                try
+                {
+                    RewindUIManager rewindUI = RewindUIManager.Get();
 
+                    if (rewindUI == null || !RewindUIManager.IsShowingRewindUI)
+                    {
+                        return;
+                    }
+
+                    UIBButton rewindButton = rewindUI.m_rewindButton;
+                    UIBButton keepButton = rewindUI.m_keepButton;
+
+                    if (rewindButton == null || keepButton == null)
+                    {
+                        Helpfunctions.Instance.ErrorLog("[回溯或维持] 按钮引用为空");
+                        return;
+                    }
+
+                    // 基于场面和手牌分析的智能决策
+                    // bool shouldRewind = AnalyzeRewindChoice();
+                    bool shouldRewind = false;
+
+                    UIBButton targetButton = shouldRewind ? rewindButton : keepButton;
+                    string choice = shouldRewind ? "回溯" : "维持";
+
+                    // === 在点击按钮之前输出日志 ===
+                    Helpfunctions.Instance.ErrorLog("[当前行动] 选择" + choice);
+                    Helpfunctions.Instance.logg("选择" + choice);
+                    // === 日志输出结束 ===
+
+                    targetButton.TriggerRelease();
+                    await Coroutine.Sleep(1500);
+
+                    // 点击完成后的日志（可选）
+                    Helpfunctions.Instance.ErrorLog("[回溯或维持] " + choice + "按钮已点击");
+                }
+                catch (CoroutineStoppedException)
+                {
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    Helpfunctions.Instance.ErrorLog("[回溯或维持] 异常: " + ex.Message);
+                }
+                return;
+            }
             // 检查行为模式是否已更改
             if (this.behave.BehaviorName() != DefaultRoutineSettings.Instance.DefaultBehavior)
             {
@@ -1009,20 +1061,15 @@ def Execute():
                 Silverfish.Instance.lastpf = null;
             }
 
-            // 如果在目标或选择模式，等待
-            if (this.learnmode && (TritonHs.IsInTargetMode() || TritonHs.IsInChoiceMode()))
-            {
-                await Coroutine.Sleep(50);
-                return;
-            }
 
-
-            /* switch (responseMode)
+            switch (responseMode)
             {
 
                 case GameState.ResponseMode.OPTION_TARGET:
                     // case GameState.ResponseMode.OPTION_REVERSE_TARGET:
                     {
+                        // Log.DebugFormat("选择：{0}", responseMode);
+
                         if (dirtytarget >= 0)
                         {
                             Log.Info("瞄准中...");
@@ -1053,10 +1100,9 @@ def Execute():
                         TritonHs.CancelTargetingMode();
                         return;
                     }
-                case GameState.ResponseMode.OPTION:
                 case GameState.ResponseMode.SUB_OPTION:
                 case GameState.ResponseMode.CHOICE:
-                    Log.DebugFormat("选择：{0}", responseMode);
+                    // Log.DebugFormat("选择：{0}", responseMode);
                     {
                         await Coroutine.Sleep(20 + makeChoice());
                         switch (dirtychoice)
@@ -1078,12 +1124,24 @@ def Execute():
                         await TitanAbilityUseOnTagets();
                         return;
                     }
-                default: Log.DebugFormat("{0}", responseMode); break;
-            } */
+                // case GameState.ResponseMode.OPTION:
+                default:
+                    {
+                        Log.DebugFormat("{0}", responseMode);
+                    }
+                    break;
+            }
             // 处理目标模式
+            // 如果在目标或选择模式，等待
+            // if (this.learnmode && (TritonHs.IsInTargetMode() || TritonHs.IsInChoiceMode()))
+            // {
+            //     await Coroutine.Sleep(30);
+            //     return;
+            // }
 
 
-            if (TritonHs.IsInTargetMode())
+
+            /* if (TritonHs.IsInTargetMode())
             {
                 if (dirtytarget >= 0)
                 {
@@ -1119,6 +1177,7 @@ def Execute():
             // 处理选择模式
             if (TritonHs.IsInChoiceMode())
             {
+                // await Coroutine.Sleep(20 + makeChoice());
                 await Coroutine.Sleep(20 + makeChoice());
                 switch (dirtychoice)
                 {
@@ -1134,11 +1193,11 @@ def Execute():
                 }
 
                 dirtychoice = -1;
-                await Coroutine.Sleep(20);
+                // await Coroutine.Sleep(20);
                 // 指向泰坦技能的使用目标
                 await TitanAbilityUseOnTagets();
                 return;
-            }
+            } */
 
 
             // 更新一切
@@ -1399,6 +1458,7 @@ def Execute():
                             break;
                         case CardDB.cardtype.WEAPON:
                         case CardDB.cardtype.SPELL:
+                        case CardDB.cardtype.HERO:
                             await cardtoplay.UseOn(target.Card);
                             break;
                         default:
@@ -1412,7 +1472,7 @@ def Execute():
                     Helpfunctions.Instance.ErrorLog("[AI] 目标丢失，再试一次...");
                     await Coroutine.Sleep(20);
                 }
-                await Coroutine.Sleep(20);
+                // await Coroutine.Sleep(20);
             }
             else
             {
@@ -1427,7 +1487,7 @@ def Execute():
                 await cardtoplay.Pickup();
                 await cardtoplay.UseAt(moveTodo.place);
             }
-            await Coroutine.Sleep(20);
+            // await Coroutine.Sleep(20);
         }
 
         /// <summary>
@@ -1448,7 +1508,7 @@ def Execute():
                 Helpfunctions.Instance.ErrorLog("[AI] 随从攻击失败，再次重试...");
                 await Coroutine.Sleep(20);
             }
-            await Coroutine.Sleep(20);
+            // await Coroutine.Sleep(20);
         }
 
         /// <summary>
@@ -1472,7 +1532,7 @@ def Execute():
                 Helpfunctions.Instance.ErrorLog("[AI] 英雄攻击目标丢失，再次重试...");
                 await Coroutine.Sleep(20);
             }
-            await Coroutine.Sleep(20);
+            // await Coroutine.Sleep(20);
         }
 
         /// <summary>
@@ -1506,7 +1566,7 @@ def Execute():
                     Helpfunctions.Instance.ErrorLog("[AI] 目标丢失，再次重试...");
                     await Coroutine.Sleep(20);
                 }
-                await Coroutine.Sleep(20);
+                // await Coroutine.Sleep(20);
             }
             else
             {
@@ -1531,7 +1591,7 @@ def Execute():
             Helpfunctions.Instance.ErrorLog("交易: " + cardtoTrade.Name + "    惩罚值：" + moveTodo.penalty);
             Helpfunctions.Instance.logg("交易: " + cardtoTrade.Name);
             await cardtoTrade.DeckAction();
-            await Coroutine.Sleep(20);
+            // await Coroutine.Sleep(20);
         }
 
         /// <summary>
@@ -1543,7 +1603,7 @@ def Execute():
             Helpfunctions.Instance.ErrorLog("锻造: " + cardtoTrade.Name + "    惩罚值：" + moveTodo.penalty);
             Helpfunctions.Instance.logg("锻造: " + cardtoTrade.Name);
             await cardtoTrade.DeckAction();
-            await Coroutine.Sleep(20);
+            // await Coroutine.Sleep(20);
         }
 
         /// <summary>
@@ -1614,7 +1674,7 @@ def Execute():
                 stringBuilder.Append(moveTodo.target != null && moveTodo.target.handcard != null ? moveTodo.target.handcard.card.nameCN.ToString() : "空");
                 Helpfunctions.Instance.logg(stringBuilder.ToString());
                 await titan.LeftClickCard();
-                await Coroutine.Sleep(20);
+                // await Coroutine.Sleep(20);
                 // 更新技能是否已使用，泰坦可攻击
                 switch (moveTodo.titanAbilityNO)
                 {
@@ -1649,9 +1709,10 @@ def Execute():
         /// <returns></returns>
         private int makeChoice()
         {
+            gameState = GameState.Get();
             if (dirtychoice < 1)
             {
-                var  ccm = ChoiceCardMgr.Get();
+                var ccm = ChoiceCardMgr.Get();
                 var lscc = ccm.m_lastShownChoiceState;
                 GAME_TAG choiceMode = GAME_TAG.CHOOSE_ONE;
                 int sourceEntityId = -1;
@@ -1659,7 +1720,7 @@ def Execute():
                 if (lscc != null)
                 {
                     sourceEntityId = lscc.m_sourceEntityId;
-                    Entity entity = GameState.Get().GetEntity(lscc.m_sourceEntityId);
+                    Entity entity = gameState.GetEntity(lscc.m_sourceEntityId);
                     sourceEntityCId = CardDB.Instance.cardIdstringToEnum(entity.GetCardId());
                     if (entity != null)
                     {
@@ -1940,7 +2001,7 @@ def Execute():
                                             if (forbidden) bestval = -2000000;
                                             else
                                             {
-                                                discoverCards[i].card.sim_card.onCardPlay(tmpPlf, true, m, 0);
+                                                discoverCards[i].card.sim_card.onCardPlay(tmpPlf, true, m, 0, discoverCards[i]);
                                                 bestval = ai.mainTurnSimulator.doallmoves(tmpPlf);
                                             }
                                             found = true;
@@ -1980,7 +2041,7 @@ def Execute():
                     }
                     ai.mainTurnSimulator.setSecondTurnSimu(true, dirtyTwoTurnSim);
                 }
-                if (sourceEntityCId == CardDB.cardIDEnum.UNG_035) dirtychoice = new Random().Next(0, 2);
+                if (sourceEntityCId == CardDB.cardIDEnum.UNG_035) dirtychoice = random.Next(0, 2);
                 if (dirtychoice > -1)
                 {
                     Hrtprozis.Instance.enchs.Add(discoverCards[dirtychoice].card.cardIDenum);
@@ -1989,15 +2050,17 @@ def Execute():
                 else if (dirtychoice == 1) dirtychoice = 0;
                 int ttf = (int)(DateTime.Now - tmp).TotalMilliseconds;
                 Helpfunctions.Instance.ErrorLog("发现卡牌: " + dirtychoice + (discoverCardsCount > 1 ? " " + discoverCards[1].card.nameCN : "") + (discoverCardsCount > 0 ? " " + discoverCards[0].card.nameCN : "") + (discoverCardsCount > 2 ? " " + discoverCards[2].card.nameCN : ""));
-                Helpfunctions.Instance.logg("发现卡牌: " + dirtychoice + (discoverCardsCount > 1 ? " " + discoverCards[1].card.cardIDenum : "") + (discoverCardsCount > 0 ? " " + discoverCards[0].card.cardIDenum : "") + (discoverCardsCount > 2 ? " " + discoverCards[2].card.cardIDenum : ""));
+                // Helpfunctions.Instance.logg("发现卡牌: " + dirtychoice + (discoverCardsCount > 1 ? " " + discoverCards[1].card.cardIDenum : "") + (discoverCardsCount > 0 ? " " + discoverCards[0].card.cardIDenum : "") + (discoverCardsCount > 2 ? " " + discoverCards[2].card.cardIDenum : ""));
+                Log.Warn("发现卡牌: " + dirtychoice + (discoverCardsCount > 1 ? " " + discoverCards[1].card.cardIDenum : "") + (discoverCardsCount > 0 ? " " + discoverCards[0].card.cardIDenum : "") + (discoverCardsCount > 2 ? " " + discoverCards[2].card.cardIDenum : ""));
 
-                if (ttf < 3000) return (new Random().Next(ttf < 1300 ? 1300 - ttf : 0, 3100 - ttf));
+                if (ttf < 3000) return (random.Next(ttf < 1300 ? 1300 - ttf : 0, 3100 - ttf));
 
             }
             else
             {
-                Helpfunctions.Instance.logg("选择这张卡牌: " + dirtychoice);
-                return (new Random().Next(1100, 3200));
+                // Helpfunctions.Instance.logg("选择这张卡牌: " + dirtychoice);
+                Log.Warn("选择这张卡牌: " + dirtychoice);
+                return (random.Next(1100, 3200));
             }
             return 0;
         }

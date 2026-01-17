@@ -52,11 +52,9 @@ namespace HREngine.Bots
         bool firstMove = true;
         bool firstTurn = true;
         bool canBeDelay = false;
-        bool InRewindState = false;
         public bool learnmode = false;
         public bool printlearnmode = true;
         GameState gameState = GameState.Get();
-        GameState.ResponseMode responseMode;
         Silverfish sf = Silverfish.Instance;
         DefaultBotSettings botset
         {
@@ -1004,34 +1002,38 @@ def Execute():
                     playEmote(EmoteType.THANKS);
                 }
             } */
-            if (InRewindState)
-            // if(InRewindState)
+            if (RewindUIManager.m_isShowingRewindUI)
             {
                 try
                 {
                     RewindUIManager rewindUIManager = RewindUIManager.Get();
 
-                    if (rewindUIManager == null || !RewindUIManager.IsShowingRewindUI)
+                    if (rewindUIManager == null)
                     {
                         return;
                     }
-
+                    Log.WarnFormat("处于回溯状态");
                     UIBButton rewindButton = rewindUIManager.m_rewindButton;
                     UIBButton keepButton = rewindUIManager.m_keepButton;
 
                     if (rewindButton == null || keepButton == null)
                     {
-                        Helpfunctions.Instance.ErrorLog("[回溯或维持] 按钮引用为空");
+                        Log.WarnFormat("回溯或保持当前时间线按钮位空");
                         return;
                     }
 
-                    UIBButton targetButton = true ? rewindButton : keepButton;
-                    string choice = true ? "回溯" : "维持";
-                    //移动到按钮上
-                    await Client.MoveCursorHumanLike(targetButton.Transform.Position);
-                    //点击鼠标左键
-                    Client.ClickLMB();
-                    await Coroutine.Sleep(1500);
+                    UIBButton targetButton = random.Next(0, 1) == 0 ? rewindButton : keepButton;
+                    // Log.WarnFormat("移动到回溯按钮上");
+                    // //移动到按钮上
+                    // Client.LeftClickAtDialog(targetButton.Transform.Position);
+                    // await Coroutine.Sleep(300);
+                    // //点击鼠标左键
+                    // Log.WarnFormat("点击鼠标左键");
+                    // Client.LeftClickAt(targetButton.Transform.Position);
+                    await Coroutine.Sleep(random.Next(100, 500));
+                    Log.WarnFormat("点击{0}按钮", targetButton.GetText());
+                    targetButton.TriggerPress();
+                    targetButton.TriggerRelease();
                 }
                 catch (Exception ex)
                 {
@@ -1039,82 +1041,141 @@ def Execute():
                 }
                 return;
             }
+
             // 检查行为模式是否已更改
             if (this.behave.BehaviorName() != DefaultRoutineSettings.Instance.DefaultBehavior)
             {
                 behave = sf.getBehaviorByName(DefaultRoutineSettings.Instance.DefaultBehavior);
                 Silverfish.Instance.lastpf = null;
             }
-
-            switch (responseMode)
+            if (gameState.IsInMainOptionMode())
             {
+                goto actions;
+            }
+            else if (gameState.IsInTargetMode() || gameState.IsInSubOptionMode())
+            {
+                if (dirtytarget >= 0)
+                {
+                    Log.Info("瞄准中...");
+                    HSCard source = dirtyTargetSource == 9000 ? TritonHs.OurHeroPowerCard : getEntityWithNumber(dirtyTargetSource);
+                    HSCard target = getEntityWithNumber(dirtytarget);
 
-                case GameState.ResponseMode.OPTION_TARGET:
-                    // case GameState.ResponseMode.OPTION_REVERSE_TARGET:
+                    if (target == null)
                     {
-                        // Log.DebugFormat("选择：{0}", responseMode);
-
-                        if (dirtytarget >= 0)
-                        {
-                            Log.Info("瞄准中...");
-                            HSCard source = dirtyTargetSource == 9000 ? TritonHs.OurHeroPowerCard : getEntityWithNumber(dirtyTargetSource);
-                            HSCard target = getEntityWithNumber(dirtytarget);
-
-                            if (target == null)
-                            {
-                                Log.Error("目标为空...");
-                                TritonHs.CancelTargetingMode();
-                                return;
-                            }
-
-                            dirtytarget = -1;
-                            dirtyTargetSource = -1;
-
-                            if (source == null)
-                                await TritonHs.DoTarget(target);
-                            else
-                                await source.DoTarget(target);
-
-                            // await Coroutine.Sleep(555);
-                            await Coroutine.Sleep(20);
-                            return;
-                        }
-
-                        Log.Error("目标丢失...");
+                        Log.Error("目标为空...");
                         TritonHs.CancelTargetingMode();
                         return;
                     }
-                case GameState.ResponseMode.SUB_OPTION:
-                case GameState.ResponseMode.CHOICE:
-                    // Log.DebugFormat("选择：{0}", responseMode);
-                    {
-                        await Coroutine.Sleep(20 + makeChoice());
-                        switch (dirtychoice)
-                        {
-                            case 0:
-                                TritonHs.ChooseOneClickMiddle();
-                                break;
-                            case 1:
-                                TritonHs.ChooseOneClickLeft();
-                                break;
-                            case 2:
-                                TritonHs.ChooseOneClickRight();
-                                break;
-                        }
 
-                        dirtychoice = -1;
-                        await Coroutine.Sleep(20);
-                        // 指向泰坦技能的使用目标
-                        await TitanAbilityUseOnTagets();
-                        return;
-                    }
-                // case GameState.ResponseMode.OPTION:
-                default:
-                    {
-                        Log.DebugFormat("当前responseModeL:{0}", responseMode);
-                    }
-                    break;
+                    dirtytarget = -1;
+                    dirtyTargetSource = -1;
+
+                    if (source == null)
+                        await TritonHs.DoTarget(target);
+                    else
+                        await source.DoTarget(target);
+
+                    // await Coroutine.Sleep(555);
+                    await Coroutine.Sleep(20);
+                    return;
+                }
+
+                Log.Error("目标丢失...");
+                TritonHs.CancelTargetingMode();
+                return;
+
             }
+            else if (gameState.IsInChoiceMode())
+            {
+                await Coroutine.Sleep(20 + makeChoice());
+                switch (dirtychoice)
+                {
+                    case 0:
+                        TritonHs.ChooseOneClickMiddle();
+                        break;
+                    case 1:
+                        TritonHs.ChooseOneClickLeft();
+                        break;
+                    case 2:
+                        TritonHs.ChooseOneClickRight();
+                        break;
+                }
+
+                dirtychoice = -1;
+                await Coroutine.Sleep(20);
+                // 指向泰坦技能的使用目标
+                await TitanAbilityUseOnTagets();
+                return;
+            }
+            // switch (responseMode)
+            // {
+
+            //     case GameState.ResponseMode.OPTION_TARGET:
+            //         // case GameState.ResponseMode.OPTION_REVERSE_TARGET:
+            //         {
+            //             // Log.DebugFormat("选择：{0}", responseMode);
+
+            //             if (dirtytarget >= 0)
+            //             {
+            //                 Log.Info("瞄准中...");
+            //                 HSCard source = dirtyTargetSource == 9000 ? TritonHs.OurHeroPowerCard : getEntityWithNumber(dirtyTargetSource);
+            //                 HSCard target = getEntityWithNumber(dirtytarget);
+
+            //                 if (target == null)
+            //                 {
+            //                     Log.Error("目标为空...");
+            //                     TritonHs.CancelTargetingMode();
+            //                     return;
+            //                 }
+
+            //                 dirtytarget = -1;
+            //                 dirtyTargetSource = -1;
+
+            //                 if (source == null)
+            //                     await TritonHs.DoTarget(target);
+            //                 else
+            //                     await source.DoTarget(target);
+
+            //                 // await Coroutine.Sleep(555);
+            //                 await Coroutine.Sleep(20);
+            //                 return;
+            //             }
+
+            //             Log.Error("目标丢失...");
+            //             TritonHs.CancelTargetingMode();
+            //             return;
+            //         }
+            //     case GameState.ResponseMode.SUB_OPTION:
+            //     case GameState.ResponseMode.CHOICE:
+            //         // Log.DebugFormat("选择：{0}", responseMode);
+            //         {
+            //             await Coroutine.Sleep(20 + makeChoice());
+            //             switch (dirtychoice)
+            //             {
+            //                 case 0:
+            //                     TritonHs.ChooseOneClickMiddle();
+            //                     break;
+            //                 case 1:
+            //                     TritonHs.ChooseOneClickLeft();
+            //                     break;
+            //                 case 2:
+            //                     TritonHs.ChooseOneClickRight();
+            //                     break;
+            //             }
+
+            //             dirtychoice = -1;
+            //             await Coroutine.Sleep(20);
+            //             // 指向泰坦技能的使用目标
+            //             await TitanAbilityUseOnTagets();
+            //             return;
+            //         }
+            //     // case GameState.ResponseMode.OPTION:
+            //     default:
+            //         {
+            //             Log.DebugFormat("当前responseModeL:{0}", responseMode);
+            //         }
+            //         break;
+            // }
             // 处理目标模式
             // 如果在目标或选择模式，等待
             // if (this.learnmode && (TritonHs.IsInTargetMode() || TritonHs.IsInChoiceMode()))
@@ -1182,17 +1243,17 @@ def Execute():
                 await TitanAbilityUseOnTagets();
                 return;
             } */
-
+        actions:
 
             // 更新一切
             bool sleepRetry = false;
-            bool templearn = Silverfish.Instance.updateEverything(behave, 0, out sleepRetry, out responseMode, out InRewindState);
+            bool templearn = Silverfish.Instance.updateEverything(behave, 0, out sleepRetry);
             if (sleepRetry)
             {
                 Log.Error("[AI] 随从没能动起来，再试一次...");
                 await Coroutine.Sleep(20);
                 Thread.Sleep(2000);
-                templearn = Silverfish.Instance.updateEverything(behave, 1, out sleepRetry, out responseMode, out InRewindState);
+                templearn = Silverfish.Instance.updateEverything(behave, 1, out sleepRetry);
             }
 
             if (templearn == true)

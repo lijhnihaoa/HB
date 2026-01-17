@@ -251,7 +251,7 @@ namespace HREngine.Bots
         /// <param name="numcal"></param>
         /// <param name="sleepRetry"></param>
         /// <returns></returns>
-        public bool updateEverything(Behavior botbase, int numcal, out bool sleepRetry,out GameState.ResponseMode responseMode ,out bool InRewindState)
+        public bool updateEverything(Behavior botbase, int numcal, out bool sleepRetry)
         {
             gameState = GameState.Get();
             this.needSleep = false;
@@ -259,8 +259,6 @@ namespace HREngine.Bots
 
             Hrtprozis.Instance.clearAllRecalc();
             Handmanager.Instance.clearAllRecalc();
-            responseMode = gameState.GetResponseMode();
-            InRewindState = RewindUIManager.IsShowingRewindUI;
             updateRealTimeInfo();//获取实时场面信息 
 
             Hrtprozis.Instance.updateTurnDeck(turnDeck);//对局信息更新卡组

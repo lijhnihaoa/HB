@@ -52,10 +52,11 @@ namespace HREngine.Bots
         bool firstMove = true;
         bool firstTurn = true;
         bool canBeDelay = false;
-
+        bool InRewindState = false;
         public bool learnmode = false;
         public bool printlearnmode = true;
         GameState gameState = GameState.Get();
+        GameState.ResponseMode responseMode;
         Silverfish sf = Silverfish.Instance;
         DefaultBotSettings botset
         {
@@ -891,7 +892,6 @@ def Execute():
         public async Task OurTurnLogic()
         {
             gameState = GameState.Get();
-            GameState.ResponseMode responseMode = gameState.GetResponseMode();
             /* 
             switch (printUtils.emoteMode)
             {
@@ -1004,21 +1004,20 @@ def Execute():
                     playEmote(EmoteType.THANKS);
                 }
             } */
-            if (RewindUIManager.IsShowingRewindUI)
+            if (InRewindState)
+            // if(InRewindState)
             {
-                // ResetBatchExecution(); // 重置批量执行
-                // await HandleRewindChoice();
                 try
                 {
-                    RewindUIManager rewindUI = RewindUIManager.Get();
+                    RewindUIManager rewindUIManager = RewindUIManager.Get();
 
-                    if (rewindUI == null || !RewindUIManager.IsShowingRewindUI)
+                    if (rewindUIManager == null || !RewindUIManager.IsShowingRewindUI)
                     {
                         return;
                     }
 
-                    UIBButton rewindButton = rewindUI.m_rewindButton;
-                    UIBButton keepButton = rewindUI.m_keepButton;
+                    UIBButton rewindButton = rewindUIManager.m_rewindButton;
+                    UIBButton keepButton = rewindUIManager.m_keepButton;
 
                     if (rewindButton == null || keepButton == null)
                     {
@@ -1026,31 +1025,17 @@ def Execute():
                         return;
                     }
 
-                    // 基于场面和手牌分析的智能决策
-                    // bool shouldRewind = AnalyzeRewindChoice();
-                    bool shouldRewind = false;
-
-                    UIBButton targetButton = shouldRewind ? rewindButton : keepButton;
-                    string choice = shouldRewind ? "回溯" : "维持";
-
-                    // === 在点击按钮之前输出日志 ===
-                    Helpfunctions.Instance.ErrorLog("[当前行动] 选择" + choice);
-                    Helpfunctions.Instance.logg("选择" + choice);
-                    // === 日志输出结束 ===
-
-                    targetButton.TriggerRelease();
+                    UIBButton targetButton = true ? rewindButton : keepButton;
+                    string choice = true ? "回溯" : "维持";
+                    //移动到按钮上
+                    await Client.MoveCursorHumanLike(targetButton.Transform.Position);
+                    //点击鼠标左键
+                    Client.ClickLMB();
                     await Coroutine.Sleep(1500);
-
-                    // 点击完成后的日志（可选）
-                    Helpfunctions.Instance.ErrorLog("[回溯或维持] " + choice + "按钮已点击");
-                }
-                catch (CoroutineStoppedException)
-                {
-                    throw;
                 }
                 catch (Exception ex)
                 {
-                    Helpfunctions.Instance.ErrorLog("[回溯或维持] 异常: " + ex.Message);
+                    Helpfunctions.Instance.ErrorLog("[回溯]异常: " + ex.Message);
                 }
                 return;
             }
@@ -1060,7 +1045,6 @@ def Execute():
                 behave = sf.getBehaviorByName(DefaultRoutineSettings.Instance.DefaultBehavior);
                 Silverfish.Instance.lastpf = null;
             }
-
 
             switch (responseMode)
             {
@@ -1127,7 +1111,7 @@ def Execute():
                 // case GameState.ResponseMode.OPTION:
                 default:
                     {
-                        Log.DebugFormat("{0}", responseMode);
+                        Log.DebugFormat("当前responseModeL:{0}", responseMode);
                     }
                     break;
             }
@@ -1202,13 +1186,13 @@ def Execute():
 
             // 更新一切
             bool sleepRetry = false;
-            bool templearn = Silverfish.Instance.updateEverything(behave, 0, out sleepRetry);
+            bool templearn = Silverfish.Instance.updateEverything(behave, 0, out sleepRetry, out responseMode, out InRewindState);
             if (sleepRetry)
             {
                 Log.Error("[AI] 随从没能动起来，再试一次...");
                 await Coroutine.Sleep(20);
                 Thread.Sleep(2000);
-                templearn = Silverfish.Instance.updateEverything(behave, 1, out sleepRetry);
+                templearn = Silverfish.Instance.updateEverything(behave, 1, out sleepRetry, out responseMode, out InRewindState);
             }
 
             if (templearn == true)

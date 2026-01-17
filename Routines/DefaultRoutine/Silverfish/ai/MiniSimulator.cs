@@ -172,8 +172,8 @@ namespace HREngine.Bots
                 }
                 // TODO 仅考虑得分最高的 60 种情况，将其他情况直接剪枝
                 temp.Sort((a, b) => -a.value.CompareTo(b.value));
-                temp = temp.Take(Ai.Instance.maxCal).ToList();
-                /* if (this.calculated > Ai.Instance.maxwide)
+                // temp = temp.Take(Ai.Instance.maxCal).ToList();
+                 if (this.calculated > Ai.Instance.maxwide)
                 {
                     // 加快计算
                     temp = temp.Take(Ai.Instance.maxCal / 6).ToList();
@@ -186,7 +186,7 @@ namespace HREngine.Bots
                 else
                 {
                     temp = temp.Take(Ai.Instance.maxCal).ToList();
-                } */
+                } 
                 temp.ForEach(p =>
                 {
                     if (this.calculated > this.totalboards)
@@ -446,7 +446,7 @@ namespace HREngine.Bots
             }
             catch (Exception ex) // Todo:待fix，不应该有这个异常，是处理了奥数、疯狂科学家牌序后才有的
             {
-                // Helpfunctions.Instance.logg("cuttingposibilities异常:" + ex.Message);
+                Helpfunctions.Instance.logg("cuttingposibilities异常:" + ex.Message);
             }
             //useComparison = false;// 暂时调试用，打出所有重复的牌面，重点调试，用于寻找为啥不是相同牌面里的最佳牌序
             if (this.useComparison)

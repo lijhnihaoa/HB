@@ -4219,7 +4219,7 @@ namespace HREngine.Bots
         {
             this.evaluatePenality += a.penalty;
             Minion target = a.target;
-            
+
             int newTarget = this.secretTrigger_CharIsAttacked(a.own, target);
             if (newTarget >= 1)
             {
@@ -5322,28 +5322,28 @@ namespace HREngine.Bots
             //         }
             //         break;
             //     default:
-                    {
-                        if (this.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL)
-                        {
-                            PayHealthForSpell(hc);
-                        }
-                        else if (this.nextMurlocThisTurnCostHealth && (hc.card.race == CardDB.Race.MURLOC || hc.card.race == CardDB.Race.ALL))
-                        {
-                            PayHealthForMurloc(hc);
-                        }
-                        else if (this.nextAnyCardThisTurnCostEnemyHealth)
-                        {
-                            PayEnemyHealthForAnyCard(hc);
-                        }
-                        else if (this.ownDemonCostLessOnce > 0 && (hc.card.race == CardDB.Race.DEMON || hc.card.race == CardDB.Race.ALL))
-                        {
-                            this.ownDemonCostLessOnce = 0; // 恶魔卡牌法力消耗减少
-                        }
-                        else
-                        {
-                            this.mana -= hc.getManaCost(this); // 正常减少法力值
-                        }
-                    }
+            {
+                if (this.nextSpellThisTurnCostHealth && hc.card.type == CardDB.cardtype.SPELL)
+                {
+                    PayHealthForSpell(hc);
+                }
+                else if (this.nextMurlocThisTurnCostHealth && (hc.card.race == CardDB.Race.MURLOC || hc.card.race == CardDB.Race.ALL))
+                {
+                    PayHealthForMurloc(hc);
+                }
+                else if (this.nextAnyCardThisTurnCostEnemyHealth)
+                {
+                    PayEnemyHealthForAnyCard(hc);
+                }
+                else if (this.ownDemonCostLessOnce > 0 && (hc.card.race == CardDB.Race.DEMON || hc.card.race == CardDB.Race.ALL))
+                {
+                    this.ownDemonCostLessOnce = 0; // 恶魔卡牌法力消耗减少
+                }
+                else
+                {
+                    this.mana -= hc.getManaCost(this); // 正常减少法力值
+                }
+            }
             //         break;
             // }
 
@@ -5590,7 +5590,7 @@ namespace HREngine.Bots
         private void HandleWeaponPlay(Handmanager.Handcard hc, Minion target, int choice)
         {
             this.equipWeapon(hc.card, true);
-            hc.card.sim_card.onCardPlay(this, true, hc.target, choice);
+            hc.card.sim_card.onCardPlay(this, true, hc.target, choice, hc);
             hc.card.sim_card.getBattlecryEffect(this, this.ownWeapon, hc.target, choice);
             if (this.ownBrannBronzebeard > 0)
             {
@@ -5617,7 +5617,7 @@ namespace HREngine.Bots
                     hc.card.sim_card.getBattlecryEffect(this, this.ownHero, hc.target, choice);
                 }
             }
-            hc.card.sim_card.onCardPlay(this, this.ownHero, hc.target, choice);
+            hc.card.sim_card.onCardPlay(this, this.ownHero, hc.target, choice, hc);
             this.setNewHeroPower(CardDB.Instance.getCardDataFromDbfID(hc.card.heroPower.ToString()).cardIDenum, true);
             this.minionGetArmor(this.ownHero, hc.card.armor);
             Minion hero = new Minion
@@ -5693,13 +5693,13 @@ namespace HREngine.Bots
                 {
                     this.evaluatePenality += 1000;
                 }
-                hc.card.sim_card.onCardPlay(this, true, target, choice);
+                hc.card.sim_card.onCardPlay(this, true, target, choice, hc);
                 hc.card.sim_card.onCardPlay(this, true, target, choice, hc);
                 this.anzSolor = false;
             }
 
             // 执行卡牌的主要效果
-            hc.card.sim_card.onCardPlay(this, true, target, choice);
+            hc.card.sim_card.onCardPlay(this, true, target, choice, hc);
             hc.card.sim_card.onCardPlay(this, true, target, choice, hc);
             this.ownQuest.trigger_SpellWasPlayed(hc, target, 0);
             // 处理法术迸发效果
@@ -5796,7 +5796,7 @@ namespace HREngine.Bots
                 }
                 else // 处理法术卡牌
                 {
-                    c.sim_card.onCardPlay(this, false, target, choice); // 执行卡牌的主要效果
+                    c.sim_card.onCardPlay(this, false, target, choice,hc); // 执行卡牌的主要效果
                     this.doDmgTriggers(); // 触发伤害效果
                 }
             }
@@ -5896,7 +5896,7 @@ namespace HREngine.Bots
             if (logging) Helpfunctions.Instance.logg("play hero power " + c.nameEN + " on target " + target);
 
             // 执行英雄技能的主要效果
-            c.sim_card.onCardPlay(this, ownturn, target, choice);
+            c.sim_card.onCardPlay(this, ownturn, target, choice,this.ownHeroAblility);
 
             // 计算英雄技能执行后敌方英雄的生命值差
             int damageDealt = enemyHeroHpBefore - this.enemyHero.Hp;
@@ -8653,7 +8653,7 @@ namespace HREngine.Bots
             addMinionToBattlefield(m);
 
             // 触发随从的打出效果、抉择
-            m.handcard.card.sim_card.onCardPlay(this, m, hc.target, choice);
+            m.handcard.card.sim_card.onCardPlay(this, m, hc.target, choice,hc);
             // 触发随从的战吼效果
             m.handcard.card.sim_card.getBattlecryEffect(this, m, hc.target, choice);
 
@@ -9846,7 +9846,13 @@ namespace HREngine.Bots
                 }
             }
         }
-
+        public void minionGetTaunt(Minion m)
+        {
+            if (m.taunt) return;
+            m.taunt = true;
+            if (m.own) this.anzOwnTaunt++;
+            else this.anzEnemyTaunt++;
+        }
         /// <summary>
         /// 给随从赋予风怒效果，使其能够在回合中进行两次攻击。
         /// </summary>

@@ -269,6 +269,11 @@ namespace HREngine.Bots
 
                 case actionEnum.attackWithMinion:
                     // 检查随从是否可以攻击
+                    if (a.target.own)
+                    {
+                        actionFound = false;
+                        return actionFound;
+                    }
                     foreach (Minion m in p.ownMinions)
                     {
                         if (m.entitiyID == a.own.entitiyID)
@@ -358,12 +363,12 @@ namespace HREngine.Bots
                         }
                     }
                     break;
-                case actionEnum.launchStarship:
-                    break;
-                case actionEnum.useUnderfelRift:
-                    break;
-                case actionEnum.rewind:
-                    break;
+                    /*                 case actionEnum.launchStarship:
+                                        break;
+                                    case actionEnum.useUnderfelRift:
+                                        break;
+                                    case actionEnum.rewind:
+                                        break; */
             }
 
             // 如果在上面的检查中没有找到合适的操作，返回 false

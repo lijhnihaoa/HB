@@ -4,9 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Serialization;
 
 namespace HREngine.Bots
 {
@@ -952,12 +950,15 @@ namespace HREngine.Bots
             public bool damagesTarget = false;
             public bool damagesTargetWithSpecial = false;
             public int targetPriority = 0;
+            /// <summary>
+            /// 是特殊随从
+            /// </summary>
             public bool isSpecialMinion = false;
             public int spellpowervalue = 0;
             public cardIDEnum cardIDenum = cardIDEnum.None;
             public List<cardtrigers> trigers;
             public SimTemplate sim_card = new SimTemplate();
-
+            public int sameCard = 0;
             public int TAG_SCRIPT_DATA_NUM_1 = 0;//标签脚本数据编号1，用于记录伤害、召唤数量、衍生物攻击力、衍生物血量、注能数量、法力渴求
             public int TAG_SCRIPT_DATA_NUM_2 = 0;//标签脚本数据编号2，用于记录伤害、召唤数量、衍生物攻击力、衍生物血量、注能数量、法力渴求
             public int TAG_SCRIPT_DATA_NUM_3 = 0;//标签脚本数据编号3，用于记录伤害、召唤数量、衍生物攻击力、衍生物血量、注能数量、法力渴求
@@ -989,10 +990,12 @@ namespace HREngine.Bots
             public bool Temporary = false; // 临时
             public int armor = 0; //英雄牌的护甲值
             public int heroPower = 0; //英雄牌的技能dbfid
+            public int upgradedHeroPower = 0;//升级的英雄技能defid
             public int KeepHeroClass = 0;//打出英雄保持原职业
             public int Miniaturize = 0;
             public int Gigantity = 0;
             public int CollectionRelatedCardDataBaseId = 0;
+            public int CardAlternateCost = 0;
 
             //public CardDB.Card CollectionRelatedCardDataBase;
             public int Objective = 0; // 光环 如救生光环
@@ -2938,14 +2941,14 @@ namespace HREngine.Bots
                         continue;
                     if ("ReferencedTag".Equals(tag.Name))
                     {
-                        if (tag.GetAttribute("enumID") == "1518")
-                        {
-                            card.dormant = 1;
-                        }
-                        if (tag.GetAttribute("enumID") == "190")
-                        {
-                            card.tank = true;
-                        }
+                        // if (tag.GetAttribute("enumID") == "1518")
+                        // {
+                        //     card.dormant = 1;
+                        // }
+                        // if (tag.GetAttribute("enumID") == "190")
+                        // {
+                        //     card.tank = true;
+                        // }
                         continue;
                     }
 
@@ -3082,7 +3085,8 @@ namespace HREngine.Bots
                             break;
                         case "190":
                             {
-                                card.tank = true;
+                                if ("ReferencedTag".Equals(tag.Name))
+                                    card.tank = true;
                             }
                             break;
                         case "218":
@@ -3253,7 +3257,8 @@ namespace HREngine.Bots
                             break;
                         case "1518":
                             {
-                                card.dormant = 1;
+                                if ("ReferencedTag".Equals(tag.Name))
+                                    card.dormant = 1;
                             }
                             break;
                         case "1333":
@@ -3264,11 +3269,20 @@ namespace HREngine.Bots
                         case "1720":
                             {
                                 card.Tradeable = true;
+                                // card.TradeCost = card.DECK_ACTION_COST;
                             }
                             break;
                         case "1743":
                             {
                                 card.DECK_ACTION_COST = int.Parse(tag.GetAttribute("value"));
+                                // if (card.Tradeable)
+                                // {
+                                //     card.TradeCost = card.DECK_ACTION_COST;
+                                // }
+                                // else if (card.Forge)
+                                // {
+                                //     card.ForgeCost = card.DECK_ACTION_COST;
+                                // }
                             }
                             break;
                         case "2":
@@ -3302,6 +3316,8 @@ namespace HREngine.Bots
                                 if (cardId != "MAW_031")
                                 {
                                     card.Infuse = true;//注能
+                                    // card.InfuseNum = card.TAG_SCRIPT_DATA_NUM_1;
+
                                 }
                             }
                             break;
@@ -3335,6 +3351,8 @@ namespace HREngine.Bots
                         case "2785":
                             {
                                 card.Forge = true;//锻造
+                                // card.ForgeCost = card.DECK_ACTION_COST;
+
                             }
                             break;
                         case "3011":
@@ -3358,7 +3376,6 @@ namespace HREngine.Bots
                             }
                             break;
                         case "846":
-                            if (!"ReferencedTag".Equals(tag.Name))
                             {
                                 card.Echo = true; // 回响
                             }
@@ -3374,7 +3391,6 @@ namespace HREngine.Bots
                                 break;
                             }
                         case "3630":
-                            if (!"ReferencedTag".Equals(tag.Name))
                             {
                                 card.Temporary = true;//临时
                             }
@@ -3402,6 +3418,16 @@ namespace HREngine.Bots
                         case "1452":
                             {
                                 card.CollectionRelatedCardDataBaseId = int.Parse(tag.GetAttribute("value"));//收藏中关联的卡牌
+                            }
+                            break;
+                        case "858":
+                            {
+                                card.sameCard = int.Parse(tag.GetAttribute("value"));//套牌规则视为同一卡牌defid
+                            }
+                            break;
+                        case "2837":
+                            {
+                                card.CollectionRelatedCardDataBaseId = int.Parse(tag.GetAttribute("value"));//法力水晶消耗类型 
                             }
                             break;
                         case "3318":
@@ -3449,6 +3475,11 @@ namespace HREngine.Bots
                                 card.costUnholy = int.Parse(tag.GetAttribute("value")); // 邪恶符文
                             }
                             break;
+                        case "1086":
+                            {
+                                card.upgradedHeroPower = int.Parse(tag.GetAttribute("value")); // 升级的英雄技能
+                            }
+                            break;
                         case "994":
                             {
                                 card.markOfEvil = true; // 跟班
@@ -3490,15 +3521,14 @@ namespace HREngine.Bots
                                 card.SI_7 = true; // 军情七处
                             }
                             break;
-
-                        case "476":
-                            {
-                                card.MultipleClasses = int.Parse(tag.GetAttribute("value")); // 194: 玉莲帮  296: 暗金教 532: 玉莲帮
-                            }
-                            break;
                         case "3444":
                             {
                                 card.SilverHandRecruit = true; // 白银之手新兵
+                            }
+                            break;
+                        case "476":
+                            {
+                                card.MultipleClasses = int.Parse(tag.GetAttribute("value")); // 194: 玉莲帮  296: 暗金教 532: 玉莲帮
                             }
                             break;
                         case "3457":
@@ -3517,7 +3547,7 @@ namespace HREngine.Bots
                             }
                             break;
                         //TODO:双种族代码
-                        case "2524":
+                        case "2525":
                             {
                                 card.races.Add(Race.DRAENEI); // 添加第二种族德莱尼
                             }
@@ -3636,6 +3666,11 @@ namespace HREngine.Bots
                 {
                     item.ForgeCost = item.DECK_ACTION_COST;
                 }
+                if (item.sameCard != 0)
+                {
+                    Card OriginCard = this.getCardDataFromDbfID(item.sameCard.ToString());
+                    item.sim_card = OriginCard.sim_card;
+                }
             }
         }
 
@@ -3709,23 +3744,23 @@ namespace HREngine.Bots
                     c.isSpecialMinion = true;
                 }
 
-                c.trigers = new List<cardtrigers>();
-                Type trigerType = c.sim_card.GetType();
-                foreach (string trigerName in Enum.GetNames(typeof(cardtrigers)))
-                {
-                    try
-                    {
-                        foreach (var m in trigerType.GetMethods().Where(e => e.Name.Equals(trigerName, StringComparison.Ordinal)))
-                        {
-                            if (m.DeclaringType == trigerType)
-                                c.trigers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), trigerName));
-                        }
-                    }
-                    catch
-                    {
-                    }
-                }
-                if (c.trigers.Count > 20) c.trigers.Clear();
+                // c.trigers = new List<cardtrigers>();
+                // Type trigerType = c.sim_card.GetType();
+                // foreach (string trigerName in Enum.GetNames(typeof(cardtrigers)))
+                // {
+                //     try
+                //     {
+                //         foreach (var m in trigerType.GetMethods().Where(e => e.Name.Equals(trigerName, StringComparison.Ordinal)))
+                //         {
+                //             if (m.DeclaringType == trigerType)
+                //                 c.trigers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), trigerName));
+                //         }
+                //     }
+                //     catch
+                //     {
+                //     }
+                // }
+                // if (c.trigers.Count > 20) c.trigers.Clear();
             }
         }
     }

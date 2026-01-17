@@ -144,7 +144,9 @@ namespace HREngine.Bots
                 //               p.ownMinions.Exists(prev => prev.handcard.card.nameCN == CardDB.cardNameCN.战场军官 && !prev.silenced);
                 // }
 
-                if (m.Ready && m.Angr >= 1 && !m.frozen)
+                // if (m.Ready && m.Angr >= 1 && !m.frozen)
+                if(m.handcard.card.type == CardDB.cardtype.LOCATION) continue;
+                if (m.Ready)
                 {
                     attackingMinions.Add(m);
                 }
@@ -157,7 +159,7 @@ namespace HREngine.Bots
             {
                 foreach (Minion trot in trgts)
                 {
-                    if (trot == null) continue;
+                    if (trot == null || trot.own) continue;
                     if (trot.untouchable == true || (m.cantAttackHeroes && trot.isHero)) continue;
 
                     int attackPenality = usePenalityManager ? pen.getAttackWithMininonPenality(m, p, trot) : 0;
@@ -317,7 +319,8 @@ namespace HREngine.Bots
                     bool onlyNotSpecial = (!isSpecial || (isSpecial && m.silenced)) && (!otherisSpecial || (otherisSpecial && mnn.silenced));
 
                     if (onlySpecial && (m.name != mnn.name)) continue; // different name -> take it
-                    if ((onlySpecial || onlyNotSpecial) && (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal && m.handcard.card.isToken == mnn.handcard.card.isToken && mnn.handcard.card.race == m.handcard.card.race && mnn.Spellburst == m.Spellburst && mnn.cantAttackHeroes == m.cantAttackHeroes))
+                    // if ((onlySpecial || onlyNotSpecial) && (mnn.Angr == m.Angr && mnn.Hp == m.Hp && mnn.divineshild == m.divineshild && mnn.taunt == m.taunt && mnn.poisonous == m.poisonous && mnn.lifesteal == m.lifesteal && m.handcard.card.isToken == mnn.handcard.card.isToken && mnn.handcard.card.race == m.handcard.card.race && mnn.Spellburst == m.Spellburst && mnn.cantAttackHeroes == m.cantAttackHeroes))
+                    if ((onlySpecial || onlyNotSpecial) && (mnn == m))
                     {
                         goingtoadd = false;
                         break;
@@ -337,6 +340,12 @@ namespace HREngine.Bots
             return retvalues;
         }
 
+
+        /// <summary>
+        /// 攻击指令事项
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns> 
         public bool didAttackOrderMatters(Playfield p)
         {
             //return true;

@@ -243,9 +243,10 @@ namespace HREngine.Bots
 
         public int getAttackWithMininonPenality(Minion m, Playfield p, Minion target)
         {
-            if (target == null || target.untouchable || target.handcard.card.nameCN == CardDB.cardNameCN.毁灭战舰 || target.Hp <= 0) return 1000;
+            if (target == null || target.untouchable || target.Hp <= 0) return 1000;
             if (m != null && !m.silenced && (m.untouchable || m.handcard.card.CantAttack)) return 1000;
             if (m.cantAttackHeroes && target.isHero) return 1000;
+            if (target.own) return 1000;
             int enfaceReward = 0;
             if (printUtils.enfaceReward != 0 && target != null && target.isHero)
             {
@@ -255,7 +256,8 @@ namespace HREngine.Bots
         }
         public int getAttackWithHeroPenality(Minion target, Playfield p)
         {
-            if (target == null || target.untouchable || target.handcard.card.nameCN == CardDB.cardNameCN.毁灭战舰 || target.Hp <= 0) return 1000;
+            if (target == null || target.untouchable || target.Hp <= 0) return 1000;
+            if (target.own) return 1000;
             int enfaceReward = 0;
             if (printUtils.enfaceReward != 0 && target != null && target.isHero)
             {

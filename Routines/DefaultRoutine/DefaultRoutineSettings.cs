@@ -57,6 +57,7 @@ namespace HREngine.Bots
                     "丨狂野丨快攻暗牧",
                     "丨狂野丨锁喉剑鱼贼",
                     "丨过时丨任务海盗战",
+                    "丨狂野丨宇宙兽王猎",
                 };
                 DefaultBehavior = name[int.Parse(CommandLine.Arguments.Single("behavior"))];
                 Log.ErrorFormat("[中控设置] 天梯对战策略 = {0}.", DefaultBehavior);
@@ -83,7 +84,7 @@ namespace HREngine.Bots
                 {
                     _arenaPreferredClass1 = value;
                     NotifyPropertyChanged(() => ArenaPreferredClass1);
-  
+
                 }
                 //Log.InfoFormat("[默认策略设置] 竞技场优先种族1 = {0}.", _arenaPreferredClass1);
             }
@@ -204,14 +205,14 @@ namespace HREngine.Bots
                 Log.InfoFormat(@"酸小明牛通");
                 Log.InfoFormat("#############################################", _defaultBehavior);                
                 Log.InfoFormat("#############################################", _defaultBehavior);                */
-                Log.InfoFormat("[默认策略设置] 天梯对战策略 = {0}.", _defaultBehavior);                
+                Log.InfoFormat("[默认策略设置] 天梯对战策略 = {0}.", _defaultBehavior);
             }
         }
 
         private ObservableCollection<string> _allBehav;
 
         /// <summary>All enum values for this type.</summary>
-         [JsonIgnore]
+        [JsonIgnore]
         // [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 
         public ObservableCollection<string> AllBehav
@@ -247,17 +248,17 @@ namespace HREngine.Bots
         {
             get
             {
-                return AllEmotes ?? (AllEmotes = new ObservableCollection<string>() { "无", "友善模式", "嘴臭模式", "乞讨模式", "摊牌了我是脚本", "精神污染模式", "抱歉"} );
+                return AllEmotes ?? (AllEmotes = new ObservableCollection<string>() { "无", "友善模式", "嘴臭模式", "乞讨模式", "摊牌了我是脚本", "精神污染模式", "抱歉" });
             }
         }
 
         private readonly List<int> _questIdsToCancel = new List<int>();
 
-		[JsonIgnore]
-	    public List<int> QuestIdsToCancel
-	    {
-		    get { return _questIdsToCancel; }
-	    }
+        [JsonIgnore]
+        public List<int> QuestIdsToCancel
+        {
+            get { return _questIdsToCancel; }
+        }
 
         private int _maxWide;
 
@@ -332,7 +333,7 @@ namespace HREngine.Bots
                 {
                     _useSecretsPlayAround = value;
                     NotifyPropertyChanged(() => UseSecretsPlayAround);
-  
+
                 }
                 Log.InfoFormat("[默认策略设置] 防奥秘 = {0}.", _useSecretsPlayAround);
             }
@@ -408,7 +409,7 @@ namespace HREngine.Bots
                 {
                     _berserkIfCanFinishNextTour = value;
                     NotifyPropertyChanged(() => BerserkIfCanFinishNextTour);
-  
+
                 }
                 Log.InfoFormat("[默认策略设置] 下回合斩杀本回合打脸 = {0}.", _berserkIfCanFinishNextTour);
             }
@@ -429,7 +430,7 @@ namespace HREngine.Bots
                 {
                     _enfacehp = value;
                     NotifyPropertyChanged(() => Enfacehp);
-  
+
                 }
                 Log.InfoFormat("[默认策略设置] 打脸阈值 = {0}.", _enfacehp);
             }
@@ -449,7 +450,7 @@ namespace HREngine.Bots
                 {
                     printUtils.enfaceReward = value;
                     NotifyPropertyChanged(() => Enfacehp);
-  
+
                 }
                 Log.InfoFormat("[默认策略设置] 打脸奖励 = {0}.", printUtils.enfaceReward);
             }

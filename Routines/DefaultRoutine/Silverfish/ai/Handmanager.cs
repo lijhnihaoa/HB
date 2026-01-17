@@ -118,6 +118,7 @@ namespace HREngine.Bots
             }
             public Handcard(CardDB.Card c)
             {
+                this.manacost = c.cost;
                 this.position = 0;
                 this.entity = -1;
                 this.card = c;

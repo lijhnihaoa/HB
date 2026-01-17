@@ -115,7 +115,7 @@ namespace HREngine.Bots
             this.secondturnsim = stts;
             settings.secondTurnAmount = amount;
         }
-
+        //更新两回合测试
         public void updateTwoTurnSim()
         {
             this.mainTurnSimulator.setSecondTurnSimu(settings.simulateEnemysTurn, settings.secondTurnAmount);
@@ -215,16 +215,22 @@ namespace HREngine.Bots
 
         public void doNextCalcedMove()
         {
-            help.logg("noRecalcNeeded!!!-----------------------------------");
+            //help.logg("noRecalcNeeded!!!-----------------------------------");
+            // help.logg("无需要重新计算!!!-----------------------------------");
 
             this.bestmove = null;
             if (this.bestActions.Count >= 1)
             {
+                //下一步操作
                 this.bestmove = this.bestActions[0];
                 this.bestActions.RemoveAt(0);
             }
             if (this.nextMoveGuess == null) this.nextMoveGuess = new Playfield();
-            else Silverfish.Instance.updateCThunInfo(nextMoveGuess.anzOgOwnCThunAngrBonus, nextMoveGuess.anzOgOwnCThunHpBonus, nextMoveGuess.anzOgOwnCThunTaunt);
+            else
+            {
+                //更新克苏恩
+                //Silverfish.Instance.updateCThunInfo(nextMoveGuess.anzOgOwnCThunAngrBonus, nextMoveGuess.anzOgOwnCThunHpBonus, nextMoveGuess.anzOgOwnCThunTaunt);
+            }
 
             if (bestmove != null && bestmove.actionType != actionEnum.endturn)  // save the guessed move, so we doesnt need to recalc!
             {
@@ -232,6 +238,7 @@ namespace HREngine.Bots
                 Helpfunctions.Instance.logg("nmgsim-");
                 try
                 {
+                    //做下一步操作测试
                     this.nextMoveGuess.doAction(bestmove);
                     this.bestmove = this.nextMoveGuess.playactions[this.nextMoveGuess.playactions.Count - 1];
                 }
@@ -251,15 +258,16 @@ namespace HREngine.Bots
             {
                 //Helpfunctions.Instance.logg("nd trn");
                 nextMoveGuess.mana = -100;
-                int twilightelderBonus = 0;
-                foreach (Minion m in this.nextMoveGuess.ownMinions)
+                //int twilightelderBonus = 0;
+                /*foreach (Minion m in this.nextMoveGuess.ownMinions)
                 {
-                    if (m.name == CardDB.cardNameEN.twilightelder && !m.silenced) twilightelderBonus++;
+                    //暮光尊者
+                    if (m.name == CardDB.cardIDEnum.OG_286 && !m.silenced) twilightelderBonus++;
                 }
                 if (twilightelderBonus > 0)
                 {
                     Silverfish.Instance.updateCThunInfo(nextMoveGuess.anzOgOwnCThunAngrBonus + twilightelderBonus, nextMoveGuess.anzOgOwnCThunHpBonus + twilightelderBonus, nextMoveGuess.anzOgOwnCThunTaunt);
-                }
+                }*/
             }
 
         }
@@ -268,7 +276,7 @@ namespace HREngine.Bots
         {
             this.botBase = bbase;
             hp.updatePositions();
-
+            
             posmoves.Clear();
             posmoves.Add(new Playfield());
 
@@ -449,7 +457,7 @@ namespace HREngine.Bots
             }
             foreach (Handmanager.Handcard hc in p.owncards)
             {
-                handCard.AppendFormat("{0}(费用：{1} ； {2} / {3} ) ", hc.card.nameCN, hc.manacost, (hc.addattack + hc.card.Attack), (hc.addHp + hc.card.Health));
+                handCard.AppendFormat("{0}(费用：{1} ; {2} / {3} ) ", hc.card.nameCN, hc.manacost, (hc.addattack + hc.card.Attack), (hc.addHp + hc.card.Health));
             }
 
             help.logg(normalInfo.ToString() + (p.enemyGuessDeck == "" ? "" : "(猜测对手构筑为:" + p.enemyGuessDeck + " 套牌代码：" + Hrtprozis.Instance.enemyDeckCode + " 预计直伤： " + Hrtprozis.Instance.enemyDirectDmg + " 加上场攻一共 " + (Hrtprozis.Instance.enemyDirectDmg + p.calEnemyTotalAngr()) + " )"));
@@ -468,7 +476,7 @@ namespace HREngine.Bots
             {
                 step++;
                 help.logg("第" + step + "步:");
-                bestmove.print();
+                bestmove.print(false);
                 tempbestboard.doAction(bestmove);
 
 #if APPLICATION_MODE

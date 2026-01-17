@@ -3,6 +3,7 @@ namespace HREngine.Bots
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using IronPython.Runtime.Operations;
 
     public class BoardTester  // 每一个牌面txt文件会new出一个新的BoardTester对象，不用担心变量复用和初始化问题
     {
@@ -26,8 +27,8 @@ namespace HREngine.Bots
         int enemyHEntity = 1;
         bool enemyHeroStealth = false;
 
-        string ownHeroEnchs = "";
-        string enemyHeroEnchs = "";
+        List<CardDB.cardIDEnum> ownHeroEnchs = new List<CardDB.cardIDEnum>();
+        List<CardDB.cardIDEnum> enemyHeroEnchs = new List<CardDB.cardIDEnum>();
 
         int gTurn = 0;
         int gTurnStep = 0;
@@ -161,7 +162,7 @@ namespace HREngine.Bots
                 if (lines.Length <= 20)  // Todo:这里要找到一个不容易被破坏的特征，随着日志变化，可以更新成别的
                     type = 1;
             }
-            setupPf(lines,type);
+            setupPf(lines, type);
 
             //Set default settings for behaviour
             Settings.Instance.setSettings(this.botBehavior);
@@ -254,7 +255,6 @@ namespace HREngine.Bots
             this.ownHero.windfury = herowindfury;
             this.ownHero.stealth = ownHeroStealth;
             this.ownHero.enchs = ownHeroEnchs;
-
             this.enemyHero.Angr = (enemyWeapon == null) ? 0 : enemyWeapon.Angr;
             this.enemyHero.Hp = enemyherohp;
             this.enemyHero.frozen = enemyFrozen;
@@ -334,7 +334,7 @@ namespace HREngine.Bots
             tmp.addHp = hp - c.Health;
             return tmp;
         }
-            
+
         private Minion createNewMinion(string name, int attack, int hp, int zonepos, bool own)
         {
             return createNewMinion(createNewHandCard(name, attack, hp), zonepos, own);
@@ -420,7 +420,7 @@ namespace HREngine.Bots
                 string s = sss + " ";
                 if (s.StartsWith("##"))
                     continue;
-                if(s.StartsWith("水晶： "))
+                if (s.StartsWith("水晶： "))
                 {
                     // 比如： 水晶： 3 / 3 [我方英雄] 法师 生命值:( 30 + 0 奥秘数: 1 ) [敌方英雄] 法师 生命值:( 25 + 0 奥秘数: 1) 
                     string[] tmp = s.Split(' ');
@@ -431,9 +431,9 @@ namespace HREngine.Bots
                     ownheroname = tmp[5];
                     ownherohp = Convert.ToInt32(tmp[7]);
                     ownherodefence = Convert.ToInt32(tmp[9]);
-                    
+
                     int ownSecretNum = Convert.ToInt32(tmp[11]);
-                    for(int i = 0; i < ownSecretNum; i++)
+                    for (int i = 0; i < ownSecretNum; i++)
                     {
                         ownsecretlist.Add("00000000000000000000000"); //Todo: 防奥秘，待更新
                     }
@@ -448,7 +448,7 @@ namespace HREngine.Bots
                         SecretItem si = new SecretItem();
                         si.entityId = (i + 1) * 10; //因为下面场面不会有9个随从，所以id不会冲突
                         enemySecrets.Add(si);
-                        
+
                     }
                     continue;
                 }
@@ -458,7 +458,7 @@ namespace HREngine.Bots
                 {
                     string[] tmp = s.Split(' ');
                     int enemyNum = (tmp.Length - 1) / 6;
-                    for(int i = 0; i < enemyNum; i++)
+                    for (int i = 0; i < enemyNum; i++)
                     {
                         string emi = tmp[1 + i * 6];
                         int cur_attack = Convert.ToInt32(tmp[3 + i * 6]);
@@ -466,7 +466,7 @@ namespace HREngine.Bots
                         Minion mi = createNewMinion(emi, cur_attack, cur_hp, i + 1, false);
                         mi.playedThisTurn = false;
                         mi.Ready = true;
-                        mi.entitiyID = (i+1) * 100 + i+1; // 一定要设置id，否则会导致打分去重牌面出错
+                        mi.entitiyID = (i + 1) * 100 + i + 1; // 一定要设置id，否则会导致打分去重牌面出错
                         enemyminions.Add(mi); // 随从位置从1开始
                     }
                     continue;
@@ -485,7 +485,7 @@ namespace HREngine.Bots
                         Minion mi = createNewMinion(omi, cur_attack, cur_hp, i + 1, true);
                         mi.playedThisTurn = false;
                         mi.Ready = true;
-                        mi.entitiyID = (i +1)* 10 + i+1; // 一定要设置id，否则会导致打分去重牌面出错
+                        mi.entitiyID = (i + 1) * 10 + i + 1; // 一定要设置id，否则会导致打分去重牌面出错
                         ownminions.Add(mi);// 随从位置从1开始
                     }
                     continue;
@@ -514,13 +514,13 @@ namespace HREngine.Bots
         }
         private void setupPf(string[] lines, int type = 0) // 读取lines，提取构造牌面的重要信息，Type: 0: 默认文本类型，来自运行日志，可读性较差;  1:中文随从，可读性较好
         {
-            if(type == 1)
+            if (type == 1)
             {
                 try
                 {
                     setupFromChnFile(lines);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine("文件内容空格位置不对，注意以空格隔开要解析的关键参数，请从.result类文件中复制头部中文信息修改");
                     Helpfunctions.Instance.logg("文件内容无法正确解析，异常: " + e.Message);
@@ -747,7 +747,7 @@ namespace HREngine.Bots
                     anzOwnElementalsLastTurn = Convert.ToInt32(ss[2]);
                     if (ss.Length > 3) ownElementalsHaveLifesteal = (ss[3] == "1") ? 1 : 0;
                 }
-                
+
 
                 // if (s.StartsWith("[本回合使用种族类型]: "))
                 // {
@@ -950,7 +950,7 @@ namespace HREngine.Bots
                 if (readstate == 1 && counter == 1) // class + hp + defence + immunewhile attacking + immune
                 {
                     String[] h = s.Split(' ');
-                    if(h.Length < 14)
+                    if (h.Length < 14)
                     {
                         s = "UNKOWN " + s;
                         h = s.Split(' ');
@@ -969,7 +969,14 @@ namespace HREngine.Bots
                     ownHeroTempAttack = Convert.ToInt32(h[11]);
                     if (h.Length > 12) ownHeroStealth = (h[12] == "True") ? true : false;
 
-                    if (s.Contains(" 附魔:")) ownHeroEnchs = s.Substring(s.IndexOf("附魔:"));
+                    if (s.Contains(" 附魔:"))
+                    {
+                        foreach (string ench in s.Substring(s.IndexOf("附魔:")).split(" "))
+                        {
+                            ownHeroEnchs.Add(CardDB.Instance.cardIdstringToEnum(ench));
+                        }
+                    }
+
                 }
 
                 if (readstate == 1 && counter == 2) // own hero weapon
@@ -1010,7 +1017,7 @@ namespace HREngine.Bots
                 if (readstate == 2 && counter == 1) // class + hp + defence + frozen + immune
                 {
                     String[] h = s.Split(' ');
-                    if(h.Length == 8)
+                    if (h.Length == 8)
                     {
                         s = "UNKOWN " + s;
                     }
@@ -1024,7 +1031,13 @@ namespace HREngine.Bots
                     enemyHEntity = Convert.ToInt32(h[6]);
                     if (h.Length > 7) enemyHeroStealth = (h[7] == "True") ? true : false;
 
-                    if (s.Contains(" 附魔:")) enemyHeroEnchs = s.Substring(s.IndexOf("附魔:"));
+                    if (s.Contains(" 附魔:"))
+                    {
+                        foreach (string ench in s.Substring(s.IndexOf("附魔:")).split(" "))
+                        {
+                            enemyHeroEnchs.Add(CardDB.Instance.cardIdstringToEnum(ench));
+                        }
+                    }
                 }
 
                 if (readstate == 2 && counter == 2) // weapon + stuff
@@ -1218,7 +1231,10 @@ namespace HREngine.Bots
                         tempminion.returnToHand = returnToHand;
                         tempminion.infest = infest;
                         tempminion.deathrattle2 = deathrattle2;
-                        tempminion.enchs = enchs;
+                        foreach (string ench in enchs.split(" "))
+                        {
+                            tempminion.enchs.Add(CardDB.Instance.cardIdstringToEnum(ench));
+                        }
                         //tempminion.CooldownTurn = CooldownTurn;
 
                         if (maxhp > hp) tempminion.wounded = true;
@@ -1383,8 +1399,10 @@ namespace HREngine.Bots
                         tempminion.returnToHand = returnToHand;
                         tempminion.infest = infest;
                         tempminion.deathrattle2 = deathrattle2;
-
-                        tempminion.enchs = enchs;
+                        foreach (string ench in enchs.split(" "))
+                        {
+                            tempminion.enchs.Add(CardDB.Instance.cardIdstringToEnum(ench));
+                        }
 
                         if (maxhp > hp) tempminion.wounded = true;
                         tempminion.updateReadyness();
@@ -1425,13 +1443,13 @@ namespace HREngine.Bots
                     card.card.MODULAR_ENTITY_PART_2 = card.MODULAR_ENTITY_PART_2;
                     if (card.card.MODULAR_ENTITY_PART_1 != 0 && card.card.MODULAR_ENTITY_PART_2 != 0)
                         card.card.updateDIYCard();
-                        
+
                     if (hc.Length > 14)
                     {
-                       for(int i = 10; i < hc.Length; i++)
-                       {
-                           card.enchs.Add(CardDB.Instance.cardIdstringToEnum(hc[i]));
-                       }
+                        for (int i = 10; i < hc.Length; i++)
+                        {
+                            card.enchs.Add(CardDB.Instance.cardIdstringToEnum(hc[i]));
+                        }
                     }
                     handcards.Add(card);
                 }

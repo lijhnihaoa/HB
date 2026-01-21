@@ -5,11 +5,15 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using Logger = Triton.Common.LogUtilities.Logger;
+using log4net;
 
 namespace HREngine.Bots
 {
     public partial class CardDB
     {
+        private static readonly ILog Log = Logger.GetLoggerInstanceForType();
+
         /// <summary>
         /// <value> 卡牌类型 </value>
         /// </summary>
@@ -1049,8 +1053,8 @@ namespace HREngine.Bots
             {
                 if (MODULAR_ENTITY_PART_1 != 0 && MODULAR_ENTITY_PART_2 != 0)
                 {
-                    CardDB.Card part1 = CardDB.Instance.getCardDataFromDbfID(MODULAR_ENTITY_PART_1.ToString());
-                    CardDB.Card part2 = CardDB.Instance.getCardDataFromDbfID(MODULAR_ENTITY_PART_2.ToString());
+                    CardDB.Card part1 = Instance.getCardDataFromDbfID(MODULAR_ENTITY_PART_1.ToString());
+                    CardDB.Card part2 = Instance.getCardDataFromDbfID(MODULAR_ENTITY_PART_2.ToString());
                     if (part1 != null && part2 != null)
                     {
                         cost = part1.cost + part2.cost;
@@ -1211,6 +1215,11 @@ namespace HREngine.Bots
                 List<Minion> retval = new List<Minion>();
                 if (this.type == CardDB.cardtype.MOB && ((own && p.ownMinions.Count >= 7) || (!own && p.enemyMinions.Count >= 7))) return retval; // cant play mob, if we have allready 7 mininos
                 if (this.Secret && ((own && (p.ownSecretsIDList.Contains(this.cardIDenum) || p.ownSecretsIDList.Count >= 5)) || (!own && p.enemySecretCount >= 5))) return retval;
+                if (!string.IsNullOrWhiteSpace(this.TreatItAsTheSameCard))
+                {
+                    Card card = Instance.getCardDataFromDbfID(this.TreatItAsTheSameCard);
+                    this.sim_card = card.sim_card;
+                }
                 if (this.sim_card.GetPlayReqs().Length == 0) { retval.Add(null); return retval; }
 
                 List<Minion> targets = new List<Minion>();
@@ -3419,7 +3428,9 @@ namespace HREngine.Bots
                             break;
                         case "858":
                             {
-                                card.TreatItAsTheSameCard = tag.GetAttribute("value");//套牌规则视为同一卡牌defid
+
+                                card.TreatItAsTheSameCard = tag.GetAttribute("name");//套牌规则视为同一卡牌defid
+
                             }
                             break;
                         case "2837":
@@ -3634,8 +3645,9 @@ namespace HREngine.Bots
                 }
                 // card.updateDIYCard();
                 cardlist.Add(card);
-                if (card.dbfId != null && card.dbfId != "")
+                if (!string.IsNullOrEmpty(card.dbfId))
                     carddbfidToCardList[card.dbfId] = card;
+                // carddbfidToCardList.Add(card.dbfId, card);
                 if (card.cardIDenum != cardIDEnum.None)
                     cardidToCardList[card.cardIDenum] = card;
                 if (card.nameCN != cardNameCN.未知)
@@ -3663,7 +3675,7 @@ namespace HREngine.Bots
                 {
                     item.ForgeCost = item.DECK_ACTION_COST;
                 }
-                if (!string.IsNullOrEmpty(item.TreatItAsTheSameCard))
+                if (!string.IsNullOrWhiteSpace(item.TreatItAsTheSameCard))
                 {
                     Card OriginCard = this.getCardDataFromDbfID(item.TreatItAsTheSameCard);
                     if (OriginCard != this.unknownCard)
@@ -3742,23 +3754,24 @@ namespace HREngine.Bots
                     c.isSpecialMinion = true;
                 }
 
-                // c.trigers = new List<cardtrigers>();
-                // Type trigerType = c.sim_card.GetType();
-                // foreach (string trigerName in Enum.GetNames(typeof(cardtrigers)))
-                // {
-                //     try
-                //     {
-                //         foreach (var m in trigerType.GetMethods().Where(e => e.Name.Equals(trigerName, StringComparison.Ordinal)))
-                //         {
-                //             if (m.DeclaringType == trigerType)
-                //                 c.trigers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), trigerName));
-                //         }
-                //     }
-                //     catch
-                //     {
-                //     }
-                // }
-                // if (c.trigers.Count > 20) c.trigers.Clear();
+
+                c.trigers = new List<cardtrigers>();
+                Type trigerType = c.sim_card.GetType();
+                foreach (string trigerName in Enum.GetNames(typeof(cardtrigers)))
+                {
+                    try
+                    {
+                        foreach (var m in trigerType.GetMethods().Where(e => e.Name.Equals(trigerName, StringComparison.Ordinal)))
+                        {
+                            if (m.DeclaringType == trigerType)
+                                c.trigers.Add((cardtrigers)Enum.Parse(typeof(cardtrigers), trigerName));
+                        }
+                    }
+                    catch
+                    {
+                    }
+                }
+                if (c.trigers.Count > 20) c.trigers.Clear();
             }
         }
     }

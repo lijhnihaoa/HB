@@ -12932,15 +12932,62 @@ namespace HREngine.Bots
                 }
             }
             return raceCardInHand;
-        }
-        public void callMinionCopy(Minion own)
+        } 
+        
+        /// <summary>
+        /// 召唤一个随从的复制
+        /// </summary>
+        /// <param name="originMinion">源随从</param>
+        /// <param name="own">是否为召唤为己方随从</param>
+        /// <param name="callCount">召唤数量,默认召唤一个</param>
+        /// <param name="surroundSummon">是否环绕召唤。左边召唤一个右边召唤一个。默认不环绕召唤，从随从右边召唤</param>
+        public void CallMinionCopy(Minion originMinion, bool own, int callCount = 1, bool surroundSummon = false)
         {
-            Minion m = this.callKidAndReturn(own.handcard.card, own.zonepos, own.own);
-            if (m != null)
+            //做空判断,源随从为空直接退出
+            if (originMinion == null) return;
+            //如果是环绕召唤，则需要判断源随从位置
+            if (surroundSummon)
             {
-                m.setMinionToMinion(own);
+                //左边召唤还是右边召唤
+                bool LeftOrRight = true;
+                //根据源随从是否为己方随从，获取起使召唤位置
+                int zonepos = originMinion.own ? originMinion.zonepos : (own ? this.ownMinions.Count : this.enemyMinions.Count);
+                for (int i = 0; i < callCount; i++)
+                {
+                    //获取召唤位置
+                    int position = LeftOrRight ? zonepos - 1 : zonepos;
+                    //召唤并且返回召唤的对象
+                    Minion summoned = this.callKidAndReturn(originMinion.handcard.card, position, own);
+                    //判断召唤对象是否为空
+                    if (summoned != null)
+                        //将召唤对象属性设置为源随从
+                        summoned.setMinionToMinion(originMinion);
+                    LeftOrRight = !LeftOrRight;
+                }
             }
+            else
+            {
+                //非环绕召唤，默认从源随从右边开始召唤
+                int zonepos = originMinion.own ? originMinion.zonepos : (own ? this.ownMinions.Count : this.enemyMinions.Count);
+
+                for (int i = 0; i < callCount; i++)
+                {
+                    //根据源随从是否为己方随从，获取起使召唤位置
+                    int position = zonepos;
+
+                    //召唤并且返回召唤的对象
+                    Minion summoned = this.callKidAndReturn(originMinion.handcard.card, position, own);
+                    //判断召唤对象是否为空
+                    if (summoned != null)
+                        //将召唤对象属性设置为源随从
+                        summoned.setMinionToMinion(originMinion);
+                }
+
+            }
+
         }
+    
+        
     }
 
     /// <summary>

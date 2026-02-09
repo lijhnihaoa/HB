@@ -2068,7 +2068,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(5);  // 烈焰风暴造成5点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;  // 如果设置了dontkill标志，则随从的HP不会降到1以下
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2092,7 +2092,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(2);  // 暴风雪造成2点伤害并使随从冻结
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 minionGetFrozen(enemy);  // 使随从冻结
                                 enemy.cantLowerHPbelowONE = dontkill;
@@ -2144,13 +2144,13 @@ namespace HREngine.Bots
                             List<Minion> temp = this.enemyMinions;
                             int heal = getEnemySpellHeal(2);  // 神圣新星对敌方随从和英雄治疗2点
                             int damage = getEnemySpellDamageDamage(2);  // 对己方随从和英雄造成2点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 this.minionGetDamageOrHeal(enemy, -heal);
                             }
                             this.minionGetDamageOrHeal(this.enemyHero, -heal);
                             temp = this.ownMinions;
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2175,7 +2175,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(3);  // 闪电风暴造成3点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2199,7 +2199,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(1);  // 漩涡传送门造成1点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2223,12 +2223,12 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.enemyMinions;
                             int damage = getEnemySpellDamageDamage(1);  // 旋风斩造成1点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 this.minionGetDamageOrHeal(enemy, damage);
                             }
                             temp = this.ownMinions;
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2252,7 +2252,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(2);  // 奉献造成2点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2281,7 +2281,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             Minion target = null;
-                            foreach (Minion mnn in temp)
+                            foreach (Minion mnn in temp.ToArray())
                             {
                                 if (mnn.Hp <= damage4 || mnn.handcard.card.isSpecialMinion || target == null)
                                 {
@@ -2311,7 +2311,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(2);  // 冷酷严冬造成2点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2335,7 +2335,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(2);  // 星辰坠落造成2点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2359,7 +2359,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(2);  // 火山药水造成2点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2383,7 +2383,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(3);  // 火热促销造成3点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2408,7 +2408,7 @@ namespace HREngine.Bots
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(2);  // 浪潮涌起初始造成2点伤害
                             bool anyMinionDied = false;
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2420,7 +2420,7 @@ namespace HREngine.Bots
                             }
                             if (!anyMinionDied)
                             {
-                                foreach (Minion enemy in temp)
+                                foreach (Minion enemy in temp.ToArray())
                                 {
                                     this.minionGetDamageOrHeal(enemy, damage);  // 如果没有随从死亡，再造成2点伤害
                                 }
@@ -2443,7 +2443,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(1);  // 灵魂鞭笞造成1点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2468,7 +2468,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(5);  // 龙息药水造成5点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 if (!enemy.handcard.card.race.Equals(TAG_RACE.DRAGON))  // 如果随从不是龙族，则造成伤害
                                 {
@@ -2495,7 +2495,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(1);  // 刀扇造成1点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2520,7 +2520,7 @@ namespace HREngine.Bots
                             List<Minion> temp = this.ownMinions;
                             Random rng = new Random();
                             int damage = rng.Next(4, 6);  // 元素毁灭造成4到5点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2544,7 +2544,7 @@ namespace HREngine.Bots
 
                             List<Minion> temp = this.ownMinions;
                             int damage = getEnemySpellDamageDamage(3);  // 地狱烈焰造成3点伤害
-                            foreach (Minion enemy in temp)
+                            foreach (Minion enemy in temp.ToArray())
                             {
                                 enemy.cantLowerHPbelowONE = dontkill;
                                 this.minionGetDamageOrHeal(enemy, damage);
@@ -2580,37 +2580,38 @@ namespace HREngine.Bots
         /// <returns></returns>
         public List<Minion> GetAttackTargets(bool own, bool isLethalCheck)
         {
-            List<Minion> trgts = new List<Minion>();
+            List<Minion> tauntTarget = new List<Minion>();
             List<Minion> trgts2 = new List<Minion>();
 
             List<Minion> temp = (own) ? this.enemyMinions : this.ownMinions;
             bool hasTaunts = false;
             foreach (Minion m in temp)
             {
-                if (m.untouchable) continue;//不可攻击
-                if (m.stealth) continue;//潜行
+                //不可攻击 潜行 免疫
+                if (m.untouchable || m.stealth || m.immune) continue;//不可攻击
                 if (m.taunt)
                 {
                     hasTaunts = true;
-                    trgts.Add(m);
+                    tauntTarget.Add(m);
                 }
                 else
                 {
                     trgts2.Add(m);
                 }
             }
-            if (hasTaunts) return trgts;
+            //移除地标
+            trgts2.RemoveAll(minion => minion != null &&
+                                       minion.handcard != null &&
+                                       minion.handcard.card != null &&
+                                       minion.handcard.card.type == CardDB.cardtype.LOCATION);
+            if (hasTaunts) return tauntTarget;
 
             if (isLethalCheck) trgts2.Clear(); // only target enemy hero during Lethal check!
 
             if (own && !(this.enemyHero.immune || this.enemyHero.stealth)) trgts2.Add(this.enemyHero);//免疫 潜行
             else if (!own && !(this.ownHero.immune || this.ownHero.stealth)) trgts2.Add(this.ownHero);
 
-            //移除地标
-            trgts2.RemoveAll(minion => minion != null &&
-                                       minion.handcard != null &&
-                                       minion.handcard.card != null &&
-                                       minion.handcard.card.type == CardDB.cardtype.LOCATION);
+
             return trgts2;
         }
 
@@ -12647,25 +12648,25 @@ namespace HREngine.Bots
         {
 
             // 获取当前要使用技能的泰坦卡牌
-            CardDB.Card useAbilityTitan = own.handcard.card;
+            // CardDB.Card useAbilityTitan = own.handcard.card;
             //是否继续执行
             bool flag = true;
             switch (titanAbilityNO)
             {
                 case 1:
-                    if (useAbilityTitan.TitanAbilityUsed1) flag = false;
+                    if (own.TitanAbilityUsed1) flag = false;
                     break;
                 case 2:
-                    if (useAbilityTitan.TitanAbilityUsed2) flag = false;
+                    if (own.TitanAbilityUsed2) flag = false;
                     break;
                 case 3:
-                    if (useAbilityTitan.TitanAbilityUsed3) flag = false;
+                    if (own.TitanAbilityUsed3) flag = false;
                     break;
             }
             if (flag)
             {
                 // 触发技能的使用效果
-                useAbilityTitan.sim_card.useTitanAbility(this, own, titanAbilityNO, target);
+                own.handcard.card.sim_card.useTitanAbility(this, own, titanAbilityNO, target);
             }
         }
 

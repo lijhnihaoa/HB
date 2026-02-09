@@ -107,6 +107,14 @@ namespace HREngine.Bots
         public bool Deathrattle { get; set; }
         public int hChoice = 0;
         public int CooldownTurn = 0;//地标冷却回合
+        /// <summary>泰坦</summary>
+        public bool Titan = false;
+        /// <summary>泰坦技能1已使用</summary>
+        public bool TitanAbilityUsed1 = false;
+        /// <summary>泰坦技能2已使用</summary>
+        public bool TitanAbilityUsed2 = false;
+        /// <summary>泰坦技能3已使用</summary>
+        public bool TitanAbilityUsed3 = false;
 
         // public string enchs = "";// 附魔效果
         public List<CardDB.cardIDEnum> enchs = new List<CardDB.cardIDEnum>();
@@ -325,7 +333,10 @@ namespace HREngine.Bots
 
             this.silenced = m.silenced;
             // this.cantBeTargetedBySpellsOrHeroPowers = m.cantBeTargetedBySpellsOrHeroPowers;
-
+            this.Titan = m.Titan;
+            this.TitanAbilityUsed1 = m.TitanAbilityUsed1;
+            this.TitanAbilityUsed2 = m.TitanAbilityUsed2;
+            this.TitanAbilityUsed3 = m.TitanAbilityUsed3;
 
             this.CooldownTurn = m.CooldownTurn;
         }
@@ -435,7 +446,10 @@ namespace HREngine.Bots
             this.silenced = m.silenced;
 
             // this.cantBeTargetedBySpellsOrHeroPowers = m.cantBeTargetedBySpellsOrHeroPowers;
-
+            this.Titan = m.Titan;
+            this.TitanAbilityUsed1 = m.TitanAbilityUsed1;
+            this.TitanAbilityUsed2 = m.TitanAbilityUsed2;
+            this.TitanAbilityUsed3 = m.TitanAbilityUsed3;
 
             this.CooldownTurn = m.CooldownTurn;
         }
@@ -938,7 +952,7 @@ namespace HREngine.Bots
                         }
                         else
                         {
-                            if ((charge >= 1 && playedThisTurn) || !playedThisTurn || shadowmadnessed)
+                            if ((charge >= 1 && playedThisTurn) || !playedThisTurn || nonKeyWordCharge || shadowmadnessed)
                             {
                                 if (numAttacksThisTurn < 1 + (!megaWindfury && windfury ? 1 : 0) + (megaWindfury ? 3 : 0) + extraAttacksThisTurn)
                                 {

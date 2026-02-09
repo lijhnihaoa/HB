@@ -339,7 +339,7 @@ namespace HREngine.Bots
                         if (m.entitiyID == a.own.entitiyID)
                         {
                             // 确认泰坦技能可否能使用       !flase                                !flase                                !flase
-                            if (m.handcard.card.Titan && (!m.handcard.card.TitanAbilityUsed1 || !m.handcard.card.TitanAbilityUsed2 || !m.handcard.card.TitanAbilityUsed3))
+                            if (m.handcard.card.Titan && (!m.TitanAbilityUsed1 || !m.TitanAbilityUsed2 || !m.TitanAbilityUsed3))
                             {
                                 actionFound = true;
                             }

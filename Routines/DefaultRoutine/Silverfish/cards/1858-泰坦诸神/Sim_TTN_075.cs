@@ -20,9 +20,9 @@ namespace HREngine.Bots
             targetMinions.ForEach(m =>
             {
                 // 检查第一个技能是否已被使用
-                if (m.handcard.card.TitanAbilityUsed1) skillUsedCount++;
-                if (m.handcard.card.TitanAbilityUsed2) skillUsedCount++;
-                if (m.handcard.card.TitanAbilityUsed3) skillUsedCount++;
+                if (m.TitanAbilityUsed1) skillUsedCount++;
+                if (m.TitanAbilityUsed2) skillUsedCount++;
+                if (m.TitanAbilityUsed3) skillUsedCount++;
             });
             switch (titanAbilityNO)
             {

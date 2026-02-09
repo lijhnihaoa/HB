@@ -2858,7 +2858,7 @@ namespace HREngine.Bots
 
             // 如果泰坦随从本身有特殊条件，例如冷却中或无技能可用
             // !技能1冷却 || !技能2冷却 || !技能3冷却
-            if ((!titanMinion.handcard.card.TitanAbilityUsed1 && !titanMinion.handcard.card.TitanAbilityUsed2 && !titanMinion.handcard.card.TitanAbilityUsed3)
+            if ((!titanMinion.TitanAbilityUsed1 && !titanMinion.TitanAbilityUsed2 && !titanMinion.TitanAbilityUsed3)
                 || titanMinion.handcard.card.Health <= 0)
             {
                 return 1000; // 泰坦技能在冷却或已无可用资源，不应使用

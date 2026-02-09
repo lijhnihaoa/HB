@@ -457,7 +457,7 @@ namespace HREngine.Bots
             // 初始化任务
             Questmanager.Instance.updateQuestStuff("None", 0, 1000, true);
             Questmanager.Instance.updateQuestStuff("None", 0, 1000, false);
-/*             Dictionary<int, Entity> dic = GameState.Get().GetEntityMap();
+            /* Dictionary<int, Entity> dic = GameState.Get().GetEntityMap();
             foreach (var item in dic)
             {
                 Entity entity = item.Value;
@@ -603,8 +603,35 @@ namespace HREngine.Bots
         //    return 0;
 
         //}
-
-
+        /// <summary>
+        /// 构建随从字符串信息
+        /// </summary>
+        /// <param name="minionStr"></param>
+        /// <param name="m"></param>
+        private void BuilderMinionStringInfo(StringBuilder minionStr, Minion m)
+        {
+            minionStr.AppendFormat("{0} ( {1} / {2} ) ", m.handcard.card.nameCN, m.Angr, m.Hp);
+            if (m.frozen) minionStr.Append("[冻结]");
+            if (!m.Ready || m.cantAttack) minionStr.Append("[无法攻击]");
+            if (m.windfury) minionStr.Append("[风怒]");
+            if (m.megaWindfury) minionStr.Append("[超级风怒]");
+            if (m.taunt) minionStr.Append("[嘲讽]");
+            if (m.rush > 0) minionStr.Append("[突袭]");
+            if (m.divineshild) minionStr.Append("[圣盾]");
+            if (m.lifesteal) minionStr.Append("[吸血]");
+            if (m.poisonous) minionStr.Append("[剧毒]");
+            if (m.reborn) minionStr.Append("[复生]");
+            if (m.stealth) minionStr.Append("[潜行]");
+            if (m.immune) minionStr.Append("[免疫]");
+            if (m.immuneWhileAttacking) minionStr.Append("[攻击时免疫]");
+            if (m.handcard.card.Titan)
+            {
+                minionStr.Append("[泰坦]");
+                minionStr.Append(m.TitanAbilityUsed1 ? " 技能1可以使用" : " 技能1冷却");
+                minionStr.Append(m.TitanAbilityUsed2 ? " 技能2可以使用" : " 技能2冷却");
+                minionStr.Append(m.TitanAbilityUsed3 ? " 技能3可以使用" : " 技能3冷却");
+            }
+        }
         private void printstuff()  //会输出到文件夹UltimateLogs里面
         {
             Playfield p = this.lastpf;
@@ -642,43 +669,46 @@ namespace HREngine.Bots
 
             foreach (Minion m in p.ownMinions)
             {
-                myVal.AppendFormat("{0} ( {1} / {2} ) ", m.handcard.card.nameCN, m.Angr, m.Hp);
-                myVal.Append(m.frozen ? "[冻结]" : "");
-                myVal.Append(!m.Ready || m.cantAttack ? "[无法攻击]" : "");
-                myVal.Append(m.windfury ? "[风怒]" : "");
-                myVal.Append(m.megaWindfury ? "[超级风怒]" : "");
-                myVal.Append(m.taunt ? "[嘲讽]" : "");
-                myVal.Append(m.rush > 0 ? "[突袭]" : "");
-                myVal.Append(m.divineshild ? "[圣盾]" : "");
-                myVal.Append(m.lifesteal ? "[吸血]" : "");
-                myVal.Append(m.poisonous ? "[剧毒]" : "");
-                myVal.Append(m.reborn ? "[复生]" : "");
-                myVal.Append(m.stealth ? "[潜行]" : "");
-                myVal.Append(m.immune ? "[免疫]" : "");
-                if (m.handcard.card.Titan)
-                {
-                    myVal.Append("[泰坦]");
-                    myVal.Append(m.handcard.card.TitanAbilityUsed1 ? " 技能1可以使用" : " 技能1冷却");
-                    myVal.Append(m.handcard.card.TitanAbilityUsed2 ? " 技能2可以使用" : " 技能2冷却");
-                    myVal.Append(m.handcard.card.TitanAbilityUsed3 ? " 技能3可以使用" : " 技能3冷却");
-                }
+                // myVal.AppendFormat("{0} ( {1} / {2} ) ", m.handcard.card.nameCN, m.Angr, m.Hp);
+                // myVal.Append(m.frozen ? "[冻结]" : "");
+                // myVal.Append(!m.Ready || m.cantAttack ? "[无法攻击]" : "");
+                // myVal.Append(m.windfury ? "[风怒]" : "");
+                // myVal.Append(m.megaWindfury ? "[超级风怒]" : "");
+                // myVal.Append(m.taunt ? "[嘲讽]" : "");
+                // myVal.Append(m.rush > 0 ? "[突袭]" : "");
+                // myVal.Append(m.divineshild ? "[圣盾]" : "");
+                // myVal.Append(m.lifesteal ? "[吸血]" : "");
+                // myVal.Append(m.poisonous ? "[剧毒]" : "");
+                // myVal.Append(m.reborn ? "[复生]" : "");
+                // myVal.Append(m.stealth ? "[潜行]" : "");
+                // myVal.Append(m.immune ? "[免疫]" : "");
+                // if (m.handcard.card.Titan)
+                // {
+                //     myVal.Append("[泰坦]");
+                //     myVal.Append(m.TitanAbilityUsed1 ? " 技能1可以使用" : " 技能1冷却");
+                //     myVal.Append(m.TitanAbilityUsed2 ? " 技能2可以使用" : " 技能2冷却");
+                //     myVal.Append(m.TitanAbilityUsed3 ? " 技能3可以使用" : " 技能3冷却");
+                // }
+                BuilderMinionStringInfo(myVal, m);
             }
             foreach (Minion m in p.enemyMinions)
             {
-                enemyVal.AppendFormat("{0} ( {1} / {2} ) ", m.handcard.card.nameCN, m.Angr, m.Hp);
-                enemyVal.Append(m.frozen ? "[冻结]" : "");
-                enemyVal.Append(!m.Ready || m.cantAttack ? "[无法攻击]" : "");
-                enemyVal.Append(m.handcard.card.nameCN).Append(" ( " + m.Angr + " / " + m.Hp + " ) ").Append(m.frozen ? "[冻结]" : "").Append(!m.Ready || m.cantAttack ? "[无法攻击]" : "");
-                enemyVal.Append(m.windfury ? "[风怒]" : "");
-                enemyVal.Append(m.megaWindfury ? "[超级风怒]" : "");
-                enemyVal.Append(m.taunt ? "[嘲讽]" : "");
-                enemyVal.Append(m.rush > 0 ? "[突袭]" : "");
-                enemyVal.Append(m.divineshild ? "[圣盾]" : "");
-                enemyVal.Append(m.lifesteal ? "[吸血]" : "");
-                enemyVal.Append(m.poisonous ? "[剧毒]" : "");
-                enemyVal.Append(m.reborn ? "[复生]" : "");
-                enemyVal.Append(m.stealth ? "[潜行]" : "");
-                enemyVal.Append(m.immune ? "[免疫]" : "");
+                // enemyVal.AppendFormat("{0} ( {1} / {2} ) ", m.handcard.card.nameCN, m.Angr, m.Hp);
+                // enemyVal.Append(m.frozen ? "[冻结]" : "");
+                // enemyVal.Append(!m.Ready || m.cantAttack ? "[无法攻击]" : "");
+                // enemyVal.Append(m.handcard.card.nameCN).Append(" ( " + m.Angr + " / " + m.Hp + " ) ").Append(m.frozen ? "[冻结]" : "").Append(!m.Ready || m.cantAttack ? "[无法攻击]" : "");
+                // enemyVal.Append(m.windfury ? "[风怒]" : "");
+                // enemyVal.Append(m.megaWindfury ? "[超级风怒]" : "");
+                // enemyVal.Append(m.taunt ? "[嘲讽]" : "");
+                // enemyVal.Append(m.rush > 0 ? "[突袭]" : "");
+                // enemyVal.Append(m.divineshild ? "[圣盾]" : "");
+                // enemyVal.Append(m.lifesteal ? "[吸血]" : "");
+                // enemyVal.Append(m.poisonous ? "[剧毒]" : "");
+                // enemyVal.Append(m.reborn ? "[复生]" : "");
+                // enemyVal.Append(m.stealth ? "[潜行]" : "");
+                // enemyVal.Append(m.immune ? "[免疫]" : "");
+                BuilderMinionStringInfo(enemyVal, m);
+
             }
             foreach (Handmanager.Handcard hc in p.owncards)
             {
@@ -742,7 +772,7 @@ namespace HREngine.Bots
 
         public void update(Player player, bool ControlledByFriendly)
         {
-            List<Card> Deckards = player.GetDeckZone().GetCards();
+
             //更新英雄
             updateHero(player, ControlledByFriendly);
             //更新英雄技能
@@ -758,6 +788,10 @@ namespace HREngine.Bots
 
             //更新任务奥秘
             updateSecret(player, ControlledByFriendly);
+
+            List<Card> Deckards = player.GetDeckZone().GetCards();
+            if (ControlledByFriendly) ownDecksize = Deckards.Count;
+            else enemyDecksize = Deckards.Count;
             foreach (Card card in Deckards)
             {
                 updateDeck(card.GetEntity(), ControlledByFriendly);
@@ -790,12 +824,12 @@ namespace HREngine.Bots
                 this.ownHero.frozen = hero.IsFrozen();
                 this.ownHero.stealth = hero.IsStealthed();
                 this.ownHero.windfury = hero.HasWindfury();
-                ownHero.megaWindfury = hero.GetTag(GAME_TAG.WINDFURY) == 3 ? true : false;//超级风怒
-                this.ownHero.immune = hero.IsImmune();
+                this.ownHero.megaWindfury = hero.GetTag(GAME_TAG.WINDFURY) == 3;//超级风怒
+                this.ownHero.immune = hero.HasTag(GAME_TAG.IMMUNE);
                 this.ownHero.Elusive = hero.HasTag(GAME_TAG.ELUSIVE);
                 this.ownHero.numAttacksThisTurn = hero.GetNumAttacksThisTurn();
                 this.ownHero.extraAttacksThisTurn = hero.GetExtraAttacksThisTurn();
-                this.ownHero.immuneWhileAttacking = hero.GetTag(GAME_TAG.IMMUNE_WHILE_ATTACKING) != 0;
+                this.ownHero.immuneWhileAttacking = hero.HasTag(GAME_TAG.IMMUNE_WHILE_ATTACKING);
                 this.ownHero.nameCN = CardDB.Instance.cardNameCNstringToEnum(hero.GetName());
             }
             else
@@ -814,37 +848,39 @@ namespace HREngine.Bots
                 this.enemyHero.frozen = hero.IsFrozen();
                 this.enemyHero.stealth = hero.IsStealthed();
                 this.enemyHero.windfury = hero.HasWindfury();
-                this.enemyHero.immune = hero.IsImmune();
+                this.enemyHero.immune = hero.HasTag(GAME_TAG.IMMUNE);
                 this.enemyHero.Elusive = hero.HasTag(GAME_TAG.ELUSIVE);
                 this.enemyHero.numAttacksThisTurn = hero.GetNumAttacksThisTurn();
                 this.enemyHero.extraAttacksThisTurn = hero.GetExtraAttacksThisTurn();
-                this.enemyHero.immuneWhileAttacking = hero.GetTag(GAME_TAG.IMMUNE_WHILE_ATTACKING) != 0;
+                this.enemyHero.immuneWhileAttacking = hero.HasTag(GAME_TAG.IMMUNE_WHILE_ATTACKING);
                 this.enemyHero.nameCN = CardDB.Instance.cardNameCNstringToEnum(hero.GetName());
             }
-
-            List<Entity> attaches = hero.GetAttachments();//附魔
-            if (attaches != null && attaches.Count > 0)
+            if (hero.IsEnchanted())
             {
-                List<miniEnch> enchs = new List<miniEnch>();
-                foreach (Entity attEnt in attaches)
+                List<Entity> attaches = hero.GetAttachments();//附魔
+                if (attaches != null && attaches.Count > 0)
                 {
-                    var cid = attEnt.GetCardId();
-                    if (string.IsNullOrEmpty(cid))
+                    List<miniEnch> enchs = new List<miniEnch>();
+                    foreach (Entity attEnt in attaches)
                     {
-                        cid = attEnt.GetEntityDef().GetCardId();
+                        var cid = attEnt.GetCardId();
+                        if (string.IsNullOrEmpty(cid))
+                        {
+                            cid = attEnt.GetEntityDef().GetCardId();
+                        }
+                        int creator = attEnt.GetCreatorId();
+                        int cpyDeath = attEnt.GetTag(GAME_TAG.COPY_DEATHRATTLE);
+                        int ctrlId = attEnt.GetControllerId();
+                        enchs.Add(new miniEnch(CardDB.Instance.cardIdstringToEnum(cid), creator, ctrlId, cpyDeath, attEnt));
                     }
-                    int creator = attEnt.GetCreatorId();
-                    int cpyDeath = attEnt.GetTag(GAME_TAG.COPY_DEATHRATTLE);
-                    int ctrlId = attEnt.GetControllerId();
-                    enchs.Add(new miniEnch(CardDB.Instance.cardIdstringToEnum(cid), creator, ctrlId, cpyDeath, attEnt));
-                }
-                if (ControlledByFriendly)
-                {
-                    this.ownHero.loadEnchantments(enchs, ownController);
-                }
-                else
-                {
-                    this.enemyHero.loadEnchantments(enchs, enemyController);
+                    if (ControlledByFriendly)
+                    {
+                        this.ownHero.loadEnchantments(enchs, ownController);
+                    }
+                    else
+                    {
+                        this.enemyHero.loadEnchantments(enchs, enemyController);
+                    }
                 }
             }
         }
@@ -946,9 +982,11 @@ namespace HREngine.Bots
             foreach (Card card in minions)
             {
                 Entity entity = card.GetEntity();
+                // Dictionary<int, int> tagMap = entity.GetTags().m_values;
 
-
+                // tagMap.TryGetValue(263, out int zp);
                 int zp = entity.GetZonePosition();
+
 
                 if (zp >= 1)
                 {
@@ -959,6 +997,11 @@ namespace HREngine.Bots
                     m.handcard.card = c;
 
                     m.zonepos = zp;//棋盘上的位置
+                                   // tagMap.TryGetValue(53, out m.entitiyID);//实体id
+                                   // tagMap.TryGetValue(47,out m.Angr);//攻击力
+                                   // tagMap.TryGetValue(45, out m.maxHp);//最大生命值
+                                   // tagMap.TryGetValue(44, out m.Damage);//最大生命值
+                                   // m.Hp = m.maxHp - m.Damage;
                     m.entitiyID = entity.GetEntityId();//实体id
                     m.Angr = entity.GetATK();
                     m.maxHp = entity.GetHealth();
@@ -966,10 +1009,10 @@ namespace HREngine.Bots
                     if (m.Hp <= 0)
                         return;
                     m.wounded = m.maxHp > m.Hp;
-                    m.own = entity.IsControlledByFriendlySidePlayer();
+                    m.own = ControlledByFriendly;
 
                     m.ShowSleepZZZOverride = entity.IsAsleep();
-                    m.playedThisTurn = entity.GetNumTurnsInPlay() == 0 ? true : false;
+                    m.playedThisTurn = entity.GetNumTurnsInPlay() == 0;
                     m.numAttacksThisTurn = entity.GetNumAttacksThisTurn();//本回合攻击次数
                     m.extraAttacksThisTurn = entity.GetExtraAttacksThisTurn();//本回合额外的攻击次数
                     m.exhausted = entity.IsExhausted();//枯竭的
@@ -990,7 +1033,7 @@ namespace HREngine.Bots
                     m.Elusive = entity.HasTag(GAME_TAG.ELUSIVE);//扰魔
                     m.charge = entity.HasCharge() ? 1 : 0;//冲锋
                     m.nonKeywordCharge = entity.GetTag(GAME_TAG.NON_KEYWORD_CHARGE);//非关键词冲锋
-                    m.immune = entity.IsImmune();//免疫
+                    m.immune = entity.HasTag(GAME_TAG.IMMUNE);//免疫
                     m.immuneWhileAttacking = entity.HasTag(GAME_TAG.IMMUNE_WHILE_ATTACKING);//攻击时免疫
                     m.untouchable = entity.HasTag(GAME_TAG.UNTOUCHABLE);//无法选择
                     m.silenced = entity.HasTag(GAME_TAG.SILENCED);//沉默的
@@ -1000,27 +1043,29 @@ namespace HREngine.Bots
                     m.hChoice = entity.GetTag(GAME_TAG.HIDDEN_CHOICE);
                     m.dormant = entity.GetTag(GAME_TAG.DORMANT);//休眠
                     m.untouchable = m.untouchable || m.dormant > 0;
-
-                    List<Entity> attaches = entity.GetAttachments();//附魔
-                    if (attaches != null && attaches.Count > 0)
+                    if (entity.IsEnchanted())
                     {
-                        List<miniEnch> enchs = new List<miniEnch>();
-                        foreach (var attEnt in attaches)
+
+                        List<Entity> attaches = entity.GetAttachments();//附魔
+                        if (attaches != null && attaches.Count > 0)
                         {
-                            String cid = attEnt.GetCardId();
-                            if (string.IsNullOrEmpty(cid))
+                            List<miniEnch> enchs = new List<miniEnch>();
+                            foreach (var attEnt in attaches)
                             {
-                                cid = attEnt.GetEntityDef().GetCardId();
+                                String cid = attEnt.GetCardId();
+                                if (string.IsNullOrEmpty(cid))
+                                {
+                                    cid = attEnt.GetEntityDef().GetCardId();
+                                }
+                                int creator = attEnt.GetCreatorId();
+                                int cpyDeath = attEnt.GetTag(GAME_TAG.COPY_DEATHRATTLE);
+                                int ctrlId = attEnt.GetControllerId();
+                                enchs.Add(new miniEnch(CardDB.Instance.cardIdstringToEnum(cid), creator, ctrlId, cpyDeath, attEnt));
                             }
-                            int creator = attEnt.GetCreatorId();
-                            int cpyDeath = attEnt.GetTag(GAME_TAG.COPY_DEATHRATTLE);
-                            int ctrlId = attEnt.GetControllerId();
-                            enchs.Add(new miniEnch(CardDB.Instance.cardIdstringToEnum(cid), creator, ctrlId, cpyDeath, attEnt));
+                            m.loadEnchantments(enchs, entity.GetCreatorId());
                         }
-                        m.loadEnchantments(enchs, entity.GetCreatorId());
                     }
 
-                    m.updateReadyness();
 
                     // if (m.rush > 0 && !m.untouchable && m.charge == 0 && (m.numAttacksThisTurn == 0 || (m.numAttacksThisTurn == 1 && m.windfury)))
                     // {
@@ -1036,7 +1081,6 @@ namespace HREngine.Bots
                     m.handcard.card.TAG_SCRIPT_DATA_NUM_4 = c.TAG_SCRIPT_DATA_NUM_4;//标签脚本数据编号4，用于记录伤害、召唤数量、衍生物攻击力、衍生物血量、注能数量、法力渴求
                     m.handcard.card.DECK_ACTION_COST = c.DECK_ACTION_COST;//卡组操作消耗法力值
                     m.handcard.card.Dredge = c.Dredge;//探底
-                                                      // m.CooldownTurn = c.CooldownTurn;//地标冷却回合
                     m.handcard.card.Infuse = c.Infuse;//注能
                     m.handcard.card.Infused = c.Infused;//已注能
                     m.handcard.card.InfuseNum = c.InfuseNum;//注能数量
@@ -1044,16 +1088,20 @@ namespace HREngine.Bots
                     m.handcard.card.Finale = c.Finale;//压轴
                     m.handcard.card.Overheal = c.Overheal;//过量治疗
                     m.handcard.card.Titan = c.Titan;//泰坦
-                    m.handcard.card.TitanAbilityUsed1 = c.TitanAbilityUsed1;//泰坦第一技能
-                    m.handcard.card.TitanAbilityUsed2 = c.TitanAbilityUsed2;//泰坦第二技能
-                    m.handcard.card.TitanAbilityUsed3 = c.TitanAbilityUsed3;//泰坦第三技能
-                    m.handcard.card.TitanAbility = c.TitanAbility;//泰坦技能列表
+                    m.Titan = c.Titan;//泰坦
+                    if (m.Titan)
+                    {
+                        m.handcard.card.TitanAbility = c.TitanAbility;//泰坦技能列表
+                        m.TitanAbilityUsed1 = entity.GetTag(GAME_TAG.TITAN_ABILITY_USED_1) == 1;//泰坦第一技能
+                        m.TitanAbilityUsed2 = entity.GetTag(GAME_TAG.TITAN_ABILITY_USED_2) == 1;//泰坦第二技能
+                        m.TitanAbilityUsed3 = entity.GetTag(GAME_TAG.TITAN_ABILITY_USED_3) == 1;//泰坦第三技能
+                    }
                     m.handcard.card.Forge = c.Forge;//锻造
                     m.handcard.card.ForgeCost = c.ForgeCost;//锻造消耗法力值
                     m.handcard.card.Forged = c.Forged;//已锻造
                     m.handcard.card.Quickdraw = c.Quickdraw;//快枪
                     m.handcard.card.Excavate = c.Excavate;//发掘
-                    m.handcard.card.Elusive = c.Elusive;//扰魔
+                    m.updateReadyness();
 
                     if (m.charge > 0 && m.playedThisTurn && !m.exhausted && m.numAttacksThisTurn == 0)
                     {
@@ -1083,6 +1131,15 @@ namespace HREngine.Bots
         public void updateHandcard(Player player, bool ControlledByFriendly)
         {
             List<Card> Handcards = player.GetHandZone().GetCards();
+            if (ControlledByFriendly)
+            {
+                anzcards = handCards.Count;
+            }
+            else
+            {
+                enemyAnzCards = handCards.Count;
+                return;
+            }
             foreach (Card card in Handcards)
             {
                 Entity entity = card.GetEntity();
@@ -1090,33 +1147,32 @@ namespace HREngine.Bots
                 int zp = entity.GetZonePosition();
                 if (zp >= 1)
                 {
-                    if (ControlledByFriendly)
+                    CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(cardId));
+                    Handmanager.Handcard hc = new Handmanager.Handcard(c);
+                    hc.MODULAR_ENTITY_PART_1 = entity.GetTag(GAME_TAG.MODULAR_ENTITY_PART_1);
+                    hc.MODULAR_ENTITY_PART_2 = entity.GetTag(GAME_TAG.MODULAR_ENTITY_PART_2);
+                    //自定义卡牌的模块1和模块2
+                    if (hc.MODULAR_ENTITY_PART_1 != 0 && hc.MODULAR_ENTITY_PART_2 != 0)
                     {
-                        CardDB.Card c = CardDB.Instance.getCardDataFromID(CardDB.Instance.cardIdstringToEnum(cardId));
-                        Handmanager.Handcard hc = new Handmanager.Handcard(c);
-                        hc.MODULAR_ENTITY_PART_1 = entity.GetTag(GAME_TAG.MODULAR_ENTITY_PART_1);
-                        hc.MODULAR_ENTITY_PART_2 = entity.GetTag(GAME_TAG.MODULAR_ENTITY_PART_2);
-                        //自定义卡牌的模块1和模块2
-                        if (hc.MODULAR_ENTITY_PART_1 != 0 && hc.MODULAR_ENTITY_PART_2 != 0)
-                        {
-                            hc.card.MODULAR_ENTITY_PART_1 = hc.MODULAR_ENTITY_PART_1;
-                            hc.card.MODULAR_ENTITY_PART_2 = hc.MODULAR_ENTITY_PART_2;
-                            if (hc.card.type == CardDB.cardtype.MOB)
-                                c.updateDIYCard();
-                        }
-                        hc.position = zp;
-                        hc.entity = entity.GetEntityId();
-                        hc.manacost = entity.GetCost();
-                        hc.poweredUp = entity.GetTag(GAME_TAG.POWERED_UP);//手牌高亮
-                        hc.SCRIPT_DATA_NUM_1 = entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_1);
-                        hc.SCRIPT_DATA_NUM_2 = entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_2);
-                        hc.temporary = entity.GetTag(3630) > 0 ? true : false;
-                        hc.valeeraShadow = entity.GetTag(779) > 0 ? true : false;
-                        // entity.GetTag(GAME_TAG.LITERALLY_UNPLAYABLE);//无法使用
-                        // entity.GetTag(GAME_TAG.UNPLAYABLE_VISUALS);
-                        hc.addattack = entity.GetATK() - entity.GetDefATK();
-                        hc.addHp = entity.GetHealth() - entity.GetDefHealth();
-
+                        hc.card.MODULAR_ENTITY_PART_1 = hc.MODULAR_ENTITY_PART_1;
+                        hc.card.MODULAR_ENTITY_PART_2 = hc.MODULAR_ENTITY_PART_2;
+                        if (hc.card.type == CardDB.cardtype.MOB)
+                            c.updateDIYCard();
+                    }
+                    hc.position = zp;
+                    hc.entity = entity.GetEntityId();
+                    hc.manacost = entity.GetCost();
+                    hc.poweredUp = entity.GetTag(GAME_TAG.POWERED_UP);//手牌高亮
+                    hc.SCRIPT_DATA_NUM_1 = entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_1);
+                    hc.SCRIPT_DATA_NUM_2 = entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_2);
+                    hc.temporary = entity.GetTag(3630) > 0;
+                    hc.valeeraShadow = entity.GetTag(779) > 0;
+                    // entity.GetTag(GAME_TAG.LITERALLY_UNPLAYABLE);//无法使用
+                    // entity.GetTag(GAME_TAG.UNPLAYABLE_VISUALS);
+                    hc.addattack = entity.GetATK() - entity.GetDefATK();
+                    hc.addHp = entity.GetHealth() - entity.GetDefHealth();
+                    if (entity.IsEnchanted())
+                    {
                         List<Entity> attaches = entity.GetAttachments();//附魔
                         if (attaches != null && attaches.Count > 0)
                         {
@@ -1131,14 +1187,12 @@ namespace HREngine.Bots
                                 hc.enchs.Add(CardDB.Instance.cardIdstringToEnum(cid));
                             }
                         }
-                        handCards.Add(hc);
-                        anzcards++;
                     }
-                    else
-                    {
-                        enemyAnzCards++;
-                    }
+                    handCards.Add(hc);
+
                 }
+
+
             }
         }
         /// <summary>
@@ -1207,14 +1261,10 @@ namespace HREngine.Bots
         /// <param name="entity">实体</param>
         /// <param name="controllerId">玩家id</param>
         /// <param name="ControlledByFriendly">受友方控制</param>
-        void updateDeck(Entity entity, bool ControlledByFriendly)
+        public void updateDeck(Entity entity, bool ControlledByFriendly)
         {
             string cardId = entity.GetEntityDef().GetCardId();
 
-            if (ControlledByFriendly)
-                ownDecksize++;
-            else
-                enemyDecksize++;
             if (string.IsNullOrEmpty(cardId))
                 return;
             int entityId = entity.GetEntityId();
@@ -1251,10 +1301,11 @@ namespace HREngine.Bots
             foreach (Card card in Graveyards)
             {
                 Entity entity = card.GetEntity();
-
+                // if (entity.IsEnchantment())
+                //     return;
                 Triton.Game.Mapping.TAG_CARDTYPE cardType = entity.GetCardType();
-                if (cardType == Triton.Game.Mapping.TAG_CARDTYPE.ENCHANTMENT)//附魔牌不加入坟场数据库，是否合理？
-                    return;
+                // if (cardType == Triton.Game.Mapping.TAG_CARDTYPE.ENCHANTMENT)//附魔牌不加入坟场数据库，是否合理？
+                //     return;
                 CardDB.cardIDEnum idEnum = CardDB.Instance.cardIdstringToEnum(entity.GetCardId());
                 GraveYardItem gyi = new GraveYardItem(idEnum, entity.GetEntityId(), ControlledByFriendly, GraveYardItem.EnumGraveyardStatus.Unknown);
                 Zone prevZone = card.GetPrevZone();

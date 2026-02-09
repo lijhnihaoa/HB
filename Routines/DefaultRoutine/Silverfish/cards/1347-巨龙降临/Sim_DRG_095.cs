@@ -15,7 +15,7 @@ namespace HREngine.Bots
         {
             foreach (Minion minion in own.own ? p.enemyMinions: p.ownMinions)
 			{
-				p.minionSetLifetoX(minion, 1);
+				p.minionSetHealthtoX(minion, 1);
 			}
         }
 		

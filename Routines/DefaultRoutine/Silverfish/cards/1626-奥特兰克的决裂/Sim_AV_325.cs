@@ -12,7 +12,7 @@ namespace HREngine.Bots
             int sh = m.Angr;
             foreach (Minion em in p.enemyMinions)
             {
-                p.minionSetLifetoX(em, sh);
+                p.minionSetHealthtoX(em, sh);
             }
         }
 		

@@ -18,8 +18,8 @@ namespace HREngine.Bots
 			foreach (Minion m in p.ownMinions)
 			{
 				if(m.handcard.card.cardIDenum == CardDB.cardIDEnum.DMF_163){
-					p.minionSetAngrToX(m, own.Angr);
-					p.minionSetLifetoX(m, own.Hp);					
+					p.minionSetAttackToX(m, own.Angr);
+					p.minionSetHealthtoX(m, own.Hp);					
 				}
 			}
 		}

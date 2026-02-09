@@ -18,9 +18,9 @@ namespace HREngine.Bots
             if (target != null)
             {
                 // 将目标随从的攻击力设置为3
-                p.minionSetAngrToX(target, 3);
+                p.minionSetAttackToX(target, 3);
                 // 将目标随从的生命值设置为3，并且最大生命值也设置为3
-                p.minionSetLifetoX(target, 3);
+                p.minionSetHealthtoX(target, 3);
             }
         }
 

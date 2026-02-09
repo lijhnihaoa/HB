@@ -12,22 +12,16 @@ namespace HREngine.Bots
 	class Sim_WORK_028 : SimTemplate
 	{
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
-        {
-			if (p.ownMinions.Count > 0)
+		{
+
+			foreach (Minion m in p.ownMinions)
 			{
-				p.ownMinions.ForEach((m) => m.reborn = true);
-				foreach (Minion m in p.ownMinions)
-				{
-					m.reborn = true;
-				}
+				m.reborn = true;
 			}
 
-			if (p.enemyMinions.Count > 0)
+			foreach (Minion m in p.enemyMinions)
 			{
-				foreach (Minion m in p.enemyMinions)
-				{
-					m.reborn = true;
-				}
+				m.reborn = true;
 			}
 
 			p.allMinionsGetDestroyed();

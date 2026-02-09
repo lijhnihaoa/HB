@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
 		public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            p.minionSetLifetoX(target, 1);
+            p.minionSetHealthtoX(target, 1);
 		}
 
 

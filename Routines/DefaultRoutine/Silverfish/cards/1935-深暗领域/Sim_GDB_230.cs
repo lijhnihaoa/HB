@@ -18,8 +18,8 @@ namespace HREngine.Bots
 				int Angr = triggerEffectMinion.Angr;
 				int Hp = triggerEffectMinion.Hp;
 
-				p.minionSetAngrToX(triggerEffectMinion, Hp);
-				p.minionSetLifetoX(triggerEffectMinion, Angr);
+				p.minionSetAttackToX(triggerEffectMinion, Hp);
+				p.minionSetHealthtoX(triggerEffectMinion, Angr);
 			}
 		}
 

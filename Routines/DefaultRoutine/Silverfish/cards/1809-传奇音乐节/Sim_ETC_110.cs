@@ -17,8 +17,8 @@ namespace HREngine.Bots
 			{
 				own.setMinionToMinion(target);
 			}
-			p.minionSetAngrToX(own,3);
-			p.minionSetLifetoX(own,3);
+			p.minionSetAttackToX(own,3);
+			p.minionSetHealthtoX(own,3);
 		}
 		public override PlayReq[] GetPlayReqs()
         {

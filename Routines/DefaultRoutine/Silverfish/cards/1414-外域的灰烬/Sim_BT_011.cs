@@ -17,7 +17,7 @@ namespace HREngine.Bots
             p.equipWeapon(w, ownplay);
             foreach (Minion m in p.enemyMinions)
             {
-                p.minionSetLifetoX(m, 1);
+                p.minionSetHealthtoX(m, 1);
             }
            
         }

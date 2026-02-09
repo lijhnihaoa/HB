@@ -21,8 +21,8 @@ namespace HREngine.Bots
 				if (place < 7)
 				{
 					p.callKid(kid, place, true);
-					p.minionSetAngrToX(p.ownMinions[place - 1], hc.manacost);//有的silverfish里是minionSetAttackToX
-					p.minionSetLifetoX(p.ownMinions[place - 1], hc.manacost);
+					p.minionSetAttackToX(p.ownMinions[place - 1], hc.manacost);//有的silverfish里是minionSetAttackToX
+					p.minionSetHealthtoX(p.ownMinions[place - 1], hc.manacost);
 				}
 				else p.evaluatePenality += 6;
 			}

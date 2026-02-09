@@ -19,7 +19,7 @@ namespace HREngine.Bots
                 p.minionGetControlled(target, ownplay, true);
 
                 // 将该随从的攻击力设为1，仅限本回合
-                p.minionSetAngrToX(target, 1);
+                p.minionSetAttackToX(target, 1);
             }
         }
 		public override PlayReq[] GetPlayReqs()

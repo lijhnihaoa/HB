@@ -5,13 +5,13 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	//随从 圣骑士 费用：7 攻击力：1 生命值：8
-	//Amitus, the Peacekeeper
-	//维和者阿米图斯
-	//<b>Titan</b><b>Taunt</b>. Your minionscan't take more than 2_damage at a time.
-	//<b>泰坦</b><b>嘲讽</b>。你的随从每次受到伤害不会超过2点。
-	class Sim_TTN_858 : SimTemplate
-	{
+    //随从 圣骑士 费用：7 攻击力：1 生命值：8
+    //Amitus, the Peacekeeper
+    //维和者阿米图斯
+    //<b>Titan</b><b>Taunt</b>. Your minionscan't take more than 2_damage at a time.
+    //<b>泰坦</b><b>嘲讽</b>。你的随从每次受到伤害不会超过2点。
+    class Sim_TTN_858 : SimTemplate
+    {
         public override void onAuraStarts(Playfield p, Minion m)
         {
             if (m.own)
@@ -29,7 +29,7 @@ namespace HREngine.Bots
             if (m.own)
             {
                 p.ownAmitusThePeacekeeper = false;
-            } 
+            }
             else
             {
                 p.enemyAmitusThePeacekeeper = false;
@@ -53,19 +53,19 @@ namespace HREngine.Bots
                     break;
 
                 case 2: // 强化
-                    p.ownMinions.ForEach(m =>
+                    foreach (Minion m in triggerMinion.own ? p.ownMinions : p.enemyMinions)
                     {
-                        m.Angr += 2;
-                        m.Hp += 2;
-                    });
+                        if (m.entitiyID != triggerMinion.entitiyID)
+                            p.minionGetBuffed(m, 2, 2);
+                    }
                     break;
 
                 case 3: // 平静
-                    p.enemyMinions.ForEach(m =>
+                    foreach (Minion m in triggerMinion.own ? p.enemyMinions : p.ownMinions)
                     {
-                        m.Angr = 2;
-                        m.Hp = 2;
-                    });
+                        p.minionSetAttackToX(m, 2);
+                        p.minionSetHealthtoX(m, 2);
+                    }
                     break;
 
             }

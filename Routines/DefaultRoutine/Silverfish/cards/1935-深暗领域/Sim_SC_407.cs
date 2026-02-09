@@ -15,7 +15,7 @@ namespace HREngine.Bots
         {
 			if (target != null)
 			{
-                p.minionSetLifetoX(target, 1);
+                p.minionSetHealthtoX(target, 1);
 				//TODO:星舰减费以后再说
 			}
 

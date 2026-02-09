@@ -23,10 +23,11 @@ namespace HREngine.Bots
 			// 检查己方英雄是否装备了“灌能战斧”
 			if (own.own && p.ownWeapon.card.cardIDenum == CardDB.cardIDEnum.REV_933)
 			{
-				p.ownMinions.ToList()
-				.Where(m => m.wounded == true)
-				.ToList()
-				.ForEach(m => p.minionGetBuffed(m, 1, 2));
+				p.ownMinions.ForEach(m =>
+				{
+					if (m.wounded)
+						p.minionGetBuffed(m, 1, 2);
+				});
 
 			}
 

@@ -24,8 +24,8 @@ namespace HREngine.Bots
 				temp.Sort((a, b) => b.Hp.CompareTo(a.Hp));
 				hp = temp[0].Hp;
 
-				p.minionSetAngrToX(own, atk);
-				p.minionSetLifetoX(own, hp);
+				p.minionSetAttackToX(own, atk);
+				p.minionSetHealthtoX(own, hp);
 				p.evaluatePenality += 30-atk/2-hp;
 
 				if(hp >= 6) p.evaluatePenality -= 50;

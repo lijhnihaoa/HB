@@ -15,7 +15,7 @@ namespace HREngine.Bots
         {
             if (triggerEffectMinion.entitiyID != attacker.entitiyID && attacker.own)
             {
-                p.minionSetLifetoX(attacker,triggerEffectMinion.Hp);
+                p.minionSetHealthtoX(attacker,triggerEffectMinion.Hp);
             }
         }
 		

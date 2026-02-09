@@ -4,20 +4,20 @@ using System.Text;
 
 namespace HREngine.Bots
 {
-	//法术 圣骑士 费用：0
-	//Pacified
-	//平静
-	//Set the Attack and Health of all enemy minions to 2.
-	//将所有敌方随从的攻击力和生命值变为2。
-	class Sim_TTN_858t3 : SimTemplate
-	{
+    //法术 圣骑士 费用：0
+    //Pacified
+    //平静
+    //Set the Attack and Health of all enemy minions to 2.
+    //将所有敌方随从的攻击力和生命值变为2。
+    class Sim_TTN_858t3 : SimTemplate
+    {
         public override void onCardPlay(Playfield p, bool ownplay, Minion target, int choice, Handmanager.Handcard hc)
         {
-            p.enemyMinions.ForEach(m =>
+            foreach (Minion m in ownplay ? p.enemyMinions : p.ownMinions)
             {
-                m.Angr = 2;
-                m.Hp = 2;
-            });
+                p.minionSetAttackToX(m, 2);
+                p.minionSetHealthtoX(m, 2);
+            }
         }
 
         public override PlayReq[] GetPlayReqs()

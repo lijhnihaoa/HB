@@ -17,13 +17,13 @@ namespace HREngine.Bots
 			{
 				if (target.own)
 				{
-					p.minionSetAngrToX(target, 3);
-					p.minionSetLifetoX(target, 3);
+					p.minionSetAttackToX(target, 3);
+					p.minionSetHealthtoX(target, 3);
 				}
 				else
 				{
-					p.minionSetAngrToX(target, 1);
-					p.minionSetLifetoX(target, 1);
+					p.minionSetAttackToX(target, 1);
+					p.minionSetHealthtoX(target, 1);
 				}
 			}
 		}

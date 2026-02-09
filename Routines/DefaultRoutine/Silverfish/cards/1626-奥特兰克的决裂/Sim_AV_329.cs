@@ -12,7 +12,7 @@ namespace HREngine.Bots
             if (target != null)
             {
                 p.minionGetBuffed(target, 2, 0);
-				p.minionSetAngrToHP(target);
+				p.minionSetAttackToHealth(target);
             }
         }
 

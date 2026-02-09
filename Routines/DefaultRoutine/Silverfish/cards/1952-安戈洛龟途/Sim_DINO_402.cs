@@ -15,8 +15,8 @@ namespace HREngine.Bots
         {
 			if (target != null)
 			{
-				p.minionSetAngrToX(target, 1);
-				p.minionSetLifetoX(target, 1);
+				p.minionSetAttackToX(target, 1);
+				p.minionSetHealthtoX(target, 1);
 				for (int i = 0; i < 7 - p.ownMinions.Count; i++)
 				{
 					p.callKid(target.handcard.card, target.zonepos, target.own);

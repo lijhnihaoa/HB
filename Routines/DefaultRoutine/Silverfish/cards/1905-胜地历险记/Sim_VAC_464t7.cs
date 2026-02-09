@@ -24,8 +24,8 @@ namespace HREngine.Bots
                 CardDB.Card copyCard = CardDB.Instance.getCardDataFromID(target.handcard.card.cardIDenum);
                 p.callKid(copyCard, pos, ownplay, true); // 召唤复制
                 Minion summonedCopy = ownplay ? p.ownMinions[p.ownMinions.Count - 1] : p.enemyMinions[p.enemyMinions.Count - 1];
-                p.minionSetAngrToX(summonedCopy, 10);
-                p.minionSetLifetoX(summonedCopy, 10);
+                p.minionSetAttackToX(summonedCopy, 10);
+                p.minionSetHealthtoX(summonedCopy, 10);
             }
         }
 

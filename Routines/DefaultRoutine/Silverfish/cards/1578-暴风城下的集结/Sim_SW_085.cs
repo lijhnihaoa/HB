@@ -15,8 +15,8 @@ namespace HREngine.Bots
 			if (place < 7)
 			{
 				p.callKid(kid, place, true);
-				p.minionSetAngrToX(p.ownMinions[place - 1], p.owncards.Count);
-				p.minionSetLifetoX(p.ownMinions[place - 1], p.owncards.Count);
+				p.minionSetAttackToX(p.ownMinions[place - 1], p.owncards.Count);
+				p.minionSetHealthtoX(p.ownMinions[place - 1], p.owncards.Count);
 			}
         }
 		

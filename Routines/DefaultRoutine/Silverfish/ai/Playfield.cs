@@ -9476,11 +9476,6 @@ namespace HREngine.Bots
         /// </summary>
         public void allMinionsGetDestroyed()
         {
-            // this.ownMinions.ToList().ForEach(minionGetDestroyed);
-            // this.enemyMinions.ToList().ForEach(minionGetDestroyed);
-
-            // List<Minion> owmminions = new List<Minion>(this.ownMinions);
-            // List<Minion> enemyminions = new List<Minion>(this.enemyMinions);
             // 销毁己方所有随从
             foreach (Minion m in this.ownMinions.ToArray())
             {
@@ -10898,7 +10893,7 @@ namespace HREngine.Bots
         /// </summary>
         /// <param name="m">目标随从</param>
         /// <param name="newAngr">新的攻击力值</param>
-        public void minionSetAngrToX(Minion m, int newAngr)
+        public void minionSetAttackToX(Minion m, int newAngr)
         {
             // 如果随从未被沉默，并且是光耀之子（lightspawn），则不改变其攻击力
             // if (!m.silenced && m.name == CardDB.cardNameEN.lightspawn) return;
@@ -10916,7 +10911,7 @@ namespace HREngine.Bots
         /// </summary>
         /// <param name="m">目标随从</param>
         /// <param name="newHp">新的生命值</param>
-        public void minionSetLifetoX(Minion m, int newHp)
+        public void minionSetHealthtoX(Minion m, int newHp)
         {
             // 移除当前的区域性增益或减益
             minionGetOrEraseAllAreaBuffs(m, false);
@@ -10943,7 +10938,7 @@ namespace HREngine.Bots
         /// 将随从的攻击力设置为与其生命值相同的数值。
         /// </summary>
         /// <param name="m">目标随从</param>
-        public void minionSetAngrToHP(Minion m)
+        public void minionSetAttackToHealth(Minion m)
         {
             // 设置随从的攻击力为其当前的生命值，并重置临时攻击力增益
             m.Angr = m.Hp;
@@ -12933,8 +12928,8 @@ namespace HREngine.Bots
                 }
             }
             return raceCardInHand;
-        } 
-        
+        }
+
         /// <summary>
         /// 召唤一个随从的复制
         /// </summary>
@@ -12987,8 +12982,8 @@ namespace HREngine.Bots
             }
 
         }
-    
-        
+
+
     }
 
     /// <summary>

@@ -22,8 +22,8 @@ namespace HREngine.Bots
 			{
 				if (m.handcard.card.cardIDenum == CardDB.cardIDEnum.WW_360)
 				{
-					p.minionSetAngrToX(m, own.Angr);
-					p.minionSetLifetoX(m, own.Hp);
+					p.minionSetAttackToX(m, own.Angr);
+					p.minionSetHealthtoX(m, own.Hp);
 				}
 			}
 		}

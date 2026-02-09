@@ -15,8 +15,8 @@ namespace HREngine.Bots
                 p.ownCrystalCore = 5;
                 foreach (Minion m in p.ownMinions)
                 {
-                    p.minionSetAngrToX(m, 4);
-                    p.minionSetLifetoX(m, 4);
+                    p.minionSetAttackToX(m, 4);
+                    p.minionSetHealthtoX(m, 4);
                 }
 
                 foreach (Handmanager.Handcard handcard in p.owncards)

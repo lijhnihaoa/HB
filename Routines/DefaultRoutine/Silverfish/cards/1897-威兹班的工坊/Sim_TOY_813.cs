@@ -23,8 +23,8 @@ namespace HREngine.Bots
             // 执行战吼效果，将目标随从的攻击力和生命值设置为与本随从相同
             if (target != null)
             {
-                p.minionSetAngrToX(target, own.Angr);
-                p.minionSetLifetoX(target, own.Hp);
+                p.minionSetAttackToX(target, own.Angr);
+                p.minionSetHealthtoX(target, own.Hp);
             }
         }
 

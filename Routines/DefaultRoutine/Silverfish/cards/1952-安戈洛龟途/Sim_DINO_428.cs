@@ -15,8 +15,8 @@ namespace HREngine.Bots
         {
 			if (target != null)
 			{
-				p.minionSetAngrToX(target, 8);
-				p.minionSetLifetoX(target, 10);
+				p.minionSetAttackToX(target, 8);
+				p.minionSetHealthtoX(target, 10);
 				target.lifesteal = true;
 				foreach (Minion minion in ownplay ? p.enemyMinions : p.ownMinions)
 				{

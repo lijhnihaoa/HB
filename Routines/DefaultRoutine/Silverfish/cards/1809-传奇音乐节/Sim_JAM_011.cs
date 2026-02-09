@@ -25,8 +25,8 @@ namespace HREngine.Bots
 				{
 					if (!target.isHero)
 					{
-						p.minionSetLifetoX(target, 3);
-						p.minionSetLifetoX(target, 3);
+						p.minionSetHealthtoX(target, 3);
+						p.minionSetHealthtoX(target, 3);
 					}
 				}
 

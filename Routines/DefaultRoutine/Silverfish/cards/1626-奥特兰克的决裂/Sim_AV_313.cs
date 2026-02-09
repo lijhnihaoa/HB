@@ -11,7 +11,7 @@ namespace HREngine.Bots
         {
             foreach (Minion m in p.enemyMinions)
             {
-                p.minionSetLifetoX(m, 1);
+                p.minionSetHealthtoX(m, 1);
                 if (m.Hp == 1 && !m.divineshild)
                 {
                     p.minionGetTempBuff(own, m.Angr, 0);

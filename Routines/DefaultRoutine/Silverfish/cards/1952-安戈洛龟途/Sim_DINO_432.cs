@@ -15,8 +15,8 @@ namespace HREngine.Bots
         {
 			if (target != null)
 			{
-				p.minionSetAngrToX(target, 5);
-				p.minionSetLifetoX(target, 4);
+				p.minionSetAttackToX(target, 5);
+				p.minionSetHealthtoX(target, 4);
 				target.stealth = true;
 				p.drawACard(CardDB.cardIDEnum.None, ownplay);
 				p.drawACard(CardDB.cardIDEnum.None, ownplay);

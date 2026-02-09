@@ -18,8 +18,8 @@ namespace HREngine.Bots
                 if (playedMinion.handcard.card.deathrattle)
                 {
                     p.minionTransform(triggerEffectMinion, playedMinion.handcard.card);
-                    p.minionSetAngrToX(triggerEffectMinion, 2);
-                    p.minionSetLifetoX(triggerEffectMinion, 2);
+                    p.minionSetAttackToX(triggerEffectMinion, 2);
+                    p.minionSetHealthtoX(triggerEffectMinion, 2);
                     p.minionGetRush(triggerEffectMinion);
                 }
             }

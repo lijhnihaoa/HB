@@ -11,7 +11,7 @@ namespace HREngine.Bots
 
 		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
 		{
-            if(target != null) p.minionSetAngrToX(target, 1);
+            if(target != null) p.minionSetAttackToX(target, 1);
 		}
 
 

@@ -16,7 +16,7 @@ namespace HREngine.Bots
 			// 检查召唤的随从是否是机械
 			if (triggerEffectMinion.entitiyID != summonedMinion.entitiyID && triggerEffectMinion.own == summonedMinion.own)
 			{
-				p.minionSetLifetoX(summonedMinion, triggerEffectMinion.Hp);
+				p.minionSetHealthtoX(summonedMinion, triggerEffectMinion.Hp);
 			}
 		}
 

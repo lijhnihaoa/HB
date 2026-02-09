@@ -13,14 +13,16 @@ namespace HREngine.Bots
 	{
 		public override void onTurnEndsTrigger(Playfield p, Minion triggerEffectMinion, bool turnEndOfOwner)
 		{
-			List<Minion> minions = triggerEffectMinion.own ? p.enemyMinions : p.ownMinions;
-			minions.ForEach((m) =>
+			if (triggerEffectMinion.own == turnEndOfOwner)
 			{
-				m.maxHp = 1;
-				m.Hp = 1;
-				m.Angr = 1;
-			});
-        }
-		
+				List<Minion> minions = triggerEffectMinion.own ? p.enemyMinions : p.ownMinions;
+				minions.ForEach((m) =>
+				{
+					p.minionSetAttackToX(m, 1);
+					p.minionSetHealthtoX(m, 1);
+				});
+			}
+		}
+
 	}
 }

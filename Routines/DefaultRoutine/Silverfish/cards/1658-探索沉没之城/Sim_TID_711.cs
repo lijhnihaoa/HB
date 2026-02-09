@@ -32,11 +32,11 @@ namespace HREngine.Bots
 			List<Minion> minions = new List<Minion>(m.own ? p.ownMinions : p.enemyMinions);
 			List<Minion> enemyMinions = new List<Minion>(m.own ? p.enemyMinions : p.ownMinions);
 			int destroyedCount = 0;
-			int i = 0;
 			foreach (Minion minion in minions)
 			{
-				if (minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t2 || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t3 ||
-				minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t4 || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t5 || minion.handcard.card.cardIDenum == CardDB.cardIDEnum.TID_711t6)
+				var cardId = minion.handcard.card.cardIDenum;
+				if (cardId == CardDB.cardIDEnum.TID_711t || cardId == CardDB.cardIDEnum.TID_711t2 || cardId == CardDB.cardIDEnum.TID_711t3 ||
+				cardId == CardDB.cardIDEnum.TID_711t4 || cardId == CardDB.cardIDEnum.TID_711t5 || cardId == CardDB.cardIDEnum.TID_711t6)
 				{
 					destroyedCount++;
 				}
@@ -54,20 +54,7 @@ namespace HREngine.Bots
 				p.minionGetDestroyed(minion);
 				destroyedCount--;
 			}
-/* 			while (i < enemyMinions.Count && i < destroyedCount)
-			{
-				if (destroyedCount == 0 || i > enemyMinions.Count - 1)
-				{
-					break;
-				}
-				if (enemyMinions[i].untouchable || enemyMinions[i].handcard.card.type == CardDB.cardtype.LOCATION)
-				{
-					continue;
-				}
-				p.minionGetDestroyed(enemyMinions[i]);
-				destroyedCount--;
-				i++;
-			} */
+
 
 		}
 

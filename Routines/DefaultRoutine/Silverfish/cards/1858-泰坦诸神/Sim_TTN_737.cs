@@ -12,7 +12,7 @@ namespace HREngine.Bots
     //<b>泰坦</b>在本随从使用一个技能后，<b>发现</b>一张对应符文的牌。
     class Sim_TTN_737 : SimTemplate
     {
-        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_737t2)；
+        CardDB.Card kid = CardDB.Instance.getCardDataFromID(CardDB.cardIDEnum.TTN_737t2);
         public override void useTitanAbility(Playfield p, Minion triggerMinion, int titanAbilityNO, Minion target)
         {
             switch (titanAbilityNO)

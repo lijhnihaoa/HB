@@ -72,6 +72,7 @@
                     <Label Grid.Row="6" Grid.Column="0" Content="判断对面名字投降" VerticalAlignment="Center" Margin="3" ToolTipService.ToolTip="判断对手名字是否为的字辈来选择是否投降."/>
                     <CheckBox x:Name="JudgmentOpponentNameConcedeCheckBox" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="3"/>
                 </Grid>
+                <!-- 投降延迟 -->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="25" />
@@ -88,7 +89,8 @@
                     <Label Grid.Row="1" Grid.Column="0" Content="投降最大延时(ms)" VerticalAlignment="Center" Margin="3" ToolTipService.ToolTip="推荐3秒，即3000ms."/>
                     <TextBox x:Name="AutoConcedeMaxDelayMsTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="15,3" Width="50"/>
                 </Grid>
-                <Grid>
+                <!-- 齿轮 -->
+                <!-- <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="25" />
                     </Grid.RowDefinitions>
@@ -102,7 +104,7 @@
                     <Label x:Name="SliderShopSpeedRatioTextLabel" Grid.Row="0" Grid.Column="1" Content="1.0" VerticalAlignment="Center" Margin="15,3" Width="40"/>
                     <Slider x:Name="SliderShopSpeedRatioSlider" Grid.Row="0" Grid.Column="2" 
                       VerticalAlignment="Center" Margin="3" Minimum="1" Maximum="9" SmallChange="0.1" Width="150" IsSnapToTickEnabled="False" IsMoveToPointEnabled="True"/>
-                </Grid>
+                </Grid> -->
             </StackPanel>
         </ScrollViewer>
     </Grid>

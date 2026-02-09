@@ -648,6 +648,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                     {
                         case PresenceStatus.COLLECTION:
                         case PresenceStatus.DECKEDITOR:
+                        case PresenceStatus.CRAFTING:
                             await CollectionCard(collectionManagerScene_0);
                             continue;
                         default:
@@ -1121,7 +1122,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                     ilog_0.DebugFormat("[对局开始:] 对手的id为：{0}#{1}", tagName, tagNumber);
                     if (tagNumber.Length < 5)
                     {
-                        ilog_0.DebugFormat("[对局开始:]对手id小于5位数，准备投降");
+                        ilog_0.DebugFormat("[对局开始:]对手id#后的数字小于5位数，准备投降");
                         TritonHs.Concede(true);
                         return;
                     }
@@ -1567,7 +1568,6 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                 PegasusScene scene = SceneMgr.Get().GetScene();
                 SceneMgr.Mode mode = SceneMgr.Get().GetMode();
                 GameType gameType = GameMgr.Get().GetGameType();
-                GameState gameState = GameState.Get();
                 if (!(await CloseQuestScreen())) //关闭任务界面+广告界面
                 {
                     switch (mode)
@@ -1581,6 +1581,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                         case SceneMgr.Mode.LETTUCE_COOP:
                         case SceneMgr.Mode.LETTUCE_FRIENDLY:
                         case SceneMgr.Mode.LETTUCE_PACK_OPENING:
+                        // case  SceneMgr.Mode.GAME_MODE:
                             {
                                 SceneMgr.Get().SetNextMode(SceneMgr.Mode.HUB);
                                 await Coroutine.Sleep(5000);
@@ -1598,6 +1599,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                         case SceneMgr.Mode.TOURNAMENT:
                             await SceneTournamentProc(new TournamentScene(scene.Address));
                             break;
+
                         case SceneMgr.Mode.GAMEPLAY:
                             {
                                 switch (gameType)
@@ -1615,7 +1617,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                                         // case GameType.GT_CASUAL:    
                                         // case GameType.GT_UNDERGROUND_ARENA:
                                         {
-                                            if (gameState == null || !gameState.IsGameOver())
+                                            if (GameState.Get() == null || !GameState.Get().IsGameOver())
                                             {
                                                 TritonHs.Concede(logReason: true);
                                                 await Coroutine.Sleep(1000);

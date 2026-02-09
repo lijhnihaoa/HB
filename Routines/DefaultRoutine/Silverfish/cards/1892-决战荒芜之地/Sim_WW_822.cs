@@ -11,7 +11,17 @@ namespace HREngine.Bots
 	//<b>嘲讽</b>。<b>战吼：</b>你手牌中每有一张龙牌，召唤一个本随从的复制。
 	class Sim_WW_822 : SimTemplate
 	{
-		
-		
+		public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
+		{
+			int summons = 0;
+
+			foreach (Handmanager.Handcard handcard in p.owncards)
+				if (RaceUtils.MinionBelongsToRace(handcard.card.GetRaces(), CardDB.Race.DRAGON))
+					summons++;
+
+			p.CallMinionCopy(own, own.own, summons, true);
+
+		}
+
 	}
 }

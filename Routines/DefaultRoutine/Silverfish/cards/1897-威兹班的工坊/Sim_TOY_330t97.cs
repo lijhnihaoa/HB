@@ -13,7 +13,7 @@ namespace HREngine.Bots
 	{
         public override void getBattlecryEffect(Playfield p, Minion own, Minion target, int choice)
         {
-            p.callMinionCopy(own);
+            p.CallMinionCopy(own,own.own);
         }
 		
 	}

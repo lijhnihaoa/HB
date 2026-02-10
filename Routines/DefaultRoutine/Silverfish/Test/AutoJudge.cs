@@ -11,7 +11,7 @@ namespace HREngine.Bots
     {
         //C:\Users\xiaohei\Desktop\Hearthbuddy_backed\Routines\DefaultRoutine\Silverfish\Test\Data
 
-        private static string mainPath = @"C:\Users\xiaohei\Desktop\Hearthbuddy_backed\Routines\DefaultRoutine\Silverfish\"; // 确保此路径正确
+        private static string mainPath = @"C:\Program Files (x86)\workspace\github\HB_backup\Routines\DefaultRoutine\Silverfish\"; // 确保此路径正确
         private static string testPath = @"Test\Data\单卡测试\护园森灵\"; // 需要测试的文件夹 
 
         private static string testFile = null;// 如果只需要测试单个文件，设置该属性为对应文件名

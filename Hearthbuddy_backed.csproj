@@ -4,9 +4,10 @@
 
     <OutputType>Exe</OutputType>
     <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
     
     <UseWPF>true</UseWPF>
-    <UseWindowsForms>true</UseWindowsForms>
+    <!-- <UseWindowsForms>true</UseWindowsForms> -->
     <!-- <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion> -->
     <!-- 隐式全局using -->
     <ImplicitUsings>enable</ImplicitUsings>
@@ -74,12 +75,17 @@
     <Reference Include="XamlAnimatedGif">
       <HintPath>lib\XamlAnimatedGif.dll</HintPath>
     </Reference>
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
 
 
   <ItemGroup>
     <Folder Include="HelperErrorLogs\" />
     <Folder Include="MercStraLogs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

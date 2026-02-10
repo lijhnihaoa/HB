@@ -11,6 +11,65 @@ using Triton.Game.Mapping;
 
 namespace HREngine.Bots
 {
+    /// <summary>
+    /// Entity 扩展方法，补充旧版 Hearthbuddy.exe 中缺失的 API
+    /// </summary>
+    static class EntityCompat
+    {
+        private const int TAG_REBORN = 2898;
+        private const int TAG_SPELLBURST = 2917;
+
+        internal static bool HasSpellburst(this Entity entity)
+        {
+            try { return entity.GetTag((GAME_TAG)TAG_SPELLBURST) > 0; }
+            catch { return false; }
+        }
+
+        internal static bool HasReborn(this Entity entity)
+        {
+            try { return entity.GetTag((GAME_TAG)TAG_REBORN) > 0; }
+            catch { return false; }
+        }
+
+        internal static int GetLocationCooldown(this Entity entity)
+        {
+            // 地标冷却回合数，从 TAG_SCRIPT_DATA_NUM_2 或自定义 tag 读取
+            try { return entity.GetTag(GAME_TAG.TAG_SCRIPT_DATA_NUM_2); }
+            catch { return 0; }
+        }
+
+        internal static List<Card> GetQuestCards(this ZoneSecret zone)
+        {
+            var cards = new List<Card>();
+            try
+            {
+                // 尝试通过反射调用新版 API
+                var method = typeof(ZoneSecret).GetMethod("GetQuestCards",
+                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+                if (method != null)
+                {
+                    return (List<Card>)method.Invoke(zone, null);
+                }
+
+                // 回退：从奥秘区域获取所有卡牌，筛选任务卡
+                var allCards = zone.GetSecretCards();
+                foreach (var card in allCards)
+                {
+                    if (card != null)
+                    {
+                        var e = card.GetEntity();
+                        if (e != null && e.GetTag(GAME_TAG.QUEST) > 0)
+                        {
+                            cards.Add(card);
+                        }
+                    }
+                }
+            }
+            catch { }
+            return cards;
+        }
+    }
+
     static class Extensions
     {
         /// <summary>

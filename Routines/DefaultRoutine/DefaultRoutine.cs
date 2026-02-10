@@ -998,48 +998,56 @@ def Execute():
                 }
             } */
             //判断是否处于回溯阶段
-            if (RewindUIManager.m_isShowingRewindUI)
+            // RewindUIManager 在旧版框架中不存在，使用反射动态调用
+            try
             {
-                try
-                {
-                    //获取回溯管理器实例
-                    RewindUIManager rewindUIManager = RewindUIManager.Get();
+                var rewindUIType = AppDomain.CurrentDomain.GetAssemblies()
+                    .SelectMany(a => { try { return a.GetTypes(); } catch { return Type.EmptyTypes; } })
+                    .FirstOrDefault(t => t.Name == "RewindUIManager");
 
-                    if (rewindUIManager == null)
+                if (rewindUIType != null)
+                {
+                    var isShowingField = rewindUIType.GetField("m_isShowingRewindUI",
+                        System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+                    bool isShowing = isShowingField != null && (bool)isShowingField.GetValue(null);
+
+                    if (isShowing)
                     {
+                        var getMethod = rewindUIType.GetMethod("Get",
+                            System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+                        var rewindUI = getMethod?.Invoke(null, null);
+
+                        if (rewindUI == null) return;
+                        Log.WarnFormat("处于回溯状态");
+
+                        var rewindBtn = rewindUIType.GetField("m_rewindButton",
+                            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)?.GetValue(rewindUI);
+                        var keepBtn = rewindUIType.GetField("m_keepButton",
+                            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic)?.GetValue(rewindUI);
+
+                        if (rewindBtn == null || keepBtn == null)
+                        {
+                            Log.WarnFormat("回溯或保持当前时间线按钮位空");
+                            return;
+                        }
+
+                        Log.WarnFormat("开始点击回溯或维持时间线按钮");
+                        object chosenBtn = random.Next(0, 2) > 1 ? keepBtn : rewindBtn;
+                        Log.WarnFormat(chosenBtn == keepBtn ? "点击维持时间线按钮" : "点击回溯按钮");
+
+                        var triggerPress = chosenBtn.GetType().GetMethod("TriggerPress");
+                        var triggerRelease = chosenBtn.GetType().GetMethod("TriggerRelease");
+                        triggerPress?.Invoke(chosenBtn, null);
+                        triggerRelease?.Invoke(chosenBtn, null);
+
+                        await Coroutine.Sleep(random.Next(100, 500));
                         return;
                     }
-                    Log.WarnFormat("处于回溯状态");
-
-                    if (rewindUIManager.m_rewindButton == null || rewindUIManager.m_keepButton == null)
-                    {
-                        Log.WarnFormat("回溯或保持当前时间线按钮位空");
-                        return;
-                    }
-
-                    Log.WarnFormat("开始点击回溯或维持时间线按钮");
-                    if (random.Next(0, 2) > 1)
-                    {
-                        Log.WarnFormat("点击维持时间线按钮");
-                        // await TritonHs.KeepTimeline();
-                        rewindUIManager.m_keepButton.TriggerPress();
-                        rewindUIManager.m_keepButton.TriggerRelease();
-                    }
-                    else
-                    {
-                        Log.WarnFormat("点击回溯按钮");
-                        // await TritonHs.RewindTimeline();
-                        rewindUIManager.m_rewindButton.TriggerPress();
-                        rewindUIManager.m_rewindButton.TriggerRelease();
-                    }
-                    await Coroutine.Sleep(random.Next(100, 500));
-
                 }
-                catch (Exception ex)
-                {
-                    Helpfunctions.Instance.ErrorLog("[回溯]异常: " + ex.Message);
-                }
-                return;
+            }
+            catch (Exception ex)
+            {
+                Helpfunctions.Instance.ErrorLog("[回溯]异常: " + ex.Message);
             }
 
             //处于主操作模式
@@ -1901,18 +1909,18 @@ def Execute():
                                                     Minion featurePlfMinion = featurePlf.callKidAndReturn(discoverCards[i].card, tmpPlf.ownMinions.Count - 1, true);
                                                     if (tmpPlfMinion != null)
                                                     {
-                                                        tmpPlf.minionSetAngrToX(tmpPlfMinion, 10);
-                                                        tmpPlf.minionSetLifetoX(tmpPlfMinion, 10);
+                                                        tmpPlf.minionSetAttackToX(tmpPlfMinion, 10);
+                                                        tmpPlf.minionSetHealthtoX(tmpPlfMinion, 10);
                                                     }
                                                     if (nextPlfMinion != null)
                                                     {
-                                                        nextPlf.minionSetAngrToX(nextPlfMinion, 10);
-                                                        nextPlf.minionSetLifetoX(nextPlfMinion, 10);
+                                                        nextPlf.minionSetAttackToX(nextPlfMinion, 10);
+                                                        nextPlf.minionSetHealthtoX(nextPlfMinion, 10);
                                                     }
                                                     if (featurePlfMinion != null)
                                                     {
-                                                        featurePlf.minionSetAngrToX(featurePlfMinion, 10);
-                                                        featurePlf.minionSetLifetoX(featurePlfMinion, 10);
+                                                        featurePlf.minionSetAttackToX(featurePlfMinion, 10);
+                                                        featurePlf.minionSetHealthtoX(featurePlfMinion, 10);
                                                     }
                                                     bestval = ai.mainTurnSimulator.doallmoves(tmpPlf) * 0.5f + ai.mainTurnSimulator.doallmoves(nextPlf) * 0.3f + ai.mainTurnSimulator.doallmoves(featurePlf) * 0.2f;
                                                 }

@@ -1607,7 +1607,7 @@ namespace Triton.Bot.Logic.Bots.DefaultBot
                                     // case GameType.GT_MERCENARIES_PVE:
                                     // case GameType.GT_MERCENARIES_PVP:
                                     case GameType.GT_MERCENARIES_PVE_COOP:
-                                    case GameType.GT_PVPDR_CASUAL:
+                                    // case GameType.GT_PVPDR_CASUAL: // 旧版框架无此枚举值
                                     // case GameType.GT_LETTUCE:
                                         // case GameType.GT_VS_AI:
                                         // case GameType.GT_VS_FRIEND:

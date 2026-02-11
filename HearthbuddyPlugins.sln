@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bots", "Bots", "{340ACB85-0CD2-4EF7-B1C4-D513A38F5BB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefaultBot", "Bots\DefaultBot\DefaultBot.csproj", "{ECE3EE1D-2F0B-4A6D-81A9-B23459E7DBBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Routines", "Routines", "{8823DF29-2E2F-486F-8D7B-A002B53FECD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefaultRoutine", "Routines\DefaultRoutine\DefaultRoutine.csproj", "{4A6AF0B8-20D9-4A6F-98F1-964A4B3EA14F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{F0EB9AE4-1387-4126-941E-5557CE455EF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoStop", "Plugins\AutoStop\AutoStop.csproj", "{A3019FE0-B9AE-4E55-9FB2-994F591CFDD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monitor", "Plugins\Monitor\Monitor.csproj", "{40D68A7D-F763-4CF3-A1D5-6471D8C03A37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest", "Plugins\Quest\Quest.csproj", "{3A6374DE-C169-429C-8C48-FDA290ED734A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stats", "Plugins\Stats\Stats.csproj", "{DD43206D-2E92-481E-86B3-5AE3D0C2F4A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ECE3EE1D-2F0B-4A6D-81A9-B23459E7DBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECE3EE1D-2F0B-4A6D-81A9-B23459E7DBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECE3EE1D-2F0B-4A6D-81A9-B23459E7DBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECE3EE1D-2F0B-4A6D-81A9-B23459E7DBBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6AF0B8-20D9-4A6F-98F1-964A4B3EA14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6AF0B8-20D9-4A6F-98F1-964A4B3EA14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6AF0B8-20D9-4A6F-98F1-964A4B3EA14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6AF0B8-20D9-4A6F-98F1-964A4B3EA14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3019FE0-B9AE-4E55-9FB2-994F591CFDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3019FE0-B9AE-4E55-9FB2-994F591CFDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3019FE0-B9AE-4E55-9FB2-994F591CFDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3019FE0-B9AE-4E55-9FB2-994F591CFDD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D68A7D-F763-4CF3-A1D5-6471D8C03A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D68A7D-F763-4CF3-A1D5-6471D8C03A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D68A7D-F763-4CF3-A1D5-6471D8C03A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D68A7D-F763-4CF3-A1D5-6471D8C03A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6374DE-C169-429C-8C48-FDA290ED734A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6374DE-C169-429C-8C48-FDA290ED734A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6374DE-C169-429C-8C48-FDA290ED734A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6374DE-C169-429C-8C48-FDA290ED734A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD43206D-2E92-481E-86B3-5AE3D0C2F4A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD43206D-2E92-481E-86B3-5AE3D0C2F4A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD43206D-2E92-481E-86B3-5AE3D0C2F4A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD43206D-2E92-481E-86B3-5AE3D0C2F4A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ECE3EE1D-2F0B-4A6D-81A9-B23459E7DBBC} = {340ACB85-0CD2-4EF7-B1C4-D513A38F5BB3}
+		{4A6AF0B8-20D9-4A6F-98F1-964A4B3EA14F} = {8823DF29-2E2F-486F-8D7B-A002B53FECD2}
+		{A3019FE0-B9AE-4E55-9FB2-994F591CFDD3} = {F0EB9AE4-1387-4126-941E-5557CE455EF7}
+		{40D68A7D-F763-4CF3-A1D5-6471D8C03A37} = {F0EB9AE4-1387-4126-941E-5557CE455EF7}
+		{3A6374DE-C169-429C-8C48-FDA290ED734A} = {F0EB9AE4-1387-4126-941E-5557CE455EF7}
+		{DD43206D-2E92-481E-86B3-5AE3D0C2F4A7} = {F0EB9AE4-1387-4126-941E-5557CE455EF7}
+	EndGlobalSection
+EndGlobal

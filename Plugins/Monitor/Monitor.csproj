@@ -1,0 +1,46 @@
+<!-- Monitor 插件：游戏监控与上报（含 WCF 通信） -->
+<!-- 注意：此插件引用了 DefaultBot 的源文件（DefaultBotSettings），通过 Link 方式包含 -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseWPF>true</UseWPF>
+    <OutputPath>..\..\CompiledAssemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AssemblyName>Monitor</AssemblyName>
+    <WarningLevel>9999</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Hearthbuddy">
+      <HintPath>..\..\Hearthbuddy.exe</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="GreyMagic">
+      <HintPath>..\..\lib\GreyMagic.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- WCF 通信框架：用于进程间数据上报 -->
+    <Reference Include="System.ServiceModel" />
+  </ItemGroup>
+
+  <!-- 链接 DefaultBot 源文件：Monitor 需要使用 DefaultBotSettings -->
+  <ItemGroup>
+    <Compile Include="..\..\Bots\DefaultBot\DefaultBotSettings.cs" Link="DefaultBotSettings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

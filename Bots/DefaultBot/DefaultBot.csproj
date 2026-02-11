@@ -1,0 +1,47 @@
+<!-- DefaultBot 插件：天梯挂机主脚本，实现 IBot 接口 -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- 输出为 DLL 类库，由 Hearthbuddy.exe 框架加载 -->
+    <OutputType>Library</OutputType>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PlatformTarget>x86</PlatformTarget>
+    <!-- 启用 WPF 支持（SettingsGui.xaml 设置面板） -->
+    <UseWPF>true</UseWPF>
+    <!-- 编译输出到 CompiledAssemblies 目录 -->
+    <OutputPath>..\..\CompiledAssemblies\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <!-- 程序集名称 -->
+    <AssemblyName>DefaultBot</AssemblyName>
+    <WarningLevel>9999</WarningLevel>
+  </PropertyGroup>
+
+  <!-- 外部程序集引用 -->
+  <ItemGroup>
+    <!-- 框架核心：Triton.Bot, Triton.Game, Buddy.Coroutines 等 -->
+    <Reference Include="Hearthbuddy">
+      <HintPath>..\..\Hearthbuddy.exe</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- 内存操作框架：TritonHs.AcquireFrame() 返回的 FrameLock 类型 -->
+    <Reference Include="GreyMagic">
+      <HintPath>..\..\lib\GreyMagic.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- 日志框架 -->
+    <Reference Include="log4net">
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- NuGet 包：提供 net472 引用程序集，无需安装 Developer Pack -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

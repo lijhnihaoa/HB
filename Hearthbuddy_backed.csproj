@@ -1,90 +1,122 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<!-- 使用 SDK 风格的项目格式，Sdk="Microsoft.NET.Sdk" 会自动导入默认的构建目标和属性 -->
+<Project Sdk="Microsoft.NET.Sdk">
 
+  <!-- 主要项目属性组：定义项目的基本构建配置 -->
   <PropertyGroup>
 
+    <!-- 输出类型为可执行文件（.exe），其他选项有 Library(.dll)、WinExe(无控制台窗口的exe) -->
     <OutputType>Exe</OutputType>
+    <!-- 目标框架为 .NET Framework 4.7.2，"net472" 是其 TFM（目标框架名称）缩写 -->
     <TargetFramework>net472</TargetFramework>
+    <!-- C# 语言版本设为 latest，允许使用最新语法特性（如可空引用类型、模式匹配等） -->
     <LangVersion>latest</LangVersion>
-    
+
+    <!-- 启用 WPF（Windows Presentation Foundation）支持，用于加载 XAML 界面文件 -->
     <UseWPF>true</UseWPF>
+    <!-- 已禁用 WinForms 支持，因与 WPF + ImplicitUsings 同时启用会导致 UserControl 等类型歧义 -->
     <!-- <UseWindowsForms>true</UseWindowsForms> -->
+    <!-- 旧式 TargetFrameworkVersion 写法，SDK 风格项目中已被 TargetFramework 替代 -->
     <!-- <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion> -->
-    <!-- 隐式全局using -->
+    <!-- 启用隐式全局 using，自动导入 System、System.Collections.Generic、System.Linq 等常用命名空间 -->
     <ImplicitUsings>enable</ImplicitUsings>
-    <!-- 可空引用类型 -->
+    <!-- 启用可空引用类型分析，编译器会对可能为 null 的引用发出警告 -->
     <Nullable>enable</Nullable>
-    <!-- 平台 -->
+    <!-- 定义可用的构建平台：AnyCPU（任意平台）和 x86（32位） -->
     <Platforms>AnyCPU;x86</Platforms>
-    <!-- 平台目标 -->
+    <!-- 强制编译输出为 x86（32位），因为 Hearthbuddy 框架和 GreyMagic 内存操作要求 32 位运行 -->
     <PlatformTarget>x86</PlatformTarget>
 
 
   </PropertyGroup>
 
+  <!-- Debug|AnyCPU 配置：调试模式 + 任意平台 -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <!-- 警告等级设为 9999（最大值），启用所有编译器警告以便开发时发现潜在问题 -->
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
 
+  <!-- Debug|x86 配置：调试模式 + 32位平台 -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
 
+  <!-- Release|AnyCPU 配置：发布模式 + 任意平台 -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
 
+  <!-- Release|x86 配置：发布模式 + 32位平台 -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
 
 
+  <!-- 外部程序集引用组：引用项目依赖的 DLL 和 EXE -->
   <ItemGroup>
 
+    <!-- GreyMagic：内存读写框架，提供 FrameLock 类型，被 TritonHs.AcquireFrame() 使用 -->
     <Reference Include="GreyMagic">
       <HintPath>lib\GreyMagic.dll</HintPath>
     </Reference>
 
+    <!-- Hearthbuddy 主程序：包含 Triton.Bot、Triton.Game、Triton.Common、Buddy.Coroutines 等核心命名空间 -->
     <Reference Include="Hearthbuddy">
       <HintPath>Hearthbuddy.exe</HintPath>
     </Reference>
 
+    <!-- IronPython：Python 脚本引擎，用于执行自定义留牌规则等脚本 -->
     <Reference Include="IronPython">
       <HintPath>lib\IronPython.dll</HintPath>
     </Reference>
+    <!-- IronPython.Modules：IronPython 的标准库模块（sys、os 等） -->
     <Reference Include="IronPython.Modules">
       <HintPath>lib\IronPython.Modules.dll</HintPath>
     </Reference>
+    <!-- log4net：日志框架，通过 Logger.GetLoggerInstanceForType() 获取日志实例 -->
     <Reference Include="log4net">
       <HintPath>lib\log4net.dll</HintPath>
     </Reference>
+    <!-- Microsoft.Dynamic：DLR（动态语言运行时）核心库，IronPython 的依赖项 -->
     <Reference Include="Microsoft.Dynamic">
       <HintPath>lib\Microsoft.Dynamic.dll</HintPath>
     </Reference>
+    <!-- Microsoft.Scripting：DLR 脚本宿主 API，IronPython 的依赖项 -->
     <Reference Include="Microsoft.Scripting">
       <HintPath>lib\Microsoft.Scripting.dll</HintPath>
     </Reference>
+    <!-- Microsoft.Scripting.Metadata：DLR 元数据读取器，IronPython 的依赖项 -->
     <Reference Include="Microsoft.Scripting.Metadata">
       <HintPath>lib\Microsoft.Scripting.Metadata.dll</HintPath>
     </Reference>
+    <!-- Mono.Cecil：.NET 程序集读写库，用于运行时分析和修改 IL 代码 -->
     <Reference Include="Mono.Cecil">
       <HintPath>lib\Mono.Cecil.dll</HintPath>
     </Reference>
+    <!-- Udis86Net：x86 反汇编器的 .NET 封装，用于分析机器码 -->
     <Reference Include="Udis86Net">
       <HintPath>lib\Udis86Net.dll</HintPath>
     </Reference>
+    <!-- XamlAnimatedGif：WPF 的 GIF 动画支持库，用于界面中播放动态 GIF 图片 -->
     <Reference Include="XamlAnimatedGif">
       <HintPath>lib\XamlAnimatedGif.dll</HintPath>
     </Reference>
+    <!-- System.ServiceModel：WCF（Windows 通信基础）框架，用于进程间通信（Monitor 插件使用） -->
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
 
 
+  <!-- 文件夹占位组：确保这些目录在项目结构中存在（即使为空） -->
   <ItemGroup>
+    <!-- 辅助错误日志目录 -->
     <Folder Include="HelperErrorLogs\" />
+    <!-- 佣兵模式策略日志目录 -->
     <Folder Include="MercStraLogs\" />
   </ItemGroup>
 
+  <!-- NuGet 包引用组 -->
   <ItemGroup>
+    <!-- .NET Framework 引用程序集包：使 SDK 风格项目无需安装 .NET Framework 4.7.2 Developer Pack -->
+    <!-- PrivateAssets="all" 表示此包仅在编译时使用，不会被传递到依赖此项目的其他项目 -->
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
   </ItemGroup>
 
